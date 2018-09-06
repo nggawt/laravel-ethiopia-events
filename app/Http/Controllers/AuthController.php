@@ -15,7 +15,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login','checkIfLoggedin']]);
     }
 
     /**
@@ -26,12 +26,33 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = request(['email', 'password']);
-        //return $request->all();
+        
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function checkIfLoggedin(Request $request)
+    {
+        //$credentials = request(['email', 'password']);
+        //return $request->all();
+        $user = [];
+        if(Auth::check()){
+            $autUser = Auth::user();
+
+            $user = [
+                'name' => $autUser->name,
+                'id' => $autUser->id,
+                'email' => $autUser->email
+            ];
+        } 
+        
+        
+        return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):response()->json(['status' => Auth::check()],200);
+
+        // return $this->respondWithToken($token);
     }
 
     /**
@@ -75,7 +96,14 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $user = auth()->user();
+
         return response()->json([
+            'user' => [
+                'name' => $user->name,
+                'id' => $user->id,
+                'email' => $user->email
+            ],
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60

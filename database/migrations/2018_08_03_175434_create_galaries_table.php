@@ -17,7 +17,7 @@ class CreateGalariesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('costumer_id');
 
-            $table->string("image")->nullable();
+            $table->text("image");
             
             $table->foreign('costumer_id')
               ->references('id')->on('costumers')
@@ -29,7 +29,7 @@ class CreateGalariesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('costumer_id');
 
-            $table->string("video")->nullable();
+            $table->text("video");
             
             $table->foreign('costumer_id')
               ->references('id')->on('costumers')

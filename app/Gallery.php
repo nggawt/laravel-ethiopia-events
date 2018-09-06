@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-    protected $fillable  = ['costumer_id', 'image', 'video', 'loggo'];
+    protected $fillable  = ['costumer_id', 'image'];
 }
