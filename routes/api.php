@@ -40,12 +40,12 @@ Route::group([
     'prefix' => 'auth'
 
 ], function () {
-	Route::post('getlogin', 'UserCOntroller@getLogin');
+	// Route::post('getlogin', 'UserController@getLogin');
 	Route::post('store', 'UserController@store');
+    Route::post('isauth', 'UserController@getUserLogged');
 
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
-    Route::post('isauth', 'AuthController@checkIfLoggedin');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::resource('costumers','CostumerController');

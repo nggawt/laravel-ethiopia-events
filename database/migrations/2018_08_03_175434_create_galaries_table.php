@@ -16,20 +16,8 @@ class CreateGalariesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('costumer_id');
-
-            $table->text("image");
-            
-            $table->foreign('costumer_id')
-              ->references('id')->on('costumers')
-              ->onDelete('cascade');
-
-            $table->timestamps();
-        });
-        Schema::create('videos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('costumer_id');
-
             $table->text("video");
+            $table->text("image");
             
             $table->foreign('costumer_id')
               ->references('id')->on('costumers')
@@ -47,6 +35,5 @@ class CreateGalariesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('galleries');
-        Schema::dropIfExists('videos');
     }
 }

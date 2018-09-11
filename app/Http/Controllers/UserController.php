@@ -12,8 +12,27 @@ class UserController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'store']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'store','getUserLogged']]);
        
+    }
+
+    public function getUserLogged()
+    {
+        //$credentials = request(['email', 'password']);
+        //return $request->all();
+        $user = [];
+        if(Auth::check()){
+            $autUser = Auth::user();
+
+            $user = [
+                'name' => $autUser->name,
+                'id' => $autUser->id,
+                'email' => $autUser->email
+            ];
+        } 
+        
+        return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):response()->json(['status' => Auth::check()],200);
+        // return $this->respondWithToken($token);
     }
     
     public function getUsers(){
@@ -37,6 +56,7 @@ class UserController extends Controller
 
         return $this->respondWithToken($token);
     }
+
 
     
      public function getLogout(){

@@ -9,7 +9,6 @@ use Illuminate\Http\File;
 use App\Repo\CostumersRepo;
 use App\Costumer;
 use App\Gallery;
-use App\Video;
 use App\User;
 use App\Http\Requests\UpdateCostumersRequest;
 
@@ -60,12 +59,8 @@ class CostumerController extends Controller
         $reqsDetails = $request->only(['formInputs']);
 
         $costumersDetails = $this->costumers->handelDetails($reqsDetails);
-        //return response()->json($costumersDetails,200);
-        //$costumerExisst = isset($costumersDetails["email"]) && Costumer::where("email",$costumersDetails["email"])->first()->email === auth()->user()->email;
+        $files = $this->costumers->downloadFiles($reqsFils);
 
-        /*if($costumerExisst){
-            return response()->json(["massege" => "you already our costumer"],200);
-        }*/
         if(isset($costumersDetails["massege"])) $this->masseges['costumerMsg'] = $costumersDetails["massege"];
 
         if(count($this->masseges)){
@@ -73,44 +68,16 @@ class CostumerController extends Controller
         }
         
         Costumer::create($costumersDetails);
+        $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
+        
         sleep(1);
-        foreach($reqsFils as $key => $value){
 
-            $target = explode('/', $key)[2];
-            $fileName = $key.'.'. ($value)->extension();
-            $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
-           
-            if(! Storage::disk('public')->exists($fileName) && $value->isValid()){
-                
-                if($target === "video"){
-                    
-                    $vid = [
-                        'costumer_id' => $costumer_id,
-                        'video' => $this->dataUrl . $fileName
-                    ];
-                    
-                    Video::create($vid);
-                   
-                }else if($target === "galleries"){
-                    
-                    $gal = [
-                        'costumer_id' => $costumer_id,
-                        'image' => $this->dataUrl . $fileName
-                    ];
-                    
-                    Gallery::create($gal);
-                }
-                
-                Storage::putFileAs('public/', new File($value), $fileName);
-
-            }else if(Storage::disk('public')->exists($fileName)){
-                $this->masseges[$key] = "The File  exists in our storage From BUzzi";
-            }else{
-                $this->masseges["massege"] = "Error occurred while Uploading the File";
-            }
-        }
-        // $galleries->save();
-        //Costumer::create($costumersDetails);
+        $gal = [
+            'costumer_id' => $costumer_id,
+            'image' => $files['img'],
+            'video' => $files['vid']
+        ];
+        Gallery::create($gal);
 
         return empty($this->masseges)? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
     }
@@ -123,10 +90,21 @@ class CostumerController extends Controller
         //return response()->json(["massege" => $user],200);
 
         //store
-        Costumer::find($id)->update($request->all());
+        $method = request()->method();
 
-        //response
-        return response()->json(["massege" => Costumer::find($id)],200);
+        if (request()->isMethod('patch')) {
+
+            $req = request()->all();
+            $key = key($req);
+            $data = [$key => $req[$key]];
+
+            Costumer::find($id)->update($data);
+        }else{
+            Costumer::find($id)->update($request->all());
+        }
+        return response()->json(["massege" => 'success', 'costumer' => Costumer::find($id) ],200);
     }
+
+    
 
 }
