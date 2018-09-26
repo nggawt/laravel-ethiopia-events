@@ -300,23 +300,31 @@ CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-@angular/common@6.1.0
+@angular/common@6.1.4
 MIT
 MIT
 
-@angular/core@6.1.0
+@angular/compiler@6.1.4
 MIT
 MIT
 
-@angular/forms@6.1.0
+@angular/core@6.1.4
 MIT
 MIT
 
-@angular/platform-browser@6.1.0
+@angular/forms@6.1.4
 MIT
 MIT
 
-@angular/router@6.1.0
+@angular/platform-browser-dynamic@6.1.4
+MIT
+MIT
+
+@angular/platform-browser@6.1.4
+MIT
+MIT
+
+@angular/router@6.1.4
 MIT
 MIT
 
@@ -348,7 +356,7 @@ angular-popper@2.0.0
 MIT
 MIT
 
-popper.js@1.14.3
+popper.js@1.14.4
 MIT
 MIT
 

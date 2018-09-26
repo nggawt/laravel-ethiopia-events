@@ -35,9 +35,9 @@ use Illuminate\Http\Request;
 });*/
 
 Route::group([
-	// 'middleware' => 'api',
+	// 'middleware' => 'cors',
     // 'namespace' => 'App\Http\Controllers',
-    'prefix' => 'auth'
+    // 'prefix' => 'auth'
 
 ], function () {
 	// Route::post('getlogin', 'UserController@getLogin');
@@ -48,7 +48,5 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::resource('costumers','CostumerController');
-
-
+    Route::resource('costumers','CostumersController');
 });

@@ -10,6 +10,6 @@ class Gallery extends Model
 
     public function costumer()
     {
-        return $this->hasOne('App\Costumer');
+        return $this->belongsTo('App\Costumer');
     }
 }

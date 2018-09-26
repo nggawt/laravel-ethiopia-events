@@ -128,6 +128,36 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'email' => [
+            "required" => "שדה אימייל חובה",
+            'email' => "שדה האימייל חייב להתאים לתבנית האימייל",
+            
+        ],
+        "company" => [
+            'min' => 'שם חברה חייב להכיל לפחות :min אותיות',
+            'required' => " שדה שם חברה  חובה ",
+        ],
+        "businessType" => [
+            'required' => "שדה שם העסק חובה.",
+            'min' => "שם העסק חייב להכיל לפחות :min אותיות",
+        ],
+        "contact" => [
+            'required' =>  "שדה איש קשר חובה.",
+            'min' =>  "איש קשר חייב להכיל :min אותיות.",
+        ],
+        "tel" => [
+            'required' =>  "שדה פלאפון",
+            'integer' =>  "שדה הפלאפון חייב להכיל מספרים",
+            'min' => "שדה פלאפון חייב להכיל :min אותיות.",
+        ],
+        "address" => [
+            'required' => "שדה כתובת חובה.",
+            'min' => "שדה כתובת חייב להכיל לפחות :min אותיות.",
+        ],
+        "discription" => [
+            'required' => "שדה אודות החברה חובה",
+            'min' =>  "אודות החברה חייב להכיל לפחות :min אותיות"
+        ]
     ],
 
     /*
@@ -144,3 +174,23 @@ return [
     'attributes' => [],
 
 ];
+/*
+$costumErrorMasseges = [
+    'company.min' => 'שם חברה חייב להכיל לפחות :min אותיות',
+    'company.required' => " שדה שם חברה  חובה ",
+    'email.required' => "שדה האימייל חובה",
+    'email.email' => "שדה האימייל חייב להתאים לתבנית האימייל",
+    'contact.required' =>  "שדה איש קשר חובה.",
+    'contact.min' =>  "איש קשר חייב להכיל :min אותיות.",
+    'businessType.required' => "שדה שם העסק חובה.",
+    'businessType.min' => "שם העסק חייב להכיל לפחות :min אותיות",
+    'tel.required' =>  "שדה פלאפון",
+    'tel.integer' =>  "שדה הפלאפון חייב להכיל מספרים",
+    'tel.min' => "שדה פלאפון חייב להכיל :min אותיות.",
+    'address.required' => "שדה כתובת חובה.",
+    'address.min' => "שדה כתובת חייב להכיל לפחות :min אותיות.",
+    'discription.required' => "שדה אודות החברה חובה",
+    'discription.min' =>  "אודות החברה חייב להכיל לפחות :min אותיות"
+];
+
+*/

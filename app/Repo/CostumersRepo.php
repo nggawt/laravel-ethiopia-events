@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Repo;
-
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
 use App\Costumer;
 use App\Gallery;
 use App\User;
+use Validator;
 
 
 /**
@@ -14,6 +18,7 @@ class CostumersRepo
 {
 	// private $costumer;
     protected  $masseges = [];
+    protected $dataUrl = "./assets/pages/costumers/";
 
 	function __construct(/*Costumer $costumer*/)
 	{
@@ -75,105 +80,52 @@ class CostumersRepo
     }
 
     //responsable for get key value of customers before stor database
-    public function handelDetails($costumers){
+    public function handelDetails($inputs){
 
-       // return response()->json(["massege" => "Repos you already our costumer"],200);
-        $dataUrl = "./assets/pages/costumers/";
-        $costumerArray = [];
+        $user = User::where('email',$inputs['email'])->first();
+    	$compName = Costumer::where('company',$inputs['company'])->first();
 
-        $inputs = json_decode($costumers['formInputs']);
-        $costumerArray = [];
+    	$autUser = auth()->user();
+    	$userisCostumer = $autUser->costumer;
 
-        foreach ($inputs as $input) {
-        	
-        	$user = User::where('email',$inputs->email)->first();
+    	if(! $compName && ! $userisCostumer && isset($user) && $autUser->email === $inputs['email']){
+    	
+    	    $inputs['user_id'] = $autUser->id;
+    	    $inputs['loggo'] = $this->dataUrl . $inputs['loggo'];
+    	    $inputs['tel'] = $inputs['tel'];
+    	    $inputs['deals'] =  "מבצעים בהמשך.";
 
-        	$autUser = auth()->user();
-        	$userisCostumer = $autUser->costumer;
-
-
-        	if(! $userisCostumer && isset($user) && $autUser->email === $inputs->email){
-        	
-        	    $costumerArray['user_id'] = $autUser->id;
-        	    $costumerArray['company'] = $inputs->company;
-        	    $costumerArray['businessType'] = $inputs->businessType;
-        	    $costumerArray['title'] = $inputs->title;
-        	    $costumerArray['loggo'] = $dataUrl . $inputs->loggo;
-        	    $costumerArray['contact'] = $inputs->contact;
-        	    $costumerArray['discription'] = $inputs->about;
-        	    $costumerArray['email'] = $inputs->email;
-        	    $costumerArray['tel'] = $inputs->phone;
-        	    $costumerArray['address'] = $inputs->address;
-        	    $costumerArray['deals'] =  "מבצעים בהמשך.";
-
-        	}
-        	else{
-        	    $costumerArray["massege"] = ["msg" => "sonthing went wrong with your dtails.","isCostumer" => $userisCostumer?$userisCostumer:false];
-        	}
-        }
-       
-		return $costumerArray;
+    	}else{
+    	    array_push($this->masseges,  ["errors" => ["msg" => "sonthing went wrong with your dtails."]]);
+    	}
+		return count($this->masseges)? $this->masseges:$inputs;
     }
 
     public function downloadFiles($files){
+        
         $img = [];
         $vid = [];
 
-        foreach($files as $key => $value){
+        $filesExists = array_filter($files,function($v,$k){
+            
+            $fileName = $k.'.'. ($v)->extension();
+            $fileExists = Storage::disk('public')->exists($fileName) && $v->isValid();
+            if($fileExists) array_push($this->masseges["errors"], [$key => "The File already exists"]);
+            return $fileExists;
+        },ARRAY_FILTER_USE_BOTH);
 
-            $target = explode('/', $key)[2];
-            $fileName = $key.'.'. ($value)->extension();
-           
-            if(! Storage::disk('public')->exists($fileName) && $value->isValid()){
-                
+        if(! $filesExists){
+
+            foreach($files as $key => $value){
+                $target = explode('/', $key)[2];
+                $fileName = $key.'.'. ($value)->extension();
+
                 if($target === "video") array_push($vid, $this->dataUrl . $fileName);
                 if($target === "galleries") array_push($img, $this->dataUrl . $fileName);
-                
                 Storage::putFileAs('public/', new File($value), $fileName);
-
-            }else if(Storage::disk('public')->exists($fileName)){
-                $this->masseges[$key] = "The File  exists in our storage From BUzzi";
-            }else{
-                $this->masseges["massege"] = "Error occurred while Uploading the File";
             }
         }
-        return empty($this->masseges)?[
-            "img" => json_encode($img),
-            "vid" => json_encode($vid)
-        ]: $this->masseges;
+        
+        return empty($this->masseges)?["image" => json_encode($img),"video" => json_encode($vid)]: $this->masseges;
     }
 }
-
-
-/*
-
-        $inputs = json_decode($costumers['formInputs']);
-        $costumerArray = [];
-        foreach ($inputs as $input) {
-        	# code...
-        	$user = User::where('email',$inputs->email)->first();
-
-        	if(isset($user) && auth()->user()->email === $inputs->email){
-        	
-        	    $costumerArray['user_id'] = $user->id;
-        	    $costumerArray['company'] = $inputs->company;
-        	    $costumerArray['businessType'] = $inputs->businessType;
-        	    $costumerArray['title'] = $inputs->title;
-        	    $costumerArray['loggo'] = $this->dataUrl . $inputs->loggo;
-        	    $costumerArray['contact'] = $inputs->contact;
-        	    $costumerArray['discription'] = $inputs->about;
-        	    $costumerArray['email'] = $inputs->email;
-        	    $costumerArray['tel'] = $inputs->phone;
-        	    $costumerArray['address'] = $inputs->address;
-        	    $costumerArray['deals'] =  "מבצעים בהמשך.";
-
-
-        	}
-        	else{
-        	    $costumerArray["massege"] = "sonthing went wrong with your dtails.";
-        	}
-        }
-       
-		return $costumerArray;
-
-*/

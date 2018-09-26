@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'store','getUserLogged']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store']]);
        
     }
 
@@ -96,7 +96,14 @@ class UserController extends Controller
 
     protected function respondWithToken($token)
     {
+        $user = auth()->user();
+
         return response()->json([
+            'user' => [
+                'name' => $user->name,
+                'id' => $user->id,
+                'email' => $user->email
+            ],
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60

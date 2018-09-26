@@ -37,13 +37,9 @@ class UpdateCostumersRequest extends FormRequest
             "discription" => "required|min:6"
         ];
         
-        if (request()->isMethod('patch')) {
+        if (request()->isMethod('patch') || request()->isMethod('put')) {
 
-            $req = request()->all();
-            $key = key($req);
-            return [
-                $key => $data[$key]
-            ];
+            return [];
         }else{
             return $data;
         }

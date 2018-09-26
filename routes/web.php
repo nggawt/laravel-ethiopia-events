@@ -28,7 +28,7 @@ Auth::routes();
 //Route::post('/login', 'UserController@getLogin')->name('login');
 //Route::get('/costumers', 'CostumerController@index')->name('costumers');
 
-Route::resource('costumers','CostumerController');
+Route::resource('costumers','CostumersController');
 // Route::group(['middleware' => 'cors'], function() {
 // 	// return User::all()->toJson();
 //    //Route::post('/api/your_url','YourController@function' );
