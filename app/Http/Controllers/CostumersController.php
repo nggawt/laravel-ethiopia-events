@@ -16,7 +16,10 @@ use Validator;
 class CostumersController extends Controller
 {
     protected $dataUrl = "./assets/pages/costumers/";
-    protected  $masseges = [];
+    protected  $masseges = [
+        "errors" => [],
+        'success' => []
+    ];
     protected $costumers;
     protected $formRoles = [
             "company" => "required|min:3",
@@ -62,17 +65,16 @@ class CostumersController extends Controller
      */
     public function index()
     {
-        //return $this->costumers;
     	$cost = $this->costumers->getCostumers();
 
         return response()->json($cost,200);
     }
 
 
-    public function show($costumerName)
+    public function show($id)
     {
     	
-    	$cost = Costumer::where('company', $costumerName)->first();
+    	$cost = Costumer::where('id', $id)->first();
        return response()->json($cost,200);
     }
 
@@ -83,11 +85,11 @@ class CostumersController extends Controller
         $inputsDecoded = json_decode($reqsDetails['formInputs'],true);
 
         /***** validatefiles before any tasks *****/
-        $afterValInputs = $this->validateInputs($inputsDecoded);
-        $afterValFiles = $this->validatefiles($reqsFils);
+        
+        $afterValFiles = $this->validatefiles($reqsFils,$inputsDecoded);
         
         /***** return valadation errors if any *****/
-        if(! $afterValInputs || ! $afterValFiles){return response()->json($this->masseges,200);}
+        if(! $afterValFiles){return response()->json($this->masseges,200);}
         
         /***** handel form input before store into database *****/
         $costumersDetails = $this->costumers->handelDetails($inputsDecoded);
@@ -96,19 +98,20 @@ class CostumersController extends Controller
         $files = $this->costumers->downloadFiles($reqsFils);
 
         /***** check and return errors if any before store into database *****/
-        if(isset($costumersDetails["errors"])){ return response()->json($costumersDetails,200);}
-        if(isset($files["errors"])){ return response()->json($files,200);}
-
+        if(isset($costumersDetails["errors"]) && count($costumersDetails["errors"])){ return response()->json($costumersDetails,200);}
+        if(isset($files["errors"]) && count($files["errors"])) { return response()->json($files,200);}
+		//return response()->json(["massege" => "Ok, your content saved!"],200);
         /***** store form inputs costumer into database *****/
         Costumer::create($costumersDetails);
         
         sleep(1);
         $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
         $files['costumer_id'] = $costumer_id;
+        
         /***** store form filse costumer into database *****/
         Gallery::create($files);
 
-        return empty($this->masseges)? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
+        return empty($this->masseges["errors"])? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
     }
 
     
@@ -167,12 +170,16 @@ class CostumersController extends Controller
         return response()->json(["masseges" => 'success', 'costumer' => Costumer::find($id) ],200);
     }
 
-    
-    private function validatefiles($reqsFils){
+    public function delete(UpdateCostumersRequest $request, $id){
+
+    }
+
+    private function validatefiles($reqsFils,$inputsDecoded){
 
     	$filesTovalidate = [];
         $filesSize = 0;
-        $isValid = true;
+        $isValid = $this->validateInputs($inputsDecoded);
+
         foreach($reqsFils as $key => $value){
         	
         	if(strpos($key, 'galleries') !== false || strpos($key, 'loggo') !== false) $filesTovalidate[$key] = $this->validateFiles['galleries'];
@@ -181,17 +188,17 @@ class CostumersController extends Controller
         }
         
         if($filesSize > 6000000){
-        	array_push($this->masseges, ["errors" => array('size' => 'the files is greater then 6 mb')]);
+        	array_push($this->masseges["errors"], ["filse" => array('size' => 'the files is greater then 6 mb')]);
         	$isValid = false;
         }
         if(count($reqsFils) < 5){
-        	array_push($this->masseges, ["errors" => array('min_files' => 'missing pramaters to create account')]);
+        	array_push($this->masseges["errors"], ["filse" => array('min_files' => 'missing pramaters to create account')]);
         	$isValid = false;
         } 
 
         $valFiles = Validator::make($reqsFils, $filesTovalidate);
         if ($valFiles->fails()) {
-            array_push($this->masseges,["errors" => $valFiles->errors()]);
+            array_push($this->masseges["errors"],$valFiles->errors());
             $isValid = false;
         }
         
@@ -205,7 +212,7 @@ class CostumersController extends Controller
 
         if($valFiles->fails()) {
             
-            array_push($this->masseges,["errors" => $valFiles->errors()]);
+            array_push($this->masseges["errors"],$valFiles->errors());
             return false;
         }
         return true;

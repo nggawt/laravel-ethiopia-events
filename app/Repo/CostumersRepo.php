@@ -17,7 +17,9 @@ use Validator;
 class CostumersRepo 
 {
 	// private $costumer;
-    protected  $masseges = [];
+    protected  $masseges = [
+        "errors" => []
+    ];
     protected $dataUrl = "./assets/pages/costumers/";
 
 	function __construct(/*Costumer $costumer*/)
@@ -29,13 +31,12 @@ class CostumersRepo
 	public function getCostumers(){
 		$cost['costumers'] = $this->filterCostumers(Costumer::all());
         $cost['galleries'] = $this->filterGalleries(Gallery::all());
-        // $cost['videos'] = $this->filterVideos(Video::all());
-
         return $cost;
 	}
 
 	private function filterCostumers($costumers){
         $filteredCostumers = [];
+        $businessType = null;
 
         foreach ($costumers as $value) {
             $fixCbt = explode(" ", $value->businessType);
@@ -43,6 +44,12 @@ class CostumersRepo
 
             $fixCbt = isset($fixCbt[1])? $fixCbt[0] . '-' . $fixCbt[1]:$value->businessType;
             $fixCcn = isset($fixCcn[1])? $fixCcn[0] . '-' . $fixCcn[1]:$value->company;
+
+            if((isset($businessType) && $businessType != $fixCbt) || is_null($businessType)){
+                $businessType = $fixCbt;
+                $filteredCostumers[$fixCbt] = [];
+            }
+            
             
             $en = [
                 'id' => $value->id,
@@ -59,7 +66,7 @@ class CostumersRepo
                 'deals' => $value->deals
 
             ];
-            $filteredCostumers[] = $en;
+            array_push($filteredCostumers[$businessType], $en);
         }
         return $filteredCostumers;
     }
@@ -96,9 +103,9 @@ class CostumersRepo
     	    $inputs['deals'] =  "מבצעים בהמשך.";
 
     	}else{
-    	    array_push($this->masseges,  ["errors" => ["msg" => "sonthing went wrong with your dtails."]]);
+    	    array_push($this->masseges["errors"],  ["msg" => "sonthing went wrong with your dtails."]);
     	}
-		return count($this->masseges)? $this->masseges:$inputs;
+		return count($this->masseges["errors"])? $this->masseges:$inputs;
     }
 
     public function downloadFiles($files){
@@ -110,7 +117,7 @@ class CostumersRepo
             
             $fileName = $k.'.'. ($v)->extension();
             $fileExists = Storage::disk('public')->exists($fileName) && $v->isValid();
-            if($fileExists) array_push($this->masseges["errors"], [$key => "The File already exists"]);
+            if($fileExists) array_push($this->masseges["errors"], [$fileName => "The File already exists"]);
             return $fileExists;
         },ARRAY_FILTER_USE_BOTH);
 
@@ -126,6 +133,6 @@ class CostumersRepo
             }
         }
         
-        return empty($this->masseges)?["image" => json_encode($img),"video" => json_encode($vid)]: $this->masseges;
+        return empty($this->masseges["errors"])? ["image" => json_encode($img),"video" => json_encode($vid)]: $this->masseges;
     }
 }
