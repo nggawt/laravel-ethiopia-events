@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store', 'destroy']]);
        
     }
 
@@ -33,12 +33,6 @@ class UserController extends Controller
         
         return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):response()->json(['status' => Auth::check()],200);
         // return $this->respondWithToken($token);
-    }
-    
-    public function getUsers(){
-        $users = User::all();
-        $articles = Articles::all();
-        return view('welcome',['users' => $users,'articles' => $articles]);
     }
     
     public function getLogin(Request $req){
@@ -65,6 +59,7 @@ class UserController extends Controller
     }
 
     public function store(Request $req){
+        
         $this->validate($req,[
 
             'name' => 'required|min:3',
@@ -90,15 +85,28 @@ class UserController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        return response()->json($this->respondWithToken($token),200);
 
+    }
+
+    public function destroy(Request $request, $id){
+
+        $authUser = auth()->user();
+        $user = User::findOrfail($id);
+
+        /***** validate user and delete*****/
+        if($authUser->id == $id && $authUser->email == $request['email']){
+            // $user->delete();
+            return response()->json(["message" => "user was deleted!"],200);
+        }
+        return response()->json(['error' => 'Unauthorized'], 401);
     }
 
     protected function respondWithToken($token)
     {
         $user = auth()->user();
 
-        return response()->json([
+        return [
             'user' => [
                 'name' => $user->name,
                 'id' => $user->id,
@@ -107,7 +115,7 @@ class UserController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
+        ];
     }
  
 }

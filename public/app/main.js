@@ -155,7 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_blog_blog_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/blog/blog.component */ "./src/app/pages/blog/blog.component.ts");
 /* harmony import */ var _pages_goal_goal_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/goal/goal.component */ "./src/app/pages/goal/goal.component.ts");
 /* harmony import */ var _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/footer/footer.component */ "./src/app/pages/footer/footer.component.ts");
-/* harmony import */ var _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./costumers/halls-data-service */ "./src/app/costumers/halls-data-service.ts");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
 /* harmony import */ var _pages_error_page_error_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/error-page/error-page.component */ "./src/app/pages/error-page/error-page.component.ts");
 /* harmony import */ var _pages_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/page-not-found/page-not-found.component */ "./src/app/pages/page-not-found/page-not-found.component.ts");
 /* harmony import */ var _join_join_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./join/join.component */ "./src/app/join/join.component.ts");
@@ -173,6 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_costumers_printing_prints_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/costumers/printing/prints.module */ "./src/app/pages/costumers/printing/prints.module.ts");
 /* harmony import */ var _pages_costumers_transportation_transports_module__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/costumers/transportation/transports.module */ "./src/app/pages/costumers/transportation/transports.module.ts");
 /* harmony import */ var _registrations_log_out_log_out_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./registrations/log-out/log-out.component */ "./src/app/registrations/log-out/log-out.component.ts");
+/* harmony import */ var _pages_costumers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pages/costumers/photographers/photographers-resolver.service */ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -210,6 +211,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 /*************** modules **************/
+
 
 
 
@@ -264,7 +266,7 @@ var AppModule = /** @class */ (function () {
                 _pages_routing_module__WEBPACK_IMPORTED_MODULE_25__["PagesRoutingModule"],
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModule"].forRoot()
             ],
-            providers: [_pages_service__WEBPACK_IMPORTED_MODULE_7__["PagesService"], _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_18__["HallsDataService"], _pages_costumers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__["HallResolver"], _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_24__["CanDeactivateGuardService"]],
+            providers: [_pages_service__WEBPACK_IMPORTED_MODULE_7__["PagesService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__["CustomersDataService"], _pages_costumers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__["HallResolver"], _pages_costumers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__["PhotographersResolver"], _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_24__["CanDeactivateGuardService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
@@ -298,16 +300,16 @@ var CanDeactivateGuardService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/costumers/halls-data-service.ts":
-/*!*************************************************!*\
-  !*** ./src/app/costumers/halls-data-service.ts ***!
-  \*************************************************/
-/*! exports provided: HallsDataService */
+/***/ "./src/app/costumers/customers-data-service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/costumers/customers-data-service.ts ***!
+  \*****************************************************/
+/*! exports provided: CustomersDataService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallsDataService", function() { return HallsDataService; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CustomersDataService", function() { return CustomersDataService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
@@ -325,87 +327,136 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var HallsDataService = /** @class */ (function () {
-    function HallsDataService(http) {
+var CustomersDataService = /** @class */ (function () {
+    function CustomersDataService(http) {
         var _this = this;
         this.http = http;
-        this.costumers = new rxjs__WEBPACK_IMPORTED_MODULE_1__["AsyncSubject"]();
+        this.costs = false;
+        /**** costmumer */
         this.costumer = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](1);
         this.costumerObsever = this.costumer.asObservable();
-        /* this.costumers = this.http.get("http://ethio:8080/costumers")
-            .pipe(
-                tap(res => {
-                    this.galleries = of(res['galleries']);
-                    this.videos = of(res['videos']);
-                }),
-            ); */
-        this.costumers = this.http.get("http://ethio:8080/costumers")
+        this.emailPatteren = '^[a-z]+[a-zA-Z_\\d]*@[A-Za-z]{2,10}\.[A-Za-z]{2,3}(?:\.?[a-z]{2})?$';
+        this.costumers = this.http.get("http://ethio:8080/api/costumers")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
-            _this.costs = (res['costumers']);
+            console.log(res);
+            _this.costs = res['costumers'];
             _this.galleries = res['galleries'];
-        }));
+        })).toPromise().catch(this.handleError);
     }
-    HallsDataService.prototype.getCostumers = function () {
-        var _this = this;
-        var costumers = new Promise(function (resolve, reject) {
-            if (_this.costs) {
-                return resolve(_this.costs);
-            }
-            var co = _this.costumers.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (data) { return data["costumers"]; }));
-            return co ? resolve(co) : reject("No data!");
+    CustomersDataService.prototype.getCostumers = function (type) {
+        if (this.costs) {
+            return this.costs[type];
+        }
+        return this.costumers.then(function (res) {
+            var data = res['costumers'];
+            return data && data[type] ? data[type] : [];
+        }, function (res) {
+            console.log("No data!");
         });
-        return this.costumers;
     };
-    HallsDataService.prototype.costumerEmit = function (costumer) {
+    CustomersDataService.prototype.handleError = function (errors) {
+        console.log("YOu have problem with your sever!");
+        console.log(errors['message']);
+    };
+    CustomersDataService.prototype.costumerEmit = function (costumer) {
         this.costumer.next(costumer);
     };
-    HallsDataService.prototype.getGallery = function (id) {
+    CustomersDataService.prototype.getGallery = function (id) {
         //return this.findItems(this.galleries, id);
         //if(this.costs){ return this.costs.filter((items) => {return items.costumer_id == id;});}
         return this.galleries.find(function (items) { return items.costumer_id == id; });
     };
-    HallsDataService.prototype.getVideo = function (id) {
+    CustomersDataService.prototype.getVideo = function (id) {
         // return this.videos.filter((items) => {return items.costumer_id == id;});
         // return this.findItems(this.videos, id);
     };
-    HallsDataService.prototype.storeData = function (postUrl, inputData, opt) {
+    CustomersDataService.prototype.storeData = function (postUrl, inputData, opt) {
         return this.http.post(postUrl, inputData, opt);
     };
-    HallsDataService.prototype.patchData = function (postUrl, inputData, opt) {
-        return this.http.patch(postUrl, inputData, opt);
+    CustomersDataService.prototype.patchData = function (postUrl, inputData, opt) {
+        return this.http.post(postUrl, inputData, opt);
     };
-    HallsDataService.prototype.putData = function (postUrl, inputData, opt) {
+    CustomersDataService.prototype.putData = function (postUrl, inputData, opt) {
         return this.http.put(postUrl, inputData, opt);
     };
-    HallsDataService.prototype.getById = function (costumerName) {
+    CustomersDataService.prototype.getById = function (costumerName) {
         var _this = this;
+        // let customers = this.costs? this.costs: this.costumers;
+        var isNumric = (!isNaN(parseFloat(costumerName)) && isFinite(costumerName));
+        var type = this.intendedUrl ? this.intendedUrl : decodeURIComponent(location.pathname).split('/')[1];
+        type = (type === "app") ? decodeURIComponent(location.pathname).split('/')[2] : type;
+        //  console.log(type);
         var prop = "company";
-        if (isFinite(costumerName)) {
+        if (isNumric) {
             prop = "id";
             costumerName = +costumerName;
         }
+        if (!isNumric) {
+            var regex = costumerName.match(this.emailPatteren);
+            if (regex && regex[0])
+                prop = "email";
+        }
         if (this.costs) {
-            var costumer = this.costs.find(function (items) { return items[prop] == costumerName; });
-            (!costumer) ? this.costumer.next({}) : this.costumer.next(costumer);
+            if (type == '/join') {
+                var concated = this.concatCostumers(this.costs);
+                var isCostumer = concated ? concated.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
+                (typeof isCostumer === "object") ? this.costumer.next(isCostumer) : this.costumer.next({});
+                return this.costumerObsever;
+            }
+            var costmumerType = this.costs[type] ? this.costs[type] : false;
+            var co = costmumerType ? costmumerType.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
+            (typeof co === "object") ? this.costumer.next(co) : this.costumer.next({});
             return this.costumerObsever;
         }
-        this.costumers.
-            subscribe(function (data) {
-            var res = data['costumers'].find(function (elem) { return elem[prop] == costumerName; }); //this.finCostumer(elem,prop,costumerName)
-            (!res) ? _this.costumer.next({}) : _this.costumer.next(res);
-            if (!res)
-                console.log("No recourse url!");
-            return res;
+        this.costumers.then(function (data) {
+            var co = data['costumers'] ? data['costumers'][type] : false;
+            if (type == '/join') {
+                var concated = co ? _this.concatCostumers(co) : false;
+                var isCostumer = concated ? concated.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
+                (typeof isCostumer === "object") ? _this.costumer.next(isCostumer) : _this.costumer.next({});
+                return;
+            }
+            co = co && co ? co.find(function (elem) { return elem['customer'][prop] == costumerName; }) : false;
+            (typeof co === "object") ? _this.costumer.next(co) : _this.costumer.next({});
         });
         return this.costumerObsever;
     };
-    HallsDataService.prototype.finCostumer = function (elem, prop, costName) {
-        return elem[prop] == costName;
+    CustomersDataService.prototype.concatCostumers = function (costmumers) {
+        var cos = [];
+        for (var ii in costmumers) {
+            var cost = costmumers[ii];
+            if (cos.length === 0) {
+                cos = cost;
+            }
+            else {
+                cos = cos.concat(cost);
+            }
+            //console.log(cost);
+        }
+        return cos;
     };
-    HallsDataService.prototype.getCostumer = function (param) {
-        return ((this.costumer.value === 1)) ? this.getById(param) : this.costumerObsever;
+    /*  public getCostumer(param?) {
+        //console.log((param && this.costumer.value === 1));
+         //return (param && this.costumer.value === 1) ? this.getById(param) : this.costumerObsever;
+     } */
+    CustomersDataService.prototype.costumerPromis = function (costumerUriRecourse) {
+        var _this = this;
+        var promisse = new Promise(function (resolve, reject) {
+            _this.getById(costumerUriRecourse)
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["first"])(function (param) { return typeof param === "object"; }))
+                .subscribe(function (costumer) {
+                var co = costumer['customer'];
+                if (typeof co === "object" && co['email']) {
+                    resolve(co);
+                }
+                else {
+                    reject(false);
+                }
+            });
+        });
+        return promisse;
     };
-    HallsDataService.prototype.findItems = function (obj, id) {
+    CustomersDataService.prototype.findItems = function (obj, id) {
         var arrItem = [];
         var gals = obj['value'];
         var idx = 0;
@@ -418,11 +469,193 @@ var HallsDataService = /** @class */ (function () {
         }
         return arrItem;
     };
-    HallsDataService = __decorate([
+    CustomersDataService.prototype.finCostumer = function (elem, prop, costName) {
+        return elem[prop] == costName;
+    };
+    CustomersDataService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]])
-    ], HallsDataService);
-    return HallsDataService;
+    ], CustomersDataService);
+    return CustomersDataService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/costumers/form-proccesor.service.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/costumers/form-proccesor.service.ts ***!
+  \*****************************************************/
+/*! exports provided: FormProccesorService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormProccesorService", function() { return FormProccesorService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! util */ "./node_modules/util/util.js");
+/* harmony import */ var util__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(util__WEBPACK_IMPORTED_MODULE_1__);
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var FormProccesorService = /** @class */ (function () {
+    function FormProccesorService() {
+    }
+    FormProccesorService.prototype.validate = function (inputControllers, costumer, key) {
+        var truly = true;
+        var err = {};
+        var success = {};
+        if (key) {
+            var inputs = this.checkInputs(inputControllers, key, costumer);
+            var inp = inputs['input'];
+            var status_1 = inputs['status'];
+            success[key] = inp[key];
+            err[key] = [inp];
+            return {
+                'success': status_1 ? success : false,
+                'errors': status_1 ? success : err,
+                'status': status_1
+            };
+        }
+        else {
+            var stat = false;
+            for (var ii in inputControllers) {
+                var input = this.checkInputs(inputControllers[ii], ii, costumer);
+                var inputs = input['input'];
+                if (!input.status) {
+                    truly = false;
+                }
+                for (var ii_1 in inputs) {
+                    if (ii_1 != 'type')
+                        err[ii_1] = [inputs];
+                }
+                if (input.status) {
+                    stat = true;
+                    for (var idx in inputs) {
+                        if (idx != 'type')
+                            success[idx] = inputs[idx];
+                    }
+                }
+            } //END FOR IN LOOP
+            return {
+                'success': stat ? success : stat,
+                'errors': err,
+                'status': truly
+            };
+        }
+    };
+    FormProccesorService.prototype.checkInputs = function (input, ii, costumer) {
+        var gnKey = {
+            company: "שם חברה",
+            contact: "איש קשר",
+            email: "אימייל",
+            tel: "טלפון",
+            address: "כתובת",
+            title: "תיאור או כותרת",
+            discription: "אודות החברה"
+        };
+        var inputs = {};
+        var isTrue = true;
+        var transformHebKey = {};
+        if (!gnKey[ii]) {
+            return {
+                'status': false,
+                'input': transformHebKey[ii] = "שגיעה"
+            }; //isTrue?inputs:transformHebKey
+        }
+        if (input.touched && input.valid && input.dirty && costumer[ii] != input.value) {
+            inputs[ii] = input.value;
+            inputs['type'] = "success";
+        }
+        else if (costumer[ii] === input.value) {
+            //console.log(gnKey[ii]);
+            isTrue = false;
+            transformHebKey['type'] = "warning";
+            transformHebKey[ii] = gnKey[ii] + ": לא ביצעת שינויים כל שהם.";
+        }
+        else {
+            //onsole.log(gnKey[ii]);
+            isTrue = false;
+            transformHebKey['type'] = "danger";
+            transformHebKey[ii] = gnKey[ii] + ": לא תקף.";
+        }
+        return {
+            'status': isTrue,
+            'input': isTrue ? inputs : transformHebKey
+        }; //isTrue?inputs:transformHebKey;
+    };
+    FormProccesorService.prototype.getMassages = function (evt) {
+        var errors = evt['errors'];
+        var success = evt['success'];
+        if (errors) {
+            console.log(errors);
+            var messagesErrors_1 = {};
+            messagesErrors_1['errors'] = [];
+            var ob = {};
+            for (var ii in errors) {
+                if (Object(util__WEBPACK_IMPORTED_MODULE_1__["isArray"])(errors[ii]) && errors[ii].length > 0) {
+                    messagesErrors_1[ii] = errors[ii];
+                    ob[ii] = {};
+                    errors[ii].forEach(function (element) {
+                        element['type'] = "danger";
+                        messagesErrors_1['errors'].push(element);
+                    });
+                    ob[ii] = messagesErrors_1['errors'];
+                }
+            }
+            return ob;
+        }
+        if (success) {
+            console.log(success);
+            var messagesSuccess_1 = {};
+            messagesSuccess_1['success'] = [];
+            var ob = {};
+            for (var ii in success) {
+                if (Object(util__WEBPACK_IMPORTED_MODULE_1__["isArray"])(success[ii]) && success[ii].length > 0) {
+                    messagesSuccess_1[ii] = success[ii];
+                    ob[ii] = {};
+                    success[ii].forEach(function (element) {
+                        element['type'] = "success";
+                        messagesSuccess_1['success'].push(element);
+                    });
+                    ob[ii] = messagesSuccess_1['success'];
+                }
+            }
+            return ob;
+        }
+    };
+    FormProccesorService.prototype.resetMessages = function () {
+        var timeOut = false;
+        var promise = new Promise(function (res, rej) {
+            var dissmise = true;
+            if (timeOut) {
+                clearTimeout(timeOut);
+                dissmise = false;
+            }
+            console.log(timeOut);
+            timeOut = setTimeout(function () {
+                return dissmise ? res([]) : null;
+            }, 5000);
+        });
+        // console.log(timeOut);
+        return promise;
+    };
+    FormProccesorService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FormProccesorService);
+    return FormProccesorService;
 }());
 
 
@@ -488,52 +721,41 @@ var HeaderComponent = /** @class */ (function () {
         this.passwordPatt = '^\\w{6,}$';
     }
     HeaderComponent.prototype.ngOnInit = function () {
-        this.url = decodeURIComponent(this.router.url);
+        var _this = this;
+        this.url = decodeURIComponent(location.pathname);
         this.http.isAuthenticeted();
         this.auth = this.http.isLogedIn;
-        this.http.allowLogIn.subscribe(function (allow) {
-            console.log("login");
-            //console.log(allow);
-            if (allow) {
-                // this.formInit();
-                $('#myFormModel').modal();
-                // setTimeout(() => {
-                //   //this.allowLog = of(allow);
-                // },400);
-            }
-        });
+        this.http.allowLogIn.subscribe(function (allow) { if (allow)
+            $('#myFormModel').modal(); _this.url = decodeURIComponent(location.pathname); });
         this.formInit();
     };
-    HeaderComponent.prototype.logIn = function (islogged) {
-        //console.log(islogged);
+    HeaderComponent.prototype.logIn = function () {
+        this.url = decodeURIComponent(location.pathname);
+        console.log(this.url);
         $('#myFormModel').modal();
     };
     HeaderComponent.prototype.logOut = function () {
+        this.url = decodeURIComponent(location.pathname);
         this.http.logOut().subscribe(function (evt) {
-            // prevUrl.splice(prevUrl.length -1,1);
-            //let redirectUrl = prevUrl.join('/')?  prevUrl.join('/') : "/";
-            //console.log(redirectUrl);
-            // this.router.navigate([splitUrl], { relativeTo: this.route });
-            // this.router.navigate(['/']);
         });
-        var IntendedUri = decodeURIComponent(this.http.IntendedUri);
-        var splitUrl = (IntendedUri.indexOf('halls-events') >= 0) ? IntendedUri.split("/") : false;
-        splitUrl = splitUrl && (splitUrl[1] && splitUrl[2]) ? splitUrl[1] + "/" + splitUrl[2] + "/media" : "/";
-        console.log(splitUrl);
+        var splitUrl = (this.url.indexOf('halls-events') >= 0) ? this.url.split("/") : false;
+        splitUrl = (splitUrl && (splitUrl[1] && splitUrl[2])) ? splitUrl[1] + "/" + splitUrl[2] + "/media" : (splitUrl && splitUrl[1]) ? splitUrl[1] : "/";
         this.router.navigate([splitUrl], { relativeTo: this.route });
-        // this.router.navigate(['/']);
+        // location.reload();
     };
     HeaderComponent.prototype.onSubmit = function () {
         var _this = this;
+        this.url = decodeURIComponent(location.pathname);
         if (this.logInform.valid) {
             this.http.logIn(this.logInform.value).
                 subscribe(function (evt) {
-                var redirectUrl = _this.http.IntendedUri ? _this.http.IntendedUri : "/";
+                var redirectUrl = _this.http.IntendedUri ? _this.http.IntendedUri : _this.url ? _this.url : "/";
                 console.log(redirectUrl);
-                console.log(_this.url);
                 _this.router.navigate([redirectUrl]);
                 $('.close').click();
+                // location.reload();
             }, function (err) {
+                // this.http.nextIslogged(false);
                 console.log(err);
             });
         }
@@ -548,8 +770,6 @@ var HeaderComponent = /** @class */ (function () {
         configurable: true
     });
     HeaderComponent.prototype.formInit = function () {
-        console.log('formInit!');
-        //let model = $('#myFormModel').modal();
         this.logInform = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             "name": new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null),
             'logInEmail': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null),
@@ -617,9 +837,8 @@ var HttpService = /** @class */ (function () {
             })
         };
         this.logged = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
-        this.user = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"]({});
+        this.user = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
         this.allowLogIn = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](false);
-        this.isAut = false;
         this.isLogedIn = this.logged.asObservable();
         this.userObs = this.user.asObservable();
     }
@@ -635,19 +854,14 @@ var HttpService = /** @class */ (function () {
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (res) {
             var apiKey = res['access_token'];
             var userKey = "user_key";
-            console.log(res['user']);
             _this.apiKey = apiKey;
             window.sessionStorage.setItem(userKey, apiKey);
             _this.logged.next(true);
-            _this.isAut = true;
-            _this.authUser = res["user"];
+            _this.allowLogIn.next(false);
             _this.user.next(res["user"]);
         }));
     };
-    HttpService.prototype.getUserId = function () {
-        // return this.userObs
-    };
-    HttpService.prototype.userPromis = function () {
+    HttpService.prototype.userPromise = function () {
         var _this = this;
         var theUrl = "http://ethio:8080/api/isauth";
         var sSK = window.sessionStorage.getItem('user_key');
@@ -657,12 +871,13 @@ var HttpService = /** @class */ (function () {
             _this.http.post(theUrl, token, _this.headersOpt).
                 pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (user) {
                 if (user['status']) {
-                    _this.authUser = user["user"];
                     _this.user.next(user["user"]);
-                    return response(user);
+                    _this.logged.next(true);
+                    return response(user["user"]);
                 }
                 else {
-                    _this.authUser = null;
+                    _this.logged.next(false);
+                    _this.user.next(false);
                     return reject("user isnt log in");
                 }
             });
@@ -679,16 +894,13 @@ var HttpService = /** @class */ (function () {
             _this.logged.next(false);
             window.sessionStorage.removeItem('user_key');
             _this.apiKey = false;
-            _this.isAut = false;
-            _this.authUser = null;
+            _this.user.next(false);
         }, function (err) {
             console.log(err);
             _this.logged.next(false);
             window.sessionStorage.removeItem('user_key');
             _this.apiKey = false;
-            _this.isAut = false;
-            _this.authUser = null;
-            //this.router.navigate(['/']);
+            _this.user.next(false);
         }));
     };
     HttpService.prototype.store = function (credential) {
@@ -711,8 +923,6 @@ var HttpService = /** @class */ (function () {
                 _this.logged.next(true);
             window.sessionStorage.setItem('user_key', api_key['access_token']);
             _this.apiKey = api_key['access_token'];
-            _this.isAut = true;
-            _this.authUser = api_key["user"];
             _this.user.next(api_key["user"]);
         }));
     };
@@ -722,29 +932,19 @@ var HttpService = /** @class */ (function () {
         var sSK = window.sessionStorage.getItem('user_key');
         this.apiKey = this.apiKey ? this.apiKey : sSK;
         var token = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('token', this.apiKey);
-        /* if(this.isAut){
-          return this.isAut;
-        } */
-        console.log("isAuthenticeted Calld!");
         this.http.post(theUrl, token, this.headersOpt).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])())
             .subscribe(function (res) {
-            //console.log(res);
             if (res['status']) {
                 _this.logged.next(true);
-                _this.isAut = true;
                 _this.user.next(res["user"]);
-                _this.authUser = res["user"];
             }
             else {
                 _this.logged.next(false);
                 window.sessionStorage.removeItem('user_key');
-                _this.isAut = false;
-                console.log(res['status']);
-                _this.authUser = null;
+                _this.user.next(false);
             }
         });
         return this.isLogedIn;
-        // console.log(auth);
     };
     HttpService.prototype.isAuth = function () {
         return this.isLogedIn;
@@ -786,7 +986,7 @@ module.exports = "\r\n.inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<hr class=\"d-xl-none\">\n\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right\" [formGroup]=\"addCostumerForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"card-header bg-light\">\n    <h2 class=\"card-title text-success h5\">הצטרף לאינדקס</h2>\n\n  </div>\n  <!--  no-gutters -->\n  <div *ngIf=\"masseges\" class=\"col-sm-12 \">\n      <div *ngFor=\"let massege of masseges\" class=\"alert alert-danger my-1\">\n          <p class=\"p-0 m-0\"> * {{ massege }} </p>\n        </div>\n  </div>\n  <div class=\"row p-3\">\n    \n    \n    <div class=\"col-sm-12 col-lg-5\">\n      <div class=\"border h-100 bg-light p-3\">\n\n        <div class=\"form-group\">\n          <label for=\"businessType\">תחום</label>\n          \n          <div class=\"inputTypeNumber\">\n            <select name=\"businessType\" id=\"businessType\" class=\"col-11 selectList\" formControlName=\"businessType\" required>\n              <option value=\"\" selected hidden>בחר תחום</option>\n              <option value=\"halls-events\">אולם אירועים</option>\n              <option value=\"salons\">סלון כלות</option>\n              <option value=\"photograpers\">צלמים</option>\n              <option value=\"djs\">די-ג'י</option>\n              <option value=\"printing\">בתי דפוס</option>\n              <option value=\"d-norse\">זיקוקים ואטרקציות</option>\n              <option value=\"transportation\">הסעות</option>\n              <option value=\"car-rental\">השכרת רכב</option>ד\n              <option value=\"hotels\">צמרים ובתי מלון</option>\n              <option value=\"rabbinate\">קייסים/רבנות</option>\n              <option value=\"שונות\">שונות</option>\n            </select>\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n         \n          <div *ngIf=\"f.businessType.invalid && f.businessType.touched\"  class=\"invalid-feedback d-block\">* בחר תחום העסק מתוך הרשימה </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"company\">שם החברה</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n\n          <div *ngIf=\"f.company.invalid && f.company.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"contact\">איש קשר</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\"  class=\"invalid-feedback d-block\">* שדה  חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"phone\">פלאפון/טלפון</label>\n         \n            <div class=\"inputTypeNumber\">\n              <input type=\"tel\" id=\"phone\" name=\"phone\" class=\"col-11\" formControlName=\"phone\" [pattern]=\"phoneNum\" required />\n         \n              <span class=\"validity float-left\"></span>\n            </div>\n            <div *ngIf=\"f.phone.invalid && f.phone.touched\"  class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"address\">כתובת</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.address.invalid && f.address.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"email\">אימייל</label>\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.email.invalid && f.email.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group py-2 bg-light\">\n          <label for=\"title\">תיאור או כותרת החברה</label>\n\n          <div class=\"inputTypeNumber textarea\">\n              <textarea class=\"col-11\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required minlength=\"12\">\n                \n                </textarea>\n                <span class=\"validity float-left\"></span>\n            </div>\n          <div *ngIf=\"f.title.invalid && f.title.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-sm-12 col-lg-7\">\n      <div class=\"border bg-light h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              חפש לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\n        </div>\n        \n        <div class=\"btn-group \">\n\n        </div>\n        <!-- Chose video -->\n        <p class=\"pb-2 m-0\">סרטון תדמית החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\n            <span>\n              חפש סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\"  required />\n        </div>\n\n        <div class=\"btn-group w-100 bg-white position-relative\">\n          \n        </div>\n\n        <!-- Chose image dallery -->\n        <p class=\"pb-2 m-0\">גלריה החברה</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\n            <span>\n              חפש תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"  />\n        </div>\n\n        <div class=\"btn-group\">\n\n        </div>\n\n      </div>\n    </div>\n  </div>\n  <div class=\"row p-3 no-gutters\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group border p-3 bg-light\">\n        <label for=\"about\">אודות החברה</label>\n        <textarea class=\"form-control\" style=\"min-height: 200px\" type=\"text\" name=\"about\" id=\"about\" formControlName=\"about\" required>\n      </textarea>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\">\n      \n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n      </div>\n    </div>\n  </div>\n\n</form>\n\n"
+module.exports = "<hr class=\"d-xl-none\">\n\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right\" [formGroup]=\"addCostumerForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"card-header bg-light\">\n    <h2 class=\"card-title text-success h5\">הצטרף לאינדקס</h2>\n\n  </div>\n  <!--  no-gutters -->\n  <div *ngIf=\"masseges\" class=\"col-sm-12 \">\n      <div *ngFor=\"let massege of masseges\" class=\"alert alert-danger my-1\">\n          <p class=\"p-0 m-0\"> * {{ massege }} </p>\n        </div>\n  </div>\n  <div class=\"row p-3\">\n    \n    \n    <div class=\"col-sm-12 col-lg-5\">\n      <div class=\"border h-100 bg-light p-3\">\n\n        <div class=\"form-group\">\n          <label for=\"businessType\">תחום</label>\n          \n          <div class=\"inputTypeNumber\">\n            <select name=\"businessType\" id=\"businessType\" class=\"col-11 selectList\" formControlName=\"businessType\" required>\n              <option value=\"\" selected hidden>בחר תחום</option>\n              <option value=\"halls-events\">אולם אירועים</option>\n              <option value=\"salons\">סלון כלות</option>\n              <option value=\"photographers\">צלמים</option>\n              <option value=\"djs\">די-ג'י</option>\n              <option value=\"printing\">בתי דפוס</option>\n              <option value=\"fireworks\">זיקוקים ואטרקציות</option>\n              <option value=\"transportation\">הסעות</option>\n              <option value=\"car-rental\">השכרת רכב</option>ד\n              <option value=\"hotels\">צמרים ובתי מלון</option>\n              <option value=\"kyses\">קייסים/רבנות</option>\n              <option value=\"שונות\">שונות</option>\n            </select>\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n         \n          <div *ngIf=\"f.businessType.invalid && f.businessType.touched\"  class=\"invalid-feedback d-block\">* בחר תחום העסק מתוך הרשימה </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"company\">שם החברה</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n\n          <div *ngIf=\"f.company.invalid && f.company.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"contact\">איש קשר</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\"  class=\"invalid-feedback d-block\">* שדה  חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"tel\">פלאפון/טלפון</label>\n         \n            <div class=\"inputTypeNumber\">\n              <input type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11\" formControlName=\"tel\" [pattern]=\"phoneNum\" required />\n         \n              <span class=\"validity float-left\"></span>\n            </div>\n            <div *ngIf=\"f.tel.invalid && f.tel.touched\"  class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"address\">כתובת</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.address.invalid && f.address.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"email\">אימייל</label>\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.email.invalid && f.email.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group py-2 bg-light\">\n          <label for=\"title\">תיאור או כותרת החברה</label>\n\n          <div class=\"inputTypeNumber textarea\">\n              <textarea class=\"col-11\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required minlength=\"12\">\n                \n                </textarea>\n                <span class=\"validity float-left\"></span>\n            </div>\n          <div *ngIf=\"f.title.invalid && f.title.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-sm-12 col-lg-7\">\n      <div class=\"border bg-light h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              חפש לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\n        </div>\n        \n        <div class=\"btn-group \">\n\n        </div>\n        <!-- Chose video -->\n        <p class=\"pb-2 m-0\">סרטון תדמית החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\n            <span>\n              חפש סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\"  required />\n        </div>\n\n        <div class=\"btn-group w-100 bg-white position-relative\">\n          \n        </div>\n\n        <!-- Chose image dallery -->\n        <p class=\"pb-2 m-0\">גלריה החברה</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\n            <span>\n              חפש תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"  />\n        </div>\n\n        <div class=\"btn-group\">\n\n        </div>\n\n      </div>\n    </div>\n  </div>\n  <div class=\"row p-3 no-gutters\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group border p-3 bg-light\">\n        <label for=\"discription\">אודות החברה</label>\n        <textarea class=\"form-control\" style=\"min-height: 200px\" type=\"text\" name=\"discription\" id=\"discription\" formControlName=\"discription\" required>\n      </textarea>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\">\n      \n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n      </div>\n    </div>\n  </div>\n\n</form>\n\n"
 
 /***/ }),
 
@@ -804,9 +1004,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../costumers/halls-data-service */ "./src/app/costumers/halls-data-service.ts");
-/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -837,16 +1037,17 @@ var JoinComponent = /** @class */ (function () {
         this.masseges = [];
     }
     JoinComponent.prototype.ngOnInit = function () {
-        if (this.http.isAut) {
-            console.log("jon");
-            this.formInt();
-            this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(this.http.isAut);
-            this.apiKey = this.http.getApiKey();
-        }
-        else {
-            this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(this.http.isAut);
-            this.router.navigate(['/login']);
-        }
+        var _this = this;
+        this.http.isLogedIn.subscribe(function (isLogged) {
+            _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(isLogged);
+            if (isLogged) {
+                _this.formInt();
+                _this.apiKey = _this.http.getApiKey();
+            }
+            else {
+                // this.router.navigate(['/login']);
+            }
+        });
     };
     Object.defineProperty(JoinComponent.prototype, "f", {
         get: function () { return this.addCostumerForm.controls; },
@@ -859,10 +1060,10 @@ var JoinComponent = /** @class */ (function () {
             'businessType': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
-            'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
+            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
-            'about': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required])
+            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required])
         });
     };
     JoinComponent.prototype.canDeactivate = function () {
@@ -876,7 +1077,7 @@ var JoinComponent = /** @class */ (function () {
     JoinComponent.prototype.onSubmit = function () {
         var _this = this;
         var input = new FormData();
-        var posterUrl = "http://ethio:8080/api/auth/costumers";
+        var posterUrl = "http://ethio:8080/api/costumers";
         var formInputs = this.addCostumerForm.value;
         var urls = formInputs['businessType'] + "/" + formInputs['company'];
         var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
@@ -905,7 +1106,6 @@ var JoinComponent = /** @class */ (function () {
             }
         }
         if (this.masseges.length === 0) {
-            console.log(this.apiKey);
             input.append('formInputs', JSON.stringify(formInputs));
             this.hallsSrv.storeData(posterUrl, input, {
                 headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
@@ -1090,7 +1290,7 @@ var JoinComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./join.component.html */ "./src/app/join/join.component.html"),
             styles: [__webpack_require__(/*! ./join.component.css */ "./src/app/join/join.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_4__["HallsDataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__["CustomersDataService"]])
     ], JoinComponent);
     return JoinComponent;
 }());
@@ -1453,7 +1653,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "    \n<div class=\"row\">\n        <div class=\"col-sm-4 text-right\">\n    \n            <div class=\"border rounded border-warning\">\n                <div class=\"p-3\">\n                    <h2 class=\"text-right text-success\">צור קשר</h2>\n                    <p>\n                        לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\n                        <span class=\"text-danger\">\n    \n                            צוות אתיופיה אירועים.\n                        </span>\n                    </p>\n                </div>\n    \n                <hr>\n                <form class=\"p-3\">\n                    <div class=\"form-group\">\n                        <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"השם שלך\">\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"city\" class=\"form-control\" id=\"city\" placeholder=\"עיר מגורים\">\n    \n                    </div>\n                    <div class=\"form-group\">\n    \n                        <select id=\"rigion\" class=\"rigion\">\n                            <option selected>אזור</option>\n                            <option value=\"1\">צפון</option>\n                            <option value=\"2\">מרכז והשפלה</option>\n                            <option value=\"3\">דרום</option>\n                        </select>\n                    </div>\n    \n                    <div class=\"form-group\">\n                        <input type=\"tel\" class=\"form-control\" id=\"phone\" placeholder=\"טלפון/פלאפון\">\n                    </div>\n                    <div class=\"form-group\">\n                        <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"אימייל\">\n                    </div>\n                    <div class=\"form-group\">\n                        <textarea class=\"form-control\" id=\"textarea\" rows=\"3\"></textarea>\n                    </div>\n                    <button type=\"submit\" class=\"btn btn-success\">שלח</button>\n                </form>\n            </div>\n        </div>\n        <div class=\"col-sm-8 bg\">\n            <div class=\"div-contact border border-danger h-100\">\n                <div class=\"car\">\n                    <div class=\"card-title bg-danger\">\n                        <h2 class=\"text-light p-3 text-right\">הייי ,זה עובד מעולה</h2>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n"
+module.exports = "<div class=\"row\">\n    <div class=\"col-sm-4 text-right\">\n\n        <div class=\"border rounded border-warning\">\n            <div class=\"p-3\">\n                <h2 class=\"text-right text-success\">צור קשר</h2>\n                <p>\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\n                    <span class=\"text-danger\">\n\n                        צוות אתיופיה אירועים.\n                    </span>\n                </p>\n            </div>\n            <hr>\n            <form class=\"p-3\">\n                <div class=\"form-group\">\n                    <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"השם שלך\">\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"city\" class=\"form-control\" id=\"city\" placeholder=\"עיר מגורים\">\n\n                </div>\n                <div class=\"form-group\">\n\n                    <select id=\"rigion\" class=\"rigion\">\n                        <option selected>אזור</option>\n                        <option value=\"1\">צפון</option>\n                        <option value=\"2\">מרכז והשפלה</option>\n                        <option value=\"3\">דרום</option>\n                    </select>\n                </div>\n\n                <div class=\"form-group\">\n                    <input type=\"tel\" class=\"form-control\" id=\"phone\" placeholder=\"טלפון/פלאפון\">\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"אימייל\">\n                </div>\n                <div class=\"form-group\">\n                    <textarea class=\"form-control\" id=\"textarea\" rows=\"3\"></textarea>\n                </div>\n                <button type=\"submit\" class=\"btn btn-success\">שלח</button>\n            </form>\n        </div>\n    </div>\n    <div class=\"col-sm-8 bg\">\n        <div class=\"div-contact border border-danger h-100\">\n            <div class=\"car\">\n                <div class=\"card-title bg-danger\">\n                    <h2 class=\"text-light p-3 text-right\">הייי ,זה עובד מעולה</h2>\n                </div>\n                <!-- אודות אתיופיה אירועים -->\n                <div class=\"col-sm-6\">\n                    <div class=\"card h-100 border border-success\">\n                        <div class=\"card-title bg-success\">\n                            <h2 class=\"text-right text-light p-3\">אודות אתיופיה אירועים</h2>\n                        </div>\n                        <div class=\"pTag text-right\">\n                            <h5 class=\"pr-2\">שלום רב לכל\n                                <span class=\"font-weight-bold text-danger\">\n                                    אתיופיה אירועים\n                                </span>\n                            </h5>\n                            <p class=\"px-2\">\n                                צוות אתיופיה אירועים גאים להציג לכם הגולשים את המידע לכל הקשור לאירגון נכון בדרך הנוחה\n                                והקלה לכם עם צוות מומחים אשר יסייעו\n                                לכם. אל תשברו את הראש לבד - תנו לנו לעשות זאת למענכם.\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                צוות אתיופיה אירועים, עושה ויעשה הכול על מנת לתת לכם את כל השרות האפשרי, מרגע שאתם\n                                חושבים או מחליטים להתחתן ועד לרגע שמסתיימת\n                                החתונה. אצלנו באתר תמצאו את ההדרכה הייחודית לסרג או דירש אמיתי כל הרעיונות לאירגון\n                                חתונה, עם מגוון נותני שרות וספקים הנחוצים לכם מרגע קבלת החלטה להתחתן ועד סיום האירוע\n                                .\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                גם לאחר החתונה הינכם מוזמנים לספר לנו על החתונה או להעלות תמונות מהחתונה שלכם אצלנו\n                                באתר. מתוך רצון מתמיד להשתפר ולהתיעל\n                                חשוב שתספרו לנו על ספקים נותני השרות שלנו והתרשמותכם מהשירות שקיבלתם.אנו, צוות אתיופיה\n                                אירועים השתדלנו לתת מידע חיוני ורב ככול האפשר בכל העניין שקשור לחתונה על מנת לחסוך\n                                ולעזור לכם,\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                זמן ומשאבים בחיפוש הצרכים הנחוצים לכם לחתונה או אירוע אחר. אנו כאן רק בשבילכם זוגות\n                                צעירים.במקום לשבור את הראש לבד, תנו לנו\n                                לעשות זאת למענכם.הצוות ישמח לעמוד לרשותכם בכל פנייה בכדי לעזור לכם\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                להפיק את האירוע המושלם שלכם.כמו כן אתיופיה אירועים ממשכה לפתח את האתר ונשמח לכל משוב\n                                מצידכם.זאת ועוד, בלי מחויבות או תשלום\n                                אלא רק לעזור לכם , כמו גם תוכלו לשתף אותנו בחוויות שלכם בכדי ללמוד ולהעביר מסר גם\n                                לבאים אחריכם.\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n\n                                מאחלים לכם המון בהצלחה צוות אתיופיה אירועים\n                            </p>\n\n                        </div>\n                    </div>\n                </div>\n                \n                <!-- מטרת האתר -->  \n                <div class=\"col-sm-6\">\n                    <div class=\"card h-100 border border-success\">\n                        <div class=\"card-title bg-success\">\n                            <h2 class=\"text-right text-light p-3\"> מטרת צוות אתיופיה אירועים</h2>\n                        </div>\n                        <div class=\"pTag text-right\">\n                            <h5 class=\"pr-2\">\n                                אנו\n                                <span class=\"font-weight-bold text-danger\">\n                                    באתיופיה אירועים\n                                </span>\n                                רוצים שינוי\n                            </h5>\n                            <p class=\"px-2\">\n                                כמה פעמים קרה לך שהחבר/ה הכי טוב שלך מתחתן ולא תוכל להיות בחתונתו מהסיבה שחבר או קרוב\n                                משפחה אחר מתחתן באותו יום ???\n\n                                מצב זה נוצר מהסיבה שאנו בעדה עורכים את החתונות בדרך כלל בימי חמישי ודי קשה לתאם בין כל\n                                הזוגות ברחבי הארץ.\n\n                                לא חבל שחבר הכי טוב שלך מתחתן ולא תוכל להיות כי חבר או קרוב משפחה אחר מתחתן באותו יום,\n                                והכי מעצבן שהם באותו עיר?\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                אנו באתיופיה אירועים חושבים ומאמינים שאפשר לשנות את המצב הקיים, שבאותו היום נערכים\n                                במקביל מספר אירועים של קרובי משפחה בכל הארץ.\n\n                                היום בעידן האינטרנט ושלא כמו בעבר, ניתן לקשר בקלות בין כלל האוכלוסייה ובין בני הקהילה\n                                בפרט ובכך להימנע מקביעת תאריך חתונה שבו מתחתן\n                                בן משפחה נוסף.\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                אין ספק שאנו העדה המבורכת במינה, במיוחד כאשר מדובר באחדות ושמחה .\n                                לדעתנו אין עוד עדה אחרת שיש לה סימפטיה לשמח מהלב או לתמוך בצער,כמו העדה שלנו וזו זכות\n                                שקיבלנו וחונכנו לכך.\n\n                                צוות אתיופיה אירועים רואים זאת כשליחות עבורכם, ואנו בתקווה שבעזרתכם נצליח למנוע או לכל\n                                הפחות לצמצם את כמות האירועים שנעשים במקביל,\n                                וזאת על מנת להעניק לאורחים נוחות וראש שקט ביום האירוע.\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                המטרה של צוות אתיופיה אירועים הינו,ביחד איתכם היא לעשות את השינוי ולנסות למנוע מצב שבו\n                                יתקיימו אירועים במקביל באותו היום, לפחות לא באותה\n                                העיר ואנו מאמינים שבעזרתכם הדבר אפשרי.\n\n                                מטרה נוספת היא לתת לכם הזוג הצעיר טיפים ורשימת בעלי מקצוע מומלצים לחתונות, ביניהם\n                                אולמות, צלמים, תקליטנים, זיקוקים ועוד, זאת על מנת\n                                להקל עליכם במציאת נותני שירות מקצועיים ובעלי ניסיון עשיר באירועים של בני העדה.\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                להפיק את האירוע המושלם שלכם.כמו כן אתיופיה אירועים ממשכה לפתח את האתר ונשמח לכל משוב\n                                מצידכם.זאת ועוד, בלי מחויבות או תשלום\n                                אלא רק לעזור לכם , כמו גם תוכלו לשתף אותנו בחוויות שלכם בכדי ללמוד ולהעביר מסר גם\n                                לבאים אחריכם.\n\n                            </p>\n                            <p class=\"px-3 text-secondary\">\n                                ניתן לפנות ישירות לבעל המקצוע ולציין שהגעתם דרך האתר.\n                                כמו כן ניתן לפנות אלינו במייל בכל שאלה או יעוץ שאתם מעוניינים לקבל לגבי נותני השירות.\n\n                            </p>\n                            <p class=\"px-3 text-secondry\">\n                                <span class=\"text-success font-weight-bold\">\n                                    בואו להגשים איתנו את המטרה ולהקל על אותם אנשים שרוצים רק לשמח ולשמוח.\n                                </span>\n                            </p>\n                            <p class=\"px-3 text-center\">\n                                <span class=\"text-danger font-weight-bold h3 py-3 text-center position-relative\">\n                                    אז שיהיה בהצלחה והמון מזל טוב !\n                                </span>\n                            </p>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -3364,7 +3564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallResolver", function() { return HallResolver; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../costumers/halls-data-service */ "./src/app/costumers/halls-data-service.ts");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3378,16 +3578,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var HallResolver = /** @class */ (function () {
-    function HallResolver(http, router) {
-        this.http = http;
+    function HallResolver(halls, router) {
+        this.halls = halls;
         this.router = router;
     }
     HallResolver.prototype.resolve = function () {
-        return this.http.getCostumers();
+        return this.halls.getCostumers(['halls-events']);
     };
     HallResolver = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_2__["HallsDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], HallResolver);
     return HallResolver;
 }());
@@ -3692,7 +3892,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 /* import { ActivatedRoute, Router } from '@angular/router';
-import { HallsDataService } from '../../../../../costumers/halls-data-service';
+import { CustomersDataService } from '../../../../../costumers/customers-data-service';
 import { Observable, of } from 'rxjs';
 import { HallType } from '../../../../../costumers/hall-type';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -4650,7 +4850,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer about work!</h2>"
+module.exports = "<hr class=\"d-xl-none\">\r\n<div *ngIf=\"(customer$ | async )\" class=\"row  text-right\">\r\n    <div class=\"col-sm-12\">\r\n        <div class=\"p-3 border border-success\">\r\n            <a class=\"close float-left\" routerLink=\"../\" type=\"button\" aria-label=\"Close\">\r\n                <span aria-hidden=\"true\">&times;</span>\r\n            </a>\r\n            <div class=\"media\">\r\n\r\n                <img  [src]=\"(customer$ | async )?.loggo\" [alt]=\"(customer$ | async )?.company\">\r\n\r\n                <div class=\"media-body mr-3\">\r\n\r\n                    <h4>\r\n                        {{ (customer$ | async )?.title }}\r\n                    </h4>\r\n                    <p class=\"text-xl-right text-dar p-2\">\r\n                        {{ (customer$ | async )?.discription }}\r\n                    </p>\r\n                    <hr>\r\n\r\n                    <p>\r\n                        <a routerLink=\"../מדיה\" class=\"btn btn-outline-info font-weight-bold\">\r\n                            <i class=\"fa fa-location-arrow\"></i>\r\n                            חזור\r\n                        </a>\r\n                    </p>\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -4665,7 +4865,9 @@ module.exports = "<h2>photographer about work!</h2>"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerAboutComponent", function() { return PhotographerAboutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4677,12 +4879,17 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var PhotographerAboutComponent = /** @class */ (function () {
-    function PhotographerAboutComponent(router, route) {
-        this.router = router;
-        this.route = route;
+    function PhotographerAboutComponent(hall) {
+        this.hall = hall;
     }
     PhotographerAboutComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (dt) {
+            _this.customer$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(dt['customer']);
+        });
     };
     PhotographerAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -4690,7 +4897,7 @@ var PhotographerAboutComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photographer-about.component.html */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.html"),
             styles: [__webpack_require__(/*! ./photographer-about.component.css */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
     ], PhotographerAboutComponent);
     return PhotographerAboutComponent;
 }());
@@ -4717,7 +4924,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer all edit works fine!</h2>"
+module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <a class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </a>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"phone\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"phone\" name=\"phone\" class=\"col-11 px-1\" formControlName=\"phone\" [pattern]=\"phoneNum\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.phone.invalid && f.phone.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber textarea\">\r\n            <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required\r\n              minlength=\"12\">\r\n                            \r\n                    </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n          <label for=\"about\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\" (mouseenter)=\"textAreaAdjust($event)\"\r\n            (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"about\" id=\"about\" formControlName=\"about\" required>\r\n          </textarea>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"h-100 p-3\">\r\n          <!-- Chose loggo -->\r\n          <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n              <span>\r\n                החלף לוגו\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n          </div>\r\n  \r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"costumer.loggo\" alt=\"{{ costumer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n              (click)=\"activeItem(ii)\" />\r\n          </div>\r\n  \r\n          <div class=\"btn-group \">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose video -->\r\n          <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n  \r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n              <span>\r\n                הוסף סרטון\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n  \r\n            <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n            />\r\n          </div>\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\">\r\n            <video controls=true height=\"100%\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n          <div class=\"btn-group w-100 bg-white position-relative\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose image dallery -->\r\n          <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n          <div class=\"form-group bg-white border clearfix\">\r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n              <span>\r\n                הוסף תמונות\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n            />\r\n          </div>\r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n              alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n          </div>\r\n          <div class=\"btn-group\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n  \r\n        </div>\r\n  \r\n      </div>\r\n      <div class=\"col-sm-12\">\r\n        \r\n          <div class=\"btn-group w-100 p-3 bg-light\">\r\n            <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n            <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n            <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          </div>\r\n        </div>\r\n  \r\n    </div>\r\n  </form>"
 
 /***/ }),
 
@@ -4732,6 +4939,13 @@ module.exports = "<h2>photographer all edit works fine!</h2>"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoAllEditComponent", function() { return PhotoAllEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4742,27 +4956,294 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-/* import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpService } from '../../../../../http.service';
-import { first, find, tap } from 'rxjs/operators';
-import { CanDeactivateComponent } from '../../../../../can-deactivate-guard.service'; */
+
+
+
+
+
+
+
 //  declare let $:any;
 var PhotoAllEditComponent = /** @class */ (function () {
-    /******************  ********************/
-    function PhotoAllEditComponent() {
+    function PhotoAllEditComponent(router, halls, http) {
+        this.router = router;
+        this.halls = halls;
+        this.http = http;
         this.phoneNum = '^((?=(02|03|04|08|09))[0-9]{2}[0-9]{3}[0-9]{4}|(?=(05|170|180))[0-9]{3}[0-9]{3}[0-9]{4})';
         this.emailPatteren = '^[a-z]+[a-zA-Z_\\d]*@[A-Za-z]{2,10}\.[A-Za-z]{2,3}(?:\.?[a-z]{2})?$';
+        this.arrayFlies = [];
+        this.filesSize = 0;
+        this.guard = [];
+        this.masseges = [];
     }
-    PhotoAllEditComponent.prototype.ngOnInit = function () { };
+    PhotoAllEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
+            var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
+            var uId = _this.http.authUser["id"];
+            console.log('costumerId: ' + cId + " userId " + uId);
+            if (cId === uId) {
+                var id = cost.id;
+                _this.costumer = cost;
+                var gal = _this.halls.getGallery(id);
+                _this.galleries = gal['image'];
+                _this.videos = gal['video'];
+                _this.apiKey = _this.http.getApiKey();
+                _this.formInt();
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
+            }
+            else {
+                // let state = decodeURIComponent(this.router.url).split("/");
+                // let media = "/"+state[1]+"/"+cost["company"]+"/media";
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(false);
+                // console.log(media);
+                // this.router.navigate([media]);
+            }
+        });
+    };
+    PhotoAllEditComponent.prototype.canDeactivate = function () {
+        if (this.addCostumerForm.dirty || this.addCostumerForm.touched || this.filesSize >= 1 || this.arrayFlies.length >= 1) {
+            return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
+        }
+        else {
+            return true;
+        }
+    };
+    PhotoAllEditComponent.prototype.textAreaAdjust = function (o) {
+        var target = o.target;
+        target.style.height = "1px";
+        target.style.height = (25 + target.scrollHeight) + "px";
+    };
+    PhotoAllEditComponent.prototype.textAreamouseleave = function (o) {
+        var target = o.target;
+        target.style.height = "1px";
+        target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
+    };
+    Object.defineProperty(PhotoAllEditComponent.prototype, "f", {
+        get: function () { return this.addCostumerForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    PhotoAllEditComponent.prototype.formInt = function () {
+        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'businessType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'phone': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'about': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
+        });
+    };
+    PhotoAllEditComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var input = new FormData();
+        var posterUrl = "http://ethio:8080/api/auth/costumers";
+        var formInputs = this.addCostumerForm.value;
+        var urls = formInputs['businessType'] + "/" + formInputs['company'];
+        var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
+        var errors = {};
+        this.masseges = [];
+        var counter = 0;
+        formInputs['loggo'] = null;
+        // console.log(this.filesSize + " : " +Math.round(this.filesSize / Math.pow(1024,2) ));
+        // console.log(this.filesSize + " : " +Math.round(Math.pow(1024,2)* 6 ) / (Math.pow(1024,2)));
+        for (var _i = 0, _a = this.arrayFlies; _i < _a.length; _i++) {
+            var ii = _a[_i];
+            if (counter <= 3 && ii.target === "galleries")
+                counter++;
+            var extractTargetName = urls + "/" + ii.target + "/" + ii.name.split('.')[0];
+            (ii.target === "loggo") ? formInputs['loggo'] = extractTargetName + '.' + ii.name.split('.')[(ii.name.split('.').length) - 1] : null;
+            input.append(extractTargetName, ii, ii.name);
+        }
+        errors.galleries = (counter < 3) ? errors.galleries = "גלריית התמונות חייב להכיל לפחות 3 תמונות" : null;
+        errors.fileSize = (checkFilesSizes) ? errors.fileSize = this.formatBytes(this.filesSize) + " : " + "גודל הקבצים גדולה מדי." : null;
+        errors.loggo = (typeof formInputs['loggo'] === 'undefined' || !formInputs['loggo']) ? errors.loggo = "העלה תמונת לוגו או אייקון של החברה." : null;
+        errors.formInputs = (!this.addCostumerForm.valid) ? errors.formInputs = "ודא והשלם פרטים נכונים" : null;
+        for (var ii in errors) {
+            if (errors.hasOwnProperty(ii)) {
+                if (errors[ii])
+                    this.masseges.push(errors[ii]);
+            }
+        }
+        console.log(this.masseges);
+        if (this.masseges.length === 0) {
+            console.log(this.apiKey);
+            input.append('formInputs', JSON.stringify(formInputs));
+            this.halls.storeData(posterUrl, input, {
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+                    'Authorization': 'Bearer ' + this.apiKey,
+                })
+            })
+                .subscribe(function (evt) {
+                console.log(evt);
+                _this.masseges.push(evt["massege"]);
+                setTimeout(function () {
+                    // this.router.navigate(["/halls_events"]);
+                }, 5000);
+            }, function (err) {
+                // this.errors.push(err["error"]["message"]);
+                // this.errors.push(err["status"]+" נא להחתחבר מחדש");
+                if (err["status"] === 401) {
+                    _this.http.nextIslogged(false);
+                    window.sessionStorage.removeItem('user_key');
+                    _this.router.navigate(["/login"]);
+                }
+            });
+        }
+        // ,
+        // reportProgress: true,
+        // observe: 'events'
+        //console.log(this.addCostumerForm.value);
+        //rs.subscribe(evt => console.log(evt));
+    };
+    PhotoAllEditComponent.prototype.formatBytes = function (a) {
+        if (0 === a)
+            return "0 Bytes";
+        var c = 1024, d = 2, e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], f = Math.floor(Math.log(a) / Math.log(c));
+        return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f];
+    };
+    PhotoAllEditComponent.prototype.selectedFiles = function (event, elemTarget) {
+        var _this = this;
+        if (!event.target.files[0] || this.guard.indexOf(elemTarget) >= 0) {
+            console.log("You cant uplaod twise " + elemTarget);
+            return;
+        }
+        if (elemTarget !== "galleries" && this.guard.indexOf(elemTarget) == -1)
+            this.guard.push(elemTarget);
+        var files = event.target.files;
+        var _loop_1 = function (theFile) {
+            var elemName = theFile.name.split('.')[0];
+            theFile.id = elemName + '_' + theFile.size;
+            theFile.target = elemTarget;
+            if (!this_1.fileContains(theFile)) {
+                var targetElement_1 = event.target.parentElement.nextElementSibling;
+                this_1.filseReader(theFile).then(function (res) {
+                    targetElement_1.appendChild(_this.createElements(res));
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        };
+        var this_1 = this;
+        // let videoType = ['video/3gpp', 'video/H261', 'video/H263', 'video/H264', 'video/JPEG', 'video/mp4', 'video/mpeg'].indexOf(files[0].type);
+        // let imageType = ['image/png', 'image/jpeg', 'image/gif'].indexOf(files[0].type);
+        for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
+            var theFile = files_1[_i];
+            _loop_1(theFile);
+        }
+    };
+    PhotoAllEditComponent.prototype.fileContains = function (theFile) {
+        var isTrueOrFalse = false;
+        var gal = this.arrayFlies;
+        for (var idx = 0, len = gal.length; idx < len; idx++) {
+            if (gal[idx].id === theFile.id) {
+                isTrueOrFalse = true;
+            }
+        }
+        return isTrueOrFalse;
+    };
+    PhotoAllEditComponent.prototype.unSelectFiles = function (evt) {
+        var aTag = evt.target.parentElement;
+        var div = aTag.parentElement;
+        var parent = div.parentElement;
+        var childrens = parent.children;
+        var index = aTag.getAttribute('data-target');
+        for (var ii = 0, len = childrens.length; ii < len; ii++) {
+            if (childrens[ii] && aTag.id === childrens[ii].id) {
+                var subtractSize = childrens[ii].id.split('_');
+                var posSubtrat = subtractSize[subtractSize.length - 1];
+                index = (index == "loggo") ? this.guard.indexOf(index) : (index == "video") ? this.guard.indexOf(index) : null;
+                this.isExsist(childrens[ii]);
+                if (index === 0 || index >= 0) {
+                    this.guard.splice(index, 1);
+                }
+                this.filesSize -= posSubtrat;
+                parent.removeChild(childrens[ii]);
+                break;
+            }
+        }
+    };
+    PhotoAllEditComponent.prototype.createElements = function (elem) {
+        var div = document.createElement('DIV');
+        var aTag = document.createElement('A');
+        var span = document.createElement('SPAN');
+        var elemType = elem.type.split("/")[0];
+        aTag.id = elem.id;
+        if (elem.target === "loggo" || elem.target === "video")
+            aTag.setAttribute('data-target', elem.target);
+        div.id = elem.id;
+        this.arrayFlies.push(elem);
+        this.filesSize += elem.size;
+        aTag.className = "close bg-secondary";
+        span.setAttribute('aria-hidden', 'true');
+        span.innerHTML = '&times';
+        aTag.addEventListener("click", this.unSelectFiles.bind(this));
+        aTag.appendChild(span);
+        div.appendChild(aTag);
+        if (elemType === "image") {
+            var img = new Image();
+            img.src = elem.src;
+            img.className = "py-1 border border-info rounded";
+            img.setAttribute("height", "100");
+            img.setAttribute("alt", elem.type);
+            div.appendChild(img);
+        }
+        else if (elemType === "video") {
+            var video = document.createElement('video');
+            var source = document.createElement('source');
+            video.controls = true;
+            video.height = 100;
+            source.type = elem.type;
+            source.src = elem.src;
+            video.appendChild(source);
+            div.appendChild(video);
+        }
+        return div;
+    };
+    PhotoAllEditComponent.prototype.filseReader = function (elem) {
+        var reader = new FileReader();
+        return new Promise(function (rs, rj) {
+            reader.onload = function (event) {
+                if (event.target.readyState === 2) {
+                    elem.src = event.target.result;
+                    rs(elem);
+                }
+                setTimeout(function () {
+                    if (event.target.readyState < 2) {
+                        rj("your file damaged");
+                    }
+                }, 3000);
+            };
+            reader.readAsDataURL(elem);
+        });
+    };
+    PhotoAllEditComponent.prototype.reset = function () {
+        this.addCostumerForm.reset();
+    };
+    PhotoAllEditComponent.prototype.close = function () {
+        this.router.navigate(['../']);
+    };
+    PhotoAllEditComponent.prototype.isExsist = function (theFile) {
+        var isTrueOrFalse = false;
+        var gal = this.arrayFlies;
+        for (var idx = 0, len = gal.length; idx < len; idx++) {
+            if (gal[idx].id === theFile.id) {
+                // console.log(gal[idx].id + " : " + theFile.id);
+                this.arrayFlies.splice(idx, 1);
+                break;
+            }
+        }
+        return isTrueOrFalse;
+    };
     PhotoAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photo-all-edit',
             template: __webpack_require__(/*! ./photo-all-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.html"),
             styles: [__webpack_require__(/*! ./photo-all-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"]])
     ], PhotoAllEditComponent);
     return PhotoAllEditComponent;
 }());
@@ -4789,7 +5270,7 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer basic edit works fine!</h2>"
+module.exports = "<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\r\n              formControlName=\"company\" required #company />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n            <div *ngIf=\"(masseges['company'])\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['company']['type']\">\r\n              <p class=\"p-0 m-0\"> * {{ masseges['company']['company'] }} </p>\r\n            </div>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n          <!-- JSON.stringify(masseges)  -->\r\n  \r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\r\n              formControlName=\"contact\" required #contact />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['contact']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['contact'].type\">\r\n                <p class=\"p-0 m-0\"> * {{ masseges['contact'].contact }} </p>\r\n              </div>\r\n            </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n  \r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"tel\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\r\n              [pattern]=\"phoneNum\" required #tel />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\r\n            לפאלפון/טלפון</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['tel']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['tel'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['tel'].tel }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\r\n              formControlName=\"address\" required #address />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['address']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['address'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['address'].address }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\r\n              [pattern]=\"emailPatteren\" required #email />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div  class=\"text-right\">\r\n              <div *ngIf=\"masseges['email']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['email'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['email'].email }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2 textarea\">\r\n            <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\r\n              formControlName=\"title\" required minlength=\"12\" #title>\r\n            </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['title']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['title'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['title'].title }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n  \r\n          <label for=\"discription\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\r\n            (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\r\n            id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\r\n  \r\n          </textarea>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['discription']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['discription'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['discription'].discription }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n  \r\n      <div class=\"col-sm-12\">\r\n  \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">שמור הכל</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          <a class=\"btn btn-info\" (click)=\"allTodefault()\">שחזר ברירת מחדל</a>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  </form>"
 
 /***/ }),
 
@@ -4804,6 +5285,14 @@ module.exports = "<h2>photographer basic edit works fine!</h2>"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoBasicEditComponent", function() { return PhotoBasicEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4814,12 +5303,176 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-/*  */
+
+
+
+
+
+
+
+
 //  declare let $:any;
 var PhotoBasicEditComponent = /** @class */ (function () {
-    function PhotoBasicEditComponent() {
+    function PhotoBasicEditComponent(router, halls, http, valForm) {
+        this.router = router;
+        this.halls = halls;
+        this.http = http;
+        this.valForm = valForm;
+        this.phoneNum = '^((?=(02|03|04|08|09))[0-9]{2}[0-9]{3}[0-9]{4}|(?=(05|170|180))[0-9]{3}[0-9]{3}[0-9]{4})';
+        this.emailPatteren = '^[a-z]+[a-zA-Z_\\d]*@[A-Za-z]{2,10}\.[A-Za-z]{2,3}(?:\.?[a-z]{2})?$';
+        this.masseges = {};
     }
     PhotoBasicEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
+            var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
+            var authUser = _this.http.authUser;
+            var uId = authUser ? authUser["id"] : false;
+            console.log('costumerId: ' + cId + " userId " + uId);
+            if (cId === uId) {
+                _this.costumer = cost;
+                _this.apiKey = _this.http.getApiKey();
+                _this.formInt();
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
+            }
+            else {
+                // let state = decodeURIComponent(this.router.url).split("/");
+                // let media = "/"+state[1]+"/"+cost["company"]+"/media";
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(false);
+                // console.log(media);
+                // this.router.navigate([media]);
+            }
+        });
+    };
+    PhotoBasicEditComponent.prototype.update = function (costumer) {
+        var comp = costumer['id'];
+        var controls = this.addCostumerForm.controls[comp];
+        var items = this.valForm.validate(controls, this.costumer, comp);
+        this.masseges = items['errors'];
+        if (items['status'])
+            this.send(items['success']);
+    };
+    PhotoBasicEditComponent.prototype.inputReset = function (costumer) {
+        var comp = costumer['id'];
+        this.addCostumerForm.controls[comp].reset();
+    };
+    PhotoBasicEditComponent.prototype.default = function (costumer) {
+        var comp = costumer.id;
+        this.addCostumerForm.controls[comp].setValue(this.costumer[comp]);
+    };
+    PhotoBasicEditComponent.prototype.canDeactivate = function () {
+        console.log("canDeactivate called!");
+        if (this.addCostumerForm.dirty || this.addCostumerForm.touched) {
+            return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
+        }
+        else {
+            return true;
+        }
+    };
+    PhotoBasicEditComponent.prototype.textAreaAdjust = function (o) {
+        var target = o.target;
+        target.style.height = "1px";
+        target.style.height = (25 + target.scrollHeight) + "px";
+    };
+    PhotoBasicEditComponent.prototype.textAreamouseleave = function (o) {
+        var target = o.target;
+        target.style.height = "1px";
+        target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
+    };
+    Object.defineProperty(PhotoBasicEditComponent.prototype, "f", {
+        get: function () { return this.addCostumerForm.controls; },
+        enumerable: true,
+        configurable: true
+    });
+    PhotoBasicEditComponent.prototype.formInt = function () {
+        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            // 'businessType': new FormControl(this.costumer.businessType, [Validators.required]),
+            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
+        });
+    };
+    PhotoBasicEditComponent.prototype.onSubmit = function () {
+        // this.masseges = [];
+        var controls = this.addCostumerForm.controls;
+        var items = this.valForm.validate(controls, this.costumer);
+        //if(items['status'] === false) this.masseges.push(items['errors']);
+        console.log(items);
+        if (items['status']) {
+            //this.send(items); 
+        }
+        else {
+            this.masseges = items['errors'];
+        }
+    };
+    PhotoBasicEditComponent.prototype.reset = function () {
+        this.addCostumerForm.reset();
+    };
+    PhotoBasicEditComponent.prototype.close = function () {
+        this.router.navigate(['../']);
+    };
+    PhotoBasicEditComponent.prototype.allTodefault = function () {
+        var controls = this.addCostumerForm.controls;
+        for (var ii in controls) {
+            if (controls.hasOwnProperty(ii)) {
+                if (controls[ii].value !== this.costumer[ii]) {
+                    if (this.costumer[ii])
+                        controls[ii].setValue(this.costumer[ii]);
+                }
+            }
+        }
+    };
+    PhotoBasicEditComponent.prototype.send = function (body) {
+        var _this = this;
+        var updaterUrl = "http://ethio/costumers/" + this.costumer["id"];
+        console.log(body);
+        this.halls.patchData(updaterUrl, body, {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.apiKey
+            })
+        }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["tap"])(function (res) { return console.log(res); }))
+            .subscribe(function (evt) {
+            //console.log(evt);
+            var errors = evt['errors'];
+            var success = evt['success'];
+            var msgOb = {};
+            if (errors) {
+                msgOb['errors'] = {};
+                var _loop_1 = function (ii) {
+                    msgOb['errors'][ii] = {};
+                    errors[ii].forEach(function (element) {
+                        msgOb['errors'][ii][ii] = element;
+                        msgOb['errors'][ii]['type'] = "warning";
+                    });
+                };
+                for (var ii in errors) {
+                    _loop_1(ii);
+                }
+                _this.masseges = msgOb['errors'];
+            }
+            if (success) {
+                msgOb['success'] = {};
+                for (var ii in success) {
+                    msgOb['success'][ii] = {};
+                    msgOb['success'][ii][ii] = success[ii];
+                    msgOb['success'][ii]['type'] = "success";
+                }
+                _this.masseges = msgOb['success'];
+            }
+        }, function (err) {
+            console.log(err);
+            if (err["status"] === 401) {
+                console.log("Errrorss 401");
+                _this.router.navigate(["/login"]);
+                //this.errors.push(err["error"]["message"]);
+                //this.errors.push(err["status"]+" נא להחתחבר מחדש");
+            }
+        });
     };
     PhotoBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -4827,7 +5480,10 @@ var PhotoBasicEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photo-basic-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html"),
             styles: [__webpack_require__(/*! ./photo-basic-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
+            _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"],
+            _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"],
+            _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
     ], PhotoBasicEditComponent);
     return PhotoBasicEditComponent;
 }());
@@ -4854,7 +5510,7 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer media edit works fine!</h2>"
+module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n  <!-- basic edite -->\r\n\r\n  \r\n\r\n  <!-- media and galleries edite -->\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"h-100 p-3\">\r\n        <!-- Chose loggo -->\r\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n            <span>\r\n              החלף לוגו\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n        </div>\r\n\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n          <div *ngIf=\"costumer.loggo\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"costumer.loggo\" alt=\"{{ costumer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n               />\r\n          </div>\r\n        </div>\r\n        \r\n        \r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose video -->\r\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n            <span>\r\n              הוסף סרטון\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n\r\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n          />\r\n        </div>\r\n        \r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <video controls=true class=\"w-25\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose image dallery -->\r\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n        <div class=\"form-group bg-white border clearfix\">\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n            <span>\r\n              הוסף תמונות\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n          />\r\n        </div>\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n            alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n        </div>\r\n        <div class=\"btn-group\">\r\n\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"col-sm-12\">\r\n      \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n</form>"
 
 /***/ }),
 
@@ -4869,6 +5525,13 @@ module.exports = "<h2>photographer media edit works fine!</h2>"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoMediaEditComponent", function() { return PhotoMediaEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4879,20 +5542,249 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-/* import { ActivatedRoute, Router } from '@angular/router';
-import { HallsDataService } from '../../../../../costumers/halls-data-service';
-import { Observable, of } from 'rxjs';
-import { HallType } from '../../../../../costumers/hall-type';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpHeaders } from '@angular/common/http';
-import { HttpService } from '../../../../../http.service';
-import { find, first } from 'rxjs/operators';
-import { CanDeactivateComponent } from '../../../../../can-deactivate-guard.service'; */
+
+
+
+// import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
+
+
 //  declare let $:any;
 var PhotoMediaEditComponent = /** @class */ (function () {
-    function PhotoMediaEditComponent() {
+    function PhotoMediaEditComponent(router, halls, http, valForm) {
+        this.router = router;
+        this.halls = halls;
+        this.http = http;
+        this.valForm = valForm;
+        this.guard = [];
+        this.arrayFlies = [];
+        this.masseges = [];
+        this.filesSize = 0;
     }
     PhotoMediaEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
+            var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
+            var uId = _this.http.authUser["id"];
+            console.log('costumerId: ' + cId + " userId " + uId);
+            if (cId === uId) {
+                var id = cost.id;
+                var gal = _this.halls.getGallery(id);
+                _this.galleries = gal['image'];
+                _this.videos = gal['video'];
+                _this.costumer = cost;
+                _this.apiKey = _this.http.getApiKey();
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
+            }
+            else {
+                // let state = decodeURIComponent(this.router.url).split("/");
+                // let media = "/"+state[1]+"/"+cost["company"]+"/media";
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
+                // console.log(media);
+                // this.router.navigate([media]);
+            }
+        });
+    };
+    PhotoMediaEditComponent.prototype.canDeactivate = function () {
+        if (this.filesSize >= 1 || this.arrayFlies.length >= 1 || this.arrayFlies.guard >= 1) {
+            return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
+        }
+        else {
+            return true;
+        }
+    };
+    PhotoMediaEditComponent.prototype.onSubmit = function () {
+        var _this = this;
+        var input = new FormData();
+        var posterUrl = "http://ethio:8080/api/auth/costumers";
+        var formInputs = this.costumer;
+        var urls = formInputs['businessType'] + "/" + formInputs['company'];
+        var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
+        var errors = {};
+        this.masseges = [];
+        var counter = 0;
+        // console.log(this.filesSize + " : " +Math.round(this.filesSize / Math.pow(1024,2) ));
+        // console.log(this.filesSize + " : " +Math.round(Math.pow(1024,2)* 6 ) / (Math.pow(1024,2)));
+        for (var _i = 0, _a = this.arrayFlies; _i < _a.length; _i++) {
+            var ii = _a[_i];
+            if (counter <= 3 && ii.target === "galleries")
+                counter++;
+            var extractTargetName = urls + "/" + ii.target + "/" + ii.name.split('.')[0];
+            (ii.target === "loggo") ? formInputs['loggo'] = extractTargetName + '.' + ii.name.split('.')[(ii.name.split('.').length) - 1] : null;
+            input.append(extractTargetName, ii, ii.name);
+        }
+        errors.galleries = (counter < 3) ? errors.galleries = "גלריית התמונות חייב להכיל לפחות 3 תמונות" : null;
+        errors.fileSize = (checkFilesSizes) ? errors.fileSize = this.formatBytes(this.filesSize) + " : " + "גודל הקבצים גדולה מדי." : null;
+        errors.loggo = (typeof formInputs['loggo'] === 'undefined' || !formInputs['loggo']) ? errors.loggo = "העלה תמונת לוגו או אייקון של החברה." : null;
+        for (var ii in errors) {
+            if (errors.hasOwnProperty(ii)) {
+                if (errors[ii])
+                    this.masseges.push(errors[ii]);
+            }
+        }
+        console.log(this.masseges);
+        if (this.masseges.length === 0) {
+            this.halls.storeData(posterUrl, input, {
+                headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpHeaders"]({
+                    'Authorization': 'Bearer ' + this.apiKey,
+                })
+            })
+                .subscribe(function (evt) {
+                console.log(evt);
+                _this.masseges.push(evt["massege"]);
+                setTimeout(function () {
+                    // this.router.navigate(["/halls_events"]);
+                }, 5000);
+            }, function (err) {
+                if (err["status"] === 401) {
+                    _this.http.nextIslogged(false);
+                    window.sessionStorage.removeItem('user_key');
+                    _this.router.navigate(["/login"]);
+                }
+            });
+        }
+    };
+    PhotoMediaEditComponent.prototype.formatBytes = function (a) {
+        if (0 === a)
+            return "0 Bytes";
+        var c = 1024, d = 2, e = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"], f = Math.floor(Math.log(a) / Math.log(c));
+        return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f];
+    };
+    PhotoMediaEditComponent.prototype.selectedFiles = function (event, elemTarget) {
+        var _this = this;
+        if (!event.target.files[0] || this.guard.indexOf(elemTarget) >= 0) {
+            console.log("You cant uplaod twise " + elemTarget);
+            return;
+        }
+        if (elemTarget !== "galleries" && this.guard.indexOf(elemTarget) == -1)
+            this.guard.push(elemTarget);
+        var files = event.target.files;
+        // let videoType = ['video/3gpp', 'video/H261', 'video/H263', 'video/H264', 'video/JPEG', 'video/mp4', 'video/mpeg'].indexOf(files[0].type);
+        // let imageType = ['image/png', 'image/jpeg', 'image/gif'].indexOf(files[0].type);
+        console.log(files);
+        var _loop_1 = function (theFile) {
+            var elemName = theFile.name.split('.')[0];
+            theFile.id = elemName + '_' + theFile.size;
+            theFile.target = elemTarget;
+            if (!this_1.fileContains(theFile)) {
+                var targetElement_1 = event.target.parentElement.nextElementSibling;
+                this_1.filseReader(theFile).then(function (res) {
+                    targetElement_1.appendChild(_this.createElements(res));
+                }, function (error) {
+                    console.log(error);
+                });
+            }
+        };
+        var this_1 = this;
+        for (var _i = 0, files_1 = files; _i < files_1.length; _i++) {
+            var theFile = files_1[_i];
+            _loop_1(theFile);
+        }
+    };
+    PhotoMediaEditComponent.prototype.fileContains = function (theFile) {
+        var isTrueOrFalse = false;
+        var gal = this.arrayFlies;
+        for (var idx = 0, len = gal.length; idx < len; idx++) {
+            if (gal[idx].id === theFile.id) {
+                isTrueOrFalse = true;
+            }
+        }
+        return isTrueOrFalse;
+    };
+    PhotoMediaEditComponent.prototype.unSelectFiles = function (evt) {
+        var aTag = evt.target.parentElement;
+        var div = aTag.parentElement;
+        var parent = div.parentElement;
+        var childrens = parent.children;
+        var index = aTag.getAttribute('data-target');
+        for (var ii = 0, len = childrens.length; ii < len; ii++) {
+            if (childrens[ii] && aTag.id === childrens[ii].id) {
+                var subtractSize = childrens[ii].id.split('_');
+                var posSubtrat = subtractSize[subtractSize.length - 1];
+                index = (index == "loggo") ? this.guard.indexOf(index) : (index == "video") ? this.guard.indexOf(index) : null;
+                this.isExsist(childrens[ii]);
+                if (index === 0 || index >= 0) {
+                    this.guard.splice(index, 1);
+                }
+                this.filesSize -= posSubtrat;
+                parent.removeChild(childrens[ii]);
+                break;
+            }
+        }
+    };
+    PhotoMediaEditComponent.prototype.createElements = function (elem) {
+        var div = document.createElement('DIV');
+        var aTag = document.createElement('A');
+        var span = document.createElement('SPAN');
+        var elemType = elem.type.split("/")[0];
+        aTag.id = elem.id;
+        if (elem.target === "loggo" || elem.target === "video")
+            aTag.setAttribute('data-target', elem.target);
+        div.id = elem.id;
+        div.className = "d-inline";
+        this.arrayFlies.push(elem);
+        this.filesSize += elem.size;
+        aTag.className = "close bg-secondary";
+        span.setAttribute('aria-hidden', 'true');
+        span.innerHTML = '&times';
+        aTag.addEventListener("click", this.unSelectFiles.bind(this));
+        aTag.appendChild(span);
+        div.appendChild(aTag);
+        if (elemType === "image") {
+            var img = new Image();
+            img.src = elem.src;
+            img.className = "py-1 border border-info rounded";
+            img.setAttribute("height", "100");
+            img.setAttribute("alt", elem.type);
+            div.appendChild(img);
+        }
+        else if (elemType === "video") {
+            var video = document.createElement('video');
+            var source = document.createElement('source');
+            video.controls = true;
+            video.height = 100;
+            source.type = elem.type;
+            source.src = elem.src;
+            video.appendChild(source);
+            div.appendChild(video);
+        }
+        return div;
+    };
+    PhotoMediaEditComponent.prototype.filseReader = function (elem) {
+        var reader = new FileReader();
+        return new Promise(function (rs, rj) {
+            reader.onload = function (event) {
+                if (event.target.readyState === 2) {
+                    elem.src = event.target.result;
+                    rs(elem);
+                }
+                setTimeout(function () {
+                    if (event.target.readyState < 2) {
+                        rj("your file damaged");
+                    }
+                }, 3000);
+            };
+            reader.readAsDataURL(elem);
+        });
+    };
+    PhotoMediaEditComponent.prototype.reset = function () {
+        location.reload();
+    };
+    PhotoMediaEditComponent.prototype.close = function () {
+        this.router.navigate(['../']);
+    };
+    PhotoMediaEditComponent.prototype.isExsist = function (theFile) {
+        var isTrueOrFalse = false;
+        var gal = this.arrayFlies;
+        for (var idx = 0, len = gal.length; idx < len; idx++) {
+            if (gal[idx].id === theFile.id) {
+                // console.log(gal[idx].id + " : " + theFile.id);
+                this.arrayFlies.splice(idx, 1);
+                break;
+            }
+        }
+        return isTrueOrFalse;
     };
     PhotoMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -4900,7 +5792,7 @@ var PhotoMediaEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photo-media-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.html"),
             styles: [__webpack_require__(/*! ./photo-media-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__["FormProccesorService"]])
     ], PhotoMediaEditComponent);
     return PhotoMediaEditComponent;
 }());
@@ -4916,7 +5808,7 @@ var PhotoMediaEditComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer edit worka!</h2>\n<router-outlet></router-outlet>"
+module.exports = "<!-- header edite -->\n<div *ngIf=\"isTrue | async\" class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"shadow-sm\">\n        <h2 class=\"h5 bg-light p-3 rounded\">ערוך דף</h2>\n  \n        <div class=\"px-3 pt-2 pb-3\">\n            <a routerLinkActive=\"active\" routerLink=\"basic\" class=\"googleFont ml-1 px-2 py-2 my-2 border rounded text-center\">\n                <span>\n                  בסיסי\n      \n                  <i class=\"material-icons\">supervisor_account</i>\n                </span>\n              </a>\n          <a routerLinkActive=\"active\" routerLink=\"gallery\" class=\"googleFont ml-1 px-2 py-2 my-2 border rounded text-center\">\n            <span>\n              מדיה\n  \n              <i class=\"material-icons\">perm_media</i>\n            </span>\n          </a>\n         \n            <a routerLinkActive=\"active\" routerLink=\"all\" class=\"googleFont ml-1 px-2 py-2 my-2 border rounded text-center\">\n                <span>\n                  הכל\n                  <i class=\"material-icons\">select_all</i>\n                </span>\n              </a>\n        </div>\n  \n      </div>\n    </div>\n  \n  </div>\n  <router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -4931,6 +5823,11 @@ module.exports = "<h2>photographer edit worka!</h2>\n<router-outlet></router-out
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerEditComponent", function() { return PhotographerEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4941,10 +5838,39 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+
 var PhotographerEditComponent = /** @class */ (function () {
-    function PhotographerEditComponent() {
+    function PhotographerEditComponent(http, router, route, halls) {
+        this.http = http;
+        this.router = router;
+        this.route = route;
+        this.halls = halls;
     }
     PhotographerEditComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (val) { return val['customer']; }))
+            .subscribe(function (cost) {
+            var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
+            // let uId = this.http.authUser["id"];
+            var userId = _this.http.authUser;
+            var uId = userId ? userId['id'] : false;
+            console.log(userId);
+            console.log('costumerId: ' + cId + " userId " + uId);
+            if (cId === uId) {
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
+            }
+            else {
+                // let state = decodeURIComponent(this.router.url).split("/");
+                // let media = "/"+state[1]+"/"+cost["company"]+"/media";
+                _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(false);
+                // console.log(media);
+                // this.router.navigate([media]);
+            }
+        });
     };
     PhotographerEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -4952,7 +5878,7 @@ var PhotographerEditComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photographer-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"]])
     ], PhotographerEditComponent);
     return PhotographerEditComponent;
 }());
@@ -4979,7 +5905,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer media component works!</h2>"
+module.exports = "<div *ngIf=\"costumer | async\" class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 >גלריית {{ (costumer | async).company }}</h2>\r\n    <div class=\"media-slider border border-success bg-dark\">\r\n      <div id=\"meidiaCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n        <ol class=\"carousel-indicators p-0\">\r\n          <li  *ngFor=\"let gallery of galleries;let idx = index\" data-target=\"#meidiaCarousel\" attr.data-slide-to=\"{{ idx }}\" [ngClass]=\"{ 'active': idx === 0 }\" ></li>\r\n          <!-- <li data-target=\"#meidiaCarousel\" data-slide-to=\"1\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"2\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"3\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"4\"></li> -->\r\n        </ol>\r\n        <div class=\"carousel-inner\">\r\n          <div *ngFor=\"let gallery of galleries;let ii = index\" [ngClass]=\"{ 'carousel-item active': ii === 0,'carousel-item': i !== 0 }\">\r\n            <img class=\"my-5 mx-0 px-0\" style=\"height:240px\" [src]=\"gallery\" alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" />\r\n          </div>\r\n        </div>\r\n  \r\n        <a class=\"carousel-control-prev\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"next\">\r\n          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Previous</span>\r\n        </a>\r\n        <a class=\"carousel-control-next\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"prev\">\r\n          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Next</span>\r\n        </a>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>\r\n  <hr>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר תמונות</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"galActiveItem(ii)\" />\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">סרטוני תדמית</h2>\r\n  \r\n    <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\" style=\"height:300px;\">\r\n      <video controls=true height=\"100%\">\r\n        <source  type=\"video/mp4\" [src]=\"video\" />\r\n      </video>\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר סרטון</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"vidActiveItem(ii)\" />\r\n    </div>\r\n  </div>\r\n  <!-- <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let video of videos;let ii = index\" [src]=\"video.video\" alt=\"first-slide1\" /> -->"
 
 /***/ }),
 
@@ -4994,6 +5920,11 @@ module.exports = "<h2>photographer media component works!</h2>"
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerMediaComponent", function() { return PhotographerMediaComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5004,10 +5935,34 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+
 var PhotographerMediaComponent = /** @class */ (function () {
-    function PhotographerMediaComponent() {
+    function PhotographerMediaComponent(route, hall, http) {
+        this.route = route;
+        this.hall = hall;
+        this.http = http;
     }
+    ;
     PhotographerMediaComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])()).subscribe(function (data) {
+            var co = data['customer'];
+            var gal = data['gallery'];
+            _this.costumer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(co);
+            _this.galleries = JSON.parse(gal['image']);
+            _this.videos = JSON.parse(gal['video']);
+            $('.carousel').carousel();
+        });
+    };
+    PhotographerMediaComponent.prototype.galActiveItem = function (ii) {
+        $(".carousel-indicators")[0].children[ii].click();
+    };
+    PhotographerMediaComponent.prototype.vidActiveItem = function (ii) {
+        //$(".carousel-indicators")[0].children[ii].click();
     };
     PhotographerMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5015,7 +5970,7 @@ var PhotographerMediaComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photographer-media.component.html */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.html"),
             styles: [__webpack_require__(/*! ./photographer-media.component.css */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
     ], PhotographerMediaComponent);
     return PhotographerMediaComponent;
 }());
@@ -5042,7 +5997,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>photographer component is work!</h2>\r\n<router-outlet></router-outlet>"
+module.exports = "<hr class=\"d-sm-none\">\r\n<div *ngIf=\"(costumerProps | async)?.company != null\" class=\"row text-right\">\r\n    <div class=\"costum-query col-xs-12 col-xl-4\">\r\n        <div class=\"row card-group\">\r\n\r\n            <div class=\"col-sm-12 col-md-7 d-md-flex d-xl-block col-xl-12 mb-3\">\r\n                <div class=\"w-100 border text-center\">\r\n\r\n                    <div class=\"shadow-sm bg-light\">\r\n                        <h5 class=\"p-3 text-success\">{{ (costumerProps | async)?.company }}</h5>\r\n                    </div>\r\n                    <img class=\"card-img-top py-3 w-25 m-auto\" [src]=\"(costumerProps | async)?.loggo\" [alt]=\"(costumerProps | async)?.company\" />\r\n\r\n                    <div class=\"card-footer col\">\r\n                        <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}\" class=\"btn btn-outline-success btn-sm\">\r\n                                <i class=\"fa fa-location-arrow\"></i>\r\n                                חזור\r\n                            </a>\r\n                            <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\r\n                                <i class=\"fa fa-envelope text-success\"></i>\r\n\r\n                                שלח הודעה</a>\r\n                            <a routerLink=\"media\" class=\"btn btn-danger btn-sm\">מדיה וגלריה</a>\r\n                            <a routerLink=\"about\" class=\"btn btn-info btn-sm\">אודות</a>\r\n                            \r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"isTrue | async\" class=\"btn-group border mt-2 w-100\">\r\n                    <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}/{{ (costumerProps | async)?.company  }}/create\" class=\"btn btn-primary btn-sm\">\r\n                                <!-- <i class=\"fa fa-location-arrow\"></i> -->\r\n                                + צור דף\r\n                            </a>\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}/{{ (costumerProps | async)?.company }}/edit/basic\" class=\"btn btn-danger text-light btn-sm\">\r\n                                <i class=\"fa fa-pencil\"></i>\r\n                                ערוך דף \r\n                                <!-- <i class=\"material-icons text-primary\"> edit</i> -->\r\n                            </a>\r\n                    </div>\r\n                    \r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-5 d-md-flex d-xl-block col-xl-12 text-right mb-3\">\r\n                <div class=\"card  border border-warning\">\r\n                    <div class=\"card-header bg-warning\">\r\n                        <h4 class=\"card-title text-center text-light\">\r\n                            צור קשר\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> {{ (costumerProps | async)?.contact }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> {{ (costumerProps | async)?.tel }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> {{ (costumerProps | async)?.address }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-col-xl-12\">\r\n                <div class=\"border border-danger text-right\">\r\n                    <div class=\"card-header bg-danger\">\r\n                        <h4 class=\"text-center text-light\">\r\n                            {{ (costumerProps | async)?.company }}\r\n                            <span class=\"font-weight-bold text-warning\">*מבצעים</span>\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"costum-query-datil col-xs-12 col-xl-8\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>\r\n\r\n<!-- (imgLoggo)=\"(costumerProps | async).loggo\" -->\r\n<!--Contact Modal -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg\">\r\n\r\n        <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\r\n            <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\r\n            <div class=\"card-body\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"mb-2\">\r\n                <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<!-- form model -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg row\">\r\n        <div class=\"modal-content col-sm-8 mx-auto text-right\">\r\n\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <div class=\"p-3\">\r\n                <h2 class=\"text-right text-success\">שלח הודעה</h2>\r\n                <p>\r\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\r\n                    <span class=\"text-danger\">\r\n\r\n                        צוות אתיופיה אירועים.\r\n                    </span>\r\n                </p>\r\n            </div>\r\n\r\n            <hr>\r\n            <form class=\"p-3\">\r\n                <div class=\"form-group\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\r\n\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"email\" class=\"form-control\" id=\"contactEmail\" placeholder=\"אימייל\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n\r\n                    <select id=\"contactRigion\" class=\"rigion\">\r\n                        <option selected>אזור</option>\r\n                        <option value=\"1\">צפון</option>\r\n                        <option value=\"2\">מרכז והשפלה</option>\r\n                        <option value=\"3\">דרום</option>\r\n                    </select>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <input type=\"tel\" class=\"form-control\" id=\"contactPhone\" placeholder=\"טלפון/פלאפון\">\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <textarea class=\"form-control\" id=\"contactTextarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\r\n                </div>\r\n                <button type=\"submit\" class=\"btn btn-success btn-sm\">\r\n                    <i class=\"fa fa-envelope\"></i>\r\n                    שלח</button>\r\n                <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">סגור</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
@@ -5057,6 +6012,11 @@ module.exports = "<h2>photographer component is work!</h2>\r\n<router-outlet></r
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerComponent", function() { return PhotographerComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5067,10 +6027,92 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+
 var PhotographerComponent = /** @class */ (function () {
-    function PhotographerComponent() {
+    function PhotographerComponent(halls, router, route, http) {
+        this.halls = halls;
+        this.router = router;
+        this.route = route;
+        this.http = http;
     }
     PhotographerComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        // let pathUrl = this.route.url["value"][0].path;this.route.snapshot.params['id']
+        var pathUrl = this.route.snapshot.params['id'];
+        this.user = this.http.authUser;
+        this.http.userObs.subscribe(function (logged) { _this.checkCostumer(pathUrl, logged); });
+    };
+    PhotographerComponent.prototype.checkCostumer = function (uri, authUser) {
+        var _this = this;
+        this.halls.getById(uri).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(function (param) { return (typeof param === "object") || param === 1; }))
+            .subscribe(function (cost) {
+            // console.log(cost);
+            var co = cost['customer'];
+            if (co && co['id']) {
+                var costumerEmail = co["email"];
+                var authEmail = authUser ? authUser['email'] : false;
+                if (costumerEmail)
+                    _this.costumerProps = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(co);
+                if (costumerEmail === authEmail) {
+                    _this.http.authUser = authUser;
+                    // this.halls.costumerEmit(co);
+                    _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(true);
+                }
+                else {
+                    _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(false);
+                }
+            }
+            else {
+                setTimeout(function () {
+                    var goTo = _this.router.url.split(uri)[0];
+                    _this.router.navigate([goTo]);
+                }, 100);
+            }
+        });
+    };
+    PhotographerComponent.prototype.locSetItem = function (keyName, data) {
+        localStorage.setItem(keyName, JSON.stringify(data));
+    };
+    PhotographerComponent.prototype.getSavedCostumer = function (costumerName) {
+        // console.log(("geting costumer from saved rxjs").toUpperCase());
+        // this.hallService.costumerEmitter$
+        //   .pipe(
+        //     first()
+        //   )
+        //   .subscribe(
+        //     res => {
+        //       this.costumerProps = res;
+        //       if(typeof res.id === "undefined") this.getCostumerByNameFromSever(costumerName);
+        //       if((costumerName in localStorage) === false) this.locSetItem(costumerName, res);
+        //       // (Object.prototype.hasOwnProperty()) 
+        //     },
+        //     () => this.getCostumerByNameFromSever(costumerName)
+        //   );
+    };
+    PhotographerComponent.prototype.getCostumerByNameFromSever = function (costumerName) {
+        // console.log(("geting costumer from server ").toUpperCase()+ costumerName);
+        //this.costumerProps = this.hallService.getById(costumerName);
+        // this.hallService.getById(costumerName).subscribe(
+        //   (evt) => console.log(evt)
+        // );
+    };
+    PhotographerComponent.prototype.locGetItem = function (keyName) {
+        console.log(("geting costumer from saved localStorge").toUpperCase());
+        var geTCostumer = JSON.parse(localStorage.getItem(keyName));
+        this.costumerProps = geTCostumer;
+    };
+    PhotographerComponent.prototype.getCostumerName = function () {
+        var hallCostumer = decodeURIComponent(this.router.url).slice(1).split('/')[1];
+        if (hallCostumer === "ארמונות-לב")
+            hallCostumer = hallCostumer.split('-')[0] + " " + hallCostumer.split('-')[1];
+        return hallCostumer;
+    };
+    PhotographerComponent.prototype.ngOnDestroy = function () {
+        //this.costtumerSubscriber.unsubscribe();
     };
     PhotographerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5079,9 +6121,53 @@ var PhotographerComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./photographer.component.css */ "./src/app/pages/costumers/photographers/photographer/photographer.component.css")],
             providers: []
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
     ], PhotographerComponent);
     return PhotographerComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts":
+/*!*********************************************************************************!*\
+  !*** ./src/app/pages/costumers/photographers/photographers-resolver.service.ts ***!
+  \*********************************************************************************/
+/*! exports provided: PhotographersResolver */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographersResolver", function() { return PhotographersResolver; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PhotographersResolver = /** @class */ (function () {
+    function PhotographersResolver(halls, router) {
+        this.halls = halls;
+        this.router = router;
+    }
+    PhotographersResolver.prototype.resolve = function () {
+        return this.halls.getCostumers('photographers');
+    };
+    PhotographersResolver = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
+        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], PhotographersResolver);
+    return PhotographersResolver;
 }());
 
 
@@ -5109,6 +6195,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
 /* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
 /* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
+/* harmony import */ var _photographers_resolver_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographers-resolver.service */ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5126,8 +6213,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var photographersRouting = [
-    { path: "photographers", component: _photographers_component__WEBPACK_IMPORTED_MODULE_3__["PhotographersComponent"] /* , resolve: { photographers: HallResolver */,
+    { path: "photographers", component: _photographers_component__WEBPACK_IMPORTED_MODULE_3__["PhotographersComponent"], resolve: { photographers: _photographers_resolver_service__WEBPACK_IMPORTED_MODULE_11__["PhotographersResolver"] },
         children: [
             {
                 path: ":id", component: _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_4__["PhotographerComponent"], children: [
@@ -5183,7 +6271,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h2>\n  photograpers main works!\n</h2>\n<router-outlet></router-outlet>"
+module.exports = "\n<router-outlet *ngIf=\"! path\"></router-outlet>\n<hr class=\"d-sm-none\">\n<div *ngIf=\"path\" class=\"row text-right\">\n  <div class=\"col-sm-12 mb-3\">\n    <h1 class=\"h2 py-2 pr-3 bg-light text-success rounded\">אולמות אירועים</h1>\n    <p class=\"h5 pr-3 pb-3 shadow-sm\">\n      לקוחות יקרים, לפניכם מגוון אולמי אירועים לבחירתכם תהתקשרו לקבלת פרטים ויעוץ\n      <span class=\"text-danger\">\n        צוות אתיופיה אירועים.\n      </span>\n    </p>\n  </div>\n\n  <div class=\"col-sm-10 col-md-6 col-lg-6 col-xl-4 mb-3 d-flex flex-row align-items-stretch\"\n        *ngFor=\"let photoProp of (photoProps | async); let idx = index\">\n    <div class=\"border w-100 d-flex align-items-between flex-column\">\n      <div class=\"py-2 mb-2 px-2 shadow-sm bg-light\">\n        <div class=\"d-flex-column\">\n          <h5 class=\"p-2 m-0 bg-success rounded text-white\">{{ photoProp.customer.company }} {{ idx+1 }}</h5>\n          <img style=\"max-height: 90px\" src=\"{{ photoProp.customer.loggo }}\" alt=\"{{ photoProp.customer.company }}\" class=\"rounded img-fluid p-2 mx-auto\" />\n\n        </div>\n\n      </div>\n      <div class=\"mt-auto p-2 bd-highlight\">\n\n        <div class=\"text-right\">\n\n          <h4 class=\"bg-succes text-success\">\n            {{ (photoProp.customer.title.length>40)? (photoProp.customer.title | slice:0:40)+'..':(photoProp.customer.title) }}\n          </h4>\n          <p class=\"card-text p-1\">\n            {{ (photoProp.customer.discription.length>40)? (photoProp.customer.discription | slice:0:130)+'..':(photoProp.customer.discription) }}\n          </p>\n          <a \n            (click)=\"onSelectedLink(photoProp.customer)\"\n            routerLink=\"{{ photoProp.customer.id }}/about\"\n            class=\"text-info font-weight-bold\">\n            המשך לקרוא\n            <i class=\"fa fa-angle-double-left\"></i>\n          </a>\n        </div>\n      </div>\n      <!-- justify-content-center  -->\n      <div class=\"card-footer mt-auto p-2 bd-highlight text-right\">\n        <div class=\"text-center\">\n          <a class=\"btn btn-success btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg1\">\n            \n            <span class=\"text-right float-right\">\n\n              צור קשר\n            </span>\n            <br />\n            <i class=\"material-icons btn btn-success btn-sm float-left\">\n              contact_phone\n            </i>\n\n          </a>\n          <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\n\n            <span class=\"text-right float-right\">\n\n              שלח הודעה\n            </span>\n            <br />\n            <i class=\"material-icons btn-warning btn-sm float-left\">\n              email\n            </i>\n          </a>\n          <a class=\"btn btn-danger btn-sm\" routerLink=\"{{ photoProp.customer.id }}/media\"\n              (click)=\"onSelectedLink(photoProp.customer)\">\n\n            <span class=\"text-right float-right\">\n              עבור לעסק\n            </span>\n            <br />\n            <i class=\"material-icons btn btn-danger btn-sm float-left\">\n              navigate_before\n            </i>\n\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n  \n</div>\n\n<!--Contact Modal -->\n\n<div *ngIf=\"path\" class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-lg\">\n\n    <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\n      <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\n        <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n      </button>\n      <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\n      <div class=\"card-body\">\n        <div class=\"row\">\n          <div class=\"col-sm-12 border-bottom p-2\">\n            <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\n          </div>\n          <div class=\"col-sm-12 border-bottom p-2\">\n            <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\n          </div>\n          <div class=\"col-sm-12 border-bottom p-2\">\n            <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\n          </div>\n        </div>\n      </div>\n      <div class=\"mb-2\">\n        <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<!-- form model -->\n\n<div *ngIf=\"path\" class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog modal-lg row\">\n    <div class=\"modal-content col-sm-8 mx-auto text-right\">\n\n      <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n        <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n      </button>\n      <div class=\"p-3\">\n        <h2 class=\"text-right text-success\">שלח הודעה</h2>\n        <p>\n          לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\n          <span class=\"text-danger\">\n\n            צוות אתיופיה אירועים.\n          </span>\n        </p>\n      </div>\n\n      <hr>\n      <form class=\"p-3\">\n        <div class=\"form-group\">\n          <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\n        </div>\n        <div class=\"form-group\">\n          <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\n\n        </div>\n        <div class=\"form-group\">\n          <input type=\"email\" class=\"form-control\" id=\"email\" placeholder=\"אימייל\">\n        </div>\n        <div class=\"form-group\">\n\n          <select id=\"rigion\" class=\"rigion\">\n            <option selected>אזור</option>\n            <option value=\"1\">צפון</option>\n            <option value=\"2\">מרכז והשפלה</option>\n            <option value=\"3\">דרום</option>\n          </select>\n        </div>\n\n        <div class=\"form-group\">\n          <input type=\"tel\" class=\"form-control\" id=\"phone\" placeholder=\"טלפון/פלאפון\">\n        </div>\n\n        <div class=\"form-group\">\n          <textarea class=\"form-control\" id=\"textarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\n        </div>\n        <button type=\"submit\" class=\"btn btn-success btn-sm\">\n          <i class=\"fa fa-envelope\"></i>\n          שלח</button>\n        <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">בטל וסגור</button>\n      </form>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -5198,6 +6286,10 @@ module.exports = "<h2>\n  photograpers main works!\n</h2>\n<router-outlet></rout
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographersComponent", function() { return PhotographersComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5208,10 +6300,41 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+// import { Location } from '@angular/common';
+// import { PagesService } from '../../../pages-service';
+
+
+
+
 var PhotographersComponent = /** @class */ (function () {
-    function PhotographersComponent() {
+    function PhotographersComponent(router, route, halls) {
+        this.router = router;
+        this.route = route;
+        this.halls = halls;
+        this.path = true;
     }
     PhotographersComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.route.data.subscribe(function (data) {
+            // console.log(data);
+            _this.photoProps = data['photographers'] ? Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(data['photographers']) : null;
+        });
+        this.getCurrentUrl();
+    };
+    PhotographersComponent.prototype.getCurrentUrl = function () {
+        var _this = this;
+        var urlSliced = decodeURIComponent(window.location.pathname).slice(1);
+        var urlPath = (urlSliced === 'photographers' || urlSliced === 'app/photographers') ? true : false;
+        this.urlUnsubscribe = this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (evt) { return evt instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["RoutesRecognized"]; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_evt) { return decodeURIComponent(_evt["url"]).slice(1); })).subscribe(function (evt) {
+            _this.path = (evt === 'photographers' || evt === 'app/photographers') ? true : false;
+        });
+        this.path = urlPath;
+    };
+    PhotographersComponent.prototype.onSelectedLink = function (costumer) {
+        //this.halls.costumerEmit(costumer);
+    };
+    PhotographersComponent.prototype.ngOnDestroy = function () {
+        this.urlUnsubscribe.unsubscribe();
     };
     PhotographersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -5219,7 +6342,7 @@ var PhotographersComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./photographers.component.html */ "./src/app/pages/costumers/photographers/photographers.component.html"),
             styles: [__webpack_require__(/*! ./photographers.component.css */ "./src/app/pages/costumers/photographers/photographers.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"]])
     ], PhotographersComponent);
     return PhotographersComponent;
 }());
@@ -5240,15 +6363,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographersModule", function() { return PhotographersModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _photographers_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./photographers-routing.module */ "./src/app/pages/costumers/photographers/photographers-routing.module.ts");
-/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/costumers/photographers/photographers.component.ts");
-/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/costumers/photographers/photographer/photographer.component.ts");
-/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts");
-/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts");
-/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts");
-/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
-/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
-/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _photographers_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers-routing.module */ "./src/app/pages/costumers/photographers/photographers-routing.module.ts");
+/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/costumers/photographers/photographers.component.ts");
+/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/costumers/photographers/photographer/photographer.component.ts");
+/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts");
+/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts");
+/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts");
+/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
+/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
+/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
+/* harmony import */ var _shared_pipes_module_pipes_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shared/pipes-module/pipes-module */ "./src/app/shared/pipes-module/pipes-module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5266,6 +6391,9 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+/**** pipes ****/
 var PhotographersModule = /** @class */ (function () {
     function PhotographersModule() {
     }
@@ -5273,17 +6401,20 @@ var PhotographersModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [
                 _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
-                _photographers_routing_module__WEBPACK_IMPORTED_MODULE_2__["PhotographersRoutingModule"]
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ReactiveFormsModule"],
+                _photographers_routing_module__WEBPACK_IMPORTED_MODULE_3__["PhotographersRoutingModule"],
+                _shared_pipes_module_pipes_module__WEBPACK_IMPORTED_MODULE_12__["PipesModule"]
             ],
             declarations: [
-                _photographers_component__WEBPACK_IMPORTED_MODULE_3__["PhotographersComponent"],
-                _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_4__["PhotographerComponent"],
-                _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_5__["PhotographerMediaComponent"],
-                _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_6__["PhotographerAboutComponent"],
-                _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_7__["PhotographerEditComponent"],
-                _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_8__["PhotoAllEditComponent"],
-                _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_9__["PhotoMediaEditComponent"],
-                _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__["PhotoBasicEditComponent"]
+                _photographers_component__WEBPACK_IMPORTED_MODULE_4__["PhotographersComponent"],
+                _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_5__["PhotographerComponent"],
+                _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_6__["PhotographerMediaComponent"],
+                _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_7__["PhotographerAboutComponent"],
+                _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_8__["PhotographerEditComponent"],
+                _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_9__["PhotoAllEditComponent"],
+                _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_10__["PhotoMediaEditComponent"],
+                _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__["PhotoBasicEditComponent"],
             ]
         })
     ], PhotographersModule);
@@ -6767,7 +7898,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 /* import { ActivatedRoute, Router } from '@angular/router';
-import { HallsDataService } from '../../../../../costumers/halls-data-service';
+import { CustomersDataService } from '../../../../../costumers/customers-data-service';
 import { Observable, of } from 'rxjs';
 import { HallType } from '../../../../../costumers/hall-type';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7802,7 +8933,10 @@ var RegistrationComponent = /** @class */ (function () {
         this.isTrue = false;
     }
     RegistrationComponent.prototype.ngOnInit = function () {
-        (this.http.isAut) ? this.router.navigate(['/']) : this.formInit();
+        var _this = this;
+        this.http.isLogedIn.subscribe(function (logged) {
+            logged ? _this.router.navigate(['/']) : _this.formInit();
+        });
     };
     RegistrationComponent.prototype.onSubmit = function () {
         var _this = this;
@@ -7860,8 +8994,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./http.service */ "./src/app/http.service.ts");
-/* harmony import */ var _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./costumers/halls-data-service */ "./src/app/costumers/halls-data-service.ts");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7871,7 +9004,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -7892,123 +9024,87 @@ var RouteGuardService = /** @class */ (function () {
          * then user is owner and return true
         ******/
         var _this = this;
-        /** props **/
-        var intendedUrl = state.url;
-        var costumer = this.costumer && this.costumer['email'] ? this.costumer : false;
-        var costumerUriRecourse = costumer ? costumer['id'] : route.parent.params.id;
-        var auth = this.http.authUser;
-        var uEmail = auth ? auth['email'] : false;
-        /** check if already costumer and authenticated usr exisist and user is owner of recourse if true return true**/
-        if ((uEmail && costumer) && (uEmail === costumer['email'])) {
-            return true;
-        }
-        console.log(auth);
-        console.log(costumerUriRecourse);
-        /** if costumr recourse is true  */
-        if (costumer) {
-            /** check if user authenticated **/
-            return this.http.userPromis().
-                then(function (response) {
-                /** cool its yours **/
-                if (response && (response['email'] === costumer['email'])) {
-                    return true;
-                }
-            }, function (reject) {
-                /* rediract to recourse/costumer/media  */
-                var goToMedia = "/" + costumer['businessType'] + "/" + costumerUriRecourse + "/media";
-                _this.router.navigate([goToMedia]);
-                return reject;
+        /** lets defined somes props **/
+        var intendedUrl = decodeURIComponent(state.url);
+        var costumerUriRecourse = route.parent.params.id;
+        this.autUser = this.http.authUser;
+        var uEmail = this.autUser ? this.autUser['email'] : false;
+        var join = intendedUrl.indexOf('/join');
+        var reg = intendedUrl.indexOf('/register');
+        console.log(intendedUrl);
+        /** if our uri is /join, lets check if auth user is already our costumer member and let him access join page if false **/
+        if (join >= 0 && uEmail) {
+            this.halls.intendedUrl = intendedUrl;
+            return this.userAlreadyCostumer(uEmail).then(function (res) {
+                console.log(intendedUrl);
+                return (!res) ? true : _this.goTo(intendedUrl);
             });
         }
-        else if (costumer === false) {
-            return this.costumerPromis(costumerUriRecourse).
-                then(function (res) {
-                /** yaa we have costumer **/
-                return _this.http.userPromis().
-                    then(function (response) {
-                    /** cool its yours **/
-                    if (response && (response['email'] === costumer['email'])) {
-                        return true;
-                    }
-                }, function (reject) {
-                    var goToMedia = "/" + res['businessType'] + "/" + costumerUriRecourse + "/media";
-                    _this.http.allowLogIn.next(true);
-                    console.log(res);
-                    _this.router.navigate([goToMedia]);
-                    return false;
+        /**** so if we have auth user lats check if we have costumer and let access intended page if user are owner ****/
+        if (uEmail) {
+            return this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
+        }
+        ;
+        return this.http.userPromise()
+            .then(function (response) {
+            /*** attach auth user props ***/
+            uEmail = response['email'];
+            _this.autUser = response && response['email'] ? response : null;
+            /** if our uri is /join, lets check if auth user is already our costumer member and let him access join page if false **/
+            if (join >= 0 && response['email']) {
+                _this.halls.intendedUrl = intendedUrl;
+                return _this.userAlreadyCostumer(uEmail).then(function (res) {
+                    return (!res) ? true : _this.goTo(intendedUrl);
                 });
-            }, function (reject) {
-                /** there is no costumer recouse **/
-                /** redirect to main path recourse if exist **/
-                var goTo = (intendedUrl.indexOf('/halls-events') >= 0) ? "/halls-events" : "/";
-                _this.router.navigate([goTo]);
-                return false;
-            });
-        }
-        /*
-        return this.http.userPromis().
-        then((res) => {
-            
-            this.http.authUser = res["user"];
-            let authUserEmail = res["user"]['email'];
-            let cId = this.costumer? this.costumer['user_id']: false;
-            let costumerEmail = this.costumer? this.costumer['email']: false;
-    
-            console.log(cId + " cid:authUserEmail "+ authUserEmail + " :costumerEmail "+ costumerEmail);
-            this.autUser = res['user'];
-            if(authUserEmail && authUserEmail == costumerEmail){
-              return true;
-            }else if(costumerUriRecourse){
-              return this.costumerPromis(costumerUriRecourse).then(
-                (resolve) => {
-                  if (resolve['email'] === authUserEmail) {
-                    return true;
-                  }
-                
-                },
-                (reject) => {
-                  let media = this.costumer? "/"+this.costumer['businessType']+"/"+this.costumer["company"]+"/media": (intendedUrl.indexOf('/halls-events') >= 0)? "/halls-events": "/";
-                  console.log(media);
-                  this.router.navigate([media]);
-                  return reject;
-              });
             }
-          },
-          (rej) => {
-            let goTo = (intendedUrl.indexOf("/halls-events/") >= 0)? "/halls-events/"+costumerUriRecourse+"/media":"/";
-            this.http.IntendedUri = intendedUrl;
-            this.costumerPromis(costumerUriRecourse).then(
-              (resolve) => {
-                this.router.navigate([goTo]);
-                this.http.allowLogIn.next(true);
-              },
-              (rezect) => {
-                this.router.navigate([goTo]);
-                return false;
-              }
-            );
-            console.log(intendedUrl);
-            
-            
-          }
-        ); */
-    };
-    RouteGuardService.prototype.costumerPromis = function (costumerUriRecourse) {
-        var _this = this;
-        var promisse = new Promise(function (resolve, reject) {
-            _this.halls.getCostumer(costumerUriRecourse).
-                pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["find"])(function (val) { return typeof val === "object"; })).
-                subscribe(function (costumer) {
-                if (costumer && costumer['email']) {
-                    _this.costumer = costumer;
-                    return resolve(costumer);
-                }
-                else {
-                    return reject(false);
-                }
-            });
+            /**** so if we have auth user lats check if we have costumer and let access intended page if user are owner ****/
+            return _this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
+        }, function (reject) {
+            /****** if we in /join page and we have no user. lets get user to log in ******/
+            if (join >= 0 && !uEmail) {
+                _this.halls.intendedUrl = intendedUrl;
+                _this.http.allowLogIn.next(true);
+                return _this.goTo(intendedUrl);
+            }
+            /****** we have no user. lets check costumer uri recourse ******/
+            if (!costumerUriRecourse)
+                return _this.goTo(intendedUrl);
+            /**** lats check if we have costumer and navigate recourse if true and let user log in ****/
+            return _this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
         });
-        return promisse;
+    };
+    RouteGuardService.prototype.goTo = function (intendedUrl) {
+        var goTo = (intendedUrl.indexOf('/halls-events') >= 0) ? "/halls-events" : "/";
+        this.router.navigate([goTo]);
+        return false;
+    };
+    RouteGuardService.prototype.checkCostumer = function (costumerUriRecourse, uEmail, intendedUrl) {
+        var _this = this;
+        return this.halls.costumerPromis(costumerUriRecourse)
+            .then(function (res) {
+            /****** if we have user and costumer. lets check if auth user is owen recourse if true give auth user access ******/
+            if (uEmail === res['email']) {
+                return true;
+            }
+            /****** if auth user is not own recourse check one more time if we have auth user if false navigate him to recourse/media with posibility to log in ******/
+            if (!uEmail) {
+                _this.http.allowLogIn.next(true);
+                _this.http.IntendedUri = intendedUrl;
+            }
+            /****** redirect user to recourse/media  ******/
+            var goToMedia = "/" + res['businessType'] + "/" + costumerUriRecourse + "/media";
+            _this.router.navigate([goToMedia]);
+            return false;
+        }, function (rej) {
+            if (!uEmail) {
+                console.log("No costumer recourse and No auth User");
+            }
+            /****** redirect user to main page or main recourse ******/
+            return _this.goTo(intendedUrl);
+        });
+    };
+    RouteGuardService.prototype.userAlreadyCostumer = function (param) {
+        return this.halls.costumerPromis(param).then(function (res) { return res; }, function (rej) { return rej; });
     };
     RouteGuardService.prototype.canActivateChild = function (route, state) {
         return this.canActivate(route, state);
@@ -8017,9 +9113,186 @@ var RouteGuardService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _costumers_halls_data_service__WEBPACK_IMPORTED_MODULE_3__["HallsDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], RouteGuardService);
     return RouteGuardService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/pipes-module/pipes-module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/shared/pipes-module/pipes-module.ts ***!
+  \*****************************************************/
+/*! exports provided: PipesModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PipesModule", function() { return PipesModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _str_spliter_pipe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./str-spliter.pipe */ "./src/app/shared/pipes-module/str-spliter.pipe.ts");
+/* harmony import */ var _split_text_pipe__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./split-text.pipe */ "./src/app/shared/pipes-module/split-text.pipe.ts");
+/* harmony import */ var _remove_white_space_pipe__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./remove-white-space.pipe */ "./src/app/shared/pipes-module/remove-white-space.pipe.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var PipesModule = /** @class */ (function () {
+    function PipesModule() {
+    }
+    PipesModule = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+            declarations: [
+                _str_spliter_pipe__WEBPACK_IMPORTED_MODULE_1__["StrSpliterPipe"],
+                _split_text_pipe__WEBPACK_IMPORTED_MODULE_2__["SplitTextPipe"],
+                _remove_white_space_pipe__WEBPACK_IMPORTED_MODULE_3__["RemoveWhiteSpacePipe"]
+            ],
+            imports: [],
+            exports: [
+                _str_spliter_pipe__WEBPACK_IMPORTED_MODULE_1__["StrSpliterPipe"],
+                _split_text_pipe__WEBPACK_IMPORTED_MODULE_2__["SplitTextPipe"],
+                _remove_white_space_pipe__WEBPACK_IMPORTED_MODULE_3__["RemoveWhiteSpacePipe"]
+            ]
+        })
+    ], PipesModule);
+    return PipesModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/pipes-module/remove-white-space.pipe.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/shared/pipes-module/remove-white-space.pipe.ts ***!
+  \****************************************************************/
+/*! exports provided: RemoveWhiteSpacePipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RemoveWhiteSpacePipe", function() { return RemoveWhiteSpacePipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var RemoveWhiteSpacePipe = /** @class */ (function () {
+    function RemoveWhiteSpacePipe() {
+    }
+    RemoveWhiteSpacePipe.prototype.transform = function (value, args) {
+        //let text = value.replace(/[\r\n\s]+/g, " ");
+        var text = value.replace(/[^\n]\s{4,}/g, "\n");
+        // let text = value.replace(/[\s]{4,}/g, " ");
+        return text;
+    };
+    RemoveWhiteSpacePipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'removeWhiteSpace'
+        })
+    ], RemoveWhiteSpacePipe);
+    return RemoveWhiteSpacePipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/pipes-module/split-text.pipe.ts":
+/*!********************************************************!*\
+  !*** ./src/app/shared/pipes-module/split-text.pipe.ts ***!
+  \********************************************************/
+/*! exports provided: SplitTextPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SplitTextPipe", function() { return SplitTextPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var SplitTextPipe = /** @class */ (function () {
+    function SplitTextPipe() {
+    }
+    SplitTextPipe.prototype.transform = function (value, args, pos) {
+        if (value) {
+            var spliter = args ? args : ' ';
+            var split = value.split(spliter);
+            var defaultPos = (split.length - 1);
+            var paramPos = (pos || pos === 0) ? pos : defaultPos;
+            // console.log(pos);
+            var resualt = paramPos ? split[paramPos] : paramPos;
+            return resualt;
+        }
+        return value;
+    };
+    SplitTextPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'splitText'
+        })
+    ], SplitTextPipe);
+    return SplitTextPipe;
+}());
+
+/* transform(value: string , args?: string ): string {
+
+  let Spliter = args? args: ' ';
+
+  return (value.split(Spliter)[1])? value.split(Spliter)[0] + "-"+ value.split(Spliter)[1]: value;
+  
+} */ 
+
+
+/***/ }),
+
+/***/ "./src/app/shared/pipes-module/str-spliter.pipe.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/shared/pipes-module/str-spliter.pipe.ts ***!
+  \*********************************************************/
+/*! exports provided: StrSpliterPipe */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StrSpliterPipe", function() { return StrSpliterPipe; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var StrSpliterPipe = /** @class */ (function () {
+    function StrSpliterPipe() {
+    }
+    StrSpliterPipe.prototype.transform = function (value, args) {
+        var Spliter = args ? args : ' ';
+        return (value.split(Spliter)[1]) ? value.split(Spliter)[0] + "-" + value.split(Spliter)[1] : value;
+    };
+    StrSpliterPipe = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"])({
+            name: 'strSpliter'
+        })
+    ], StrSpliterPipe);
+    return StrSpliterPipe;
 }());
 
 
@@ -8033,7 +9306,7 @@ var RouteGuardService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    padding: .375rem .25rem;\r\n    font-size: 1rem;\r\n    line-height: 1.5;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: .25rem;\r\n    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;\r\n    position: relative;\r\n}\r\n\r\n.inputTypeNumber input, .inputTypeNumber select{\r\n    border: none;\r\n    outline: none;\r\n}\r\n\r\n.inputTypeNumber textarea{\r\n    border: none;\r\n    outline: none;\r\n    resize: none;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\ndiv.textarea{\r\n\r\n    min-height: 100px;\r\n}\r\n\r\ninput:valid + span:after, select:valid + span:after, textarea:valid + span:after {\r\n    content: '✓';\r\n    color: #26b72b;\r\n    padding-left: 5px;\r\n}\r\n\r\ninput:invalid + span:after, select:invalid + span:after,  textarea:invalid + span:after {\r\n    content: '✖';\r\n    color: #f00;\r\n    padding-left: 5px;\r\n}\r\n\r\ntextarea.note {\r\n    \r\n    text-align: right;\r\n    text-indent: 0px;\r\n    /* color: #26b72b; */\r\n    /* word-break: break-all; */\r\n    /* overflow: hidden; */\r\n    white-space: wrap;\r\n    box-sizing:border-box;\r\n    min-height: 40%;\r\n\tdirection:rtl;\r\n\tdisplay:inline;\r\n\tmin-height:30%;\r\n\tline-height:1.5;\r\n\tpadding:15px 15px 30px;\r\n\tborder-radius:3px;\r\n\tborder:1px solid #F7E98D;\r\n\tfont:13px Tahoma, cursive;\r\n\ttransition:box-shadow 0.5s ease;\r\n\tbox-shadow:0 4px 6px rgba(0,0,0,0.1);\r\n\tfont-smoothing:subpixel-antialiased;\r\n\tbackground:linear-gradient(#F9EFAF, #F7E98D);\r\n\tbackground:-webkit-linear-gradient(#F9EFAF, #F7E98D);\r\n}\r\n\r\na.googleFont {\r\n    text-decoration: none;\r\n    color: #495057;\r\n}\r\n\r\n.material-icons {\r\n    position: relative;\r\n    top: 5px;\r\n    color: #28a745;\r\n}\r\n\r\n.active .material-icons{\r\n    color: #ffc107;\r\n    text-decoration: underline;\r\n}"
+module.exports = "\r\n/*******//********/.inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    padding: .375rem .25rem;\r\n    font-size: 1rem;\r\n    line-height: 1.5;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: .25rem;\r\n    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;\r\n    position: relative;\r\n}.inputTypeNumber input, .inputTypeNumber select{\r\n    border: none;\r\n    outline: none;\r\n}.inputTypeNumber textarea{\r\n    border: none;\r\n    outline: none;\r\n    resize: none;\r\n    width: 100%;\r\n    height: 100%;\r\n}div.textarea{\r\n\r\n    min-height: 100px;\r\n}input:valid + span:after, select:valid + span:after, textarea:valid + span:after {\r\n    content: '✓';\r\n    color: #26b72b;\r\n    padding-left: 5px;\r\n}input:invalid + span:after, select:invalid + span:after,  textarea:invalid + span:after {\r\n    content: '✖';\r\n    color: #f00;\r\n    padding-left: 5px;\r\n}textarea.note {\r\n    \r\n    text-align: right;\r\n    text-indent: 0px;\r\n    /* color: #26b72b; */\r\n    /* word-break: break-all; */\r\n    /* overflow: hidden; */\r\n    white-space: wrap;\r\n    box-sizing:border-box;\r\n    min-height: 40%;\r\n\tdirection:rtl;\r\n\tdisplay:inline;\r\n\tmin-height:30%;\r\n\tline-height:1.5;\r\n\tpadding:15px 15px 30px;\r\n\tborder-radius:3px;\r\n\tborder:1px solid #F7E98D;\r\n\tfont:13px Tahoma, cursive;\r\n\ttransition:box-shadow 0.5s ease;\r\n\tbox-shadow:0 4px 6px rgba(0,0,0,0.1);\r\n\tfont-smoothing:subpixel-antialiased;\r\n\tbackground:linear-gradient(#F9EFAF, #F7E98D);\r\n\tbackground:-webkit-linear-gradient(#F9EFAF, #F7E98D);\r\n}a {\r\n    cursor: pointer;\r\n}a.googleFont {\r\n    text-decoration: none;\r\n    color: #495057;\r\n}.material-icons {\r\n    position: relative;\r\n    top: 5px;\r\n    color: #28a745;\r\n}.active .material-icons{\r\n    color: #ffc107;\r\n    text-decoration: underline;\r\n}"
 
 /***/ }),
 

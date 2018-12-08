@@ -43,6 +43,7 @@ Route::group([
 	// Route::post('getlogin', 'UserController@getLogin');
 	Route::post('store', 'UserController@store');
     Route::post('isauth', 'UserController@getUserLogged');
+    Route::delete('users/{id}', 'UserController@destroy');
 
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');

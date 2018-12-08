@@ -65,14 +65,14 @@ class GalleryTableSeeder extends Seeder
             
 
             $img = [
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace1.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace2.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace3.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace4.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace5.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace6.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace7.jpg",
-                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/galleries/palace8.jpg"
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace1.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace2.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace3.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace4.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace5.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace6.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace7.jpg",
+                "./assets/pages/costumers/" .$fixCbt."/".$fixCcn."/gallery/palace8.jpg"
 
             ];
             $vid = [
@@ -82,36 +82,11 @@ class GalleryTableSeeder extends Seeder
             $gal = [
                 "costumer_id" => $costumer->id,
                 "image" => json_encode($img),
-                 "video" => json_encode($vid)
+                "video" => json_encode($vid)
             ];
 
             Gallery::create($gal);
 
-            /* new end gallary*/
-
-            /*
-            for ($ii = 0; $ii < count($media); $ii++) {
-
-                $key = key($media[$ii]);
-                $value = $media[$ii][$key];
-                $gal = [];
-                if($value == "/video/km.mp4"){
-
-                    $vid = [
-                        // "costumer_id" => $costumer->id,
-                        "video" => $key . $fixCbt."/".$fixCcn.$value
-                    ];
-                    
-                }else{
-
-                    $gal = [
-                        // "costumer_id" => $costumer->id,
-                        "image" => $key . $fixCbt."/".$fixCcn.$value
-                    ];
-                }
-                Gallery::create(json_encode($gal));
-            }
-            */
         }
         
     }

@@ -15,7 +15,7 @@ class CreateCostumersTable extends Migration
     {
         Schema::create('costumers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->default(1);
+            $table->unsignedInteger('user_id');
             $table->string('company');
             $table->string('businessType');
             $table->string('loggo');
@@ -26,6 +26,11 @@ class CreateCostumersTable extends Migration
             $table->string('tel');
             $table->string('address');
             $table->text('deals');
+
+            $table->foreign('user_id')
+              ->references('id')->on('users')
+              ->onDelete('cascade');
+
             $table->timestamps();
         });
             // $table->integer('user_id')->default(1);

@@ -15,7 +15,6 @@ use Validator;
 
 class CostumersController extends Controller
 {
-    protected $dataUrl = "./assets/pages/costumers/";
     protected  $masseges = [
         "errors" => [],
         'success' => []
@@ -42,9 +41,9 @@ class CostumersController extends Controller
            "discription" => "אודות"
         ];
         protected $validateFiles = [
-        	'galleries' => "required|file|max:5000000|image|mimes:jpeg,bmp,png",
-        	'video' => 'required|file|max:6000000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime'
-        ];
+        	'galleries' => "required|file|max:5000000|image|mimes:png,jpeg,bmp",
+        	'video' => 'required|file|max:1000000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime'
+        ];//png, video/mp4,
     /**
      * Create a new controller instance.
      *
@@ -54,7 +53,7 @@ class CostumersController extends Controller
     {
         // $this->middleware('cors');
         // $this->middleware('auth:api', ['except' => ['getLogin']]);
-        $this->middleware('auth:api', ['only' => ['store','update']]);
+        $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
         $this->costumers = $coRepo;
     }
 
@@ -81,26 +80,45 @@ class CostumersController extends Controller
     public function store(Request $request){
 
         $reqsFils = $request->except(['token','formInputs']);
-        $reqsDetails = $request->only(['formInputs']);
-        $inputsDecoded = json_decode($reqsDetails['formInputs'],true);
-
+        $inputs = $request['formInputs'];
+        $inputsDecoded = json_decode($inputs,true);
+        // $inputs = $inputsDecoded->except('loggo');
+		$inputsExceptLoggo = collect($inputsDecoded)->except('loggo')->toArray();
+		
         /***** validatefiles before any tasks *****/
+        /***** check and return errors if any before download to disk *****/
+        $afterValInputs = $this->validateItems($inputsExceptLoggo,$this->formRoles);
         
-        $afterValFiles = $this->validatefiles($reqsFils,$inputsDecoded);
         
-        /***** return valadation errors if any *****/
-        if(! $afterValFiles){return response()->json($this->masseges,200);}
+        $afterValFiles = $this->validatefiles($reqsFils,true);
+
+        if(! $afterValFiles || ! $afterValInputs){
+        	$messages = $this->getMessages();
+        	return response()->json(["errors" => $messages],200);
+        }
         
         /***** handel form input before store into database *****/
+        /***** check and return errors if any  *****/
+
         $costumersDetails = $this->costumers->handelDetails($inputsDecoded);
 
-        /***** download files before store into database *****/
-        $files = $this->costumers->downloadFiles($reqsFils);
+        if(isset($costumersDetails["errors"]) && count($costumersDetails["errors"])){ 
+        	return response()->json($costumersDetails,200);
+        }
 
+        /***** download files before store into database *****/
         /***** check and return errors if any before store into database *****/
-        if(isset($costumersDetails["errors"]) && count($costumersDetails["errors"])){ return response()->json($costumersDetails,200);}
-        if(isset($files["errors"]) && count($files["errors"])) { return response()->json($files,200);}
-		//return response()->json(["massege" => "Ok, your content saved!"],200);
+        // return $reqsFils;
+        $files = $this->costumers->downloadFiles($reqsFils,$true = true);
+        
+        if(isset($files["errors"]) && count($files["errors"])){
+        	return response()->json(["errors" => $files['errors']],200);
+        }
+        
+        $files = collect($files)->except('loggo')->toArray();
+        $files['image'] = json_encode($files['image']);
+        $files['video'] = json_encode($files['video']);
+        // return $files;
         /***** store form inputs costumer into database *****/
         Costumer::create($costumersDetails);
         
@@ -114,71 +132,117 @@ class CostumersController extends Controller
         return empty($this->masseges["errors"])? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
     }
 
-    
-
-    public function update(UpdateCostumersRequest $request, $id){
-        //valdate
-        //$this->validate()
+    public function update(Request $request, $id){
         
-        //$method = request()->method();
+        /****** declare all variables *******/
+        $reqMethod = request()->isMethod('patch') || request()->isMethod('put');
+        $costumer = Costumer::find($id);
+        $user = auth()->user();
+        $same = ($costumer->user_id === $user->id)? true:false;
+        $reqsFils = $request->except(['token','_method', 'filesToDelete','formInputs']);
+        $filesTodelete = $request->only('filesToDelete');
 
-        if (request()->isMethod('patch') || request()->isMethod('put')) {
-
-            $req = request()->all();
-            $myRequest = [];
-            $newValRole = [];
-            $massegeSuccess = [];
-
-            foreach($req as $key => $value) {
-
-                if(! $this->formRoles[$key]) {
-                    return response()->json(['errors' => $key . " dos not exisst in our system"],200);
-                }
-
-                $myRequest[$key] = $value;
-                $newValRole[$key] = $this->formRoles[$key];
-                $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלח";
-
-            }
-        	// return response()->json(['masseges' => $myRequest],200);
-
-            $val = Validator::make($myRequest, $newValRole);
-            if ($val->fails()) {
-                
-                return response()->json(["errors" => $val->errors()],200);
-            }
-            
-            $costumer = Costumer::find($id);
-            if(isset($myRequest['email'])){
-            	$userEmailTeken = User::where('email', $myRequest['email'])->first();
-
-            	if(empty($userEmailTeken)){
-
-            		$costumer->user->update([
-                    	'email' => $myRequest['email']
-                	]);
-            	}else{
-        			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
-            	}
-                
-            }
-            $costumer->update($myRequest);
-            return response()->json(['success' => $massegeSuccess],200);
-        }else{
-            Costumer::find($id)->update($request->all());
+        /****** decode objects *******/
+        $fd = $filesTodelete? json_decode($request['filesToDelete'], true):null;
+        $formInputs = json_decode($request['formInputs']);
+        
+        /**** valadete before any task ****/
+        $afterValInputs = ($formInputs)? $this->validInputs($formInputs):null;
+        $afterValFiles = ($reqsFils)? $this->validatefiles($reqsFils): null;
+        
+        if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
+        	return response()->json(["errors" => $this->masseges["errors"][0]],200);
         }
-        return response()->json(["masseges" => 'success', 'costumer' => Costumer::find($id) ],200);
+        //if(! $afterValFiles && ! is_null($afterValFiles)){return response()->json($this->masseges,200);}
+        
+        /***** delete and update files *****/
+    	$fdFiles = $this->costumers->updateFiles($reqsFils, $costumer, $fd);
+    	return $fdFiles;
+        /**** return deleted and downloaded files errors if any || update success mesages ****/
+        if(isset($fdFiles['errors']) && count($fdFiles['errors'])){ 
+        	return response()->json(['errors' => $fdFiles['errors']]); 
+        }else{
+        	//return response()->json($fdFiles); 
+        	array_push($this->masseges['success'], $fdFiles);
+        }
+
+        /***** if we have input emeil we need to ensure to sync email of user too *****/
+        if(isset($myRequest['email'])){
+        	$userEmailTeken = User::where('email', $myRequest['email'])->first();
+
+        	if(empty($userEmailTeken)){
+
+        		//$costumer->user->update(['email' => $myRequest['email']]);
+        	}else{
+    			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
+        	}
+        }
+        // $costumer->update($myRequest);
+        
+    	// $messages = $this->getMessages();
+        return response()->json(['success' => $this->$masseges],200);
     }
 
-    public function delete(UpdateCostumersRequest $request, $id){
+    private function getMessages(){
+
+    	$messages = count($this->masseges['success'])? $this->masseges['success']:$this->masseges['errors'];
+    	$msgs = [];
+    	foreach ($messages as $key => $value) {
+    		# code...
+
+    		foreach ($value as $valKey => $valValue) {
+    			# code...
+    			if(! empty($value[$valKey])) $msgs[$valKey] = $valValue;
+    		}
+    		
+    	}
+    	return $msgs;
+    }
+
+    public function destroy(Request $request, $id){
+    	return $request;
+    	$imgs = Costumer::find($id)->gallery->image;
+    	$imgs = json_decode($imgs, true);
+    	$fd = json_decode($request['filesToDelete'], true);
+
+    	$delFiles = $this->costumers->delFromGal($imgs, $fd);
+        return ['success' => $delFiles['success']];
 
     }
 
-    private function validatefiles($reqsFils,$inputsDecoded){
+    private function validInputs($inputes){
 
+    	$myRequest = [];
+        $newValRole = [];
+        $massegeSuccess = [];
+       
+    	foreach($inputes as $key => $value) {
+
+            if(! $this->formRoles[$key]) {
+                return response()->json(['errors' => $key . " dos not exisst in our system"],200);
+            }
+
+            $myRequest[$key] = $value;
+            $newValRole[$key] = $this->formRoles[$key];
+            $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלח";
+
+            array_push($this->masseges["success"], [$key => array($massegeSuccess)]);
+
+        }
+    	
+        $val = $this->validateItems($myRequest, $newValRole);
+        
+        // array_push($this->masseges["success"], $massegeSuccess);
+        return $val;
+    }
+
+    private function validatefiles($reqsFils,$inputsDecoded = false){
+    	// return $reqsFils;
     	$filesTovalidate = [];
         $filesSize = 0;
-        $isValid = $this->validateInputs($inputsDecoded);
+        
+        $isValid = true;
+        // return true;
 
         foreach($reqsFils as $key => $value){
         	
@@ -187,34 +251,62 @@ class CostumersController extends Controller
         	$filesSize += filesize($value);
         }
         
-        if($filesSize > 6000000){
-        	array_push($this->masseges["errors"], ["filse" => array('size' => 'the files is greater then 6 mb')]);
+        if($sizeEx = $this->sizeGratherThen($filesSize)){
+        	array_push($this->masseges["errors"], ["files" => array(['size' => 'נפח הקבצים גדול מידי : ' . $sizeEx])]);
         	$isValid = false;
         }
-        if(count($reqsFils) < 5){
-        	array_push($this->masseges["errors"], ["filse" => array('min_files' => 'missing pramaters to create account')]);
+        if(count($reqsFils) < 5 && $inputsDecoded){
+        	array_push($this->masseges["errors"], ["files" => array(['min_files' => 'missing pramaters to create account'])]);
         	$isValid = false;
         } 
 
-        $valFiles = Validator::make($reqsFils, $filesTovalidate);
-        if ($valFiles->fails()) {
-            array_push($this->masseges["errors"],$valFiles->errors());
-            $isValid = false;
-        }
+        $valFiles = $this->validateItems($reqsFils, $filesTovalidate);
         
-        return $isValid;
+        return (!$valFiles) ?$valFiles:$isValid;
     }
 
     /***** validateInputsbefore any tasks *****/
-     private function validateInputs($reqsFils){
+     private function validateItems($reqItems, $ruls){
 
-    	$valFiles = Validator::make($reqsFils, $this->formRoles);
-
+    	$valFiles = Validator::make($reqItems, $ruls,[
+    		'mimetypes' => ":attribute " . " קובץ וידאו זה לא נתמך",
+    		'mimes' => ":attribute " . " קובץ תמונה זה לא נתמך"
+    	]);
+    	
         if($valFiles->fails()) {
-            
-            array_push($this->masseges["errors"],$valFiles->errors());
+            $msgs = $this->prityMessges($valFiles->errors());
+            array_push($this->masseges["errors"],$msgs);
             return false;
         }
         return true;
     }
+    private function prityMessges($messages){
+    	$msgs = [
+    		'gallery' => [],
+    		'loggo' => [],
+    		'video' => []
+    	];
+    	
+    	foreach ($messages->all() as $key => $value) {
+    		
+    		$exploded = explode('/', $value)[2];
+    		$fNname = explode($exploded.'/', $value)[1];
+			array_push($msgs[$exploded], [$exploded => $fNname]);
+			
+    	}
+    	return $msgs;
+    }
+
+	private function sizeGratherThen($size)
+	{
+	    
+	    $s = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+	    $e = floor(log($size, 1024));
+
+	    $roundedeSize = round($size/pow(1024, $e), 1, PHP_ROUND_HALF_EVEN);
+	    $pow = $size  > pow(1024, 6);
+
+	    return $pow? $roundedeSize.$s[$e]:false;
+	}
+
 }
