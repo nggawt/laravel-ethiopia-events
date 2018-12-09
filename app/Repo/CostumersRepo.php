@@ -94,7 +94,7 @@ class CostumersRepo
 
         $user = User::where('email',$inputs['email'])->first();
     	$compName = Costumer::where('company',$inputs['company'])->first();
-
+        $hasErrors = false;
     	$autUser = auth()->user();
     	$userisCostumer = $autUser->costumer;
         // return  $userisCostumer;
@@ -105,9 +105,10 @@ class CostumersRepo
     	    $inputs['deals'] =  "מבצעים בהמשך.";
 
     	}else{
-    	    array_push($this->masseges["errors"]['inputs'],  ["msg" => "sonthing went wrong with your dtails."]);
+    	    array_push($this->masseges["errors"]['inputs'],  ["auth-error" => "sonthing went wrong with your dtails."]);
+            $hasErrors = true;
     	}
-		return count($this->masseges["errors"]['inputs'])? $this->masseges:$inputs;
+		return ($hasErrors)? $this->masseges:$inputs;
     }
 
     protected function extractFileName($linkName, $file){
@@ -137,7 +138,7 @@ class CostumersRepo
                 //return ["msg" => $files];
         $hasErrors = false;
         
-        $filesExists = array_filter($files,function($v,$k){
+        /*$filesExists = array_filter($files,function($v,$k){
             
             $fileName = $this->extractFileName($k, $v);
             $fileExists = $this->fileExist($fileName['fullName'],$v);
@@ -151,12 +152,17 @@ class CostumersRepo
         },ARRAY_FILTER_USE_BOTH);
 
 
-        if(! $filesExists){
+        if(! $filesExists){*/
 
-            
             foreach($files as $key => $value){
                 
                 $fileName = $this->extractFileName($key, $value);
+                $fileExists = $this->fileExist($fileName['fullName'],$value);
+
+                if($fileExists){
+                    array_push($this->masseges["errors"][$fileName["target"]],  [$fileName['target'] => "הקובץ כבר קיים במערכת " .$fileName['name']]);
+                    continue;
+                }
 
                 // if($target === "galleries") array_push($downloadedFiles['image'], ['gallery' => $fileName]);
                 // if($target === "loggo") array_push($downloadedFiles['loggo'], ['loggo' => $fileName]);
@@ -183,14 +189,14 @@ class CostumersRepo
 
                 //Storage::disk('arc')->putFileAs('costumers', new File($value), $fileName);
                 //Storage::disk('arc')->put('/sysfiles/', $value);
-                //Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
-            }
+                Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
+            // }
 
-        }else{
-            $hasErrors = true;
         }
         // return ["myMsg" => $hasErrors, "errors" => $this->masseges["errors"]];
-        $msgSuccess = ! $hasErrors? $downloadedFiles['success'] = $this->masseges['success']:$downloadedFiles;
+        // $masseges = ! $hasErrors?  $this->masseges['success'] = :$downloadedFiles;
+        $this->masseges['downloaded'] = $downloadedFiles;
+
         // return $this->masseges;
         return $this->masseges;//$hasErrors? $this->masseges: $msgSuccess;
     }

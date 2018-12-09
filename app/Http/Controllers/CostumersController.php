@@ -87,14 +87,14 @@ class CostumersController extends Controller
 		
         /***** validatefiles before any tasks *****/
         /***** check and return errors if any before download to disk *****/
-        $afterValInputs = $this->validateItems($inputsExceptLoggo,$this->formRoles);
+        $afterValInputs = $this->validInputs($inputsExceptLoggo);
         
         
         $afterValFiles = $this->validatefiles($reqsFils,true);
 
         if(! $afterValFiles || ! $afterValInputs){
-        	$messages = $this->getMessages();
-        	return response()->json(["errors" => $messages],200);
+        	//$messages = $this->getMessages($this->masseges['errors'], $this->masseges['success']);
+        	return response()->json(["errors" => $this->masseges],200);
         }
         
         /***** handel form input before store into database *****/
@@ -111,25 +111,34 @@ class CostumersController extends Controller
         // return $reqsFils;
         $files = $this->costumers->downloadFiles($reqsFils,$true = true);
         
-        if(isset($files["errors"]) && count($files["errors"])){
+        /*if(isset($files["errors"]) && count($files["errors"])){
         	return response()->json(["errors" => $files['errors']],200);
         }
-        
-        $files = collect($files)->except('loggo')->toArray();
-        $files['image'] = json_encode($files['image']);
-        $files['video'] = json_encode($files['video']);
+        */
+        // $filesTsave = [];
         // return $files;
+        $filesTsave['image'] = json_encode($files['downloaded']['image']);
+        $filesTsave['video'] = json_encode($files['downloaded']['video']);
+        
         /***** store form inputs costumer into database *****/
         Costumer::create($costumersDetails);
         
         sleep(1);
         $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
-        $files['costumer_id'] = $costumer_id;
+        $filesTsave['costumer_id'] = $costumer_id;
         
         /***** store form filse costumer into database *****/
-        Gallery::create($files);
+        Gallery::create($filesTsave);
 
-        return empty($this->masseges["errors"])? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
+        /******* get and send back messages ******/
+        $filesErrors = collect($files)->only(['errors', 'success']);
+        $fileErrs['errors'] = collect($filesErrors['errors'])->except('inputs');
+
+        $messagesTosend['success'] = $this->getMessages($this->masseges['success'], $filesErrors['success']);
+        $messagesTosend['errors'] = $this->getMessages($this->masseges['errors'], $fileErrs['errors']);
+
+        return response()->json($messagesTosend,200);
+        // return empty($this->masseges["errors"])? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
     }
 
     public function update(Request $request, $id){
@@ -183,20 +192,46 @@ class CostumersController extends Controller
         return response()->json(['success' => $this->$masseges],200);
     }
 
-    private function getMessages(){
+    private function getMessages($thisMessages, $currentMsgs){
 
-    	$messages = count($this->masseges['success'])? $this->masseges['success']:$this->masseges['errors'];
+    	$countSuccess = count($thisMessages);
     	$msgs = [];
-    	foreach ($messages as $key => $value) {
-    		# code...
-
-    		foreach ($value as $valKey => $valValue) {
-    			# code...
-    			if(! empty($value[$valKey])) $msgs[$valKey] = $valValue;
-    		}
+    	$obToLoop = count($currentMsgs)? $currentMsgs: count($thisMessages) ? $thisMessages : false;
+    	// return $thisMessages ;
+    	foreach ($currentMsgs as $key => $value) {
     		
+    		if(count($value)) $msgs[$key] = $value;
+
+    		if(count($currentMsgs) && $countSuccess){
+
+    			foreach ($thisMessages as $valKey => $obToMerge) {
+
+    				(! isset($msgs[$valKey]) && count($thisMessages[$valKey]))? $msgs[$valKey] = $thisMessages[$valKey]:(count($thisMessages[$valKey]) && $thisMessages[$valKey][0] === $msgs[$valKey][0]) ? "":array_push($msgs[$valKey], $thisMessages[$valKey]);
+
+    				/*$msg = $this->getMsg($obToMerge);
+
+    				$arrayKey = array_keys($msg);
+    				$nameKey = $arrayKey[0];
+
+    				(! isset($msgs[$nameKey]) && ! array_key_exists($nameKey, $msgs))? $msgs[$nameKey] = $msg[$nameKey]: ($msgs[$nameKey][0] === $msg[$nameKey][0])? "":array_push($msgs[$nameKey], $msg[$nameKey]);*/
+    			}
+    		}else{
+    			// $msgs = (count($currentMsgs))? $currentMsgs: $countSuccess? $thisMessages: [];
+    		}
+    		// $msgs['count']  = $count;
     	}
     	return $msgs;
+    }
+    private function getMsg($obToMerge)
+    {
+    	$msgs = [];
+    	foreach ($obToMerge as $keys => $keyValue) {
+    					//return $valValue;
+			(count($obToMerge[$keys]) && ! isset($msgs[$keys]))? $msgs[$keys] = $obToMerge[$keys]:
+			 isset($msgs[$keys])? array_push($msgs[$keys], $obToMerge[$keys]): "";
+			
+		}
+		return $msgs;
     }
 
     public function destroy(Request $request, $id){
@@ -225,8 +260,8 @@ class CostumersController extends Controller
             $myRequest[$key] = $value;
             $newValRole[$key] = $this->formRoles[$key];
             $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלח";
-
-            array_push($this->masseges["success"], [$key => array($massegeSuccess)]);
+            if(! isset($this->masseges["success"][$key])) $this->masseges["success"][$key] = [];
+            array_push($this->masseges["success"][$key], [$key => $massegeSuccess[$key]]);
 
         }
     	
