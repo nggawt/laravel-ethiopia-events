@@ -23,12 +23,12 @@ class CostumersController extends Controller
     protected $formRoles = [
             "company" => "required|min:3",
             "businessType" => "required|min:3",
-            "title" => "required|min:3",
+            "title" => "required|min:4",
             "contact" => "required|min:3",
             "email" => "required|email",
             "tel" => "required|numeric|min:8",
-            "address" => "required|min:3",
-            "discription" => "required|min:6"
+            "address" => "required|min:8",
+            "discription" => "required|min:15"
         ];
 	protected  $convetedMasseges = [
            "company" => "שם חברה",
@@ -41,8 +41,8 @@ class CostumersController extends Controller
            "discription" => "אודות"
         ];
         protected $validateFiles = [
-        	'galleries' => "required|file|max:5000000|image|mimes:png,jpeg,bmp",
-        	'video' => 'required|file|max:1000000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime'
+        	'galleries' => "required|file|max:5000000|image|mimes:jpeg,bmp",
+        	'video' => 'required|file|max:1000000|mimetypes:video/avi,video/mpeg,video/quicktime'
         ];//png, video/mp4,
     /**
      * Create a new controller instance.
@@ -93,8 +93,8 @@ class CostumersController extends Controller
         $afterValFiles = $this->validatefiles($reqsFils,true);
 
         if(! $afterValFiles || ! $afterValInputs){
-        	//$messages = $this->getMessages($this->masseges['errors'], $this->masseges['success']);
-        	return response()->json(["errors" => $this->masseges],200);
+        	// $valMessages = $this->whileMsgs($this->masseges['errors'], $this->masseges['success']);
+        	return response()->json(collect($this->masseges)->except('success'),200);
         }
         
         /***** handel form input before store into database *****/
@@ -102,13 +102,13 @@ class CostumersController extends Controller
 
         $costumersDetails = $this->costumers->handelDetails($inputsDecoded);
 
-        if(isset($costumersDetails["errors"]) && count($costumersDetails["errors"])){ 
-        	return response()->json($costumersDetails,200);
+        if(isset($costumersDetails["errors"])){ 
+        	return response()->json(collect($costumersDetails['errors'])->only('inputs'),200);
         }
 
         /***** download files before store into database *****/
         /***** check and return errors if any before store into database *****/
-        // return $reqsFils;
+        
         $files = $this->costumers->downloadFiles($reqsFils,$true = true);
         
         /*if(isset($files["errors"]) && count($files["errors"])){
@@ -121,21 +121,21 @@ class CostumersController extends Controller
         $filesTsave['video'] = json_encode($files['downloaded']['video']);
         
         /***** store form inputs costumer into database *****/
-        Costumer::create($costumersDetails);
+        /*Costumer::create($costumersDetails);
         
         sleep(1);
         $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
-        $filesTsave['costumer_id'] = $costumer_id;
+        $filesTsave['costumer_id'] = $costumer_id;*/
         
         /***** store form filse costumer into database *****/
-        Gallery::create($filesTsave);
+       // Gallery::create($filesTsave);
 
         /******* get and send back messages ******/
         $filesErrors = collect($files)->only(['errors', 'success']);
         $fileErrs['errors'] = collect($filesErrors['errors'])->except('inputs');
 
-        $messagesTosend['success'] = $this->getMessages($this->masseges['success'], $filesErrors['success']);
-        $messagesTosend['errors'] = $this->getMessages($this->masseges['errors'], $fileErrs['errors']);
+        $messagesTosend['errors'] = $this->whileMsgs($this->masseges['errors'], $fileErrs['errors']);
+        $messagesTosend['success'] = $this->whileMsgs($this->masseges['success'], $filesErrors['success']);
 
         return response()->json($messagesTosend,200);
         // return empty($this->masseges["errors"])? response()->json(["massege" => "Ok, your content saved!"],200) : response()->json($this->masseges,200);
@@ -153,75 +153,104 @@ class CostumersController extends Controller
 
         /****** decode objects *******/
         $fd = $filesTodelete? json_decode($request['filesToDelete'], true):null;
-        $formInputs = json_decode($request['formInputs']);
+        $formInputs = json_decode($request['formInputs'], true);
         
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs($formInputs):null;
         $afterValFiles = ($reqsFils)? $this->validatefiles($reqsFils): null;
         
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
-        	return response()->json(["errors" => $this->masseges["errors"][0]],200);
+
+        	return response()->json(collect($this->masseges)->except('success'),200);
         }
         //if(! $afterValFiles && ! is_null($afterValFiles)){return response()->json($this->masseges,200);}
         
         /***** delete and update files *****/
-    	$fdFiles = $this->costumers->updateFiles($reqsFils, $costumer, $fd);
-    	return $fdFiles;
+    	$UpFiles = ((isset($reqsFils) && ! empty($reqsFils)) || (isset($reqsFils) && ! empty($fd))) ? $this->costumers->updateFiles($reqsFils, $costumer, $fd):[];
+        // return ["hhhjj" => $UpFiles];
+    	
         /**** return deleted and downloaded files errors if any || update success mesages ****/
-        if(isset($fdFiles['errors']) && count($fdFiles['errors'])){ 
-        	return response()->json(['errors' => $fdFiles['errors']]); 
+
+        /*if(isset($UpFiles['errors']) && count($UpFiles['errors'])){ 
+        	return response()->json(['errors' => $UpFiles['errors']]); 
         }else{
-        	//return response()->json($fdFiles); 
-        	array_push($this->masseges['success'], $fdFiles);
+        	//return response()->json($UpFiles); 
+        	array_push($this->masseges['success'], $UpFiles);
         }
+*/
+        
+        $formInputs = collect($formInputs)->except('company')->toArray();
+        $inputsIsValidated = (isset($formInputs) && count($formInputs));
 
         /***** if we have input emeil we need to ensure to sync email of user too *****/
-        if(isset($myRequest['email'])){
-        	$userEmailTeken = User::where('email', $myRequest['email'])->first();
+        if($inputsIsValidated && isset($formInputs['email'])){
+        	$userEmailTeken = User::where('email', $formInputs['email'])->first();
 
         	if(empty($userEmailTeken)){
 
-        		//$costumer->user->update(['email' => $myRequest['email']]);
+        		//$costumer->user->update(['email' => $formInputs['email']]);
         	}else{
     			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
         	}
         }
-        // $costumer->update($myRequest);
+        if($inputsIsValidated) $costumer->update($formInputs);
         
-    	// $messages = $this->getMessages();
-        return response()->json(['success' => $this->$masseges],200);
+
+        $messagesTosend['errors'] = $this->whileMsgs($this->masseges['errors'], $UpFiles['errors']);
+        $messagesTosend['success'] = $this->whileMsgs($this->masseges['success'], $UpFiles['success']);
+
+        return response()->json($messagesTosend,200);
     }
 
-    private function getMessages($thisMessages, $currentMsgs){
+    private function whileMsgs($firstMsgs, $secondMsgs){
 
-    	$countSuccess = count($thisMessages);
+    	$msgsArr = [
+    		$firstMsgs,
+    		$secondMsgs
+    	];
+    	$msgsReturn = [];
+
+    	if(empty($firstMsgs)) return $secondMsgs;
+    	
+    	while ($msgsCurrent = current($msgsArr)) {
+
+    		foreach ($msgsCurrent as $key => $value) {
+    			
+    			if(count($msgsCurrent[$key])){
+
+    				(isset($msgsReturn[$key]) && count($msgsReturn[$key]))? array_push($msgsReturn[$key], $msgsCurrent[$key]): $msgsReturn[$key] = $msgsCurrent[$key];
+    			}
+    		}
+    		next($msgsArr);
+    	}
+
+    	return $msgsReturn;
+    }
+
+    /*private function getMessages($firstArgMsgs, $secondArgMsgs){
+
+    	$countArgFirstMsgs = count($firstArgMsgs);
+    	$countArgSecondMsgs = count($secondArgMsgs);
     	$msgs = [];
-    	$obToLoop = count($currentMsgs)? $currentMsgs: count($thisMessages) ? $thisMessages : false;
-    	// return $thisMessages ;
-    	foreach ($currentMsgs as $key => $value) {
+    	
+    	
+    	foreach ($secondArgMsgs as $key => $value) {
     		
     		if(count($value)) $msgs[$key] = $value;
 
-    		if(count($currentMsgs) && $countSuccess){
+    		if(count($secondArgMsgs) && $countArgFirstMsgs){
 
-    			foreach ($thisMessages as $valKey => $obToMerge) {
+    			foreach ($firstArgMsgs as $valKey => $obToMerge) {
 
-    				(! isset($msgs[$valKey]) && count($thisMessages[$valKey]))? $msgs[$valKey] = $thisMessages[$valKey]:(count($thisMessages[$valKey]) && $thisMessages[$valKey][0] === $msgs[$valKey][0]) ? "":array_push($msgs[$valKey], $thisMessages[$valKey]);
-
-    				/*$msg = $this->getMsg($obToMerge);
-
-    				$arrayKey = array_keys($msg);
-    				$nameKey = $arrayKey[0];
-
-    				(! isset($msgs[$nameKey]) && ! array_key_exists($nameKey, $msgs))? $msgs[$nameKey] = $msg[$nameKey]: ($msgs[$nameKey][0] === $msg[$nameKey][0])? "":array_push($msgs[$nameKey], $msg[$nameKey]);*/
+    				(! isset($msgs[$valKey]) && count($firstArgMsgs[$valKey]))? $msgs[$valKey] = $firstArgMsgs[$valKey]:
+    				(count($firstArgMsgs[$valKey]) && $firstArgMsgs[$valKey][0] === $msgs[$valKey][0]) ? "":
+    				array_push($msgs[$valKey], $firstArgMsgs[$valKey]);
     			}
-    		}else{
-    			// $msgs = (count($currentMsgs))? $currentMsgs: $countSuccess? $thisMessages: [];
     		}
-    		// $msgs['count']  = $count;
     	}
     	return $msgs;
     }
+
     private function getMsg($obToMerge)
     {
     	$msgs = [];
@@ -232,7 +261,7 @@ class CostumersController extends Controller
 			
 		}
 		return $msgs;
-    }
+    }*/
 
     public function destroy(Request $request, $id){
     	return $request;
@@ -259,7 +288,7 @@ class CostumersController extends Controller
 
             $myRequest[$key] = $value;
             $newValRole[$key] = $this->formRoles[$key];
-            $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלח";
+            $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלחה.";
             if(! isset($this->masseges["success"][$key])) $this->masseges["success"][$key] = [];
             array_push($this->masseges["success"][$key], [$key => $massegeSuccess[$key]]);
 
@@ -309,28 +338,50 @@ class CostumersController extends Controller
     	]);
     	
         if($valFiles->fails()) {
-            $msgs = $this->prityMessges($valFiles->errors());
-            array_push($this->masseges["errors"],$msgs);
+            $msgs = $this->prityMessges($valFiles->errors()->all());
+            // $msgs = $valFiles->errors()->all();
+            //$val = $this->whileMsgs($msgs[0], $msgs);
+            // array_push($this->masseges["errors"], $valFiles->errors()->all());
             return false;
         }
         return true;
     }
+
     private function prityMessges($messages){
-    	$msgs = [
-    		'gallery' => [],
-    		'loggo' => [],
-    		'video' => []
-    	];
-    	
-    	foreach ($messages->all() as $key => $value) {
+
+
+		foreach ($messages as $key => $value) {
+		
+    		$filesTarget = (strpos($value , 'gallery') !== false)? 'gallery': (strpos($value , 'loggo') !== false)? 'loggo': (strpos($value , 'video') !== false)? 'video':false;
+
+    		$target = false;
+
+    		$inputsTarget = (strpos($value , 'target=') !== false)? explode('target=', $value)[1]:false;
+
+    		if($filesTarget){
+
+    			$target = explode('/', $value)[2];
+    			$fNname = explode($target.'/', $value)[1];
+    			
+    		}else if($inputsTarget){
+    			
+    			$target = explode(' ', $inputsTarget)[0];
+    			$fNname = explode($target.' ', $value)[1];
+    			if(isset($this->masseges['success'][$target])) unset($this->masseges['success'][$target]);
+    		}else{
+    			$target = "שגיאה";
+    			$fNname = " שגיאה בלתי צפוייה בדוק ערכים שנשלחו";
+    		}
+
     		
-    		$exploded = explode('/', $value)[2];
-    		$fNname = explode($exploded.'/', $value)[1];
-			array_push($msgs[$exploded], [$exploded => $fNname]);
-			
+    		$err = [$target => $fNname];
+
+			if(! isset($this->masseges["errors"][$target])) $this->masseges["errors"][$target] = [];
+			array_push($this->masseges["errors"][$target],$err);
     	}
-    	return $msgs;
-    }
+	}
+	
+    	
 
 	private function sizeGratherThen($size)
 	{

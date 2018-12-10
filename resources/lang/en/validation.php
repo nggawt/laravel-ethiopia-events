@@ -124,39 +124,43 @@ return [
     |
     */
 
-    'custom' => [
+'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
         'email' => [
-            "required" => "שדה אימייל חובה",
-            'email' => "שדה האימייל חייב להתאים לתבנית האימייל",
+            "required" => " target=:attribute שדה אימייל חובה",
+            'email' => " target=:attribute שדה האימייל חייב להתאים לתבנית האימייל",
             
         ],
         "company" => [
-            'min' => 'שם חברה חייב להכיל לפחות :min אותיות',
-            'required' => " שדה שם חברה  חובה ",
+            'min' => ' target=:attribute שם חברה חייב להכיל לפחות :min אותיות',
+            'required' => " target=:attribute  שדה שם חברה  חובה ",
         ],
         "businessType" => [
-            'required' => "שדה שם העסק חובה.",
-            'min' => "שם העסק חייב להכיל לפחות :min אותיות",
+            'required' => " target=:attribute שדה שם העסק חובה.",
+            'min' => "target=:attribute שם העסק חייב להכיל לפחות :min אותיות",
         ],
         "contact" => [
-            'required' =>  "שדה איש קשר חובה.",
-            'min' =>  "איש קשר חייב להכיל :min אותיות.",
+            'required' =>  " target=:attribute שדה איש קשר חובה.",
+            'min' =>  " target=:attribute איש קשר חייב להכיל :min אותיות.",
+        ],
+        "title" => [
+            'required' => " target=:attribute שדה תיאור או כותרת החברה חובה",
+            'min' =>  " target=:attribute תיאור או כותרת החברה חייב להכיל לפחות :min אותיות"
         ],
         "tel" => [
-            'required' =>  "שדה פלאפון",
-            'integer' =>  "שדה הפלאפון חייב להכיל מספרים",
-            'min' => "שדה פלאפון חייב להכיל :min אותיות.",
+            'required' =>  " target=:attribute שדה פלאפון חובה",
+            'integer' =>  " target=:attribute שדה הפלאפון חייב להכיל ספרים",
+            'min' => " target=:attribute שדה פלאפון חייב להכיל :min אותיות.",
         ],
         "address" => [
-            'required' => "שדה כתובת חובה.",
-            'min' => "שדה כתובת חייב להכיל לפחות :min אותיות.",
+            'required' => "target=:attribute שדה כתובת חובה.",
+            'min' => " target=:attribute שדה כתובת חייב להכיל לפחות :min אותיות.",
         ],
         "discription" => [
-            'required' => "שדה אודות החברה חובה",
-            'min' =>  "אודות החברה חייב להכיל לפחות :min אותיות"
+            'required' => " target=:attribute שדה אודות החברה חובה",
+            'min' =>  " target=:attribute אודות החברה חייב להכיל לפחות :min אותיות"
         ]
     ],
 
@@ -171,7 +175,9 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'businessType' => 'businessType'
+    ],
 
 ];
 /*

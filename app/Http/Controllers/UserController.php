@@ -96,7 +96,7 @@ class UserController extends Controller
 
         /***** validate user and delete*****/
         if($authUser->id == $id && $authUser->email == $request['email']){
-            $user->delete();
+            // $user->delete();
             return response()->json(["message" => "user was deleted!"],200);
         }
         return response()->json(['error' => 'Unauthorized'], 401);

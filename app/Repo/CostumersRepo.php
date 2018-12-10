@@ -78,8 +78,8 @@ class CostumersRepo
                 ],
 
                 "gallery" => [
-                    'image' => $imgs?json_decode($imgs):null,
-                    'video' => $vids?json_decode($vids):null
+                    'image' => $imgs?json_decode($imgs):[],
+                    'video' => $vids?json_decode($vids):[]
                 ]
             ];
             
@@ -105,7 +105,7 @@ class CostumersRepo
     	    $inputs['deals'] =  "מבצעים בהמשך.";
 
     	}else{
-    	    array_push($this->masseges["errors"]['inputs'],  ["auth-error" => "sonthing went wrong with your dtails."]);
+    	    array_push($this->masseges["errors"]['inputs'],  ["auth-error" => "somthing went wrong with your request."]);
             $hasErrors = true;
     	}
 		return ($hasErrors)? $this->masseges:$inputs;
@@ -135,70 +135,43 @@ class CostumersRepo
                     'loggo' => [],
                     'video' => []
                 ];
-                //return ["msg" => $files];
-        $hasErrors = false;
-        
-        /*$filesExists = array_filter($files,function($v,$k){
+              
+        foreach($files as $key => $value){
             
-            $fileName = $this->extractFileName($k, $v);
-            $fileExists = $this->fileExist($fileName['fullName'],$v);
-            
+            $fileName = $this->extractFileName($key, $value);
+            $fileExists = $this->fileExist($fileName['fullName'],$value);
+
             if($fileExists){
                 array_push($this->masseges["errors"][$fileName["target"]],  [$fileName['target'] => "הקובץ כבר קיים במערכת " .$fileName['name']]);
+                continue;
             }
 
-            return $fileExists;
+
+            if($fileName["target"] === "gallery"){
+                array_push($downloadedFiles['image'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['gallery'], ['gallery' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            }
             
-        },ARRAY_FILTER_USE_BOTH);
+               
+            if($fileName["target"] === "loggo"){
+                array_push($downloadedFiles['loggo'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['loggo'], ['loggo' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            }
+            
+            if($fileName["target"] === "video"){
+                array_push($downloadedFiles['video'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['video'], ['video' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            } 
 
-
-        if(! $filesExists){*/
-
-            foreach($files as $key => $value){
-                
-                $fileName = $this->extractFileName($key, $value);
-                $fileExists = $this->fileExist($fileName['fullName'],$value);
-
-                if($fileExists){
-                    array_push($this->masseges["errors"][$fileName["target"]],  [$fileName['target'] => "הקובץ כבר קיים במערכת " .$fileName['name']]);
-                    continue;
-                }
-
-                // if($target === "galleries") array_push($downloadedFiles['image'], ['gallery' => $fileName]);
-                // if($target === "loggo") array_push($downloadedFiles['loggo'], ['loggo' => $fileName]);
-                // if($target === "video") array_push($downloadedFiles['video'], ['video' => $fileName]);
-
-                //return Storage::putFileAs('/public/', new File($value), $fileName);
-                
-
-                if($fileName["target"] === "gallery"){
-                    array_push($downloadedFiles['image'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                    array_push($this->masseges['success']['gallery'], ['gallery' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
-                }
-                
-                   
-                if($fileName["target"] === "loggo"){
-                    array_push($downloadedFiles['loggo'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                    array_push($this->masseges['success']['loggo'], ['loggo' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
-                }
-                
-                if($fileName["target"] === "video"){
-                    array_push($downloadedFiles['video'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                    array_push($this->masseges['success']['video'], ['video' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
-                } 
-
-                //Storage::disk('arc')->putFileAs('costumers', new File($value), $fileName);
-                //Storage::disk('arc')->put('/sysfiles/', $value);
-                Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
-            // }
-
+            //Storage::disk('arc')->putFileAs('costumers', new File($value), $fileName);
+            //Storage::disk('arc')->put('/sysfiles/', $value);
+            Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
+            
         }
-        // return ["myMsg" => $hasErrors, "errors" => $this->masseges["errors"]];
-        // $masseges = ! $hasErrors?  $this->masseges['success'] = :$downloadedFiles;
+        
         $this->masseges['downloaded'] = $downloadedFiles;
 
-        // return $this->masseges;
-        return $this->masseges;//$hasErrors? $this->masseges: $msgSuccess;
+        return $this->masseges;
     }
 
     public function updateFiles($files, $customer, $filesToDelete = false){
@@ -218,7 +191,7 @@ class CostumersRepo
                     
         foreach ($files as $keyFile => $fileObj) {
             # code...
-            
+            // return $files ;
             $fileNameEx = $keyFile.'.'. ($fileObj)->extension();
             $fileName = $fileNameEx;
             $fullName = $this->dataUrl . $fileNameEx;
@@ -232,15 +205,14 @@ class CostumersRepo
                 if($df && ! $fileExists){
 
                     $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    $item = isset($dl["errors"]) && count($dl["errors"])? false: $dl['loggo'][0];
-                    if(! $item) {
-                        // return ["loggo" => "loggo didnt passed the test"];
-                        //return ["loggo" => $this->masseges["errors"]];
+                    $downloaded = collect($dl)->only('downloaded');
 
-                        //array_push($this->masseges["errors"] = ["loggo" => $dl["errors"][0]]);
-                        //array_push($this->masseges['errors'], ["loggo" => "error ocurs with loggo file"]);
-                        continue;
-                    }
+                    $item = isset($downloaded["loggo"]) && count($downloaded["loggo"])? $downloaded["loggo"]: false;
+                    if(! $item) { continue;}
+
+                    //$customer->loggo = $item;
+                    //$gals->save();
+                    //Storage::delete($loggo);
 
                     array_push($downloadedFiles['loggo'], $item);
                     unset($files[$keyFile]);
@@ -252,18 +224,19 @@ class CostumersRepo
                 }
             }
             if($this->strContaines($keyFile, 'video') && $fDelete){
+
                 $fn = explode('video/',  $video[0])[1];
                 $df = in_array($video[0], $fDelete);
                 
                 if($df && ! $fileExists){
+
                     $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    $item = isset($dl["errors"]) && count($dl["errors"])? false: $dl['video'][0];
-                    if(! $item) {
-                        // array_push($this->masseges["errors"], ["video" => $dl["errors"][0]]);
-                        // array_push($this->masseges['errors'], ["video" => "error ocurs with the file"]);
-                        continue;
-                    }
-                    // if($item) $gals->video = json_encode($item);
+                    $downloaded = collect($dl)->only('downloaded');
+
+                    $item = isset($downloaded["video"]) && count($downloaded["video"])? $downloaded["video"]: false;
+                    if(! $item) { continue;}
+
+                    //$gals->video = json_encode($item);
                     //$gals->save();
                     //Storage::delete($video);
                     array_push($downloadedFiles['video'], $item);
@@ -280,15 +253,16 @@ class CostumersRepo
             if($this->strContaines($keyFile, 'gallery')){
 
                 if(! $fileExists){
+
                     $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    // return $dl;
-                    $galItem = isset($dl["errors"]) && count($dl["errors"])? false: $dl['gallery'][0];
-                    if(! $galItem) {
-                        // array_push($this->masseges["errors"], ["gallery" => $dl]);
-                        // array_push($this->masseges['errors']["gallery"], ["gallery" => "error ocurs with the file"]);
-                        continue;
-                    }
-                    array_push($downloadedFiles['image'], $galItem);
+                    $downloaded = collect($dl)->only('downloaded');
+
+                    $item = isset($downloaded["image"]) && count($downloaded["image"])? $downloaded["image"]: false;
+                    if(! $item) { continue;}
+
+                    
+                    array_push($downloadedFiles['image'], $item);
+                    array_push($this->masseges['success']['gallery'], $galItem);
                     unset($files[$keyFile]);
                     //array_push($this->masseges['success']['gallery'], $galItem);
                 }
@@ -298,9 +272,9 @@ class CostumersRepo
         $df =  $fDelete? count($fDelete):false;
         $count = count($imgs) > 2;
         
-        if($count && $df && empty($this->masseges["errors"])){
+        if($count && $df){
             
-            $dlFiles = $this->delFromGal($imgs, $fDelete, $downloadedFiles);
+            $dlFiles = $this->delFromGal($imgs, $fDelete, count($downloadedFiles['image']));
 
             $imgs = array_merge($dlFiles,$downloadedFiles['image']);
             //$gals['image'] = json_encode($imgs);
@@ -313,25 +287,30 @@ class CostumersRepo
 
 
     public function delFromGal($imgs, $fDelete, $downloadedFiles = false){
+        $fd = $fDelete;
+        $galImgs = $imgs;
 
-        foreach ($imgs as $key => $img) {
+        foreach ($galImgs as $key => $img) {
                 
             $fileName = explode('gallery/', $img)[1];
             $fileExists = $this->fileExist($img);
-            $inarr = in_array($img, $fDelete);
-            $imgCount = $downloadedFiles? (count($downloadedFiles['image']) + count($imgs)) > 2: count($imgs) > 3;
+            $inarr = in_array($img, $fd);
+            $imgCount = (int) $downloadedFiles? ((int) count($downloadedFiles) + count($galImgs)) > 2: count($galImgs) > 3;
 
             if($inarr && $imgCount){
                 //Storage::delete($img);
-                $fDelete = array_diff($fDelete,array($img));
-                unset($imgs[$key]);
+                $fd = array_diff($fd,array($img));
+                unset($galImgs[$key]);
                 array_push($this->masseges['success']['gallery'], ['deletedFiles' => $fileName]);
             }else{
-                //array_push($this->masseges['errors'], ["gallery" => "error ocurs with the file name ". $fileName]);
+                break;
+                //array_push($this->masseges['errors']['gallery'], ["gallery" => "error ocurs with the file name ". $fileName . " in_array ". $inarr ." imgcount ". count($galImgs)]);
             }
         }
-        return $downloadedFiles? $imgs: ['remain' => $imgs, 'success' => $this->masseges['success']];
+
+        return $galImgs;
     }
+
     protected function strContaines($h, $n){
         return (strpos($h, $n) !== false)? true:false;
     }
