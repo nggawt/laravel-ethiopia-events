@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Repo;
-class CostumersProvider extends ServiceProvider
+class CustomersProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -23,8 +23,8 @@ class CostumersProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(CostumersRepo::class, function($app){
-            return new CostumersRepo();
+        $this->app->bind(CustomersRepo::class, function($app){
+            return new CustomersRepo();
         });
     }
 }

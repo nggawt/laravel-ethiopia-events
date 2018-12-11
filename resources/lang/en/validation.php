@@ -181,7 +181,7 @@ return [
 
 ];
 /*
-$costumErrorMasseges = [
+$customerrorMasseges = [
     'company.min' => 'שם חברה חייב להכיל לפחות :min אותיות',
     'company.required' => " שדה שם חברה  חובה ",
     'email.required' => "שדה האימייל חובה",

@@ -1,8 +1,8 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-costumers-halls-halls-module"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-customers-halls-halls-module"],{
 
-/***/ "./src/app/costumers/form-files-proccesor.service.ts":
+/***/ "./src/app/customers/form-files-proccesor.service.ts":
 /*!***********************************************************!*\
-  !*** ./src/app/costumers/form-files-proccesor.service.ts ***!
+  !*** ./src/app/customers/form-files-proccesor.service.ts ***!
   \***********************************************************/
 /*! exports provided: FormFilesProccesorService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -142,7 +142,7 @@ var FormFilesProccesorService = /** @class */ (function () {
         itemObj['theElem'] = elem;
         return itemObj;
     };
-    FormFilesProccesorService.prototype.handelInputFiles = function (items, costumer, delFiles, existesFiles) {
+    FormFilesProccesorService.prototype.handelInputFiles = function (items, customer, delFiles, existesFiles) {
         var input = new FormData();
         var filesToSend = {
             toUpdate: [],
@@ -158,7 +158,7 @@ var FormFilesProccesorService = /** @class */ (function () {
         var isT = true;
         for (var _i = 0, items_1 = items; _i < items_1.length; _i++) {
             var ii = items_1[_i];
-            var extractTargetName = this.getUrl(costumer) + "/" + ii.target + "/" + ii.name.split('.')[0];
+            var extractTargetName = this.getUrl(customer) + "/" + ii.target + "/" + ii.name.split('.')[0];
             if (ii.target === "galleries") {
                 galFiles['imgs'].push(ii);
             }
@@ -183,9 +183,9 @@ var FormFilesProccesorService = /** @class */ (function () {
             toSend: filesToSend
         };
     };
-    FormFilesProccesorService.prototype.getUrl = function (costumer) {
-        var company = (costumer['company'] === "ארמונות-לב") ? 'palace-lev' : costumer['company'];
-        var urls = costumer['businessType'] + "/" + company;
+    FormFilesProccesorService.prototype.getUrl = function (customer) {
+        var company = (customer['company'] === "ארמונות-לב") ? 'palace-lev' : customer['company'];
+        var urls = customer['businessType'] + "/" + company;
         return urls;
     };
     FormFilesProccesorService = __decorate([
@@ -200,9 +200,9 @@ var FormFilesProccesorService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/HallsComponent.ts":
+/***/ "./src/app/pages/customers/halls/HallsComponent.ts":
 /*!*********************************************************!*\
-  !*** ./src/app/pages/costumers/halls/HallsComponent.ts ***!
+  !*** ./src/app/pages/customers/halls/HallsComponent.ts ***!
   \*********************************************************/
 /*! exports provided: HallsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -213,7 +213,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -255,8 +255,8 @@ var HallsComponent = /** @class */ (function () {
         });
         this.path = urlPath;
     };
-    HallsComponent.prototype.onSelectedLink = function (costumer) {
-        //this.halls.costumerEmit(costumer);
+    HallsComponent.prototype.onSelectedLink = function (customer) {
+        //this.halls.customerEmit(customer);
     };
     HallsComponent.prototype.ngOnDestroy = function () {
         this.urlUnsubscribe.unsubscribe();
@@ -264,11 +264,11 @@ var HallsComponent = /** @class */ (function () {
     HallsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-halls',
-            template: __webpack_require__(/*! ./halls.component.html */ "./src/app/pages/costumers/halls/halls.component.html"),
-            styles: [__webpack_require__(/*! ./halls.component.css */ "./src/app/pages/costumers/halls/halls.component.css")],
+            template: __webpack_require__(/*! ./halls.component.html */ "./src/app/pages/customers/halls/halls.component.html"),
+            styles: [__webpack_require__(/*! ./halls.component.css */ "./src/app/pages/customers/halls/halls.component.css")],
             providers: []
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"]])
     ], HallsComponent);
     return HallsComponent;
 }());
@@ -277,9 +277,9 @@ var HallsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-about/hall-about.component.css":
+/***/ "./src/app/pages/customers/halls/hall-about/hall-about.component.css":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-about/hall-about.component.css ***!
+  !*** ./src/app/pages/customers/halls/hall-about/hall-about.component.css ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -288,9 +288,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-about/hall-about.component.html":
+/***/ "./src/app/pages/customers/halls/hall-about/hall-about.component.html":
 /*!****************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-about/hall-about.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-about/hall-about.component.html ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -299,9 +299,9 @@ module.exports = "<hr class=\"d-xl-none\">\r\n<div class=\"row  text-right\">\r\
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-about/hall-about.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-about/hall-about.component.ts":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-about/hall-about.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-about/hall-about.component.ts ***!
   \**************************************************************************/
 /*! exports provided: HallAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -310,7 +310,7 @@ module.exports = "<hr class=\"d-xl-none\">\r\n<div class=\"row  text-right\">\r\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallAboutComponent", function() { return HallAboutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -332,7 +332,7 @@ var HallAboutComponent = /** @class */ (function () {
     }
     HallAboutComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (dt) {
+        this.hall.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (dt) {
             _this.customer$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(dt['customer']);
             console.log(dt['customer']);
         });
@@ -340,10 +340,10 @@ var HallAboutComponent = /** @class */ (function () {
     HallAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hall-about',
-            template: __webpack_require__(/*! ./hall-about.component.html */ "./src/app/pages/costumers/halls/hall-about/hall-about.component.html"),
-            styles: [__webpack_require__(/*! ./hall-about.component.css */ "./src/app/pages/costumers/halls/hall-about/hall-about.component.css")]
+            template: __webpack_require__(/*! ./hall-about.component.html */ "./src/app/pages/customers/halls/hall-about/hall-about.component.html"),
+            styles: [__webpack_require__(/*! ./hall-about.component.css */ "./src/app/pages/customers/halls/hall-about/hall-about.component.css")]
         }),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
     ], HallAboutComponent);
     return HallAboutComponent;
 }());
@@ -352,20 +352,20 @@ var HallAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.html":
+/***/ "./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.html":
 /*!**********************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.html ***!
   \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"company\">שם החברה</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\n            formControlName=\"company\" required #company />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n\n        <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['company']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['company']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['company']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['company']  }} </b> \n              </span>\n            </p>\n        </div>\n    </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"contact\">איש קשר</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\n            formControlName=\"contact\" required #contact />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        \n        <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['contact']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['contact']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['contact']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['contact']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"tel\">פלאפון/טלפון</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\n            [pattern]=\"phoneNum\" required #tel />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\n          לפאלפון/טלפון\n        </div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['tel']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['tel']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['tel']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['tel']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"address\">כתובת</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\n            formControlName=\"address\" required #address />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['address']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['address']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['address']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['address']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"email\">אימייל</label>\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\n            [pattern]=\"emailPatteren\" required #email />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['email']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['email']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['email']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['email']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- about edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col-sm-12 form-group py-3\">\n        <label for=\"title\">תיאור או כותרת החברה</label>\n\n        <div class=\"inputTypeNumber my-2 textarea\">\n          <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\n            formControlName=\"title\" required minlength=\"12\" #title>\n          </textarea>\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['title']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['title']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['title']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['title']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col-sm-12 form-group border p-3\">\n\n        <label for=\"discription\">אודות החברה</label>\n        <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\n          (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\n          id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\n\n        </textarea>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['discription']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['discription']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['discription']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                   'text-danger':gal['type'] === 'errors'}\">\n                    {{ gal['discription']  }} \n                  </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              החלף לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" class=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" #loggoFIle/>\n        </div>\n\n        <div class=\"border bg-dark d-flex-row\" #loggo>\n\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(loggoFIle)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(loggo)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('loggo')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['loggo']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['loggo']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['loggo']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                  'text-danger':gal['type'] === 'errors'}\">{{ gal['loggo']  }} </b> \n              </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"video\">\n            <span>\n              הוסף סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"video\" class=\"video\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\n          #vidFile/>\n        </div>\n        \n        <div class=\"border border-success bg-dark d-flex-row\" #video>\n\n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(vidFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(video)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('video')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <!-- display video messages from server -->\n        <div *ngIf=\"masseges && masseges['video']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['video']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['video']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['video']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages video from claint -->\n        <!-- <p *ngIf=\"masseges[0] && masseges[0].video\" class=\"alert alert-danger\">{{ masseges[0].video }}</p> -->\n        <!-- gallery -->\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"gallery\">\n            <span>\n              הוסף תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"gallery\" class=\"galleries\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\n          #galFile/>\n        </div>\n        <div class=\"border border-success bg-dark d-flex-row\" #gall>\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(galFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(gall)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('galleries')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"destroy(gall)\">\n              <span>\n                הסר\n                <i class=\"material-icons text-danger\">\n                    delete_forever\n                </i>\n              </span>\n            </a>\n        </div>\n        <!-- display gallery messages from server -->\n        <div *ngIf=\"masseges && masseges['gallery']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['gallery']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['gallery']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['gallery']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages gallery from claint -->\n          <div *ngIf=\"masseges && masseges['files']\" class=\"bg-light p-1 ml-1\">\n              <p *ngFor=\"let gal of masseges['files']\" class=\"bg-light p-1 m-1 d-inline-block\">\n                 \n                <span *ngIf=\"gal['files']\">\n                    <b [ngClass]=\"{'text-danger':gal['files']}\">{{ gal['files']  }} </b> \n                </span>\n              </p>\n          </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-12\">\n      \n        <div class=\"btn-group w-100 p-3 bg-light\">\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        </div>\n      </div>\n\n  </div>\n</form>"
+module.exports = "\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCustomerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"company\">שם החברה</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\n            formControlName=\"company\" required #company />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n\n        <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['company']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['company']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['company']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['company']  }} </b> \n              </span>\n            </p>\n        </div>\n    </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"contact\">איש קשר</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\n            formControlName=\"contact\" required #contact />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        \n        <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['contact']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['contact']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['contact']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['contact']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"tel\">פלאפון/טלפון</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\n            [pattern]=\"phoneNum\" required #tel />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\n          לפאלפון/טלפון\n        </div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['tel']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['tel']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['tel']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['tel']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"address\">כתובת</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\n            formControlName=\"address\" required #address />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['address']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['address']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['address']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['address']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"email\">אימייל</label>\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\n            [pattern]=\"emailPatteren\" required #email />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['email']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['email']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['email']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['email']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- about edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col-sm-12 form-group py-3\">\n        <label for=\"title\">תיאור או כותרת החברה</label>\n\n        <div class=\"inputTypeNumber my-2 textarea\">\n          <textarea value=\"{{ customer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\n            formControlName=\"title\" required minlength=\"12\" #title>\n          </textarea>\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['title']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['title']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['title']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['title']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col-sm-12 form-group border p-3\">\n\n        <label for=\"discription\">אודות החברה</label>\n        <textarea wrap=\"hard\" value=\"{{ customer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\n          (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\n          id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\n\n        </textarea>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['discription']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['discription']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['discription']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                   'text-danger':gal['type'] === 'errors'}\">\n                    {{ gal['discription']  }} \n                  </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              החלף לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" class=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" #loggoFIle/>\n        </div>\n\n        <div class=\"border bg-dark d-flex-row\" #loggo>\n\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(loggoFIle)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(loggo)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('loggo')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['loggo']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['loggo']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['loggo']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                  'text-danger':gal['type'] === 'errors'}\">{{ gal['loggo']  }} </b> \n              </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"video\">\n            <span>\n              הוסף סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"video\" class=\"video\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\n          #vidFile/>\n        </div>\n        \n        <div class=\"border border-success bg-dark d-flex-row\" #video>\n\n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(vidFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(video)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('video')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <!-- display video messages from server -->\n        <div *ngIf=\"masseges && masseges['video']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['video']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['video']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['video']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages video from claint -->\n        <!-- <p *ngIf=\"masseges[0] && masseges[0].video\" class=\"alert alert-danger\">{{ masseges[0].video }}</p> -->\n        <!-- gallery -->\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"gallery\">\n            <span>\n              הוסף תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"gallery\" class=\"galleries\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\n          #galFile/>\n        </div>\n        <div class=\"border border-success bg-dark d-flex-row\" #gall>\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(galFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(gall)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('galleries')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"destroy(gall)\">\n              <span>\n                הסר\n                <i class=\"material-icons text-danger\">\n                    delete_forever\n                </i>\n              </span>\n            </a>\n        </div>\n        <!-- display gallery messages from server -->\n        <div *ngIf=\"masseges && masseges['gallery']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['gallery']\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['gallery']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['gallery']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages gallery from claint -->\n          <div *ngIf=\"masseges && masseges['files']\" class=\"bg-light p-1 ml-1\">\n              <p *ngFor=\"let gal of masseges['files']\" class=\"bg-light p-1 m-1 d-inline-block\">\n                 \n                <span *ngIf=\"gal['files']\">\n                    <b [ngClass]=\"{'text-danger':gal['files']}\">{{ gal['files']  }} </b> \n                </span>\n              </p>\n          </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-12\">\n      \n        <div class=\"btn-group w-100 p-3 bg-light\">\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        </div>\n      </div>\n\n  </div>\n</form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.ts":
 /*!********************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.ts ***!
   \********************************************************************************/
 /*! exports provided: AllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -375,14 +375,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AllEditComponent", function() { return AllEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var src_app_costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
-/* harmony import */ var src_app_costumers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/costumers/form-files-proccesor.service */ "./src/app/costumers/form-files-proccesor.service.ts");
+/* harmony import */ var src_app_customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/customers/form-proccesor.service */ "./src/app/customers/form-proccesor.service.ts");
+/* harmony import */ var src_app_customers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/customers/form-files-proccesor.service */ "./src/app/customers/form-files-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -426,17 +426,17 @@ var AllEditComponent = /** @class */ (function () {
     }
     AllEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
             var co = cost['customer'];
             var gal = cost['gallery'];
             var cId = (co && co["user_id"]) ? co["user_id"] : false;
             var authUser = _this.http.authUser;
             var uId = authUser ? authUser["id"] : false;
-            // console.log('costumerId: '+ cId + " userId "+ uId);
+            // console.log('customerId: '+ cId + " userId "+ uId);
             if (cId === uId) {
                 _this.galleries = gal['image'];
                 _this.videos = gal['video'];
-                _this.costumer = co;
+                _this.customer = co;
                 _this.apiKey = _this.http.getApiKey();
                 _this.formInt();
                 _this.galleryInit();
@@ -453,7 +453,7 @@ var AllEditComponent = /** @class */ (function () {
         var _this = this;
         var imgs = this.formFiles.createFilesOb(this.galleries);
         var vid = this.formFiles.createFilesOb(this.videos);
-        var loggo = this.formFiles.createFilesOb([this.costumer.loggo]);
+        var loggo = this.formFiles.createFilesOb([this.customer.loggo]);
         imgs.then(function (res) {
             _this.selectedFiles(res, 'galleries');
         });
@@ -464,13 +464,13 @@ var AllEditComponent = /** @class */ (function () {
             _this.selectedFiles(res, 'loggo');
         });
     };
-    AllEditComponent.prototype.update = function (costumer) {
+    AllEditComponent.prototype.update = function (customer) {
         var _this = this;
         var input = new FormData();
-        var comp = costumer['id'];
-        if (this.addCostumerForm.controls[comp].status) {
-            var controls = this.addCostumerForm.controls[comp];
-            var items = this.valForm.validate(controls, this.costumer, comp);
+        var comp = customer['id'];
+        if (this.addCustomerForm.controls[comp].status) {
+            var controls = this.addCustomerForm.controls[comp];
+            var items = this.valForm.validate(controls, this.customer, comp);
             if (items['status']) {
                 input.append('formInputs', JSON.stringify(items['success']));
                 this.send(input, 'PATCH');
@@ -482,15 +482,15 @@ var AllEditComponent = /** @class */ (function () {
                 });
             }
         }
-        // console.log(this.addCostumerForm.controls[comp]);
+        // console.log(this.addCustomerForm.controls[comp]);
     };
-    AllEditComponent.prototype.inputReset = function (costumer) {
-        var comp = costumer['id'];
-        this.addCostumerForm.controls[comp].reset();
+    AllEditComponent.prototype.inputReset = function (customer) {
+        var comp = customer['id'];
+        this.addCustomerForm.controls[comp].reset();
     };
-    AllEditComponent.prototype.default = function (costumer) {
-        var comp = costumer.id;
-        this.addCostumerForm.controls[comp].setValue(this.costumer[comp]);
+    AllEditComponent.prototype.default = function (customer) {
+        var comp = customer.id;
+        this.addCustomerForm.controls[comp].setValue(this.customer[comp]);
     };
     AllEditComponent.prototype.galUpdate = function (elem) {
         var _this = this;
@@ -510,7 +510,7 @@ var AllEditComponent = /** @class */ (function () {
             });
             return;
         }
-        var filesInput = this.formFiles.handelInputFiles(files, this.costumer, this.filesDl, this.existesFiles);
+        var filesInput = this.formFiles.handelInputFiles(files, this.customer, this.filesDl, this.existesFiles);
         var filesToSend = filesInput['toSend'];
         var method = (filesToSend['toUpdate'].length > 1) ? "PUT" : "PATCH";
         var fd = filesToSend['toDelete'];
@@ -532,7 +532,7 @@ var AllEditComponent = /** @class */ (function () {
     AllEditComponent.prototype.galDefault = function (galType) {
         var _this = this;
         var gal = galType === "galleries" ? this.formFiles.createFilesOb(this.galleries) :
-            galType === "loggo" ? this.formFiles.createFilesOb([this.costumer.loggo]) :
+            galType === "loggo" ? this.formFiles.createFilesOb([this.customer.loggo]) :
                 galType === "video" ? this.formFiles.createFilesOb(this.videos) : null;
         gal.then(function (res) {
             _this.selectedFiles(res, galType);
@@ -544,7 +544,7 @@ var AllEditComponent = /** @class */ (function () {
         this.unSelectFiles(el);
     };
     AllEditComponent.prototype.canDeactivate = function () {
-        if (this.addCostumerForm.dirty || this.addCostumerForm.touched) {
+        if (this.addCustomerForm.dirty || this.addCustomerForm.touched) {
             return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
         }
         else {
@@ -562,20 +562,20 @@ var AllEditComponent = /** @class */ (function () {
         target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
     };
     Object.defineProperty(AllEditComponent.prototype, "f", {
-        get: function () { return this.addCostumerForm.controls; },
+        get: function () { return this.addCustomerForm.controls; },
         enumerable: true,
         configurable: true
     });
     AllEditComponent.prototype.formInt = function () {
-        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
-            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            // 'businessType': new FormControl(this.costumer.businessType, [Validators.required]),
-            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
+        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            // 'businessType': new FormControl(this.customer.businessType, [Validators.required]),
+            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
         });
     };
     AllEditComponent.prototype.onSubmit = function () {
@@ -584,7 +584,7 @@ var AllEditComponent = /** @class */ (function () {
         var err = {
             errors: null
         };
-        var handelFiles = this.formFiles.handelInputFiles(this.arrayFlies, this.costumer, this.filesDl, this.existesFiles);
+        var handelFiles = this.formFiles.handelInputFiles(this.arrayFlies, this.customer, this.filesDl, this.existesFiles);
         var files = handelFiles['files'];
         var filesToSend = handelFiles['toSend'];
         var input = handelFiles['inputs'];
@@ -592,8 +592,8 @@ var AllEditComponent = /** @class */ (function () {
         var fSize = filesToSend['size'];
         var checkFilesSizes = (Math.round(fSize / Math.pow(1024, 2)) > 6) ? true : false;
         /****** handel form inputs *****/
-        var controls = this.addCostumerForm.controls;
-        var items = this.valForm.validate(controls, this.costumer);
+        var controls = this.addCustomerForm.controls;
+        var items = this.valForm.validate(controls, this.customer);
         var success = items['status'] ? items['success'] : false;
         // console.log(this.filesSize + " : " +Math.round(this.filesSize / Math.pow(1024,2) ));
         // console.log(this.filesSize + " : " +Math.round(Math.pow(1024,2)* 6 ) / (Math.pow(1024,2)));
@@ -638,12 +638,12 @@ var AllEditComponent = /** @class */ (function () {
         }
     };
     AllEditComponent.prototype.allTodefault = function () {
-        var controls = this.addCostumerForm.controls;
+        var controls = this.addCustomerForm.controls;
         for (var ii in controls) {
             if (controls.hasOwnProperty(ii)) {
-                if (controls[ii].value !== this.costumer[ii]) {
-                    if (this.costumer[ii])
-                        controls[ii].setValue(this.costumer[ii]);
+                if (controls[ii].value !== this.customer[ii]) {
+                    if (this.customer[ii])
+                        controls[ii].setValue(this.customer[ii]);
                 }
             }
         }
@@ -718,13 +718,13 @@ var AllEditComponent = /** @class */ (function () {
         var ob = this.arrayFlies.find(function (elem) { return elem['id'] == id; });
         //ob = ob? ob: this.arrayFlies.find(elem => elem['id'] == id);
         var item = (ob && target == 'galleries') ? this.galleries.find(function (el) { return el.indexOf(ob.name) >= 0; }) :
-            (target == 'video') ? this.videos.find(function (el) { return el.indexOf(ob.name) >= 0; }) : (target == 'loggo') ? this.costumer.loggo : null;
+            (target == 'video') ? this.videos.find(function (el) { return el.indexOf(ob.name) >= 0; }) : (target == 'loggo') ? this.customer.loggo : null;
         return item;
     };
     AllEditComponent.prototype.send = function (body, method) {
         var _this = this;
-        var updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"] + "? _method=" + method;
-        // let updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"]+ "? _method=PUT";
+        var updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"] + "? _method=" + method;
+        // let updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"]+ "? _method=PUT";
         this.halls.patchData(updaterUrl, body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
                 // 'Content-Type':  'application/json',
@@ -752,7 +752,7 @@ var AllEditComponent = /** @class */ (function () {
         });
     };
     AllEditComponent.prototype.reset = function () {
-        this.addCostumerForm.reset();
+        this.addCustomerForm.reset();
     };
     AllEditComponent.prototype.close = function () {
         this.router.navigate(['../']);
@@ -760,14 +760,14 @@ var AllEditComponent = /** @class */ (function () {
     AllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-all-edit',
-            template: __webpack_require__(/*! ./all-edit.component.html */ "./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.html"),
+            template: __webpack_require__(/*! ./all-edit.component.html */ "./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"],
+            _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"],
             _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"],
-            src_app_costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"],
-            src_app_costumers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_9__["FormFilesProccesorService"]])
+            src_app_customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"],
+            src_app_customers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_9__["FormFilesProccesorService"]])
     ], AllEditComponent);
     return AllEditComponent;
 }());
@@ -776,9 +776,9 @@ var AllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.css":
+/***/ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.css":
 /*!*************************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.css ***!
   \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -787,20 +787,20 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.html":
+/***/ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"company\">שם החברה</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\n            formControlName=\"company\" required #company />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n\n        <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['company']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['company'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['company']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['company']  }} </b> \n              </span>\n            </p>\n        </div>\n    </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"contact\">איש קשר</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\n            formControlName=\"contact\" required #contact />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        \n        <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['contact']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['contact'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['contact']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['contact']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"tel\">פלאפון/טלפון</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\n            [pattern]=\"phoneNum\" required #tel />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\n          לפאלפון/טלפון\n        </div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['tel']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['tel'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['tel']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['tel']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"address\">כתובת</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\n            formControlName=\"address\" required #address />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['address']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['address'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['address']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['address']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"email\">אימייל</label>\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\n            [pattern]=\"emailPatteren\" required #email />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['email']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['email'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['email']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['email']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- about edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col-sm-12 form-group py-3\">\n        <label for=\"title\">תיאור או כותרת החברה</label>\n\n        <div class=\"inputTypeNumber my-2 textarea\">\n          <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\n            formControlName=\"title\" required minlength=\"12\" #title>\n          </textarea>\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['title']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['title'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['title']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['title']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col-sm-12 form-group border p-3\">\n\n        <label for=\"discription\">אודות החברה</label>\n        <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\n          (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\n          id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\n\n        </textarea>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['discription']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['discription'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['discription']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                   'text-danger':gal['type'] === 'errors'}\">\n                    {{ gal['discription']  }} \n                  </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-12\">\n\n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">שמור הכל</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        <a class=\"btn btn-info\" (click)=\"allTodefault()\">שחזר ברירת מחדל</a>\n      </div>\n    </div>\n\n  </div>\n</form>"
+module.exports = "<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCustomerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"company\">שם החברה</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\n            formControlName=\"company\" required #company />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n\n        <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['company']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['company'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['company']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['company']  }} </b> \n              </span>\n            </p>\n        </div>\n    </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"contact\">איש קשר</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\n            formControlName=\"contact\" required #contact />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        \n        <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['contact']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['contact'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['contact']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['contact']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"tel\">פלאפון/טלפון</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\n            [pattern]=\"phoneNum\" required #tel />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\n          לפאלפון/טלפון\n        </div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['tel']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['tel'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['tel']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['tel']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"address\">כתובת</label>\n\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\n            formControlName=\"address\" required #address />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['address']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['address'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['address']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['address']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col form-group py-2 my-0\">\n        <label for=\"email\">אימייל</label>\n        <div class=\"inputTypeNumber my-2\">\n          <input value=\"{{ customer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\n            [pattern]=\"emailPatteren\" required #email />\n\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['email']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['email'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['email']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\">{{ gal['email']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- about edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"col-sm-12 form-group py-3\">\n        <label for=\"title\">תיאור או כותרת החברה</label>\n\n        <div class=\"inputTypeNumber my-2 textarea\">\n          <textarea value=\"{{ customer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\n            formControlName=\"title\" required minlength=\"12\" #title>\n          </textarea>\n          <span class=\"validity float-left\"></span>\n        </div>\n        <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['title']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['title'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['title']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success', 'text-danger':gal['type'] === 'errors'}\"> {{ gal['title']  }} </b> \n              </span>\n            </p>\n        </div>\n      </div>\n\n      <div class=\"col-sm-12 form-group border p-3\">\n\n        <label for=\"discription\">אודות החברה</label>\n        <textarea wrap=\"hard\" value=\"{{ customer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\n          (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\n          id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\n\n        </textarea>\n        \n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['discription']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['discription'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['discription']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                   'text-danger':gal['type'] === 'errors'}\">\n                    {{ gal['discription']  }} \n                  </b> \n              </span>\n            </p>\n        </div>\n      </div>\n    </div>\n\n  </div>\n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n\n    <div class=\"col-sm-12\">\n\n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">שמור הכל</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        <a class=\"btn btn-info\" (click)=\"allTodefault()\">שחזר ברירת מחדל</a>\n      </div>\n    </div>\n\n  </div>\n</form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.ts ***!
   \************************************************************************************/
 /*! exports provided: BasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -810,13 +810,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasicEditComponent", function() { return BasicEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
+/* harmony import */ var _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../customers/form-proccesor.service */ "./src/app/customers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -849,14 +849,14 @@ var BasicEditComponent = /** @class */ (function () {
     }
     BasicEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
             var co = cost['customer'];
             var cId = (co && co["user_id"]) ? co["user_id"] : false;
             var authUser = _this.http.authUser;
             var uId = authUser ? authUser["id"] : false;
-            // console.log('costumerId: '+ cId + " userId "+ uId);
+            // console.log('customerId: '+ cId + " userId "+ uId);
             if (cId === uId) {
-                _this.costumer = co;
+                _this.customer = co;
                 _this.apiKey = _this.http.getApiKey();
                 _this.formInt();
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
@@ -868,11 +868,11 @@ var BasicEditComponent = /** @class */ (function () {
             }
         });
     };
-    BasicEditComponent.prototype.update = function (costumer) {
+    BasicEditComponent.prototype.update = function (customer) {
         var _this = this;
-        var comp = costumer['id'];
-        var controls = this.addCostumerForm.controls[comp];
-        var items = this.valForm.validate(controls, this.costumer, comp);
+        var comp = customer['id'];
+        var controls = this.addCustomerForm.controls[comp];
+        var items = this.valForm.validate(controls, this.customer, comp);
         if (items['status']) {
             this.send(items['success']);
         }
@@ -883,16 +883,16 @@ var BasicEditComponent = /** @class */ (function () {
             });
         }
     };
-    BasicEditComponent.prototype.inputReset = function (costumer) {
-        var comp = costumer['id'];
-        this.addCostumerForm.controls[comp].reset();
+    BasicEditComponent.prototype.inputReset = function (customer) {
+        var comp = customer['id'];
+        this.addCustomerForm.controls[comp].reset();
     };
-    BasicEditComponent.prototype.default = function (costumer) {
-        var comp = costumer.id;
-        this.addCostumerForm.controls[comp].setValue(this.costumer[comp]);
+    BasicEditComponent.prototype.default = function (customer) {
+        var comp = customer.id;
+        this.addCustomerForm.controls[comp].setValue(this.customer[comp]);
     };
     BasicEditComponent.prototype.canDeactivate = function () {
-        if (this.addCostumerForm.dirty || this.addCostumerForm.touched) {
+        if (this.addCustomerForm.dirty || this.addCustomerForm.touched) {
             return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
         }
         else {
@@ -910,27 +910,27 @@ var BasicEditComponent = /** @class */ (function () {
         target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
     };
     Object.defineProperty(BasicEditComponent.prototype, "f", {
-        get: function () { return this.addCostumerForm.controls; },
+        get: function () { return this.addCustomerForm.controls; },
         enumerable: true,
         configurable: true
     });
     BasicEditComponent.prototype.formInt = function () {
-        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
-            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            // 'businessType': new FormControl(this.costumer.businessType, [Validators.required]),
-            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
-            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.costumer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
+        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            // 'businessType': new FormControl(this.customer.businessType, [Validators.required]),
+            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
+            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](this.customer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required])
         });
     };
     BasicEditComponent.prototype.onSubmit = function () {
         var _this = this;
         // this.masseges = [];
-        var controls = this.addCostumerForm.controls;
-        var items = this.valForm.validate(controls, this.costumer);
+        var controls = this.addCustomerForm.controls;
+        var items = this.valForm.validate(controls, this.customer);
         //if(items['status'] === false) this.masseges.push(items['errors']);
         var success = items['success'];
         console.log(success);
@@ -945,26 +945,26 @@ var BasicEditComponent = /** @class */ (function () {
         }
     };
     BasicEditComponent.prototype.reset = function () {
-        this.addCostumerForm.reset();
+        this.addCustomerForm.reset();
     };
     BasicEditComponent.prototype.close = function () {
         this.router.navigate(['../']);
     };
     BasicEditComponent.prototype.allTodefault = function () {
-        var controls = this.addCostumerForm.controls;
+        var controls = this.addCustomerForm.controls;
         for (var ii in controls) {
             if (controls.hasOwnProperty(ii)) {
-                if (controls[ii].value !== this.costumer[ii]) {
-                    if (this.costumer[ii])
-                        controls[ii].setValue(this.costumer[ii]);
+                if (controls[ii].value !== this.customer[ii]) {
+                    if (this.customer[ii])
+                        controls[ii].setValue(this.customer[ii]);
                 }
             }
         }
     };
     BasicEditComponent.prototype.send = function (body) {
         var _this = this;
-        var updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"] + "? _method=PATCH";
-        // let updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"]+ "? _method=PUT";
+        var updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"] + "? _method=PATCH";
+        // let updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"]+ "? _method=PUT";
         this.input.append('formInputs', JSON.stringify(body));
         this.halls.patchData(updaterUrl, this.input, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -993,13 +993,13 @@ var BasicEditComponent = /** @class */ (function () {
     BasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-basic-edit',
-            template: __webpack_require__(/*! ./basic-edit.component.html */ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./basic-edit.component.css */ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.css")]
+            template: __webpack_require__(/*! ./basic-edit.component.html */ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./basic-edit.component.css */ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"],
+            _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"],
             _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"],
-            _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
+            _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
     ], BasicEditComponent);
     return BasicEditComponent;
 }());
@@ -1008,9 +1008,9 @@ var BasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/hall-edit.component.html":
+/***/ "./src/app/pages/customers/halls/hall-edit/hall-edit.component.html":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/hall-edit.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/hall-edit.component.html ***!
   \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1019,9 +1019,9 @@ module.exports = "<!-- header edite -->\n<div *ngIf=\"isTrue | async\" class=\"r
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/hall-edit.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-edit/hall-edit.component.ts":
 /*!************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/hall-edit.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/hall-edit.component.ts ***!
   \************************************************************************/
 /*! exports provided: HallEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1033,7 +1033,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1059,14 +1059,14 @@ var HallEditComponent = /** @class */ (function () {
     }
     HallEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["find"])(function (val) { return val['customer']['id']; }))
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["find"])(function (val) { return val['customer']['id']; }))
             .subscribe(function (cost) {
             var co = cost['customer'];
             var cId = (co && co["user_id"]) ? co["user_id"] : false;
             // let uId = this.http.authUser["id"];
             var userId = _this.http.authUser;
             var uId = userId ? userId['id'] : false;
-            console.log('costumerId: ' + cId + " userId " + uId);
+            console.log('customerId: ' + cId + " userId " + uId);
             if (cId === uId) {
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
             }
@@ -1082,10 +1082,10 @@ var HallEditComponent = /** @class */ (function () {
     HallEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hall-edit',
-            template: __webpack_require__(/*! ./hall-edit.component.html */ "./src/app/pages/costumers/halls/hall-edit/hall-edit.component.html"),
+            template: __webpack_require__(/*! ./hall-edit.component.html */ "./src/app/pages/customers/halls/hall-edit/hall-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
-        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"]])
     ], HallEditComponent);
     return HallEditComponent;
 }());
@@ -1094,20 +1094,20 @@ var HallEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.html":
+/***/ "./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  \n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              החלף לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" class=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" #loggoFIle/>\n        </div>\n\n        <div class=\"border bg-dark d-flex-row\" #loggo>\n\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(loggoFIle)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(loggo)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('loggo')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['loggo']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['loggo'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['loggo']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                  'text-danger':gal['type'] === 'errors'}\">{{ gal['loggo']  }} </b> \n              </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"video\">\n            <span>\n              הוסף סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"video\" class=\"video\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\n          #vidFile/>\n        </div>\n        \n        <div class=\"border border-success bg-dark d-flex-row\" #video>\n\n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(vidFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(video)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('video')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <!-- display video messages from server -->\n        <div *ngIf=\"masseges && masseges['video']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['video'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['video']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['video']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages video from claint -->\n        <!-- <p *ngIf=\"masseges[0] && masseges[0].video\" class=\"alert alert-danger\">{{ masseges[0].video }}</p> -->\n        <!-- gallery -->\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"gallery\">\n            <span>\n              הוסף תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"gallery\" class=\"galleries\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\n          #galFile/>\n        </div>\n        <div class=\"border border-success bg-dark d-flex-row\" #gall>\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(galFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(gall)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('galleries')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"destroy(gall)\">\n              <span>\n                הסר\n                <i class=\"material-icons text-danger\">\n                    delete_forever\n                </i>\n              </span>\n            </a>\n        </div>\n        <!-- display gallery messages from server -->\n        <div *ngIf=\"masseges && masseges['gallery']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['gallery'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['gallery']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['gallery']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages gallery from claint -->\n          <div *ngIf=\"masseges && masseges['files']\" class=\"bg-light p-1 ml-1\">\n              <p *ngFor=\"let gal of masseges['files'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n                 \n                <span *ngIf=\"gal['files']\">\n                    <b [ngClass]=\"{'text-danger':gal['files']}\">{{ gal['files']  }} </b> \n                </span>\n              </p>\n          </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-12\">\n      \n        <div class=\"btn-group w-100 p-3 bg-light\">\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        </div>\n      </div>\n\n  </div>\n</form>"
+module.exports = "\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\n  <!-- basic edite -->\n\n  \n\n  <!-- media and galleries edite -->\n\n  <div class=\"row\">\n    <div class=\"col-sm-12\">\n      <div class=\"h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              החלף לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" class=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" #loggoFIle/>\n        </div>\n\n        <div class=\"border bg-dark d-flex-row\" #loggo>\n\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(loggoFIle)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(loggo)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('loggo')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <div *ngIf=\"masseges && masseges['loggo']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['loggo'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n              <span *ngIf=\"gal['loggo']\">\n                  <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                  'text-danger':gal['type'] === 'errors'}\">{{ gal['loggo']  }} </b> \n              </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"video\">\n            <span>\n              הוסף סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"video\" class=\"video\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\n          #vidFile/>\n        </div>\n        \n        <div class=\"border border-success bg-dark d-flex-row\" #video>\n\n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(vidFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(video)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('video')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n        </div>\n        <!-- display video messages from server -->\n        <div *ngIf=\"masseges && masseges['video']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['video'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['video']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['video']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages video from claint -->\n        <!-- <p *ngIf=\"masseges[0] && masseges[0].video\" class=\"alert alert-danger\">{{ masseges[0].video }}</p> -->\n        <!-- gallery -->\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"gallery\">\n            <span>\n              הוסף תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"gallery\" class=\"galleries\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\n          #galFile/>\n        </div>\n        <div class=\"border border-success bg-dark d-flex-row\" #gall>\n          \n        </div>\n        <div class=\"my-2\">\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galUpdate(galFile)\">\n            <span>\n              עדכן\n              <i class=\"material-icons text-success\">\n                person_add\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galReset(gall)\">\n            <span>\n              נקה\n              <i class=\"material-icons text-warning\">\n                clear\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"galDefault('galleries')\">\n            <span>\n              מקור\n              <i class=\"material-icons text-primary\">\n                redo\n              </i>\n            </span>\n          </a>\n          <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"destroy(gall)\">\n              <span>\n                הסר\n                <i class=\"material-icons text-danger\">\n                    delete_forever\n                </i>\n              </span>\n            </a>\n        </div>\n        <!-- display gallery messages from server -->\n        <div *ngIf=\"masseges && masseges['gallery']\" class=\"bg-light p-1 ml-1\">\n            <p *ngFor=\"let gal of masseges['gallery'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n               \n                <span *ngIf=\"gal['gallery']\">\n                    <b [ngClass]=\"{'text-warning':gal['type'] === 'warning','text-success':gal['type'] === 'success',\n                    'text-danger':gal['type'] === 'errors'}\">{{ gal['gallery']  }} </b> \n                </span>\n              \n              <span *ngIf=\"gal['deletedFiles']\">\n                  <b [ngClass]=\"{'text-warning':gal['deletedFiles']}\">קובץ הוסר:</b> {{ gal['deletedFiles'] }} \n              </span>\n            </p>\n        </div>\n          <!-- display messages gallery from claint -->\n          <div *ngIf=\"masseges && masseges['files']\" class=\"bg-light p-1 ml-1\">\n              <p *ngFor=\"let gal of masseges['files'];let idx = index\" class=\"bg-light p-1 m-1 d-inline-block\">\n                 \n                <span *ngIf=\"gal['files']\">\n                    <b [ngClass]=\"{'text-danger':gal['files']}\">{{ gal['files']  }} </b> \n                </span>\n              </p>\n          </div>\n      </div>\n\n    </div>\n    <div class=\"col-sm-12\">\n      \n        <div class=\"btn-group w-100 p-3 bg-light\">\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n        </div>\n      </div>\n\n  </div>\n</form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.ts ***!
   \************************************************************************************/
 /*! exports provided: MediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1119,11 +1119,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var src_app_costumers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/costumers/form-files-proccesor.service */ "./src/app/costumers/form-files-proccesor.service.ts");
-/* harmony import */ var src_app_costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
+/* harmony import */ var src_app_customers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/customers/form-files-proccesor.service */ "./src/app/customers/form-files-proccesor.service.ts");
+/* harmony import */ var src_app_customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/customers/form-proccesor.service */ "./src/app/customers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1163,7 +1163,7 @@ var MediaEditComponent = /** @class */ (function () {
     }
     MediaEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["find"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
             var co = cost['customer'];
             var gal = cost['gallery'];
             var cId = (co && co["user_id"]) ? co["user_id"] : false;
@@ -1171,7 +1171,7 @@ var MediaEditComponent = /** @class */ (function () {
             if (cId === uId) {
                 _this.galleries = gal['image'];
                 _this.videos = gal['video'];
-                _this.costumer = co;
+                _this.customer = co;
                 _this.apiKey = _this.http.getApiKey();
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
                 _this.galleryInit();
@@ -1185,7 +1185,7 @@ var MediaEditComponent = /** @class */ (function () {
         var _this = this;
         var imgs = this.formFiles.createFilesOb(this.galleries);
         var vid = this.formFiles.createFilesOb(this.videos);
-        var loggo = this.formFiles.createFilesOb([this.costumer.loggo]);
+        var loggo = this.formFiles.createFilesOb([this.customer.loggo]);
         imgs.then(function (res) {
             _this.selectedFiles(res, 'galleries');
         });
@@ -1224,7 +1224,7 @@ var MediaEditComponent = /** @class */ (function () {
             });
             return;
         }
-        var filesInput = this.formFiles.handelInputFiles(files, this.costumer, this.filesDl, this.existesFiles);
+        var filesInput = this.formFiles.handelInputFiles(files, this.customer, this.filesDl, this.existesFiles);
         var filesToSend = filesInput['toSend'];
         var method = (filesToSend['toUpdate'].length > 1) ? "PUT" : "PATCH";
         var fd = filesToSend['toDelete'];
@@ -1246,7 +1246,7 @@ var MediaEditComponent = /** @class */ (function () {
     MediaEditComponent.prototype.galDefault = function (galType) {
         var _this = this;
         var gal = galType === "galleries" ? this.formFiles.createFilesOb(this.galleries) :
-            galType === "loggo" ? this.formFiles.createFilesOb([this.costumer.loggo]) :
+            galType === "loggo" ? this.formFiles.createFilesOb([this.customer.loggo]) :
                 galType === "video" ? this.formFiles.createFilesOb(this.videos) : null;
         gal.then(function (res) {
             _this.selectedFiles(res, galType);
@@ -1263,7 +1263,7 @@ var MediaEditComponent = /** @class */ (function () {
         var err = {
             errors: null
         };
-        var handelFiles = this.formFiles.handelInputFiles(this.arrayFlies, this.costumer, this.filesDl, this.existesFiles);
+        var handelFiles = this.formFiles.handelInputFiles(this.arrayFlies, this.customer, this.filesDl, this.existesFiles);
         var filesToSend = handelFiles['toSend'];
         var input = handelFiles['inputs'];
         var toDelete = filesToSend['toDelete'];
@@ -1366,7 +1366,7 @@ var MediaEditComponent = /** @class */ (function () {
         var ob = this.arrayFlies.find(function (elem) { return elem['id'] == id; });
         //ob = ob? ob: this.arrayFlies.find(elem => elem['id'] == id);
         var item = (ob && target == 'galleries') ? this.galleries.find(function (el) { return el.indexOf(ob.name) >= 0; }) :
-            (target == 'video') ? this.videos.find(function (el) { return el.indexOf(ob.name) >= 0; }) : (target == 'loggo') ? this.costumer.loggo : null;
+            (target == 'video') ? this.videos.find(function (el) { return el.indexOf(ob.name) >= 0; }) : (target == 'loggo') ? this.customer.loggo : null;
         return item;
     };
     MediaEditComponent.prototype.reset = function () {
@@ -1377,8 +1377,8 @@ var MediaEditComponent = /** @class */ (function () {
     };
     MediaEditComponent.prototype.send = function (body, method) {
         var _this = this;
-        var updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"] + "? _method=" + method;
-        // let updaterUrl = "http://ethio:8080/api/costumers/" + this.costumer["id"]+ "? _method=PUT";
+        var updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"] + "? _method=" + method;
+        // let updaterUrl = "http://ethio:8080/api/customers/" + this.customer["id"]+ "? _method=PUT";
         this.halls.patchData(updaterUrl, body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpHeaders"]({
                 // 'Content-Type':  'application/json',
@@ -1428,10 +1428,10 @@ var MediaEditComponent = /** @class */ (function () {
     MediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-media-edit',
-            template: __webpack_require__(/*! ./media-edit.component.html */ "./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.html"),
+            template: __webpack_require__(/*! ./media-edit.component.html */ "./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], src_app_costumers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_7__["FormFilesProccesorService"], src_app_costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], src_app_customers_form_files_proccesor_service__WEBPACK_IMPORTED_MODULE_7__["FormFilesProccesorService"], src_app_customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
     ], MediaEditComponent);
     return MediaEditComponent;
 }());
@@ -1440,9 +1440,9 @@ var MediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-media/hall-media.component.css":
+/***/ "./src/app/pages/customers/halls/hall-media/hall-media.component.css":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-media/hall-media.component.css ***!
+  !*** ./src/app/pages/customers/halls/hall-media/hall-media.component.css ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1451,20 +1451,20 @@ module.exports = ".bg-warning{\r\n    /* background-color: #F6DC2F!important; */
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-media/hall-media.component.html":
+/***/ "./src/app/pages/customers/halls/hall-media/hall-media.component.html":
 /*!****************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-media/hall-media.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall-media/hall-media.component.html ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"costumer | async\" class=\"bg-success text-center text-white p-2 rounded\">\n  <h2 >גלריית {{ (costumer | async).company }}</h2>\n  <div class=\"media-slider border border-success bg-dark\">\n    <div id=\"meidiaCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n      <ol class=\"carousel-indicators p-0\">\n        <li  *ngFor=\"let gallery of galleries;let idx = index\" data-target=\"#meidiaCarousel\" attr.data-slide-to=\"{{ idx }}\" [ngClass]=\"{ 'active': idx === 0 }\" ></li>\n        <!-- <li data-target=\"#meidiaCarousel\" data-slide-to=\"1\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"2\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"3\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"4\"></li> -->\n      </ol>\n      <div class=\"carousel-inner\">\n        <div *ngFor=\"let gallery of galleries;let ii = index\" [ngClass]=\"{ 'carousel-item active': ii === 0,'carousel-item': i !== 0 }\">\n          <img class=\"my-5 mx-0 px-0\" style=\"height:240px\" [src]=\"gallery\" alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" />\n        </div>\n      </div>\n\n      <a class=\"carousel-control-prev\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"carousel-control-next\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div>\n\n  </div>\n</div>\n<hr>\n<div class=\"bg-light text-right text-success p-2 rounded\">\n  <h2 class=\"col-sm-12\">בחר תמונות</h2>\n\n  <div class=\"border border-success bg-dark d-flex-row\">\n\n    <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\n      alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"galActiveItem(ii)\" />\n  </div>\n\n</div>\n<div class=\"bg-success text-center text-white p-2 rounded\">\n  <h2 class=\"col-sm-12\">סרטוני תדמית</h2>\n\n  <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\">\n    <video controls=true height=\"100%\">\n      <source type=\"video/mp4\" [src]=\"video\" />\n    </video>\n  </div>\n\n</div>\n<div class=\"bg-light text-right text-success p-2 rounded\">\n  <h2 class=\"col-sm-12\">בחר סרטון</h2>\n\n  <div class=\"border border-success bg-dark d-flex-row\">\n\n    <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\n      alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"vidActiveItem(ii)\" />\n  </div>\n</div>\n<!-- <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let video of videos;let ii = index\" [src]=\"video.video\" alt=\"first-slide1\" /> -->"
+module.exports = "<div *ngIf=\"customer | async\" class=\"bg-success text-center text-white p-2 rounded\">\n  <h2 >גלריית {{ (customer | async).company }}</h2>\n  <div class=\"media-slider border border-success bg-dark\">\n    <div id=\"meidiaCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n      <ol class=\"carousel-indicators p-0\">\n        <li  *ngFor=\"let gallery of galleries;let idx = index\" data-target=\"#meidiaCarousel\" attr.data-slide-to=\"{{ idx }}\" [ngClass]=\"{ 'active': idx === 0 }\" ></li>\n        <!-- <li data-target=\"#meidiaCarousel\" data-slide-to=\"1\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"2\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"3\"></li>\n        <li data-target=\"#meidiaCarousel\" data-slide-to=\"4\"></li> -->\n      </ol>\n      <div class=\"carousel-inner\">\n        <div *ngFor=\"let gallery of galleries;let ii = index\" [ngClass]=\"{ 'carousel-item active': ii === 0,'carousel-item': i !== 0 }\">\n          <img class=\"my-5 mx-0 px-0\" style=\"height:240px\" [src]=\"gallery\" alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" />\n        </div>\n      </div>\n\n      <a class=\"carousel-control-prev\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"next\">\n        <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"carousel-control-next\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"prev\">\n        <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div>\n\n  </div>\n</div>\n<hr>\n<div class=\"bg-light text-right text-success p-2 rounded\">\n  <h2 class=\"col-sm-12\">בחר תמונות</h2>\n\n  <div class=\"border border-success bg-dark d-flex-row\">\n\n    <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\n      alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"galActiveItem(ii)\" />\n  </div>\n\n</div>\n<div class=\"bg-success text-center text-white p-2 rounded\">\n  <h2 class=\"col-sm-12\">סרטוני תדמית</h2>\n\n  <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\">\n    <video controls=true height=\"100%\">\n      <source type=\"video/mp4\" [src]=\"video\" />\n    </video>\n  </div>\n\n</div>\n<div class=\"bg-light text-right text-success p-2 rounded\">\n  <h2 class=\"col-sm-12\">בחר סרטון</h2>\n\n  <div class=\"border border-success bg-dark d-flex-row\">\n\n    <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\n      alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"vidActiveItem(ii)\" />\n  </div>\n</div>\n<!-- <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let video of videos;let ii = index\" [src]=\"video.video\" alt=\"first-slide1\" /> -->"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall-media/hall-media.component.ts":
+/***/ "./src/app/pages/customers/halls/hall-media/hall-media.component.ts":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall-media/hall-media.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall-media/hall-media.component.ts ***!
   \**************************************************************************/
 /*! exports provided: HallMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1473,7 +1473,7 @@ module.exports = "<div *ngIf=\"costumer | async\" class=\"bg-success text-center
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallMediaComponent", function() { return HallMediaComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -1496,10 +1496,10 @@ var HallMediaComponent = /** @class */ (function () {
     ;
     HallMediaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (data) {
+        this.hall.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (data) {
             var co = data['customer'];
             var gal = data['gallery'];
-            _this.costumer = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(co);
+            _this.customer = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(co);
             _this.galleries = gal['image'];
             _this.videos = gal['video'];
             $('.carousel').carousel();
@@ -1514,10 +1514,10 @@ var HallMediaComponent = /** @class */ (function () {
     HallMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hall-media',
-            template: __webpack_require__(/*! ./hall-media.component.html */ "./src/app/pages/costumers/halls/hall-media/hall-media.component.html"),
-            styles: [__webpack_require__(/*! ./hall-media.component.css */ "./src/app/pages/costumers/halls/hall-media/hall-media.component.css")]
+            template: __webpack_require__(/*! ./hall-media.component.html */ "./src/app/pages/customers/halls/hall-media/hall-media.component.html"),
+            styles: [__webpack_require__(/*! ./hall-media.component.css */ "./src/app/pages/customers/halls/hall-media/hall-media.component.css")]
         }),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
     ], HallMediaComponent);
     return HallMediaComponent;
 }());
@@ -1526,9 +1526,9 @@ var HallMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall/hall.component.css":
+/***/ "./src/app/pages/customers/halls/hall/hall.component.css":
 /*!***************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall/hall.component.css ***!
+  !*** ./src/app/pages/customers/halls/hall/hall.component.css ***!
   \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1537,20 +1537,20 @@ module.exports = "div.card .card-footer {\r\n    /* padding-left: 0;\r\n    padd
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall/hall.component.html":
+/***/ "./src/app/pages/customers/halls/hall/hall.component.html":
 /*!****************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall/hall.component.html ***!
+  !*** ./src/app/pages/customers/halls/hall/hall.component.html ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<hr class=\"d-sm-none\">\n<div *ngIf=\"(costumerProps | async)?.company != null\" class=\"row text-right\">\n    <div class=\"costum-query col-xs-12 col-xl-4\">\n        <div class=\"row card-group\">\n\n            <div class=\"col-sm-12 col-md-7 d-md-flex d-xl-block col-xl-12 mb-3\">\n                <div class=\"w-100 border text-center\">\n\n                    <div class=\"shadow-sm bg-light\">\n                        <h5 class=\"p-3 text-success\">{{ (costumerProps | async)?.company }}</h5>\n                    </div>\n                    <img class=\"card-img-top py-3 w-25 m-auto\" [src]=\"(costumerProps | async)?.loggo\" [alt]=\"(costumerProps | async)?.company\" />\n\n                    <div class=\"card-footer col\">\n                        <div class=\"div p-3\">\n                            <a routerLink=\"/halls-events\" class=\"btn btn-outline-success btn-sm\">\n                                <i class=\"fa fa-location-arrow\"></i>\n                                חזור\n                            </a>\n                            <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\n                                <i class=\"fa fa-envelope text-success\"></i>\n\n                                שלח הודעה</a>\n                            <a routerLink=\"media\" class=\"btn btn-danger btn-sm\">מדיה וגלריה</a>\n                            <a routerLink=\"about\" class=\"btn btn-info btn-sm\">אודות</a>\n                            \n                        </div>\n                    </div>\n                </div>\n                <div *ngIf=\"isTrue | async\" class=\"btn-group border mt-2 w-100\">\n                    <div class=\"div p-3\">\n                            <a routerLink=\"/halls-events/{{ (costumerProps | async)?.company | strSpliter  }}/create\" class=\"btn btn-primary btn-sm\">\n                                <!-- <i class=\"fa fa-location-arrow\"></i> -->\n                                + צור דף\n                            </a>\n                            <a routerLink=\"/halls-events/{{ (costumerProps | async)?.company | strSpliter }}/edit/basic\" class=\"btn btn-danger text-light btn-sm\">\n                                <i class=\"fa fa-pencil\"></i>\n                                ערוך דף \n                                <!-- <i class=\"material-icons text-primary\"> edit</i> -->\n                            </a>\n                    </div>\n                    \n                </div>\n            </div>\n\n            <div class=\"col-sm-12 col-md-5 d-md-flex d-xl-block col-xl-12 text-right mb-3\">\n                <div class=\"card  border border-warning\">\n                    <div class=\"card-header bg-warning\">\n                        <h4 class=\"card-title text-center text-light\">\n                            צור קשר\n                        </h4>\n                    </div>\n                    <div class=\"card-body\">\n                        <div class=\"row\">\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> {{ (costumerProps | async)?.contact }}\n                            </div>\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> {{ (costumerProps | async)?.tel }}\n                            </div>\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> {{ (costumerProps | async)?.address }}\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-sm-12 col-md-col-xl-12\">\n                <div class=\"border border-danger text-right\">\n                    <div class=\"card-header bg-danger\">\n                        <h4 class=\"text-center text-light\">\n                            {{ (costumerProps | async)?.company }}\n                            <span class=\"font-weight-bold text-warning\">*מבצעים</span>\n                        </h4>\n                    </div>\n                    <div class=\"card-body\">\n                        <div class=\"row\">\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"costum-query-datil col-xs-12 col-xl-8\">\n        <router-outlet></router-outlet>\n    </div>\n</div>\n\n<!-- (imgLoggo)=\"(costumerProps | async).loggo\" -->\n<!--Contact Modal -->\n\n<div class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-lg\">\n\n        <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\n            <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n            </button>\n            <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\n                    </div>\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\n                    </div>\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\n                    </div>\n                </div>\n            </div>\n            <div class=\"mb-2\">\n                <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\n            </div>\n        </div>\n    </div>\n</div>\n\n\n<!-- form model -->\n\n<div class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-lg row\">\n        <div class=\"modal-content col-sm-8 mx-auto text-right\">\n\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n            </button>\n            <div class=\"p-3\">\n                <h2 class=\"text-right text-success\">שלח הודעה</h2>\n                <p>\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\n                    <span class=\"text-danger\">\n\n                        צוות אתיופיה אירועים.\n                    </span>\n                </p>\n            </div>\n\n            <hr>\n            <form class=\"p-3\">\n                <div class=\"form-group\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\n\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"email\" class=\"form-control\" id=\"contactEmail\" placeholder=\"אימייל\">\n                </div>\n                <div class=\"form-group\">\n\n                    <select id=\"contactRigion\" class=\"rigion\">\n                        <option selected>אזור</option>\n                        <option value=\"1\">צפון</option>\n                        <option value=\"2\">מרכז והשפלה</option>\n                        <option value=\"3\">דרום</option>\n                    </select>\n                </div>\n\n                <div class=\"form-group\">\n                    <input type=\"tel\" class=\"form-control\" id=\"contactPhone\" placeholder=\"טלפון/פלאפון\">\n                </div>\n\n                <div class=\"form-group\">\n                    <textarea class=\"form-control\" id=\"contactTextarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\n                </div>\n                <button type=\"submit\" class=\"btn btn-success btn-sm\">\n                    <i class=\"fa fa-envelope\"></i>\n                    שלח</button>\n                <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">סגור</button>\n            </form>\n        </div>\n    </div>\n</div>"
+module.exports = "<hr class=\"d-sm-none\">\n<div *ngIf=\"(customerProps | async)?.company != null\" class=\"row text-right\">\n    <div class=\"costum-query col-xs-12 col-xl-4\">\n        <div class=\"row card-group\">\n\n            <div class=\"col-sm-12 col-md-7 d-md-flex d-xl-block col-xl-12 mb-3\">\n                <div class=\"w-100 border text-center\">\n\n                    <div class=\"shadow-sm bg-light\">\n                        <h5 class=\"p-3 text-success\">{{ (customerProps | async)?.company }}</h5>\n                    </div>\n                    <img class=\"card-img-top py-3 w-25 m-auto\" [src]=\"(customerProps | async)?.loggo\" [alt]=\"(customerProps | async)?.company\" />\n\n                    <div class=\"card-footer col\">\n                        <div class=\"div p-3\">\n                            <a routerLink=\"/halls-events\" class=\"btn btn-outline-success btn-sm\">\n                                <i class=\"fa fa-location-arrow\"></i>\n                                חזור\n                            </a>\n                            <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\n                                <i class=\"fa fa-envelope text-success\"></i>\n\n                                שלח הודעה</a>\n                            <a routerLink=\"media\" class=\"btn btn-danger btn-sm\">מדיה וגלריה</a>\n                            <a routerLink=\"about\" class=\"btn btn-info btn-sm\">אודות</a>\n                            \n                        </div>\n                    </div>\n                </div>\n                <div *ngIf=\"isTrue | async\" class=\"btn-group border mt-2 w-100\">\n                    <div class=\"div p-3\">\n                            <a routerLink=\"/halls-events/{{ (customerProps | async)?.company | strSpliter  }}/create\" class=\"btn btn-primary btn-sm\">\n                                <!-- <i class=\"fa fa-location-arrow\"></i> -->\n                                + צור דף\n                            </a>\n                            <a routerLink=\"/halls-events/{{ (customerProps | async)?.company | strSpliter }}/edit/basic\" class=\"btn btn-danger text-light btn-sm\">\n                                <i class=\"fa fa-pencil\"></i>\n                                ערוך דף \n                                <!-- <i class=\"material-icons text-primary\"> edit</i> -->\n                            </a>\n                    </div>\n                    \n                </div>\n            </div>\n\n            <div class=\"col-sm-12 col-md-5 d-md-flex d-xl-block col-xl-12 text-right mb-3\">\n                <div class=\"card  border border-warning\">\n                    <div class=\"card-header bg-warning\">\n                        <h4 class=\"card-title text-center text-light\">\n                            צור קשר\n                        </h4>\n                    </div>\n                    <div class=\"card-body\">\n                        <div class=\"row\">\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> {{ (customerProps | async)?.contact }}\n                            </div>\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> {{ (customerProps | async)?.tel }}\n                            </div>\n                            <div class=\"col-sm-12 border-bottom p-2\">\n                                <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> {{ (customerProps | async)?.address }}\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n\n            <div class=\"col-sm-12 col-md-col-xl-12\">\n                <div class=\"border border-danger text-right\">\n                    <div class=\"card-header bg-danger\">\n                        <h4 class=\"text-center text-light\">\n                            {{ (customerProps | async)?.company }}\n                            <span class=\"font-weight-bold text-warning\">*מבצעים</span>\n                        </h4>\n                    </div>\n                    <div class=\"card-body\">\n                        <div class=\"row\">\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\n                                <p>\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\n                                </p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"costum-query-datil col-xs-12 col-xl-8\">\n        <router-outlet></router-outlet>\n    </div>\n</div>\n\n<!-- (imgLoggo)=\"(customerProps | async).loggo\" -->\n<!--Contact Modal -->\n\n<div class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-lg\">\n\n        <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\n            <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n            </button>\n            <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\n            <div class=\"card-body\">\n                <div class=\"row\">\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\n                    </div>\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\n                    </div>\n                    <div class=\"col-sm-12 border-bottom p-2\">\n                        <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\n                    </div>\n                </div>\n            </div>\n            <div class=\"mb-2\">\n                <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\n            </div>\n        </div>\n    </div>\n</div>\n\n\n<!-- form model -->\n\n<div class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\n    <div class=\"modal-dialog modal-lg row\">\n        <div class=\"modal-content col-sm-8 mx-auto text-right\">\n\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\n            </button>\n            <div class=\"p-3\">\n                <h2 class=\"text-right text-success\">שלח הודעה</h2>\n                <p>\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\n                    <span class=\"text-danger\">\n\n                        צוות אתיופיה אירועים.\n                    </span>\n                </p>\n            </div>\n\n            <hr>\n            <form class=\"p-3\">\n                <div class=\"form-group\">\n                    <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\n\n                </div>\n                <div class=\"form-group\">\n                    <input type=\"email\" class=\"form-control\" id=\"contactEmail\" placeholder=\"אימייל\">\n                </div>\n                <div class=\"form-group\">\n\n                    <select id=\"contactRigion\" class=\"rigion\">\n                        <option selected>אזור</option>\n                        <option value=\"1\">צפון</option>\n                        <option value=\"2\">מרכז והשפלה</option>\n                        <option value=\"3\">דרום</option>\n                    </select>\n                </div>\n\n                <div class=\"form-group\">\n                    <input type=\"tel\" class=\"form-control\" id=\"contactPhone\" placeholder=\"טלפון/פלאפון\">\n                </div>\n\n                <div class=\"form-group\">\n                    <textarea class=\"form-control\" id=\"contactTextarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\n                </div>\n                <button type=\"submit\" class=\"btn btn-success btn-sm\">\n                    <i class=\"fa fa-envelope\"></i>\n                    שלח</button>\n                <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">סגור</button>\n            </form>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/hall/hall.component.ts":
+/***/ "./src/app/pages/customers/halls/hall/hall.component.ts":
 /*!**************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/hall/hall.component.ts ***!
+  !*** ./src/app/pages/customers/halls/hall/hall.component.ts ***!
   \**************************************************************/
 /*! exports provided: HallComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1559,7 +1559,7 @@ module.exports = "<hr class=\"d-sm-none\">\n<div *ngIf=\"(costumerProps | async)
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallComponent", function() { return HallComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
@@ -1591,21 +1591,21 @@ var HallComponent = /** @class */ (function () {
         // let pathUrl = this.route.url["value"][0].path;this.route.snapshot.params['id']
         var pathUrl = this.route.snapshot.params['id'];
         this.user = this.http.authUser;
-        this.http.userObs.subscribe(function (logged) { _this.checkCostumer(pathUrl, logged); });
+        this.http.userObs.subscribe(function (logged) { _this.checkCustomer(pathUrl, logged); });
     };
-    HallComponent.prototype.checkCostumer = function (uri, authUser) {
+    HallComponent.prototype.checkCustomer = function (uri, authUser) {
         var _this = this;
         this.halls.getById(uri).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(function (param) { return (typeof param === "object") || param === 1; }))
             .subscribe(function (cost) {
             var co = cost['customer'];
             if (co && co['id']) {
-                var costumerEmail = co["email"];
+                var customerEmail = co["email"];
                 var authEmail = authUser ? authUser['email'] : false;
-                if (costumerEmail)
-                    _this.costumerProps = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(co);
-                if (costumerEmail === authEmail) {
+                if (customerEmail)
+                    _this.customerProps = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(co);
+                if (customerEmail === authEmail) {
                     _this.http.authUser = authUser;
-                    // this.halls.costumerEmit(co);
+                    // this.halls.customerEmit(co);
                     _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(true);
                 }
                 else {
@@ -1623,39 +1623,39 @@ var HallComponent = /** @class */ (function () {
     HallComponent.prototype.locSetItem = function (keyName, data) {
         localStorage.setItem(keyName, JSON.stringify(data));
     };
-    HallComponent.prototype.getSavedCostumer = function (costumerName) {
-        // console.log(("geting costumer from saved rxjs").toUpperCase());
-        // this.hallService.costumerEmitter$
+    HallComponent.prototype.getSavedCustomer = function (customerName) {
+        // console.log(("geting customer from saved rxjs").toUpperCase());
+        // this.hallService.customerEmitter$
         //   .pipe(
         //     first()
         //   )
         //   .subscribe(
         //     res => {
-        //       this.costumerProps = res;
-        //       if(typeof res.id === "undefined") this.getCostumerByNameFromSever(costumerName);
-        //       if((costumerName in localStorage) === false) this.locSetItem(costumerName, res);
+        //       this.customerProps = res;
+        //       if(typeof res.id === "undefined") this.getCustomerByNameFromSever(customerName);
+        //       if((customerName in localStorage) === false) this.locSetItem(customerName, res);
         //       // (Object.prototype.hasOwnProperty()) 
         //     },
-        //     () => this.getCostumerByNameFromSever(costumerName)
+        //     () => this.getCustomerByNameFromSever(customerName)
         //   );
     };
-    HallComponent.prototype.getCostumerByNameFromSever = function (costumerName) {
-        // console.log(("geting costumer from server ").toUpperCase()+ costumerName);
-        //this.costumerProps = this.hallService.getById(costumerName);
-        // this.hallService.getById(costumerName).subscribe(
+    HallComponent.prototype.getCustomerByNameFromSever = function (customerName) {
+        // console.log(("geting customer from server ").toUpperCase()+ customerName);
+        //this.customerProps = this.hallService.getById(customerName);
+        // this.hallService.getById(customerName).subscribe(
         //   (evt) => console.log(evt)
         // );
     };
     HallComponent.prototype.locGetItem = function (keyName) {
-        console.log(("geting costumer from saved localStorge").toUpperCase());
-        var geTCostumer = JSON.parse(localStorage.getItem(keyName));
-        this.costumerProps = geTCostumer;
+        console.log(("geting customer from saved localStorge").toUpperCase());
+        var geTCustomer = JSON.parse(localStorage.getItem(keyName));
+        this.customerProps = geTCustomer;
     };
-    HallComponent.prototype.getCostumerName = function () {
-        var hallCostumer = decodeURIComponent(this.router.url).slice(1).split('/')[1];
-        if (hallCostumer === "ארמונות-לב")
-            hallCostumer = hallCostumer.split('-')[0] + " " + hallCostumer.split('-')[1];
-        return hallCostumer;
+    HallComponent.prototype.getCustomerName = function () {
+        var hallCustomer = decodeURIComponent(this.router.url).slice(1).split('/')[1];
+        if (hallCustomer === "ארמונות-לב")
+            hallCustomer = hallCustomer.split('-')[0] + " " + hallCustomer.split('-')[1];
+        return hallCustomer;
     };
     HallComponent.prototype.ngOnDestroy = function () {
         //this.costtumerSubscriber.unsubscribe();
@@ -1663,11 +1663,11 @@ var HallComponent = /** @class */ (function () {
     HallComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hall',
-            template: __webpack_require__(/*! ./hall.component.html */ "./src/app/pages/costumers/halls/hall/hall.component.html"),
-            styles: [__webpack_require__(/*! ./hall.component.css */ "./src/app/pages/costumers/halls/hall/hall.component.css")],
+            template: __webpack_require__(/*! ./hall.component.html */ "./src/app/pages/customers/halls/hall/hall.component.html"),
+            styles: [__webpack_require__(/*! ./hall.component.css */ "./src/app/pages/customers/halls/hall/hall.component.css")],
             providers: []
         }),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
     ], HallComponent);
     return HallComponent;
 }());
@@ -1676,9 +1676,9 @@ var HallComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/halls-routing.module.ts":
+/***/ "./src/app/pages/customers/halls/halls-routing.module.ts":
 /*!***************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/halls-routing.module.ts ***!
+  !*** ./src/app/pages/customers/halls/halls-routing.module.ts ***!
   \***************************************************************/
 /*! exports provided: HallsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1688,17 +1688,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallsRoutingModule", function() { return HallsRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _halls_resolver_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./halls-resolver.service */ "./src/app/pages/costumers/halls/halls-resolver.service.ts");
+/* harmony import */ var _halls_resolver_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./halls-resolver.service */ "./src/app/pages/customers/halls/halls-resolver.service.ts");
 /* harmony import */ var _route_guard_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../route-guard.service */ "./src/app/route-guard.service.ts");
 /* harmony import */ var _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../can-deactivate-guard.service */ "./src/app/can-deactivate-guard.service.ts");
-/* harmony import */ var _HallsComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HallsComponent */ "./src/app/pages/costumers/halls/HallsComponent.ts");
-/* harmony import */ var _hall_hall_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hall/hall.component */ "./src/app/pages/costumers/halls/hall/hall.component.ts");
-/* harmony import */ var _hall_media_hall_media_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hall-media/hall-media.component */ "./src/app/pages/costumers/halls/hall-media/hall-media.component.ts");
-/* harmony import */ var _hall_about_hall_about_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hall-about/hall-about.component */ "./src/app/pages/costumers/halls/hall-about/hall-about.component.ts");
-/* harmony import */ var _hall_edit_hall_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hall-edit/hall-edit.component */ "./src/app/pages/costumers/halls/hall-edit/hall-edit.component.ts");
-/* harmony import */ var _hall_edit_all_edit_all_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hall-edit/all-edit/all-edit.component */ "./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.ts");
-/* harmony import */ var _hall_edit_media_edit_media_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hall-edit/media-edit/media-edit.component */ "./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.ts");
-/* harmony import */ var _hall_edit_basic_edit_basic_edit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hall-edit/basic-edit/basic-edit.component */ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.ts");
+/* harmony import */ var _HallsComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HallsComponent */ "./src/app/pages/customers/halls/HallsComponent.ts");
+/* harmony import */ var _hall_hall_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hall/hall.component */ "./src/app/pages/customers/halls/hall/hall.component.ts");
+/* harmony import */ var _hall_media_hall_media_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hall-media/hall-media.component */ "./src/app/pages/customers/halls/hall-media/hall-media.component.ts");
+/* harmony import */ var _hall_about_hall_about_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hall-about/hall-about.component */ "./src/app/pages/customers/halls/hall-about/hall-about.component.ts");
+/* harmony import */ var _hall_edit_hall_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hall-edit/hall-edit.component */ "./src/app/pages/customers/halls/hall-edit/hall-edit.component.ts");
+/* harmony import */ var _hall_edit_all_edit_all_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hall-edit/all-edit/all-edit.component */ "./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.ts");
+/* harmony import */ var _hall_edit_media_edit_media_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./hall-edit/media-edit/media-edit.component */ "./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.ts");
+/* harmony import */ var _hall_edit_basic_edit_basic_edit_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./hall-edit/basic-edit/basic-edit.component */ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.ts");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1759,9 +1759,9 @@ var HallsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/halls.component.css":
+/***/ "./src/app/pages/customers/halls/halls.component.css":
 /*!***********************************************************!*\
-  !*** ./src/app/pages/costumers/halls/halls.component.css ***!
+  !*** ./src/app/pages/customers/halls/halls.component.css ***!
   \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1770,9 +1770,9 @@ module.exports = ".btn-group-vertical, .btn-group {\r\n    /* -ms-flex-direction
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/halls.component.html":
+/***/ "./src/app/pages/customers/halls/halls.component.html":
 /*!************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/halls.component.html ***!
+  !*** ./src/app/pages/customers/halls/halls.component.html ***!
   \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1781,9 +1781,9 @@ module.exports = "\n<router-outlet *ngIf=\"! path\"></router-outlet>\n<hr class=
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/halls.module.ts":
+/***/ "./src/app/pages/customers/halls/halls.module.ts":
 /*!*******************************************************!*\
-  !*** ./src/app/pages/costumers/halls/halls.module.ts ***!
+  !*** ./src/app/pages/customers/halls/halls.module.ts ***!
   \*******************************************************/
 /*! exports provided: HallsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1792,15 +1792,15 @@ module.exports = "\n<router-outlet *ngIf=\"! path\"></router-outlet>\n<hr class=
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallsModule", function() { return HallsModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _HallsComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HallsComponent */ "./src/app/pages/costumers/halls/HallsComponent.ts");
-/* harmony import */ var _hall_hall_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hall/hall.component */ "./src/app/pages/costumers/halls/hall/hall.component.ts");
-/* harmony import */ var _hall_media_hall_media_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hall-media/hall-media.component */ "./src/app/pages/costumers/halls/hall-media/hall-media.component.ts");
-/* harmony import */ var _hall_about_hall_about_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hall-about/hall-about.component */ "./src/app/pages/costumers/halls/hall-about/hall-about.component.ts");
-/* harmony import */ var _hall_edit_hall_edit_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hall-edit/hall-edit.component */ "./src/app/pages/costumers/halls/hall-edit/hall-edit.component.ts");
-/* harmony import */ var _hall_edit_all_edit_all_edit_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hall-edit/all-edit/all-edit.component */ "./src/app/pages/costumers/halls/hall-edit/all-edit/all-edit.component.ts");
-/* harmony import */ var _hall_edit_basic_edit_basic_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hall-edit/basic-edit/basic-edit.component */ "./src/app/pages/costumers/halls/hall-edit/basic-edit/basic-edit.component.ts");
-/* harmony import */ var _hall_edit_media_edit_media_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hall-edit/media-edit/media-edit.component */ "./src/app/pages/costumers/halls/hall-edit/media-edit/media-edit.component.ts");
-/* harmony import */ var _halls_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./halls-routing.module */ "./src/app/pages/costumers/halls/halls-routing.module.ts");
+/* harmony import */ var _HallsComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HallsComponent */ "./src/app/pages/customers/halls/HallsComponent.ts");
+/* harmony import */ var _hall_hall_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hall/hall.component */ "./src/app/pages/customers/halls/hall/hall.component.ts");
+/* harmony import */ var _hall_media_hall_media_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hall-media/hall-media.component */ "./src/app/pages/customers/halls/hall-media/hall-media.component.ts");
+/* harmony import */ var _hall_about_hall_about_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hall-about/hall-about.component */ "./src/app/pages/customers/halls/hall-about/hall-about.component.ts");
+/* harmony import */ var _hall_edit_hall_edit_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hall-edit/hall-edit.component */ "./src/app/pages/customers/halls/hall-edit/hall-edit.component.ts");
+/* harmony import */ var _hall_edit_all_edit_all_edit_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hall-edit/all-edit/all-edit.component */ "./src/app/pages/customers/halls/hall-edit/all-edit/all-edit.component.ts");
+/* harmony import */ var _hall_edit_basic_edit_basic_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hall-edit/basic-edit/basic-edit.component */ "./src/app/pages/customers/halls/hall-edit/basic-edit/basic-edit.component.ts");
+/* harmony import */ var _hall_edit_media_edit_media_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hall-edit/media-edit/media-edit.component */ "./src/app/pages/customers/halls/hall-edit/media-edit/media-edit.component.ts");
+/* harmony import */ var _halls_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./halls-routing.module */ "./src/app/pages/customers/halls/halls-routing.module.ts");
 /* harmony import */ var _shared_pipes_module_pipes_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../shared/pipes-module/pipes-module */ "./src/app/shared/pipes-module/pipes-module.ts");
 /* harmony import */ var _shared_form_module_form_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../../shared/form-module/form-module */ "./src/app/shared/form-module/form-module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -1899,4 +1899,4 @@ var AppFormModule = /** @class */ (function () {
 /***/ })
 
 }]);
-//# sourceMappingURL=pages-costumers-halls-halls-module.js.map
+//# sourceMappingURL=pages-customers-halls-halls-module.js.map

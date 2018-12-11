@@ -27,9 +27,9 @@ Route::get('/', function () {
 // });
 Auth::routes();
 //Route::post('/login', 'UserController@getLogin')->name('login');
-//Route::get('/costumers', 'CostumerController@index')->name('costumers');
+//Route::get('/customers', 'CustomerController@index')->name('customers');
 
-// Route::resource('costumers','CostumersController');
+// Route::resource('customers','CustomersController');
 // Route::group(['middleware' => 'cors'], function() {
 // 	// return User::all()->toJson();
 //    //Route::post('/api/your_url','YourController@function' );

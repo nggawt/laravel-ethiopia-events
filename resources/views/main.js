@@ -8,9 +8,9 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./pages/costumers/halls/halls.module": [
-		"./src/app/pages/costumers/halls/halls.module.ts",
-		"pages-costumers-halls-halls-module"
+	"./pages/customers/halls/halls.module": [
+		"./src/app/pages/customers/halls/halls.module.ts",
+		"pages-customers-halls-halls-module"
 	]
 };
 function webpackAsyncContext(req) {
@@ -145,7 +145,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _pages_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages-service */ "./src/app/pages-service.ts");
-/* harmony import */ var _pages_costumers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/costumers/halls/halls-resolver.service */ "./src/app/pages/costumers/halls/halls-resolver.service.ts");
+/* harmony import */ var _pages_customers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/customers/halls/halls-resolver.service */ "./src/app/pages/customers/halls/halls-resolver.service.ts");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _pages_wellcome_wellcome_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/wellcome/wellcome.component */ "./src/app/pages/wellcome/wellcome.component.ts");
@@ -155,7 +155,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_blog_blog_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/blog/blog.component */ "./src/app/pages/blog/blog.component.ts");
 /* harmony import */ var _pages_goal_goal_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/goal/goal.component */ "./src/app/pages/goal/goal.component.ts");
 /* harmony import */ var _pages_footer_footer_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./pages/footer/footer.component */ "./src/app/pages/footer/footer.component.ts");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _pages_error_page_error_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/error-page/error-page.component */ "./src/app/pages/error-page/error-page.component.ts");
 /* harmony import */ var _pages_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/page-not-found/page-not-found.component */ "./src/app/pages/page-not-found/page-not-found.component.ts");
 /* harmony import */ var _join_join_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./join/join.component */ "./src/app/join/join.component.ts");
@@ -163,17 +163,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _registrations_registration_registration_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./registrations/registration/registration.component */ "./src/app/registrations/registration/registration.component.ts");
 /* harmony import */ var _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./can-deactivate-guard.service */ "./src/app/can-deactivate-guard.service.ts");
 /* harmony import */ var _pages_routing_module__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages-routing-module */ "./src/app/pages-routing-module.ts");
-/* harmony import */ var _pages_costumers_salons_salons_module__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/costumers/salons/salons.module */ "./src/app/pages/costumers/salons/salons.module.ts");
-/* harmony import */ var _pages_costumers_djs_djs_module__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/costumers/djs/djs.module */ "./src/app/pages/costumers/djs/djs.module.ts");
-/* harmony import */ var _pages_costumers_photographers_photographers_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/costumers/photographers/photographers.module */ "./src/app/pages/costumers/photographers/photographers.module.ts");
-/* harmony import */ var _pages_costumers_kyses_rabbinate_Kyses_module__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/costumers/kyses-rabbinate/Kyses.module */ "./src/app/pages/costumers/kyses-rabbinate/Kyses.module.ts");
-/* harmony import */ var _pages_costumers_car_rents_car_rents_module__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/costumers/car-rents/car-rents.module */ "./src/app/pages/costumers/car-rents/car-rents.module.ts");
-/* harmony import */ var _pages_costumers_fireworks_fireworks_module__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/costumers/fireworks/fireworks.module */ "./src/app/pages/costumers/fireworks/fireworks.module.ts");
-/* harmony import */ var _pages_costumers_hotels_hotels_module__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/costumers/hotels/hotels.module */ "./src/app/pages/costumers/hotels/hotels.module.ts");
-/* harmony import */ var _pages_costumers_printing_prints_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/costumers/printing/prints.module */ "./src/app/pages/costumers/printing/prints.module.ts");
-/* harmony import */ var _pages_costumers_transportation_transports_module__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/costumers/transportation/transports.module */ "./src/app/pages/costumers/transportation/transports.module.ts");
+/* harmony import */ var _pages_customers_salons_salons_module__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/customers/salons/salons.module */ "./src/app/pages/customers/salons/salons.module.ts");
+/* harmony import */ var _pages_customers_djs_djs_module__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/customers/djs/djs.module */ "./src/app/pages/customers/djs/djs.module.ts");
+/* harmony import */ var _pages_customers_photographers_photographers_module__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/customers/photographers/photographers.module */ "./src/app/pages/customers/photographers/photographers.module.ts");
+/* harmony import */ var _pages_customers_kyses_rabbinate_Kyses_module__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/customers/kyses-rabbinate/Kyses.module */ "./src/app/pages/customers/kyses-rabbinate/Kyses.module.ts");
+/* harmony import */ var _pages_customers_car_rents_car_rents_module__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/customers/car-rents/car-rents.module */ "./src/app/pages/customers/car-rents/car-rents.module.ts");
+/* harmony import */ var _pages_customers_fireworks_fireworks_module__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/customers/fireworks/fireworks.module */ "./src/app/pages/customers/fireworks/fireworks.module.ts");
+/* harmony import */ var _pages_customers_hotels_hotels_module__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/customers/hotels/hotels.module */ "./src/app/pages/customers/hotels/hotels.module.ts");
+/* harmony import */ var _pages_customers_printing_prints_module__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/customers/printing/prints.module */ "./src/app/pages/customers/printing/prints.module.ts");
+/* harmony import */ var _pages_customers_transportation_transports_module__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/customers/transportation/transports.module */ "./src/app/pages/customers/transportation/transports.module.ts");
 /* harmony import */ var _registrations_log_out_log_out_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./registrations/log-out/log-out.component */ "./src/app/registrations/log-out/log-out.component.ts");
-/* harmony import */ var _pages_costumers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pages/costumers/photographers/photographers-resolver.service */ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts");
+/* harmony import */ var _pages_customers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pages/customers/photographers/photographers-resolver.service */ "./src/app/pages/customers/photographers/photographers-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -200,7 +200,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
-/****************** Costumer Component ********************/
+/****************** Customer Component ********************/
 /****************** Routing ********************/
 
 
@@ -253,20 +253,20 @@ var AppModule = /** @class */ (function () {
                 _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
                 /***** modules imports start here ****/
-                _pages_costumers_salons_salons_module__WEBPACK_IMPORTED_MODULE_26__["SalonsModule"],
-                _pages_costumers_djs_djs_module__WEBPACK_IMPORTED_MODULE_27__["DjsModule"],
-                _pages_costumers_photographers_photographers_module__WEBPACK_IMPORTED_MODULE_28__["PhotographersModule"],
-                _pages_costumers_kyses_rabbinate_Kyses_module__WEBPACK_IMPORTED_MODULE_29__["KysesModule"],
-                _pages_costumers_car_rents_car_rents_module__WEBPACK_IMPORTED_MODULE_30__["CarRentsModule"],
-                _pages_costumers_fireworks_fireworks_module__WEBPACK_IMPORTED_MODULE_31__["FireworksModule"],
-                _pages_costumers_hotels_hotels_module__WEBPACK_IMPORTED_MODULE_32__["HotelsModule"],
-                _pages_costumers_printing_prints_module__WEBPACK_IMPORTED_MODULE_33__["PrintsgModule"],
-                _pages_costumers_transportation_transports_module__WEBPACK_IMPORTED_MODULE_34__["TransportsModule"],
+                _pages_customers_salons_salons_module__WEBPACK_IMPORTED_MODULE_26__["SalonsModule"],
+                _pages_customers_djs_djs_module__WEBPACK_IMPORTED_MODULE_27__["DjsModule"],
+                _pages_customers_photographers_photographers_module__WEBPACK_IMPORTED_MODULE_28__["PhotographersModule"],
+                _pages_customers_kyses_rabbinate_Kyses_module__WEBPACK_IMPORTED_MODULE_29__["KysesModule"],
+                _pages_customers_car_rents_car_rents_module__WEBPACK_IMPORTED_MODULE_30__["CarRentsModule"],
+                _pages_customers_fireworks_fireworks_module__WEBPACK_IMPORTED_MODULE_31__["FireworksModule"],
+                _pages_customers_hotels_hotels_module__WEBPACK_IMPORTED_MODULE_32__["HotelsModule"],
+                _pages_customers_printing_prints_module__WEBPACK_IMPORTED_MODULE_33__["PrintsgModule"],
+                _pages_customers_transportation_transports_module__WEBPACK_IMPORTED_MODULE_34__["TransportsModule"],
                 /***** modules imports end ****/
                 _pages_routing_module__WEBPACK_IMPORTED_MODULE_25__["PagesRoutingModule"],
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_2__["NgbModule"].forRoot()
             ],
-            providers: [_pages_service__WEBPACK_IMPORTED_MODULE_7__["PagesService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__["CustomersDataService"], _pages_costumers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__["HallResolver"], _pages_costumers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__["PhotographersResolver"], _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_24__["CanDeactivateGuardService"]],
+            providers: [_pages_service__WEBPACK_IMPORTED_MODULE_7__["PagesService"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_18__["CustomersDataService"], _pages_customers_halls_halls_resolver_service__WEBPACK_IMPORTED_MODULE_8__["HallResolver"], _pages_customers_photographers_photographers_resolver_service__WEBPACK_IMPORTED_MODULE_36__["PhotographersResolver"], _can_deactivate_guard_service__WEBPACK_IMPORTED_MODULE_24__["CanDeactivateGuardService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]]
         })
     ], AppModule);
@@ -300,9 +300,9 @@ var CanDeactivateGuardService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/costumers/customers-data-service.ts":
+/***/ "./src/app/customers/customers-data-service.ts":
 /*!*****************************************************!*\
-  !*** ./src/app/costumers/customers-data-service.ts ***!
+  !*** ./src/app/customers/customers-data-service.ts ***!
   \*****************************************************/
 /*! exports provided: CustomersDataService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -333,22 +333,22 @@ var CustomersDataService = /** @class */ (function () {
         this.http = http;
         this.costs = false;
         /**** costmumer */
-        this.costumer = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](1);
-        this.costumerObsever = this.costumer.asObservable();
+        this.customer = new rxjs__WEBPACK_IMPORTED_MODULE_1__["BehaviorSubject"](1);
+        this.customerObsever = this.customer.asObservable();
         this.emailPatteren = '^[a-z]+[a-zA-Z_\\d]*@[A-Za-z]{2,10}\.[A-Za-z]{2,3}(?:\.?[a-z]{2})?$';
-        this.costumers = this.http.get("http://ethio:8080/api/costumers")
+        this.customers = this.http.get("http://ethio:8080/api/customers")
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["tap"])(function (res) {
             console.log(res);
-            _this.costs = res['costumers'];
+            _this.costs = res['customers'];
             _this.galleries = res['galleries'];
         })).toPromise().catch(this.handleError);
     }
-    CustomersDataService.prototype.getCostumers = function (type) {
+    CustomersDataService.prototype.getCustomers = function (type) {
         if (this.costs) {
             return this.costs[type];
         }
-        return this.costumers.then(function (res) {
-            var data = res['costumers'];
+        return this.customers.then(function (res) {
+            var data = res['customers'];
             return data && data[type] ? data[type] : [];
         }, function (res) {
             console.log("No data!");
@@ -358,16 +358,16 @@ var CustomersDataService = /** @class */ (function () {
         console.log("YOu have problem with your sever!");
         console.log(errors['message']);
     };
-    CustomersDataService.prototype.costumerEmit = function (costumer) {
-        this.costumer.next(costumer);
+    CustomersDataService.prototype.customerEmit = function (customer) {
+        this.customer.next(customer);
     };
     CustomersDataService.prototype.getGallery = function (id) {
         //return this.findItems(this.galleries, id);
-        //if(this.costs){ return this.costs.filter((items) => {return items.costumer_id == id;});}
-        return this.galleries.find(function (items) { return items.costumer_id == id; });
+        //if(this.costs){ return this.costs.filter((items) => {return items.customer_id == id;});}
+        return this.galleries.find(function (items) { return items.customer_id == id; });
     };
     CustomersDataService.prototype.getVideo = function (id) {
-        // return this.videos.filter((items) => {return items.costumer_id == id;});
+        // return this.videos.filter((items) => {return items.customer_id == id;});
         // return this.findItems(this.videos, id);
     };
     CustomersDataService.prototype.storeData = function (postUrl, inputData, opt) {
@@ -379,49 +379,49 @@ var CustomersDataService = /** @class */ (function () {
     CustomersDataService.prototype.putData = function (postUrl, inputData, opt) {
         return this.http.put(postUrl, inputData, opt);
     };
-    CustomersDataService.prototype.getById = function (costumerName) {
+    CustomersDataService.prototype.getById = function (customerName) {
         var _this = this;
-        // let customers = this.costs? this.costs: this.costumers;
-        var isNumric = (!isNaN(parseFloat(costumerName)) && isFinite(costumerName));
+        // let customers = this.costs? this.costs: this.customers;
+        var isNumric = (!isNaN(parseFloat(customerName)) && isFinite(customerName));
         var type = this.intendedUrl ? this.intendedUrl : decodeURIComponent(location.pathname).split('/')[1];
         type = (type === "app") ? decodeURIComponent(location.pathname).split('/')[2] : type;
         //  console.log(type);
         var prop = "company";
         if (isNumric) {
             prop = "id";
-            costumerName = +costumerName;
+            customerName = +customerName;
         }
         if (!isNumric) {
-            var regex = costumerName.match(this.emailPatteren);
+            var regex = customerName.match(this.emailPatteren);
             if (regex && regex[0])
                 prop = "email";
         }
         if (this.costs) {
             if (type == '/join') {
-                var concated = this.concatCostumers(this.costs);
-                var isCostumer = concated ? concated.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
-                (typeof isCostumer === "object") ? this.costumer.next(isCostumer) : this.costumer.next({});
-                return this.costumerObsever;
+                var concated = this.concatCustomers(this.costs);
+                var isCustomer = concated ? concated.find(function (items) { return items['customer'][prop] == customerName; }) : false;
+                (typeof isCustomer === "object") ? this.customer.next(isCustomer) : this.customer.next({});
+                return this.customerObsever;
             }
             var costmumerType = this.costs[type] ? this.costs[type] : false;
-            var co = costmumerType ? costmumerType.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
-            (typeof co === "object") ? this.costumer.next(co) : this.costumer.next({});
-            return this.costumerObsever;
+            var co = costmumerType ? costmumerType.find(function (items) { return items['customer'][prop] == customerName; }) : false;
+            (typeof co === "object") ? this.customer.next(co) : this.customer.next({});
+            return this.customerObsever;
         }
-        this.costumers.then(function (data) {
-            var co = data['costumers'] ? data['costumers'][type] : false;
+        this.customers.then(function (data) {
+            var co = data['customers'] ? data['customers'][type] : false;
             if (type == '/join') {
-                var concated = co ? _this.concatCostumers(co) : false;
-                var isCostumer = concated ? concated.find(function (items) { return items['customer'][prop] == costumerName; }) : false;
-                (typeof isCostumer === "object") ? _this.costumer.next(isCostumer) : _this.costumer.next({});
+                var concated = co ? _this.concatCustomers(co) : false;
+                var isCustomer = concated ? concated.find(function (items) { return items['customer'][prop] == customerName; }) : false;
+                (typeof isCustomer === "object") ? _this.customer.next(isCustomer) : _this.customer.next({});
                 return;
             }
-            co = co && co ? co.find(function (elem) { return elem['customer'][prop] == costumerName; }) : false;
-            (typeof co === "object") ? _this.costumer.next(co) : _this.costumer.next({});
+            co = co && co ? co.find(function (elem) { return elem['customer'][prop] == customerName; }) : false;
+            (typeof co === "object") ? _this.customer.next(co) : _this.customer.next({});
         });
-        return this.costumerObsever;
+        return this.customerObsever;
     };
-    CustomersDataService.prototype.concatCostumers = function (costmumers) {
+    CustomersDataService.prototype.concatCustomers = function (costmumers) {
         var cos = [];
         for (var ii in costmumers) {
             var cost = costmumers[ii];
@@ -435,17 +435,17 @@ var CustomersDataService = /** @class */ (function () {
         }
         return cos;
     };
-    /*  public getCostumer(param?) {
-        //console.log((param && this.costumer.value === 1));
-         //return (param && this.costumer.value === 1) ? this.getById(param) : this.costumerObsever;
+    /*  public getCustomer(param?) {
+        //console.log((param && this.customer.value === 1));
+         //return (param && this.customer.value === 1) ? this.getById(param) : this.customerObsever;
      } */
-    CustomersDataService.prototype.costumerPromis = function (costumerUriRecourse) {
+    CustomersDataService.prototype.customerPromis = function (customerUriRecourse) {
         var _this = this;
         var promisse = new Promise(function (resolve, reject) {
-            _this.getById(costumerUriRecourse)
+            _this.getById(customerUriRecourse)
                 .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["first"])(function (param) { return typeof param === "object"; }))
-                .subscribe(function (costumer) {
-                var co = costumer['customer'];
+                .subscribe(function (customer) {
+                var co = customer['customer'];
                 if (typeof co === "object" && co['email']) {
                     resolve(co);
                 }
@@ -462,14 +462,14 @@ var CustomersDataService = /** @class */ (function () {
         var idx = 0;
         for (var _i = 0, gals_1 = gals; _i < gals_1.length; _i++) {
             var ii = gals_1[_i];
-            if (ii.costumer_id === id) {
-                //this.costumer.next(gals[ii]);
+            if (ii.customer_id === id) {
+                //this.customer.next(gals[ii]);
                 arrItem[idx++] = ii;
             }
         }
         return arrItem;
     };
-    CustomersDataService.prototype.finCostumer = function (elem, prop, costName) {
+    CustomersDataService.prototype.finCustomer = function (elem, prop, costName) {
         return elem[prop] == costName;
     };
     CustomersDataService = __decorate([
@@ -483,9 +483,9 @@ var CustomersDataService = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/costumers/form-proccesor.service.ts":
+/***/ "./src/app/customers/form-proccesor.service.ts":
 /*!*****************************************************!*\
-  !*** ./src/app/costumers/form-proccesor.service.ts ***!
+  !*** ./src/app/customers/form-proccesor.service.ts ***!
   \*****************************************************/
 /*! exports provided: FormProccesorService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -510,12 +510,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var FormProccesorService = /** @class */ (function () {
     function FormProccesorService() {
     }
-    FormProccesorService.prototype.validate = function (inputControllers, costumer, key) {
+    FormProccesorService.prototype.validate = function (inputControllers, customer, key) {
         var truly = true;
         var err = {};
         var success = {};
         if (key) {
-            var inputs = this.checkInputs(inputControllers, key, costumer);
+            var inputs = this.checkInputs(inputControllers, key, customer);
             var inp = inputs['input'];
             var status_1 = inputs['status'];
             success[key] = inp[key];
@@ -529,7 +529,7 @@ var FormProccesorService = /** @class */ (function () {
         else {
             var stat = false;
             for (var ii in inputControllers) {
-                var input = this.checkInputs(inputControllers[ii], ii, costumer);
+                var input = this.checkInputs(inputControllers[ii], ii, customer);
                 var inputs = input['input'];
                 if (!input.status) {
                     truly = false;
@@ -553,7 +553,7 @@ var FormProccesorService = /** @class */ (function () {
             };
         }
     };
-    FormProccesorService.prototype.checkInputs = function (input, ii, costumer) {
+    FormProccesorService.prototype.checkInputs = function (input, ii, customer) {
         var gnKey = {
             company: "שם חברה",
             contact: "איש קשר",
@@ -572,11 +572,11 @@ var FormProccesorService = /** @class */ (function () {
                 'input': transformHebKey[ii] = "שגיעה"
             }; //isTrue?inputs:transformHebKey
         }
-        if (input.touched && input.valid && input.dirty && costumer[ii] != input.value) {
+        if (input.touched && input.valid && input.dirty && customer[ii] != input.value) {
             inputs[ii] = input.value;
             inputs['type'] = "success";
         }
-        else if (costumer[ii] === input.value) {
+        else if (customer[ii] === input.value) {
             //console.log(gnKey[ii]);
             isTrue = false;
             transformHebKey['type'] = "warning";
@@ -986,7 +986,7 @@ module.exports = "\r\n.inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<hr class=\"d-xl-none\">\n\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right\" [formGroup]=\"addCostumerForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"card-header bg-light\">\n    <h2 class=\"card-title text-success h5\">הצטרף לאינדקס</h2>\n\n  </div>\n  <!--  no-gutters -->\n  <div *ngIf=\"masseges\" class=\"col-sm-12 \">\n      <div *ngFor=\"let massege of masseges\" class=\"alert alert-danger my-1\">\n          <p class=\"p-0 m-0\"> * {{ massege }} </p>\n        </div>\n  </div>\n  <div class=\"row p-3\">\n    \n    \n    <div class=\"col-sm-12 col-lg-5\">\n      <div class=\"border h-100 bg-light p-3\">\n\n        <div class=\"form-group\">\n          <label for=\"businessType\">תחום</label>\n          \n          <div class=\"inputTypeNumber\">\n            <select name=\"businessType\" id=\"businessType\" class=\"col-11 selectList\" formControlName=\"businessType\" required>\n              <option value=\"\" selected hidden>בחר תחום</option>\n              <option value=\"halls-events\">אולם אירועים</option>\n              <option value=\"salons\">סלון כלות</option>\n              <option value=\"photographers\">צלמים</option>\n              <option value=\"djs\">די-ג'י</option>\n              <option value=\"printing\">בתי דפוס</option>\n              <option value=\"fireworks\">זיקוקים ואטרקציות</option>\n              <option value=\"transportation\">הסעות</option>\n              <option value=\"car-rental\">השכרת רכב</option>ד\n              <option value=\"hotels\">צמרים ובתי מלון</option>\n              <option value=\"kyses\">קייסים/רבנות</option>\n              <option value=\"שונות\">שונות</option>\n            </select>\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n         \n          <div *ngIf=\"f.businessType.invalid && f.businessType.touched\"  class=\"invalid-feedback d-block\">* בחר תחום העסק מתוך הרשימה </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"company\">שם החברה</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n\n          <div *ngIf=\"f.company.invalid && f.company.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"contact\">איש קשר</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\"  class=\"invalid-feedback d-block\">* שדה  חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"tel\">פלאפון/טלפון</label>\n         \n            <div class=\"inputTypeNumber\">\n              <input type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11\" formControlName=\"tel\" [pattern]=\"phoneNum\" required />\n         \n              <span class=\"validity float-left\"></span>\n            </div>\n            <div *ngIf=\"f.tel.invalid && f.tel.touched\"  class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"address\">כתובת</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.address.invalid && f.address.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"email\">אימייל</label>\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.email.invalid && f.email.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group py-2 bg-light\">\n          <label for=\"title\">תיאור או כותרת החברה</label>\n\n          <div class=\"inputTypeNumber textarea\">\n              <textarea class=\"col-11\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required minlength=\"12\">\n                \n                </textarea>\n                <span class=\"validity float-left\"></span>\n            </div>\n          <div *ngIf=\"f.title.invalid && f.title.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-sm-12 col-lg-7\">\n      <div class=\"border bg-light h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              חפש לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\n        </div>\n        \n        <div class=\"btn-group \">\n\n        </div>\n        <!-- Chose video -->\n        <p class=\"pb-2 m-0\">סרטון תדמית החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\n            <span>\n              חפש סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\"  required />\n        </div>\n\n        <div class=\"btn-group w-100 bg-white position-relative\">\n          \n        </div>\n\n        <!-- Chose image dallery -->\n        <p class=\"pb-2 m-0\">גלריה החברה</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\n            <span>\n              חפש תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"  />\n        </div>\n\n        <div class=\"btn-group\">\n\n        </div>\n\n      </div>\n    </div>\n  </div>\n  <div class=\"row p-3 no-gutters\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group border p-3 bg-light\">\n        <label for=\"discription\">אודות החברה</label>\n        <textarea class=\"form-control\" style=\"min-height: 200px\" type=\"text\" name=\"discription\" id=\"discription\" formControlName=\"discription\" required>\n      </textarea>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\">\n      \n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n      </div>\n    </div>\n  </div>\n\n</form>\n\n"
+module.exports = "<hr class=\"d-xl-none\">\n\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right\" [formGroup]=\"addCustomerForm\" (ngSubmit)=\"onSubmit()\">\n  <div class=\"card-header bg-light\">\n    <h2 class=\"card-title text-success h5\">הצטרף לאינדקס</h2>\n\n  </div>\n  <!--  no-gutters -->\n  <div *ngIf=\"masseges\" class=\"col-sm-12 \">\n      <div *ngFor=\"let massege of masseges\" class=\"alert alert-danger my-1\">\n          <p class=\"p-0 m-0\"> * {{ massege }} </p>\n        </div>\n  </div>\n  <div class=\"row p-3\">\n    \n    \n    <div class=\"col-sm-12 col-lg-5\">\n      <div class=\"border h-100 bg-light p-3\">\n\n        <div class=\"form-group\">\n          <label for=\"businessType\">תחום</label>\n          \n          <div class=\"inputTypeNumber\">\n            <select name=\"businessType\" id=\"businessType\" class=\"col-11 selectList\" formControlName=\"businessType\" required>\n              <option value=\"\" selected hidden>בחר תחום</option>\n              <option value=\"halls-events\">אולם אירועים</option>\n              <option value=\"salons\">סלון כלות</option>\n              <option value=\"photographers\">צלמים</option>\n              <option value=\"djs\">די-ג'י</option>\n              <option value=\"printing\">בתי דפוס</option>\n              <option value=\"fireworks\">זיקוקים ואטרקציות</option>\n              <option value=\"transportation\">הסעות</option>\n              <option value=\"car-rental\">השכרת רכב</option>ד\n              <option value=\"hotels\">צמרים ובתי מלון</option>\n              <option value=\"kyses\">קייסים/רבנות</option>\n              <option value=\"שונות\">שונות</option>\n            </select>\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n         \n          <div *ngIf=\"f.businessType.invalid && f.businessType.touched\"  class=\"invalid-feedback d-block\">* בחר תחום העסק מתוך הרשימה </div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"company\">שם החברה</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n\n          <div *ngIf=\"f.company.invalid && f.company.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"contact\">איש קשר</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\"  class=\"invalid-feedback d-block\">* שדה  חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"tel\">פלאפון/טלפון</label>\n         \n            <div class=\"inputTypeNumber\">\n              <input type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11\" formControlName=\"tel\" [pattern]=\"phoneNum\" required />\n         \n              <span class=\"validity float-left\"></span>\n            </div>\n            <div *ngIf=\"f.tel.invalid && f.tel.touched\"  class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"address\">כתובת</label>\n\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.address.invalid && f.address.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group\">\n          <label for=\"email\">אימייל</label>\n          <div class=\"inputTypeNumber\">\n            <input class=\"col-11\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\" required />\n       \n            <span class=\"validity float-left\"></span>\n          </div>\n          <div *ngIf=\"f.email.invalid && f.email.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n        <div class=\"form-group py-2 bg-light\">\n          <label for=\"title\">תיאור או כותרת החברה</label>\n\n          <div class=\"inputTypeNumber textarea\">\n              <textarea class=\"col-11\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required minlength=\"12\">\n                \n                </textarea>\n                <span class=\"validity float-left\"></span>\n            </div>\n          <div *ngIf=\"f.title.invalid && f.title.touched\"  class=\"invalid-feedback d-block\">* שדה חובה</div>\n        </div>\n\n      </div>\n    </div>\n\n    <div class=\"col-sm-12 col-lg-7\">\n      <div class=\"border bg-light h-100 p-3\">\n        <!-- Chose loggo -->\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\n            <span>\n              חפש לוגו\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\n        </div>\n        \n        <div class=\"btn-group \">\n\n        </div>\n        <!-- Chose video -->\n        <p class=\"pb-2 m-0\">סרטון תדמית החברה</p>\n        <div class=\"form-group border bg-white clearfix\">\n\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\n            <span>\n              חפש סרטון\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\"  required />\n        </div>\n\n        <div class=\"btn-group w-100 bg-white position-relative\">\n          \n        </div>\n\n        <!-- Chose image dallery -->\n        <p class=\"pb-2 m-0\">גלריה החברה</p>\n        <div class=\"form-group bg-white border clearfix\">\n\n          <span class=\"py-2 px-2 m-0 float-right\">\n            בחר קובץ...\n          </span>\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\n            <span>\n              חפש תמונות\n              <i class=\"fa fa-search text-success\"></i>\n            </span>\n          </label>\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"  />\n        </div>\n\n        <div class=\"btn-group\">\n\n        </div>\n\n      </div>\n    </div>\n  </div>\n  <div class=\"row p-3 no-gutters\">\n    <div class=\"col-sm-12\">\n      <div class=\"form-group border p-3 bg-light\">\n        <label for=\"discription\">אודות החברה</label>\n        <textarea class=\"form-control\" style=\"min-height: 200px\" type=\"text\" name=\"discription\" id=\"discription\" formControlName=\"discription\" required>\n      </textarea>\n      </div>\n    </div>\n\n    <div class=\"col-sm-12\">\n      \n      <div class=\"btn-group w-100 p-3 bg-light\">\n        <button class=\"btn btn-success\" type=\"submit\">העלה</button>\n        <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\n        <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\n      </div>\n    </div>\n  </div>\n\n</form>\n\n"
 
 /***/ }),
 
@@ -1006,7 +1006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1050,12 +1050,12 @@ var JoinComponent = /** @class */ (function () {
         });
     };
     Object.defineProperty(JoinComponent.prototype, "f", {
-        get: function () { return this.addCostumerForm.controls; },
+        get: function () { return this.addCustomerForm.controls; },
         enumerable: true,
         configurable: true
     });
     JoinComponent.prototype.formInt = function () {
-        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'businessType': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
             'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]),
@@ -1067,7 +1067,7 @@ var JoinComponent = /** @class */ (function () {
         });
     };
     JoinComponent.prototype.canDeactivate = function () {
-        if (this.addCostumerForm.dirty || this.addCostumerForm.touched || this.filesSize >= 1 || this.arrayFlies.length >= 1) {
+        if (this.addCustomerForm.dirty || this.addCustomerForm.touched || this.filesSize >= 1 || this.arrayFlies.length >= 1) {
             return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
         }
         else {
@@ -1077,8 +1077,8 @@ var JoinComponent = /** @class */ (function () {
     JoinComponent.prototype.onSubmit = function () {
         var _this = this;
         var input = new FormData();
-        var posterUrl = "http://ethio:8080/api/costumers";
-        var formInputs = this.addCostumerForm.value;
+        var posterUrl = "http://ethio:8080/api/customers";
+        var formInputs = this.addCustomerForm.value;
         var urls = formInputs['businessType'] + "/" + formInputs['company'];
         var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
         var errors = {};
@@ -1098,7 +1098,7 @@ var JoinComponent = /** @class */ (function () {
         errors.galleries = (counter < 3) ? errors.galleries = "גלריית התמונות חייב להכיל לפחות 3 תמונות" : null;
         errors.fileSize = (checkFilesSizes) ? errors.fileSize = this.formatBytes(this.filesSize) + " : " + "גודל הקבצים גדולה מדי." : null;
         errors.loggo = (typeof formInputs['loggo'] === 'undefined' || !formInputs['loggo']) ? errors.loggo = "העלה תמונת לוגו או אייקון של החברה." : null;
-        errors.formInputs = (!this.addCostumerForm.valid) ? errors.formInputs = "ודא והשלם פרטים נכונים" : null;
+        errors.formInputs = (!this.addCustomerForm.valid) ? errors.formInputs = "ודא והשלם פרטים נכונים" : null;
         for (var ii in errors) {
             if (errors.hasOwnProperty(ii)) {
                 if (errors[ii])
@@ -1131,7 +1131,7 @@ var JoinComponent = /** @class */ (function () {
         // ,
         // reportProgress: true,
         // observe: 'events'
-        //console.log(this.addCostumerForm.value);
+        //console.log(this.addCustomerForm.value);
         //rs.subscribe(evt => console.log(evt));
         /* test before send */
         // if(1+1 == 2){
@@ -1140,8 +1140,8 @@ var JoinComponent = /** @class */ (function () {
         //   // console.log(formInputs);
         //   // console.log("input:::::");
         //   // console.log(input);
-        //   // console.log("this.addCostumerForm");
-        //   // console.log(this.addCostumerForm);
+        //   // console.log("this.addCustomerForm");
+        //   // console.log(this.addCustomerForm);
         //   return;
         // }
     };
@@ -1290,7 +1290,7 @@ var JoinComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./join.component.html */ "./src/app/join/join.component.html"),
             styles: [__webpack_require__(/*! ./join.component.css */ "./src/app/join/join.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_4__["HttpService"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_6__["CustomersDataService"]])
     ], JoinComponent);
     return JoinComponent;
 }());
@@ -1358,7 +1358,7 @@ var routes = [
     },
     { path: 'בלוג', component: _pages_blog_blog_component__WEBPACK_IMPORTED_MODULE_5__["BlogComponent"] },
     { path: 'צור-קשר', component: _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_4__["ContactComponent"] },
-    { path: '', loadChildren: "./pages/costumers/halls/halls.module#HallsModule" },
+    { path: '', loadChildren: "./pages/customers/halls/halls.module#HallsModule" },
     // { path: "**", component: PageNotFoundComponent}
     { path: "errors-page", component: _pages_error_page_error_page_component__WEBPACK_IMPORTED_MODULE_7__["ErrorPageComponent"], data: { errorMsg: "You have page ERRoR" } },
     { path: "**", redirectTo: "/errors-page" }
@@ -1698,9 +1698,9 @@ var ContactComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.css":
 /*!***************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.css ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1709,9 +1709,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.html":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.html ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1720,9 +1720,9 @@ module.exports = "<p>\n  kyse- Nd rabbi-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.ts":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.ts ***!
   \**************************************************************************************/
 /*! exports provided: CarRentAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1749,8 +1749,8 @@ var CarRentAboutComponent = /** @class */ (function () {
     CarRentAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent-about',
-            template: __webpack_require__(/*! ./car-rent-about.component.html */ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.html"),
-            styles: [__webpack_require__(/*! ./car-rent-about.component.css */ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.css")]
+            template: __webpack_require__(/*! ./car-rent-about.component.html */ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.html"),
+            styles: [__webpack_require__(/*! ./car-rent-about.component.css */ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentAboutComponent);
@@ -1761,9 +1761,9 @@ var CarRentAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css":
 /*!**************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1772,9 +1772,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html":
 /*!***************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1783,9 +1783,9 @@ module.exports = "<h2>car-rent- all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts":
 /*!*************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts ***!
   \*************************************************************************************************/
 /*! exports provided: CarRentAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1814,8 +1814,8 @@ var CarRentAllEditComponent = /** @class */ (function () {
     CarRentAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent-all-edit',
-            template: __webpack_require__(/*! ./car-rent-all-edit.component.html */ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./car-rent-all-edit.component.css */ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css")]
+            template: __webpack_require__(/*! ./car-rent-all-edit.component.html */ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./car-rent-all-edit.component.css */ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentAllEditComponent);
@@ -1826,9 +1826,9 @@ var CarRentAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css":
 /*!******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1837,9 +1837,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html":
 /*!*******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1848,9 +1848,9 @@ module.exports = "<h2>car-rent-- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts":
 /*!*****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts ***!
   \*****************************************************************************************************/
 /*! exports provided: CarRentBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1879,8 +1879,8 @@ var CarRentBasicEditComponent = /** @class */ (function () {
     CarRentBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent-basic-edit',
-            template: __webpack_require__(/*! ./car-rent-basic-edit.component.html */ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./car-rent-basic-edit.component.css */ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./car-rent-basic-edit.component.html */ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./car-rent-basic-edit.component.css */ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentBasicEditComponent);
@@ -1891,9 +1891,9 @@ var CarRentBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1902,9 +1902,9 @@ module.exports = "<h2>car-rent- - edit worka!</h2>\n<router-outlet></router-outl
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.ts ***!
   \************************************************************************************/
 /*! exports provided: CarRentEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1931,7 +1931,7 @@ var CarRentEditComponent = /** @class */ (function () {
     CarRentEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent-edit',
-            template: __webpack_require__(/*! ./car-rent-edit.component.html */ "./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.html"),
+            template: __webpack_require__(/*! ./car-rent-edit.component.html */ "./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -1943,9 +1943,9 @@ var CarRentEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.css":
 /*!***************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.css ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1954,9 +1954,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.html":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.html ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -1965,9 +1965,9 @@ module.exports = "<h2>\n  car-rent--media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.ts":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.ts ***!
   \**************************************************************************************/
 /*! exports provided: CarRentMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1994,8 +1994,8 @@ var CarRentMediaComponent = /** @class */ (function () {
     CarRentMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent-media',
-            template: __webpack_require__(/*! ./car-rent-media.component.html */ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.html"),
-            styles: [__webpack_require__(/*! ./car-rent-media.component.css */ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.css")]
+            template: __webpack_require__(/*! ./car-rent-media.component.html */ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.html"),
+            styles: [__webpack_require__(/*! ./car-rent-media.component.css */ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentMediaComponent);
@@ -2006,9 +2006,9 @@ var CarRentMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.css":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent/car-rent.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent/car-rent.component.css ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2017,9 +2017,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.html":
 /*!****************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent/car-rent.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent/car-rent.component.html ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2028,9 +2028,9 @@ module.exports = "<h2>\n  car- rent and rabbi comp works!\n</h2>\n<router-outlet
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.ts":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rent/car-rent.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rent/car-rent.component.ts ***!
   \**************************************************************************/
 /*! exports provided: CarRentComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2057,8 +2057,8 @@ var CarRentComponent = /** @class */ (function () {
     CarRentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rent',
-            template: __webpack_require__(/*! ./car-rent.component.html */ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.html"),
-            styles: [__webpack_require__(/*! ./car-rent.component.css */ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.css")]
+            template: __webpack_require__(/*! ./car-rent.component.html */ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.html"),
+            styles: [__webpack_require__(/*! ./car-rent.component.css */ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentComponent);
@@ -2069,9 +2069,9 @@ var CarRentComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rents-routing.module.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rents-routing.module.ts":
 /*!***********************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rents-routing.module.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rents-routing.module.ts ***!
   \***********************************************************************/
 /*! exports provided: CarRentsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2082,13 +2082,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _car_rents_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./car-rents.component */ "./src/app/pages/costumers/car-rents/car-rents.component.ts");
-/* harmony import */ var _car_rent_car_rent_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./car-rent/car-rent.component */ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.ts");
-/* harmony import */ var _car_rent_media_car_rent_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./car-rent-media/car-rent-media.component */ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.ts");
-/* harmony import */ var _car_rent_about_car_rent_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./car-rent-about/car-rent-about.component */ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.ts");
-/* harmony import */ var _car_rent_edit_car_rent_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./car-rent-edit/car-rent-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.ts");
-/* harmony import */ var _car_rent_edit_all_edit_car_rent_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./car-rent-edit/all-edit/car-rent-all-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts");
-/* harmony import */ var _car_rent_edit_basic_edit_car_rent_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./car-rent-edit/basic-edit/car-rent-basic-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts");
+/* harmony import */ var _car_rents_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./car-rents.component */ "./src/app/pages/customers/car-rents/car-rents.component.ts");
+/* harmony import */ var _car_rent_car_rent_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./car-rent/car-rent.component */ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.ts");
+/* harmony import */ var _car_rent_media_car_rent_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./car-rent-media/car-rent-media.component */ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.ts");
+/* harmony import */ var _car_rent_about_car_rent_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./car-rent-about/car-rent-about.component */ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.ts");
+/* harmony import */ var _car_rent_edit_car_rent_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./car-rent-edit/car-rent-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.ts");
+/* harmony import */ var _car_rent_edit_all_edit_car_rent_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./car-rent-edit/all-edit/car-rent-all-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts");
+/* harmony import */ var _car_rent_edit_basic_edit_car_rent_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./car-rent-edit/basic-edit/car-rent-basic-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2144,9 +2144,9 @@ var CarRentsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rents.component.css":
+/***/ "./src/app/pages/customers/car-rents/car-rents.component.css":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rents.component.css ***!
+  !*** ./src/app/pages/customers/car-rents/car-rents.component.css ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2155,9 +2155,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rents.component.html":
+/***/ "./src/app/pages/customers/car-rents/car-rents.component.html":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rents.component.html ***!
+  !*** ./src/app/pages/customers/car-rents/car-rents.component.html ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2166,9 +2166,9 @@ module.exports = "<p>\n  car-rents main works!\n</p>\n<router-outlet></router-ou
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rents.component.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rents.component.ts":
 /*!******************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rents.component.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rents.component.ts ***!
   \******************************************************************/
 /*! exports provided: CarRentsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2195,8 +2195,8 @@ var CarRentsComponent = /** @class */ (function () {
     CarRentsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-car-rents',
-            template: __webpack_require__(/*! ./car-rents.component.html */ "./src/app/pages/costumers/car-rents/car-rents.component.html"),
-            styles: [__webpack_require__(/*! ./car-rents.component.css */ "./src/app/pages/costumers/car-rents/car-rents.component.css")]
+            template: __webpack_require__(/*! ./car-rents.component.html */ "./src/app/pages/customers/car-rents/car-rents.component.html"),
+            styles: [__webpack_require__(/*! ./car-rents.component.css */ "./src/app/pages/customers/car-rents/car-rents.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], CarRentsComponent);
@@ -2207,9 +2207,9 @@ var CarRentsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/car-rents/car-rents.module.ts":
+/***/ "./src/app/pages/customers/car-rents/car-rents.module.ts":
 /*!***************************************************************!*\
-  !*** ./src/app/pages/costumers/car-rents/car-rents.module.ts ***!
+  !*** ./src/app/pages/customers/car-rents/car-rents.module.ts ***!
   \***************************************************************/
 /*! exports provided: CarRentsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2219,14 +2219,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CarRentsModule", function() { return CarRentsModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _car_rents_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./car-rents-routing.module */ "./src/app/pages/costumers/car-rents/car-rents-routing.module.ts");
-/* harmony import */ var _car_rents_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./car-rents.component */ "./src/app/pages/costumers/car-rents/car-rents.component.ts");
-/* harmony import */ var _car_rent_car_rent_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./car-rent/car-rent.component */ "./src/app/pages/costumers/car-rents/car-rent/car-rent.component.ts");
-/* harmony import */ var _car_rent_media_car_rent_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./car-rent-media/car-rent-media.component */ "./src/app/pages/costumers/car-rents/car-rent-media/car-rent-media.component.ts");
-/* harmony import */ var _car_rent_about_car_rent_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./car-rent-about/car-rent-about.component */ "./src/app/pages/costumers/car-rents/car-rent-about/car-rent-about.component.ts");
-/* harmony import */ var _car_rent_edit_car_rent_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./car-rent-edit/car-rent-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/car-rent-edit.component.ts");
-/* harmony import */ var _car_rent_edit_all_edit_car_rent_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./car-rent-edit/all-edit/car-rent-all-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts");
-/* harmony import */ var _car_rent_edit_basic_edit_car_rent_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./car-rent-edit/basic-edit/car-rent-basic-edit.component */ "./src/app/pages/costumers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts");
+/* harmony import */ var _car_rents_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./car-rents-routing.module */ "./src/app/pages/customers/car-rents/car-rents-routing.module.ts");
+/* harmony import */ var _car_rents_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./car-rents.component */ "./src/app/pages/customers/car-rents/car-rents.component.ts");
+/* harmony import */ var _car_rent_car_rent_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./car-rent/car-rent.component */ "./src/app/pages/customers/car-rents/car-rent/car-rent.component.ts");
+/* harmony import */ var _car_rent_media_car_rent_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./car-rent-media/car-rent-media.component */ "./src/app/pages/customers/car-rents/car-rent-media/car-rent-media.component.ts");
+/* harmony import */ var _car_rent_about_car_rent_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./car-rent-about/car-rent-about.component */ "./src/app/pages/customers/car-rents/car-rent-about/car-rent-about.component.ts");
+/* harmony import */ var _car_rent_edit_car_rent_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./car-rent-edit/car-rent-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/car-rent-edit.component.ts");
+/* harmony import */ var _car_rent_edit_all_edit_car_rent_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./car-rent-edit/all-edit/car-rent-all-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/all-edit/car-rent-all-edit.component.ts");
+/* harmony import */ var _car_rent_edit_basic_edit_car_rent_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./car-rent-edit/basic-edit/car-rent-basic-edit.component */ "./src/app/pages/customers/car-rents/car-rent-edit/basic-edit/car-rent-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2270,9 +2270,9 @@ var CarRentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-about/dj-about.component.css":
+/***/ "./src/app/pages/customers/djs/dj-about/dj-about.component.css":
 /*!*********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-about/dj-about.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj-about/dj-about.component.css ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2281,9 +2281,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-about/dj-about.component.html":
+/***/ "./src/app/pages/customers/djs/dj-about/dj-about.component.html":
 /*!**********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-about/dj-about.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-about/dj-about.component.html ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2292,9 +2292,9 @@ module.exports = "<p>\n  dj-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-about/dj-about.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-about/dj-about.component.ts":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-about/dj-about.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-about/dj-about.component.ts ***!
   \********************************************************************/
 /*! exports provided: DjAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2321,8 +2321,8 @@ var DjAboutComponent = /** @class */ (function () {
     DjAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-about',
-            template: __webpack_require__(/*! ./dj-about.component.html */ "./src/app/pages/costumers/djs/dj-about/dj-about.component.html"),
-            styles: [__webpack_require__(/*! ./dj-about.component.css */ "./src/app/pages/costumers/djs/dj-about/dj-about.component.css")]
+            template: __webpack_require__(/*! ./dj-about.component.html */ "./src/app/pages/customers/djs/dj-about/dj-about.component.html"),
+            styles: [__webpack_require__(/*! ./dj-about.component.css */ "./src/app/pages/customers/djs/dj-about/dj-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjAboutComponent);
@@ -2333,9 +2333,9 @@ var DjAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.css":
+/***/ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.css":
 /*!********************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.css ***!
   \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2344,9 +2344,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.html":
+/***/ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.html":
 /*!*********************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.html ***!
   \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2355,9 +2355,9 @@ module.exports = "<h2> dj- all edit works </h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.ts":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.ts ***!
   \*******************************************************************************/
 /*! exports provided: DjAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2383,8 +2383,8 @@ var DjAllEditComponent = /** @class */ (function () {
     DjAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-all-edit',
-            template: __webpack_require__(/*! ./dj-all-edit.component.html */ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./dj-all-edit.component.css */ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.css")]
+            template: __webpack_require__(/*! ./dj-all-edit.component.html */ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./dj-all-edit.component.css */ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjAllEditComponent);
@@ -2395,9 +2395,9 @@ var DjAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.css":
+/***/ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.css":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.css ***!
   \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2406,9 +2406,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.html":
+/***/ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.html":
 /*!*************************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.html ***!
   \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2417,9 +2417,9 @@ module.exports = "<h2>dj-basic edit works!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts":
 /*!***********************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts ***!
   \***********************************************************************************/
 /*! exports provided: DjBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2445,8 +2445,8 @@ var DjBasicEditComponent = /** @class */ (function () {
     DjBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-basic-edit',
-            template: __webpack_require__(/*! ./dj-basic-edit.component.html */ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./dj-basic-edit.component.css */ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./dj-basic-edit.component.html */ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./dj-basic-edit.component.css */ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjBasicEditComponent);
@@ -2457,9 +2457,9 @@ var DjBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/dj-edit.component.html":
+/***/ "./src/app/pages/customers/djs/dj-edit/dj-edit.component.html":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/dj-edit.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/dj-edit.component.html ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2468,9 +2468,9 @@ module.exports = "<h2>dj edit page works!</h2>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/dj-edit.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-edit/dj-edit.component.ts":
 /*!******************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/dj-edit.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/dj-edit.component.ts ***!
   \******************************************************************/
 /*! exports provided: DjEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2496,7 +2496,7 @@ var DjEditComponent = /** @class */ (function () {
     DjEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-edit',
-            template: __webpack_require__(/*! ./dj-edit.component.html */ "./src/app/pages/costumers/djs/dj-edit/dj-edit.component.html"),
+            template: __webpack_require__(/*! ./dj-edit.component.html */ "./src/app/pages/customers/djs/dj-edit/dj-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -2508,9 +2508,9 @@ var DjEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.css":
+/***/ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.css":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.css ***!
   \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2519,9 +2519,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.html":
+/***/ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.html":
 /*!*************************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.html ***!
   \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2530,9 +2530,9 @@ module.exports = "\n<h2> media edit works!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.ts":
 /*!***********************************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.ts ***!
   \***********************************************************************************/
 /*! exports provided: DjMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2558,8 +2558,8 @@ var DjMediaEditComponent = /** @class */ (function () {
     DjMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-media-edit',
-            template: __webpack_require__(/*! ./dj-media-edit.component.html */ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./dj-media-edit.component.css */ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.css")]
+            template: __webpack_require__(/*! ./dj-media-edit.component.html */ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./dj-media-edit.component.css */ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjMediaEditComponent);
@@ -2570,9 +2570,9 @@ var DjMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-media/dj-media.component.css":
+/***/ "./src/app/pages/customers/djs/dj-media/dj-media.component.css":
 /*!*********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-media/dj-media.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj-media/dj-media.component.css ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2581,9 +2581,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-media/dj-media.component.html":
+/***/ "./src/app/pages/customers/djs/dj-media/dj-media.component.html":
 /*!**********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-media/dj-media.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj-media/dj-media.component.html ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2592,9 +2592,9 @@ module.exports = "<p>\n  dj-media works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj-media/dj-media.component.ts":
+/***/ "./src/app/pages/customers/djs/dj-media/dj-media.component.ts":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj-media/dj-media.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj-media/dj-media.component.ts ***!
   \********************************************************************/
 /*! exports provided: DjMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2621,8 +2621,8 @@ var DjMediaComponent = /** @class */ (function () {
     DjMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj-media',
-            template: __webpack_require__(/*! ./dj-media.component.html */ "./src/app/pages/costumers/djs/dj-media/dj-media.component.html"),
-            styles: [__webpack_require__(/*! ./dj-media.component.css */ "./src/app/pages/costumers/djs/dj-media/dj-media.component.css")]
+            template: __webpack_require__(/*! ./dj-media.component.html */ "./src/app/pages/customers/djs/dj-media/dj-media.component.html"),
+            styles: [__webpack_require__(/*! ./dj-media.component.css */ "./src/app/pages/customers/djs/dj-media/dj-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjMediaComponent);
@@ -2633,9 +2633,9 @@ var DjMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj/dj.component.css":
+/***/ "./src/app/pages/customers/djs/dj/dj.component.css":
 /*!*********************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj/dj.component.css ***!
+  !*** ./src/app/pages/customers/djs/dj/dj.component.css ***!
   \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2644,9 +2644,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj/dj.component.html":
+/***/ "./src/app/pages/customers/djs/dj/dj.component.html":
 /*!**********************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj/dj.component.html ***!
+  !*** ./src/app/pages/customers/djs/dj/dj.component.html ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2655,9 +2655,9 @@ module.exports = "<p>\n  dj works!\n</p>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/dj/dj.component.ts":
+/***/ "./src/app/pages/customers/djs/dj/dj.component.ts":
 /*!********************************************************!*\
-  !*** ./src/app/pages/costumers/djs/dj/dj.component.ts ***!
+  !*** ./src/app/pages/customers/djs/dj/dj.component.ts ***!
   \********************************************************/
 /*! exports provided: DjComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2684,8 +2684,8 @@ var DjComponent = /** @class */ (function () {
     DjComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-dj',
-            template: __webpack_require__(/*! ./dj.component.html */ "./src/app/pages/costumers/djs/dj/dj.component.html"),
-            styles: [__webpack_require__(/*! ./dj.component.css */ "./src/app/pages/costumers/djs/dj/dj.component.css")]
+            template: __webpack_require__(/*! ./dj.component.html */ "./src/app/pages/customers/djs/dj/dj.component.html"),
+            styles: [__webpack_require__(/*! ./dj.component.css */ "./src/app/pages/customers/djs/dj/dj.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjComponent);
@@ -2696,9 +2696,9 @@ var DjComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/djs-routing.module.ts":
+/***/ "./src/app/pages/customers/djs/djs-routing.module.ts":
 /*!***********************************************************!*\
-  !*** ./src/app/pages/costumers/djs/djs-routing.module.ts ***!
+  !*** ./src/app/pages/customers/djs/djs-routing.module.ts ***!
   \***********************************************************/
 /*! exports provided: DjsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2709,14 +2709,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _djs_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./djs.component */ "./src/app/pages/costumers/djs/djs.component.ts");
-/* harmony import */ var _dj_dj_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dj/dj.component */ "./src/app/pages/costumers/djs/dj/dj.component.ts");
-/* harmony import */ var _dj_media_dj_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dj-media/dj-media.component */ "./src/app/pages/costumers/djs/dj-media/dj-media.component.ts");
-/* harmony import */ var _dj_about_dj_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dj-about/dj-about.component */ "./src/app/pages/costumers/djs/dj-about/dj-about.component.ts");
-/* harmony import */ var _dj_edit_dj_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dj-edit/dj-edit.component */ "./src/app/pages/costumers/djs/dj-edit/dj-edit.component.ts");
-/* harmony import */ var _dj_edit_all_edit_dj_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dj-edit/all-edit/dj-all-edit.component */ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.ts");
-/* harmony import */ var _dj_edit_media_edit_dj_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dj-edit/media-edit/dj-media-edit.component */ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.ts");
-/* harmony import */ var _dj_edit_basic_edit_dj_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dj-edit/basic-edit/dj-basic-edit.component */ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts");
+/* harmony import */ var _djs_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./djs.component */ "./src/app/pages/customers/djs/djs.component.ts");
+/* harmony import */ var _dj_dj_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dj/dj.component */ "./src/app/pages/customers/djs/dj/dj.component.ts");
+/* harmony import */ var _dj_media_dj_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dj-media/dj-media.component */ "./src/app/pages/customers/djs/dj-media/dj-media.component.ts");
+/* harmony import */ var _dj_about_dj_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dj-about/dj-about.component */ "./src/app/pages/customers/djs/dj-about/dj-about.component.ts");
+/* harmony import */ var _dj_edit_dj_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dj-edit/dj-edit.component */ "./src/app/pages/customers/djs/dj-edit/dj-edit.component.ts");
+/* harmony import */ var _dj_edit_all_edit_dj_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dj-edit/all-edit/dj-all-edit.component */ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.ts");
+/* harmony import */ var _dj_edit_media_edit_dj_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dj-edit/media-edit/dj-media-edit.component */ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.ts");
+/* harmony import */ var _dj_edit_basic_edit_dj_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dj-edit/basic-edit/dj-basic-edit.component */ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2773,9 +2773,9 @@ var DjsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/djs.component.css":
+/***/ "./src/app/pages/customers/djs/djs.component.css":
 /*!*******************************************************!*\
-  !*** ./src/app/pages/costumers/djs/djs.component.css ***!
+  !*** ./src/app/pages/customers/djs/djs.component.css ***!
   \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2784,9 +2784,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/djs.component.html":
+/***/ "./src/app/pages/customers/djs/djs.component.html":
 /*!********************************************************!*\
-  !*** ./src/app/pages/costumers/djs/djs.component.html ***!
+  !*** ./src/app/pages/customers/djs/djs.component.html ***!
   \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2795,9 +2795,9 @@ module.exports = "<p>\n  djs works!\n</p>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/djs.component.ts":
+/***/ "./src/app/pages/customers/djs/djs.component.ts":
 /*!******************************************************!*\
-  !*** ./src/app/pages/costumers/djs/djs.component.ts ***!
+  !*** ./src/app/pages/customers/djs/djs.component.ts ***!
   \******************************************************/
 /*! exports provided: DjsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2824,8 +2824,8 @@ var DjsComponent = /** @class */ (function () {
     DjsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-djs',
-            template: __webpack_require__(/*! ./djs.component.html */ "./src/app/pages/costumers/djs/djs.component.html"),
-            styles: [__webpack_require__(/*! ./djs.component.css */ "./src/app/pages/costumers/djs/djs.component.css")]
+            template: __webpack_require__(/*! ./djs.component.html */ "./src/app/pages/customers/djs/djs.component.html"),
+            styles: [__webpack_require__(/*! ./djs.component.css */ "./src/app/pages/customers/djs/djs.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], DjsComponent);
@@ -2836,9 +2836,9 @@ var DjsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/djs/djs.module.ts":
+/***/ "./src/app/pages/customers/djs/djs.module.ts":
 /*!***************************************************!*\
-  !*** ./src/app/pages/costumers/djs/djs.module.ts ***!
+  !*** ./src/app/pages/customers/djs/djs.module.ts ***!
   \***************************************************/
 /*! exports provided: DjsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2849,15 +2849,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _djs_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./djs-routing.module */ "./src/app/pages/costumers/djs/djs-routing.module.ts");
-/* harmony import */ var _djs_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./djs.component */ "./src/app/pages/costumers/djs/djs.component.ts");
-/* harmony import */ var _dj_dj_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dj/dj.component */ "./src/app/pages/costumers/djs/dj/dj.component.ts");
-/* harmony import */ var _dj_media_dj_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dj-media/dj-media.component */ "./src/app/pages/costumers/djs/dj-media/dj-media.component.ts");
-/* harmony import */ var _dj_about_dj_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dj-about/dj-about.component */ "./src/app/pages/costumers/djs/dj-about/dj-about.component.ts");
-/* harmony import */ var _dj_edit_dj_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dj-edit/dj-edit.component */ "./src/app/pages/costumers/djs/dj-edit/dj-edit.component.ts");
-/* harmony import */ var _dj_edit_all_edit_dj_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dj-edit/all-edit/dj-all-edit.component */ "./src/app/pages/costumers/djs/dj-edit/all-edit/dj-all-edit.component.ts");
-/* harmony import */ var _dj_edit_media_edit_dj_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dj-edit/media-edit/dj-media-edit.component */ "./src/app/pages/costumers/djs/dj-edit/media-edit/dj-media-edit.component.ts");
-/* harmony import */ var _dj_edit_basic_edit_dj_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dj-edit/basic-edit/dj-basic-edit.component */ "./src/app/pages/costumers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts");
+/* harmony import */ var _djs_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./djs-routing.module */ "./src/app/pages/customers/djs/djs-routing.module.ts");
+/* harmony import */ var _djs_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./djs.component */ "./src/app/pages/customers/djs/djs.component.ts");
+/* harmony import */ var _dj_dj_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dj/dj.component */ "./src/app/pages/customers/djs/dj/dj.component.ts");
+/* harmony import */ var _dj_media_dj_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dj-media/dj-media.component */ "./src/app/pages/customers/djs/dj-media/dj-media.component.ts");
+/* harmony import */ var _dj_about_dj_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./dj-about/dj-about.component */ "./src/app/pages/customers/djs/dj-about/dj-about.component.ts");
+/* harmony import */ var _dj_edit_dj_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dj-edit/dj-edit.component */ "./src/app/pages/customers/djs/dj-edit/dj-edit.component.ts");
+/* harmony import */ var _dj_edit_all_edit_dj_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dj-edit/all-edit/dj-all-edit.component */ "./src/app/pages/customers/djs/dj-edit/all-edit/dj-all-edit.component.ts");
+/* harmony import */ var _dj_edit_media_edit_dj_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./dj-edit/media-edit/dj-media-edit.component */ "./src/app/pages/customers/djs/dj-edit/media-edit/dj-media-edit.component.ts");
+/* harmony import */ var _dj_edit_basic_edit_dj_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./dj-edit/basic-edit/dj-basic-edit.component */ "./src/app/pages/customers/djs/dj-edit/basic-edit/dj-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2906,9 +2906,9 @@ var DjsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.css":
 /*!***************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-about/firework-about.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework-about/firework-about.component.css ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2917,9 +2917,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.html":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-about/firework-about.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-about/firework-about.component.html ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2928,9 +2928,9 @@ module.exports = "<p>\n  kyse- Nd rabbi-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.ts":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-about/firework-about.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-about/firework-about.component.ts ***!
   \**************************************************************************************/
 /*! exports provided: FireworkAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2957,8 +2957,8 @@ var FireworkAboutComponent = /** @class */ (function () {
     FireworkAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-about',
-            template: __webpack_require__(/*! ./firework-about.component.html */ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.html"),
-            styles: [__webpack_require__(/*! ./firework-about.component.css */ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.css")]
+            template: __webpack_require__(/*! ./firework-about.component.html */ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.html"),
+            styles: [__webpack_require__(/*! ./firework-about.component.css */ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkAboutComponent);
@@ -2969,9 +2969,9 @@ var FireworkAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.css":
 /*!**************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.css ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2980,9 +2980,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.html":
 /*!***************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.html ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -2991,9 +2991,9 @@ module.exports = "<h2>firework- all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts":
 /*!*************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts ***!
   \*************************************************************************************************/
 /*! exports provided: FireworkAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3029,8 +3029,8 @@ var FireworkAllEditComponent = /** @class */ (function () {
     FireworkAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-all-edit',
-            template: __webpack_require__(/*! ./firework-all-edit.component.html */ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./firework-all-edit.component.css */ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.css")]
+            template: __webpack_require__(/*! ./firework-all-edit.component.html */ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./firework-all-edit.component.css */ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkAllEditComponent);
@@ -3041,9 +3041,9 @@ var FireworkAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css":
 /*!******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3052,9 +3052,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html":
 /*!*******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3063,9 +3063,9 @@ module.exports = "<h2>firework-- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts":
 /*!*****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts ***!
   \*****************************************************************************************************/
 /*! exports provided: FireworkBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3094,8 +3094,8 @@ var FireworkBasicEditComponent = /** @class */ (function () {
     FireworkBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-basic-edit',
-            template: __webpack_require__(/*! ./firework-basic-edit.component.html */ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./firework-basic-edit.component.css */ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./firework-basic-edit.component.html */ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./firework-basic-edit.component.css */ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkBasicEditComponent);
@@ -3106,9 +3106,9 @@ var FireworkBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3117,9 +3117,9 @@ module.exports = "<h2>firework- and rabbinate- edit worka!</h2>\n<router-outlet>
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.ts ***!
   \************************************************************************************/
 /*! exports provided: FireworkEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3146,7 +3146,7 @@ var FireworkEditComponent = /** @class */ (function () {
     FireworkEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-edit',
-            template: __webpack_require__(/*! ./firework-edit.component.html */ "./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.html"),
+            template: __webpack_require__(/*! ./firework-edit.component.html */ "./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -3158,9 +3158,9 @@ var FireworkEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.css":
 /*!******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.css ***!
   \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3169,9 +3169,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.html":
 /*!*******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.html ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3180,9 +3180,9 @@ module.exports = "<h2>salon- media edit works fine!</h2>\r\n<router-outlet></rou
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts":
 /*!*****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts ***!
   \*****************************************************************************************************/
 /*! exports provided: FireworkMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3209,8 +3209,8 @@ var FireworkMediaEditComponent = /** @class */ (function () {
     FireworkMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-media-edit',
-            template: __webpack_require__(/*! ./firework-media-edit.component.html */ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./firework-media-edit.component.css */ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.css")]
+            template: __webpack_require__(/*! ./firework-media-edit.component.html */ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./firework-media-edit.component.css */ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkMediaEditComponent);
@@ -3221,9 +3221,9 @@ var FireworkMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.css":
 /*!***************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-media/firework-media.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework-media/firework-media.component.css ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3232,9 +3232,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.html":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-media/firework-media.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework-media/firework-media.component.html ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3243,9 +3243,9 @@ module.exports = "<h2>\n  kyse--media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.ts":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework-media/firework-media.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework-media/firework-media.component.ts ***!
   \**************************************************************************************/
 /*! exports provided: FireworkMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3272,8 +3272,8 @@ var FireworkMediaComponent = /** @class */ (function () {
     FireworkMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework-media',
-            template: __webpack_require__(/*! ./firework-media.component.html */ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.html"),
-            styles: [__webpack_require__(/*! ./firework-media.component.css */ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.css")]
+            template: __webpack_require__(/*! ./firework-media.component.html */ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.html"),
+            styles: [__webpack_require__(/*! ./firework-media.component.css */ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkMediaComponent);
@@ -3284,9 +3284,9 @@ var FireworkMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework/firework.component.css":
+/***/ "./src/app/pages/customers/fireworks/firework/firework.component.css":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework/firework.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/firework/firework.component.css ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3295,9 +3295,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework/firework.component.html":
+/***/ "./src/app/pages/customers/fireworks/firework/firework.component.html":
 /*!****************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework/firework.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/firework/firework.component.html ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3306,9 +3306,9 @@ module.exports = "<h2>\n  firework and rabbi comp works!\n</h2>\n<router-outlet>
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/firework/firework.component.ts":
+/***/ "./src/app/pages/customers/fireworks/firework/firework.component.ts":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/firework/firework.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/firework/firework.component.ts ***!
   \**************************************************************************/
 /*! exports provided: FireworkComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3334,8 +3334,8 @@ var FireworkComponent = /** @class */ (function () {
     FireworkComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-firework',
-            template: __webpack_require__(/*! ./firework.component.html */ "./src/app/pages/costumers/fireworks/firework/firework.component.html"),
-            styles: [__webpack_require__(/*! ./firework.component.css */ "./src/app/pages/costumers/fireworks/firework/firework.component.css")]
+            template: __webpack_require__(/*! ./firework.component.html */ "./src/app/pages/customers/fireworks/firework/firework.component.html"),
+            styles: [__webpack_require__(/*! ./firework.component.css */ "./src/app/pages/customers/fireworks/firework/firework.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworkComponent);
@@ -3346,9 +3346,9 @@ var FireworkComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/fireworks-routing.module.ts":
+/***/ "./src/app/pages/customers/fireworks/fireworks-routing.module.ts":
 /*!***********************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/fireworks-routing.module.ts ***!
+  !*** ./src/app/pages/customers/fireworks/fireworks-routing.module.ts ***!
   \***********************************************************************/
 /*! exports provided: FireworksRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3359,14 +3359,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _fireworks_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fireworks.component */ "./src/app/pages/costumers/fireworks/fireworks.component.ts");
-/* harmony import */ var _firework_firework_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./firework/firework.component */ "./src/app/pages/costumers/fireworks/firework/firework.component.ts");
-/* harmony import */ var _firework_media_firework_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./firework-media/firework-media.component */ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.ts");
-/* harmony import */ var _firework_about_firework_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./firework-about/firework-about.component */ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.ts");
-/* harmony import */ var _firework_edit_firework_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firework-edit/firework-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.ts");
-/* harmony import */ var _firework_edit_all_edit_firework_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./firework-edit/all-edit/firework-all-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts");
-/* harmony import */ var _firework_edit_basic_edit_firework_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./firework-edit/basic-edit/firework-basic-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts");
-/* harmony import */ var _firework_edit_media_edit_firework_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./firework-edit/media-edit/firework-media-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts");
+/* harmony import */ var _fireworks_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fireworks.component */ "./src/app/pages/customers/fireworks/fireworks.component.ts");
+/* harmony import */ var _firework_firework_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./firework/firework.component */ "./src/app/pages/customers/fireworks/firework/firework.component.ts");
+/* harmony import */ var _firework_media_firework_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./firework-media/firework-media.component */ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.ts");
+/* harmony import */ var _firework_about_firework_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./firework-about/firework-about.component */ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.ts");
+/* harmony import */ var _firework_edit_firework_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firework-edit/firework-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.ts");
+/* harmony import */ var _firework_edit_all_edit_firework_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./firework-edit/all-edit/firework-all-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts");
+/* harmony import */ var _firework_edit_basic_edit_firework_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./firework-edit/basic-edit/firework-basic-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts");
+/* harmony import */ var _firework_edit_media_edit_firework_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./firework-edit/media-edit/firework-media-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3423,9 +3423,9 @@ var FireworksRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/fireworks.component.css":
+/***/ "./src/app/pages/customers/fireworks/fireworks.component.css":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/fireworks.component.css ***!
+  !*** ./src/app/pages/customers/fireworks/fireworks.component.css ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3434,9 +3434,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/fireworks.component.html":
+/***/ "./src/app/pages/customers/fireworks/fireworks.component.html":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/fireworks.component.html ***!
+  !*** ./src/app/pages/customers/fireworks/fireworks.component.html ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3445,9 +3445,9 @@ module.exports = "<p>\n  d-norse works!\n</p>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/fireworks.component.ts":
+/***/ "./src/app/pages/customers/fireworks/fireworks.component.ts":
 /*!******************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/fireworks.component.ts ***!
+  !*** ./src/app/pages/customers/fireworks/fireworks.component.ts ***!
   \******************************************************************/
 /*! exports provided: FireworksComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3474,8 +3474,8 @@ var FireworksComponent = /** @class */ (function () {
     FireworksComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-fireworks',
-            template: __webpack_require__(/*! ./fireworks.component.html */ "./src/app/pages/costumers/fireworks/fireworks.component.html"),
-            styles: [__webpack_require__(/*! ./fireworks.component.css */ "./src/app/pages/costumers/fireworks/fireworks.component.css")]
+            template: __webpack_require__(/*! ./fireworks.component.html */ "./src/app/pages/customers/fireworks/fireworks.component.html"),
+            styles: [__webpack_require__(/*! ./fireworks.component.css */ "./src/app/pages/customers/fireworks/fireworks.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], FireworksComponent);
@@ -3486,9 +3486,9 @@ var FireworksComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/fireworks/fireworks.module.ts":
+/***/ "./src/app/pages/customers/fireworks/fireworks.module.ts":
 /*!***************************************************************!*\
-  !*** ./src/app/pages/costumers/fireworks/fireworks.module.ts ***!
+  !*** ./src/app/pages/customers/fireworks/fireworks.module.ts ***!
   \***************************************************************/
 /*! exports provided: FireworksModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3498,15 +3498,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FireworksModule", function() { return FireworksModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _fireworks_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fireworks-routing.module */ "./src/app/pages/costumers/fireworks/fireworks-routing.module.ts");
-/* harmony import */ var _fireworks_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fireworks.component */ "./src/app/pages/costumers/fireworks/fireworks.component.ts");
-/* harmony import */ var _firework_firework_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./firework/firework.component */ "./src/app/pages/costumers/fireworks/firework/firework.component.ts");
-/* harmony import */ var _firework_media_firework_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./firework-media/firework-media.component */ "./src/app/pages/costumers/fireworks/firework-media/firework-media.component.ts");
-/* harmony import */ var _firework_about_firework_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./firework-about/firework-about.component */ "./src/app/pages/costumers/fireworks/firework-about/firework-about.component.ts");
-/* harmony import */ var _firework_edit_firework_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firework-edit/firework-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/firework-edit.component.ts");
-/* harmony import */ var _firework_edit_all_edit_firework_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./firework-edit/all-edit/firework-all-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts");
-/* harmony import */ var _firework_edit_basic_edit_firework_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./firework-edit/basic-edit/firework-basic-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts");
-/* harmony import */ var _firework_edit_media_edit_firework_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./firework-edit/media-edit/firework-media-edit.component */ "./src/app/pages/costumers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts");
+/* harmony import */ var _fireworks_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./fireworks-routing.module */ "./src/app/pages/customers/fireworks/fireworks-routing.module.ts");
+/* harmony import */ var _fireworks_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./fireworks.component */ "./src/app/pages/customers/fireworks/fireworks.component.ts");
+/* harmony import */ var _firework_firework_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./firework/firework.component */ "./src/app/pages/customers/fireworks/firework/firework.component.ts");
+/* harmony import */ var _firework_media_firework_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./firework-media/firework-media.component */ "./src/app/pages/customers/fireworks/firework-media/firework-media.component.ts");
+/* harmony import */ var _firework_about_firework_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./firework-about/firework-about.component */ "./src/app/pages/customers/fireworks/firework-about/firework-about.component.ts");
+/* harmony import */ var _firework_edit_firework_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./firework-edit/firework-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/firework-edit.component.ts");
+/* harmony import */ var _firework_edit_all_edit_firework_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./firework-edit/all-edit/firework-all-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/all-edit/firework-all-edit.component.ts");
+/* harmony import */ var _firework_edit_basic_edit_firework_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./firework-edit/basic-edit/firework-basic-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/basic-edit/firework-basic-edit.component.ts");
+/* harmony import */ var _firework_edit_media_edit_firework_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./firework-edit/media-edit/firework-media-edit.component */ "./src/app/pages/customers/fireworks/firework-edit/media-edit/firework-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3552,9 +3552,9 @@ var FireworksModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/halls/halls-resolver.service.ts":
+/***/ "./src/app/pages/customers/halls/halls-resolver.service.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/halls/halls-resolver.service.ts ***!
+  !*** ./src/app/pages/customers/halls/halls-resolver.service.ts ***!
   \*****************************************************************/
 /*! exports provided: HallResolver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3564,7 +3564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HallResolver", function() { return HallResolver; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3583,11 +3583,11 @@ var HallResolver = /** @class */ (function () {
         this.router = router;
     }
     HallResolver.prototype.resolve = function () {
-        return this.halls.getCostumers(['halls-events']);
+        return this.halls.getCustomers(['halls-events']);
     };
     HallResolver = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], HallResolver);
     return HallResolver;
 }());
@@ -3596,9 +3596,9 @@ var HallResolver = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.css":
 /*!******************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel-about/hotel-about.component.css ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3607,9 +3607,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.html":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-about/hotel-about.component.html ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3618,9 +3618,9 @@ module.exports = "<p>\n  hotel-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-about/hotel-about.component.ts ***!
   \*****************************************************************************/
 /*! exports provided: HotelAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3647,8 +3647,8 @@ var HotelAboutComponent = /** @class */ (function () {
     HotelAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-about',
-            template: __webpack_require__(/*! ./hotel-about.component.html */ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.html"),
-            styles: [__webpack_require__(/*! ./hotel-about.component.css */ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.css")]
+            template: __webpack_require__(/*! ./hotel-about.component.html */ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.html"),
+            styles: [__webpack_require__(/*! ./hotel-about.component.css */ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelAboutComponent);
@@ -3659,9 +3659,9 @@ var HotelAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css":
 /*!*****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css ***!
   \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3670,9 +3670,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html":
 /*!******************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html ***!
   \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3681,9 +3681,9 @@ module.exports = "<h2>hotel - all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts ***!
   \****************************************************************************************/
 /*! exports provided: HotelAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3719,8 +3719,8 @@ var HotelAllEditComponent = /** @class */ (function () {
     HotelAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-all-edit',
-            template: __webpack_require__(/*! ./hotel-all-edit.component.html */ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./hotel-all-edit.component.css */ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css")]
+            template: __webpack_require__(/*! ./hotel-all-edit.component.html */ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./hotel-all-edit.component.css */ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelAllEditComponent);
@@ -3731,9 +3731,9 @@ var HotelAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3742,9 +3742,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3753,9 +3753,9 @@ module.exports = "<h2>kyse-- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts":
 /*!********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts ***!
   \********************************************************************************************/
 /*! exports provided: HotelBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3784,8 +3784,8 @@ var HotelBasicEditComponent = /** @class */ (function () {
     HotelBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-basic-edit',
-            template: __webpack_require__(/*! ./hotel-basic-edit.component.html */ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./hotel-basic-edit.component.css */ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./hotel-basic-edit.component.html */ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./hotel-basic-edit.component.css */ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelBasicEditComponent);
@@ -3796,9 +3796,9 @@ var HotelBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.html":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.html ***!
   \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3807,9 +3807,9 @@ module.exports = "<h2>hotel- and rabbinate- edit worka!</h2>\n<router-outlet></r
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.ts":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.ts ***!
   \***************************************************************************/
 /*! exports provided: HotelEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3836,7 +3836,7 @@ var HotelEditComponent = /** @class */ (function () {
     HotelEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-edit',
-            template: __webpack_require__(/*! ./hotel-edit.component.html */ "./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.html"),
+            template: __webpack_require__(/*! ./hotel-edit.component.html */ "./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -3848,9 +3848,9 @@ var HotelEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3859,9 +3859,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3870,9 +3870,9 @@ module.exports = "<h2>hotel- media edit works fine!</h2>\r\n<router-outlet></rou
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts":
 /*!********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts ***!
   \********************************************************************************************/
 /*! exports provided: HotelMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3892,9 +3892,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 /* import { ActivatedRoute, Router } from '@angular/router';
-import { CustomersDataService } from '../../../../../costumers/customers-data-service';
+import { CustomersDataService } from '../../../../../customers/customers-data-service';
 import { Observable, of } from 'rxjs';
-import { HallType } from '../../../../../costumers/hall-type';
+import { HallType } from '../../../../../customers/hall-type';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../../../../http.service';
@@ -3909,8 +3909,8 @@ var HotelMediaEditComponent = /** @class */ (function () {
     HotelMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-media-edit',
-            template: __webpack_require__(/*! ./hotel-media-edit.component.html */ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./hotel-media-edit.component.css */ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css")]
+            template: __webpack_require__(/*! ./hotel-media-edit.component.html */ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./hotel-media-edit.component.css */ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelMediaEditComponent);
@@ -3921,9 +3921,9 @@ var HotelMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.css":
 /*!******************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel-media/hotel-media.component.css ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3932,9 +3932,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.html":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel-media/hotel-media.component.html ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3943,9 +3943,9 @@ module.exports = "<h2>\n  hotel--media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel-media/hotel-media.component.ts ***!
   \*****************************************************************************/
 /*! exports provided: HotelMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -3972,8 +3972,8 @@ var HotelMediaComponent = /** @class */ (function () {
     HotelMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel-media',
-            template: __webpack_require__(/*! ./hotel-media.component.html */ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.html"),
-            styles: [__webpack_require__(/*! ./hotel-media.component.css */ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.css")]
+            template: __webpack_require__(/*! ./hotel-media.component.html */ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.html"),
+            styles: [__webpack_require__(/*! ./hotel-media.component.css */ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelMediaComponent);
@@ -3984,9 +3984,9 @@ var HotelMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel/hotel.component.css":
+/***/ "./src/app/pages/customers/hotels/hotel/hotel.component.css":
 /*!******************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel/hotel.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotel/hotel.component.css ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -3995,9 +3995,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel/hotel.component.html":
+/***/ "./src/app/pages/customers/hotels/hotel/hotel.component.html":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel/hotel.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotel/hotel.component.html ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4006,9 +4006,9 @@ module.exports = "<p>\n  hotel works!\n</p>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotel/hotel.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotel/hotel.component.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotel/hotel.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotel/hotel.component.ts ***!
   \*****************************************************************/
 /*! exports provided: HotelComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4035,8 +4035,8 @@ var HotelComponent = /** @class */ (function () {
     HotelComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotel',
-            template: __webpack_require__(/*! ./hotel.component.html */ "./src/app/pages/costumers/hotels/hotel/hotel.component.html"),
-            styles: [__webpack_require__(/*! ./hotel.component.css */ "./src/app/pages/costumers/hotels/hotel/hotel.component.css")]
+            template: __webpack_require__(/*! ./hotel.component.html */ "./src/app/pages/customers/hotels/hotel/hotel.component.html"),
+            styles: [__webpack_require__(/*! ./hotel.component.css */ "./src/app/pages/customers/hotels/hotel/hotel.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelComponent);
@@ -4047,9 +4047,9 @@ var HotelComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotels-routing.module.ts":
+/***/ "./src/app/pages/customers/hotels/hotels-routing.module.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotels-routing.module.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotels-routing.module.ts ***!
   \*****************************************************************/
 /*! exports provided: HotelsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4060,14 +4060,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _hotels_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hotels.component */ "./src/app/pages/costumers/hotels/hotels.component.ts");
-/* harmony import */ var _hotel_hotel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hotel/hotel.component */ "./src/app/pages/costumers/hotels/hotel/hotel.component.ts");
-/* harmony import */ var _hotel_media_hotel_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel-media/hotel-media.component */ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.ts");
-/* harmony import */ var _hotel_about_hotel_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hotel-about/hotel-about.component */ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.ts");
-/* harmony import */ var _hotel_edit_hotel_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hotel-edit/hotel-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.ts");
-/* harmony import */ var _hotel_edit_all_edit_hotel_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hotel-edit/all-edit/hotel-all-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts");
-/* harmony import */ var _hotel_edit_basic_edit_hotel_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hotel-edit/basic-edit/hotel-basic-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts");
-/* harmony import */ var _hotel_edit_media_edit_hotel_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hotel-edit/media-edit/hotel-media-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts");
+/* harmony import */ var _hotels_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hotels.component */ "./src/app/pages/customers/hotels/hotels.component.ts");
+/* harmony import */ var _hotel_hotel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hotel/hotel.component */ "./src/app/pages/customers/hotels/hotel/hotel.component.ts");
+/* harmony import */ var _hotel_media_hotel_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel-media/hotel-media.component */ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.ts");
+/* harmony import */ var _hotel_about_hotel_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hotel-about/hotel-about.component */ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.ts");
+/* harmony import */ var _hotel_edit_hotel_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hotel-edit/hotel-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.ts");
+/* harmony import */ var _hotel_edit_all_edit_hotel_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hotel-edit/all-edit/hotel-all-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts");
+/* harmony import */ var _hotel_edit_basic_edit_hotel_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hotel-edit/basic-edit/hotel-basic-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts");
+/* harmony import */ var _hotel_edit_media_edit_hotel_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hotel-edit/media-edit/hotel-media-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4124,9 +4124,9 @@ var HotelsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotels.component.css":
+/***/ "./src/app/pages/customers/hotels/hotels.component.css":
 /*!*************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotels.component.css ***!
+  !*** ./src/app/pages/customers/hotels/hotels.component.css ***!
   \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4135,9 +4135,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotels.component.html":
+/***/ "./src/app/pages/customers/hotels/hotels.component.html":
 /*!**************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotels.component.html ***!
+  !*** ./src/app/pages/customers/hotels/hotels.component.html ***!
   \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4146,9 +4146,9 @@ module.exports = "<p>\n  hotels works!\n</p>\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotels.component.ts":
+/***/ "./src/app/pages/customers/hotels/hotels.component.ts":
 /*!************************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotels.component.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotels.component.ts ***!
   \************************************************************/
 /*! exports provided: HotelsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4175,8 +4175,8 @@ var HotelsComponent = /** @class */ (function () {
     HotelsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-hotels',
-            template: __webpack_require__(/*! ./hotels.component.html */ "./src/app/pages/costumers/hotels/hotels.component.html"),
-            styles: [__webpack_require__(/*! ./hotels.component.css */ "./src/app/pages/costumers/hotels/hotels.component.css")]
+            template: __webpack_require__(/*! ./hotels.component.html */ "./src/app/pages/customers/hotels/hotels.component.html"),
+            styles: [__webpack_require__(/*! ./hotels.component.css */ "./src/app/pages/customers/hotels/hotels.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], HotelsComponent);
@@ -4187,9 +4187,9 @@ var HotelsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/hotels/hotels.module.ts":
+/***/ "./src/app/pages/customers/hotels/hotels.module.ts":
 /*!*********************************************************!*\
-  !*** ./src/app/pages/costumers/hotels/hotels.module.ts ***!
+  !*** ./src/app/pages/customers/hotels/hotels.module.ts ***!
   \*********************************************************/
 /*! exports provided: HotelsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4199,15 +4199,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HotelsModule", function() { return HotelsModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _hotels_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hotels-routing.module */ "./src/app/pages/costumers/hotels/hotels-routing.module.ts");
-/* harmony import */ var _hotels_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hotels.component */ "./src/app/pages/costumers/hotels/hotels.component.ts");
-/* harmony import */ var _hotel_hotel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hotel/hotel.component */ "./src/app/pages/costumers/hotels/hotel/hotel.component.ts");
-/* harmony import */ var _hotel_media_hotel_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel-media/hotel-media.component */ "./src/app/pages/costumers/hotels/hotel-media/hotel-media.component.ts");
-/* harmony import */ var _hotel_about_hotel_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hotel-about/hotel-about.component */ "./src/app/pages/costumers/hotels/hotel-about/hotel-about.component.ts");
-/* harmony import */ var _hotel_edit_hotel_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hotel-edit/hotel-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/hotel-edit.component.ts");
-/* harmony import */ var _hotel_edit_all_edit_hotel_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hotel-edit/all-edit/hotel-all-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts");
-/* harmony import */ var _hotel_edit_basic_edit_hotel_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hotel-edit/basic-edit/hotel-basic-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts");
-/* harmony import */ var _hotel_edit_media_edit_hotel_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hotel-edit/media-edit/hotel-media-edit.component */ "./src/app/pages/costumers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts");
+/* harmony import */ var _hotels_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./hotels-routing.module */ "./src/app/pages/customers/hotels/hotels-routing.module.ts");
+/* harmony import */ var _hotels_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hotels.component */ "./src/app/pages/customers/hotels/hotels.component.ts");
+/* harmony import */ var _hotel_hotel_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hotel/hotel.component */ "./src/app/pages/customers/hotels/hotel/hotel.component.ts");
+/* harmony import */ var _hotel_media_hotel_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./hotel-media/hotel-media.component */ "./src/app/pages/customers/hotels/hotel-media/hotel-media.component.ts");
+/* harmony import */ var _hotel_about_hotel_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./hotel-about/hotel-about.component */ "./src/app/pages/customers/hotels/hotel-about/hotel-about.component.ts");
+/* harmony import */ var _hotel_edit_hotel_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./hotel-edit/hotel-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/hotel-edit.component.ts");
+/* harmony import */ var _hotel_edit_all_edit_hotel_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./hotel-edit/all-edit/hotel-all-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/all-edit/hotel-all-edit.component.ts");
+/* harmony import */ var _hotel_edit_basic_edit_hotel_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./hotel-edit/basic-edit/hotel-basic-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/basic-edit/hotel-basic-edit.component.ts");
+/* harmony import */ var _hotel_edit_media_edit_hotel_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./hotel-edit/media-edit/hotel-media-edit.component */ "./src/app/pages/customers/hotels/hotel-edit/media-edit/hotel-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4253,9 +4253,9 @@ var HotelsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.css":
 /*!*************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.css ***!
   \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4264,9 +4264,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4275,9 +4275,9 @@ module.exports = "<p>\n  kyse- Nd rabbi-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.ts ***!
   \************************************************************************************/
 /*! exports provided: KyseAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4304,8 +4304,8 @@ var KyseAboutComponent = /** @class */ (function () {
     KyseAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse-about',
-            template: __webpack_require__(/*! ./kyse-about.component.html */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.html"),
-            styles: [__webpack_require__(/*! ./kyse-about.component.css */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.css")]
+            template: __webpack_require__(/*! ./kyse-about.component.html */ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.html"),
+            styles: [__webpack_require__(/*! ./kyse-about.component.css */ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KyseAboutComponent);
@@ -4316,9 +4316,9 @@ var KyseAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css":
 /*!************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css ***!
   \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4327,9 +4327,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html":
 /*!*************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html ***!
   \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4338,9 +4338,9 @@ module.exports = "<h2>kyse- all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts":
 /*!***********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts ***!
   \***********************************************************************************************/
 /*! exports provided: KyseAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4376,8 +4376,8 @@ var KyseAllEditComponent = /** @class */ (function () {
     KyseAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse-all-edit',
-            template: __webpack_require__(/*! ./kyse-all-edit.component.html */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./kyse-all-edit.component.css */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css")]
+            template: __webpack_require__(/*! ./kyse-all-edit.component.html */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./kyse-all-edit.component.css */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KyseAllEditComponent);
@@ -4388,9 +4388,9 @@ var KyseAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css":
 /*!****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css ***!
   \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4399,9 +4399,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html":
 /*!*****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html ***!
   \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4410,9 +4410,9 @@ module.exports = "<h2>kyse-- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts":
 /*!***************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts ***!
   \***************************************************************************************************/
 /*! exports provided: KyseBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4441,8 +4441,8 @@ var KyseBasicEditComponent = /** @class */ (function () {
     KyseBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse-basic-edit',
-            template: __webpack_require__(/*! ./kyse-basic-edit.component.html */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./kyse-basic-edit.component.css */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./kyse-basic-edit.component.html */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./kyse-basic-edit.component.css */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KyseBasicEditComponent);
@@ -4453,9 +4453,9 @@ var KyseBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyses-routing.module.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyses-routing.module.ts":
 /*!*************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyses-routing.module.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyses-routing.module.ts ***!
   \*************************************************************************/
 /*! exports provided: KysesRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4466,13 +4466,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _kyses_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./kyses.component */ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.ts");
-/* harmony import */ var _kyse_kyse_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kyse/kyse.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.ts");
-/* harmony import */ var _kyse_media_kyse_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./kyse-media/kyse-media.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.ts");
-/* harmony import */ var _Kyse_about_kyse_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Kyse-about/kyse-about.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.ts");
-/* harmony import */ var _kyse_edit_kyse_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./kyse-edit/kyse-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts");
-/* harmony import */ var _Kyse_edit_all_edit_kyse_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Kyse-edit/all-edit/kyse-all-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts");
-/* harmony import */ var _Kyse_edit_basic_edit_kyse_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Kyse-edit/basic-edit/kyse-basic-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts");
+/* harmony import */ var _kyses_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./kyses.component */ "./src/app/pages/customers/kyses-rabbinate/kyses.component.ts");
+/* harmony import */ var _kyse_kyse_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kyse/kyse.component */ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.ts");
+/* harmony import */ var _kyse_media_kyse_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./kyse-media/kyse-media.component */ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.ts");
+/* harmony import */ var _Kyse_about_kyse_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Kyse-about/kyse-about.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.ts");
+/* harmony import */ var _kyse_edit_kyse_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./kyse-edit/kyse-edit.component */ "./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts");
+/* harmony import */ var _Kyse_edit_all_edit_kyse_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Kyse-edit/all-edit/kyse-all-edit.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts");
+/* harmony import */ var _Kyse_edit_basic_edit_kyse_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Kyse-edit/basic-edit/kyse-basic-edit.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4528,9 +4528,9 @@ var KysesRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/Kyses.module.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/Kyses.module.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/Kyses.module.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/Kyses.module.ts ***!
   \*****************************************************************/
 /*! exports provided: KysesModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4540,14 +4540,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KysesModule", function() { return KysesModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _kyses_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./kyses.component */ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.ts");
-/* harmony import */ var _kyse_kyse_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./kyse/kyse.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.ts");
-/* harmony import */ var _kyse_media_kyse_media_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kyse-media/kyse-media.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.ts");
-/* harmony import */ var _Kyse_about_kyse_about_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Kyse-about/kyse-about.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-about/kyse-about.component.ts");
-/* harmony import */ var _kyse_edit_kyse_edit_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./kyse-edit/kyse-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts");
-/* harmony import */ var _Kyse_edit_all_edit_kyse_all_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Kyse-edit/all-edit/kyse-all-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts");
-/* harmony import */ var _Kyse_edit_basic_edit_kyse_basic_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Kyse-edit/basic-edit/kyse-basic-edit.component */ "./src/app/pages/costumers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts");
-/* harmony import */ var _Kyses_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Kyses-routing.module */ "./src/app/pages/costumers/kyses-rabbinate/Kyses-routing.module.ts");
+/* harmony import */ var _kyses_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./kyses.component */ "./src/app/pages/customers/kyses-rabbinate/kyses.component.ts");
+/* harmony import */ var _kyse_kyse_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./kyse/kyse.component */ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.ts");
+/* harmony import */ var _kyse_media_kyse_media_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./kyse-media/kyse-media.component */ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.ts");
+/* harmony import */ var _Kyse_about_kyse_about_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Kyse-about/kyse-about.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-about/kyse-about.component.ts");
+/* harmony import */ var _kyse_edit_kyse_edit_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./kyse-edit/kyse-edit.component */ "./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts");
+/* harmony import */ var _Kyse_edit_all_edit_kyse_all_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Kyse-edit/all-edit/kyse-all-edit.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/all-edit/kyse-all-edit.component.ts");
+/* harmony import */ var _Kyse_edit_basic_edit_kyse_basic_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Kyse-edit/basic-edit/kyse-basic-edit.component */ "./src/app/pages/customers/kyses-rabbinate/Kyse-edit/basic-edit/kyse-basic-edit.component.ts");
+/* harmony import */ var _Kyses_routing_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Kyses-routing.module */ "./src/app/pages/customers/kyses-rabbinate/Kyses-routing.module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4591,9 +4591,9 @@ var KysesModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.html":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.html ***!
   \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4602,9 +4602,9 @@ module.exports = "<h2>kyse- and rabbinate- edit worka!</h2>\n<router-outlet></ro
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts":
 /*!**********************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.ts ***!
   \**********************************************************************************/
 /*! exports provided: KyseEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4631,7 +4631,7 @@ var KyseEditComponent = /** @class */ (function () {
     KyseEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse-edit',
-            template: __webpack_require__(/*! ./kyse-edit.component.html */ "./src/app/pages/costumers/kyses-rabbinate/kyse-edit/kyse-edit.component.html"),
+            template: __webpack_require__(/*! ./kyse-edit.component.html */ "./src/app/pages/customers/kyses-rabbinate/kyse-edit/kyse-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -4643,9 +4643,9 @@ var KyseEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.css":
 /*!*************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.css ***!
   \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4654,9 +4654,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.html":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.html ***!
   \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4665,9 +4665,9 @@ module.exports = "<h2>\n  kyse--media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.ts":
 /*!************************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.ts ***!
   \************************************************************************************/
 /*! exports provided: KyseMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4694,8 +4694,8 @@ var KyseMediaComponent = /** @class */ (function () {
     KyseMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse-media',
-            template: __webpack_require__(/*! ./kyse-media.component.html */ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.html"),
-            styles: [__webpack_require__(/*! ./kyse-media.component.css */ "./src/app/pages/costumers/kyses-rabbinate/kyse-media/kyse-media.component.css")]
+            template: __webpack_require__(/*! ./kyse-media.component.html */ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.html"),
+            styles: [__webpack_require__(/*! ./kyse-media.component.css */ "./src/app/pages/customers/kyses-rabbinate/kyse-media/kyse-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KyseMediaComponent);
@@ -4706,9 +4706,9 @@ var KyseMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.css":
 /*!*************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.css ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4717,9 +4717,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.html":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.html ***!
   \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4728,9 +4728,9 @@ module.exports = "<h2>\n  kyse and rabbi comp works!\n</h2>\n<router-outlet></ro
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.ts":
 /*!************************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.ts ***!
   \************************************************************************/
 /*! exports provided: KyseComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4757,8 +4757,8 @@ var KyseComponent = /** @class */ (function () {
     KyseComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyse',
-            template: __webpack_require__(/*! ./kyse.component.html */ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.html"),
-            styles: [__webpack_require__(/*! ./kyse.component.css */ "./src/app/pages/costumers/kyses-rabbinate/kyse/kyse.component.css")]
+            template: __webpack_require__(/*! ./kyse.component.html */ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.html"),
+            styles: [__webpack_require__(/*! ./kyse.component.css */ "./src/app/pages/customers/kyses-rabbinate/kyse/kyse.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KyseComponent);
@@ -4769,9 +4769,9 @@ var KyseComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.css":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyses.component.css":
 /*!*********************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyses.component.css ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyses.component.css ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4780,9 +4780,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.html":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyses.component.html":
 /*!**********************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyses.component.html ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyses.component.html ***!
   \**********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4791,9 +4791,9 @@ module.exports = "<h2>\n  main Kyse and rabbinate component works!\n</h2>\n<rout
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.ts":
+/***/ "./src/app/pages/customers/kyses-rabbinate/kyses.component.ts":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/kyses-rabbinate/kyses.component.ts ***!
+  !*** ./src/app/pages/customers/kyses-rabbinate/kyses.component.ts ***!
   \********************************************************************/
 /*! exports provided: KysesComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4820,8 +4820,8 @@ var KysesComponent = /** @class */ (function () {
     KysesComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-kyses',
-            template: __webpack_require__(/*! ./kyses.component.html */ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.html"),
-            styles: [__webpack_require__(/*! ./kyses.component.css */ "./src/app/pages/costumers/kyses-rabbinate/kyses.component.css")]
+            template: __webpack_require__(/*! ./kyses.component.html */ "./src/app/pages/customers/kyses-rabbinate/kyses.component.html"),
+            styles: [__webpack_require__(/*! ./kyses.component.css */ "./src/app/pages/customers/kyses-rabbinate/kyses.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], KysesComponent);
@@ -4832,9 +4832,9 @@ var KysesComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.css":
 /*!***************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer-about/photographer-about.component.css ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4843,9 +4843,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.html":
 /*!****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-about/photographer-about.component.html ***!
   \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4854,9 +4854,9 @@ module.exports = "<hr class=\"d-xl-none\">\r\n<div *ngIf=\"(customer$ | async )\
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.ts":
 /*!**************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-about/photographer-about.component.ts ***!
   \**************************************************************************************************/
 /*! exports provided: PhotographerAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4865,7 +4865,7 @@ module.exports = "<hr class=\"d-xl-none\">\r\n<div *ngIf=\"(customer$ | async )\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerAboutComponent", function() { return PhotographerAboutComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -4887,17 +4887,17 @@ var PhotographerAboutComponent = /** @class */ (function () {
     }
     PhotographerAboutComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (dt) {
+        this.hall.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])()).subscribe(function (dt) {
             _this.customer$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(dt['customer']);
         });
     };
     PhotographerAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photographer-about',
-            template: __webpack_require__(/*! ./photographer-about.component.html */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.html"),
-            styles: [__webpack_require__(/*! ./photographer-about.component.css */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.css")]
+            template: __webpack_require__(/*! ./photographer-about.component.html */ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.html"),
+            styles: [__webpack_require__(/*! ./photographer-about.component.css */ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.css")]
         }),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"]])
     ], PhotographerAboutComponent);
     return PhotographerAboutComponent;
 }());
@@ -4906,9 +4906,9 @@ var PhotographerAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.css":
 /*!*******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.css ***!
   \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -4917,20 +4917,20 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.html":
 /*!********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.html ***!
   \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <a class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </a>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"phone\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"phone\" name=\"phone\" class=\"col-11 px-1\" formControlName=\"phone\" [pattern]=\"phoneNum\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.phone.invalid && f.phone.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber textarea\">\r\n            <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required\r\n              minlength=\"12\">\r\n                            \r\n                    </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n          <label for=\"about\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\" (mouseenter)=\"textAreaAdjust($event)\"\r\n            (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"about\" id=\"about\" formControlName=\"about\" required>\r\n          </textarea>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"h-100 p-3\">\r\n          <!-- Chose loggo -->\r\n          <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n              <span>\r\n                החלף לוגו\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n          </div>\r\n  \r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"costumer.loggo\" alt=\"{{ costumer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n              (click)=\"activeItem(ii)\" />\r\n          </div>\r\n  \r\n          <div class=\"btn-group \">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose video -->\r\n          <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n  \r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n              <span>\r\n                הוסף סרטון\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n  \r\n            <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n            />\r\n          </div>\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\">\r\n            <video controls=true height=\"100%\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n          <div class=\"btn-group w-100 bg-white position-relative\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose image dallery -->\r\n          <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n          <div class=\"form-group bg-white border clearfix\">\r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n              <span>\r\n                הוסף תמונות\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n            />\r\n          </div>\r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n              alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n          </div>\r\n          <div class=\"btn-group\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n  \r\n        </div>\r\n  \r\n      </div>\r\n      <div class=\"col-sm-12\">\r\n        \r\n          <div class=\"btn-group w-100 p-3 bg-light\">\r\n            <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n            <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n            <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          </div>\r\n        </div>\r\n  \r\n    </div>\r\n  </form>"
+module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCustomerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\" formControlName=\"company\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <a class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </a>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ customer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\" formControlName=\"contact\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"phone\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ customer.tel }}\" type=\"tel\" id=\"phone\" name=\"phone\" class=\"col-11 px-1\" formControlName=\"phone\" [pattern]=\"phoneNum\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.phone.invalid && f.phone.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה לפאלפון/טלפון</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ customer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\" formControlName=\"address\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber\">\r\n            <input value=\"{{ customer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\" [pattern]=\"emailPatteren\"\r\n              required />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber textarea\">\r\n            <textarea value=\"{{ customer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\" formControlName=\"title\" required\r\n              minlength=\"12\">\r\n                            \r\n                    </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n          <label for=\"about\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ customer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\" (mouseenter)=\"textAreaAdjust($event)\"\r\n            (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"about\" id=\"about\" formControlName=\"about\" required>\r\n          </textarea>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"h-100 p-3\">\r\n          <!-- Chose loggo -->\r\n          <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n              <span>\r\n                החלף לוגו\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n          </div>\r\n  \r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"customer.loggo\" alt=\"{{ customer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n              (click)=\"activeItem(ii)\" />\r\n          </div>\r\n  \r\n          <div class=\"btn-group \">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose video -->\r\n          <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n          <div class=\"form-group border bg-white clearfix\">\r\n  \r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n              <span>\r\n                הוסף סרטון\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n  \r\n            <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n            />\r\n          </div>\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\">\r\n            <video controls=true height=\"100%\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n          <div class=\"btn-group w-100 bg-white position-relative\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n          <!-- Chose image dallery -->\r\n          <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n          <div class=\"form-group bg-white border clearfix\">\r\n  \r\n            <span class=\"py-2 px-2 m-0 float-right\">\r\n              בחר קובץ...\r\n            </span>\r\n            <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n              <span>\r\n                הוסף תמונות\r\n                <i class=\"fa fa-search text-success\"></i>\r\n              </span>\r\n            </label>\r\n            <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n            />\r\n          </div>\r\n          <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n              alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n          </div>\r\n          <div class=\"btn-group\">\r\n  \r\n          </div>\r\n          <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n            <span>\r\n              עדכן\r\n              <i class=\"material-icons text-success\">\r\n                person_add\r\n              </i>\r\n            </span>\r\n          </div>\r\n  \r\n        </div>\r\n  \r\n      </div>\r\n      <div class=\"col-sm-12\">\r\n        \r\n          <div class=\"btn-group w-100 p-3 bg-light\">\r\n            <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n            <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n            <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          </div>\r\n        </div>\r\n  \r\n    </div>\r\n  </form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts":
 /*!******************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts ***!
   \******************************************************************************************************/
 /*! exports provided: PhotoAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -4941,7 +4941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
@@ -4978,13 +4978,13 @@ var PhotoAllEditComponent = /** @class */ (function () {
     }
     PhotoAllEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
             var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
             var uId = _this.http.authUser["id"];
-            console.log('costumerId: ' + cId + " userId " + uId);
+            console.log('customerId: ' + cId + " userId " + uId);
             if (cId === uId) {
                 var id = cost.id;
-                _this.costumer = cost;
+                _this.customer = cost;
                 var gal = _this.halls.getGallery(id);
                 _this.galleries = gal['image'];
                 _this.videos = gal['video'];
@@ -5002,7 +5002,7 @@ var PhotoAllEditComponent = /** @class */ (function () {
         });
     };
     PhotoAllEditComponent.prototype.canDeactivate = function () {
-        if (this.addCostumerForm.dirty || this.addCostumerForm.touched || this.filesSize >= 1 || this.arrayFlies.length >= 1) {
+        if (this.addCustomerForm.dirty || this.addCustomerForm.touched || this.filesSize >= 1 || this.arrayFlies.length >= 1) {
             return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
         }
         else {
@@ -5020,12 +5020,12 @@ var PhotoAllEditComponent = /** @class */ (function () {
         target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
     };
     Object.defineProperty(PhotoAllEditComponent.prototype, "f", {
-        get: function () { return this.addCostumerForm.controls; },
+        get: function () { return this.addCustomerForm.controls; },
         enumerable: true,
         configurable: true
     });
     PhotoAllEditComponent.prototype.formInt = function () {
-        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
+        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormGroup"]({
             'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
             'businessType': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
             'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormControl"](null, [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["Validators"].required]),
@@ -5039,8 +5039,8 @@ var PhotoAllEditComponent = /** @class */ (function () {
     PhotoAllEditComponent.prototype.onSubmit = function () {
         var _this = this;
         var input = new FormData();
-        var posterUrl = "http://ethio:8080/api/auth/costumers";
-        var formInputs = this.addCostumerForm.value;
+        var posterUrl = "http://ethio:8080/api/auth/customers";
+        var formInputs = this.addCustomerForm.value;
         var urls = formInputs['businessType'] + "/" + formInputs['company'];
         var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
         var errors = {};
@@ -5060,7 +5060,7 @@ var PhotoAllEditComponent = /** @class */ (function () {
         errors.galleries = (counter < 3) ? errors.galleries = "גלריית התמונות חייב להכיל לפחות 3 תמונות" : null;
         errors.fileSize = (checkFilesSizes) ? errors.fileSize = this.formatBytes(this.filesSize) + " : " + "גודל הקבצים גדולה מדי." : null;
         errors.loggo = (typeof formInputs['loggo'] === 'undefined' || !formInputs['loggo']) ? errors.loggo = "העלה תמונת לוגו או אייקון של החברה." : null;
-        errors.formInputs = (!this.addCostumerForm.valid) ? errors.formInputs = "ודא והשלם פרטים נכונים" : null;
+        errors.formInputs = (!this.addCustomerForm.valid) ? errors.formInputs = "ודא והשלם פרטים נכונים" : null;
         for (var ii in errors) {
             if (errors.hasOwnProperty(ii)) {
                 if (errors[ii])
@@ -5095,7 +5095,7 @@ var PhotoAllEditComponent = /** @class */ (function () {
         // ,
         // reportProgress: true,
         // observe: 'events'
-        //console.log(this.addCostumerForm.value);
+        //console.log(this.addCustomerForm.value);
         //rs.subscribe(evt => console.log(evt));
     };
     PhotoAllEditComponent.prototype.formatBytes = function (a) {
@@ -5220,7 +5220,7 @@ var PhotoAllEditComponent = /** @class */ (function () {
         });
     };
     PhotoAllEditComponent.prototype.reset = function () {
-        this.addCostumerForm.reset();
+        this.addCustomerForm.reset();
     };
     PhotoAllEditComponent.prototype.close = function () {
         this.router.navigate(['../']);
@@ -5240,10 +5240,10 @@ var PhotoAllEditComponent = /** @class */ (function () {
     PhotoAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photo-all-edit',
-            template: __webpack_require__(/*! ./photo-all-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./photo-all-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.css")]
+            template: __webpack_require__(/*! ./photo-all-edit.component.html */ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./photo-all-edit.component.css */ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"]])
     ], PhotoAllEditComponent);
     return PhotoAllEditComponent;
 }());
@@ -5252,9 +5252,9 @@ var PhotoAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css":
 /*!***********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css ***!
   \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -5263,20 +5263,20 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html":
 /*!************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html ***!
   \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCostumerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\r\n              formControlName=\"company\" required #company />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n            <div *ngIf=\"(masseges['company'])\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['company']['type']\">\r\n              <p class=\"p-0 m-0\"> * {{ masseges['company']['company'] }} </p>\r\n            </div>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n          <!-- JSON.stringify(masseges)  -->\r\n  \r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\r\n              formControlName=\"contact\" required #contact />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['contact']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['contact'].type\">\r\n                <p class=\"p-0 m-0\"> * {{ masseges['contact'].contact }} </p>\r\n              </div>\r\n            </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n  \r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"tel\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\r\n              [pattern]=\"phoneNum\" required #tel />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\r\n            לפאלפון/טלפון</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['tel']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['tel'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['tel'].tel }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\r\n              formControlName=\"address\" required #address />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['address']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['address'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['address'].address }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ costumer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\r\n              [pattern]=\"emailPatteren\" required #email />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div  class=\"text-right\">\r\n              <div *ngIf=\"masseges['email']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['email'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['email'].email }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2 textarea\">\r\n            <textarea value=\"{{ costumer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\r\n              formControlName=\"title\" required minlength=\"12\" #title>\r\n            </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['title']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['title'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['title'].title }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n  \r\n          <label for=\"discription\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ costumer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\r\n            (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\r\n            id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\r\n  \r\n          </textarea>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['discription']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['discription'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['discription'].discription }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n  \r\n      <div class=\"col-sm-12\">\r\n  \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">שמור הכל</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          <a class=\"btn btn-info\" (click)=\"allTodefault()\">שחזר ברירת מחדל</a>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  </form>"
+module.exports = "<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" [formGroup]=\"addCustomerForm\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n    <!-- basic edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"company\">שם החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.company }}\" class=\"col-11 px-1\" type=\"text\" name=\"company\" id=\"company\"\r\n              formControlName=\"company\" required #company />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n            <div *ngIf=\"(masseges['company'])\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['company']['type']\">\r\n              <p class=\"p-0 m-0\"> * {{ masseges['company']['company'] }} </p>\r\n            </div>\r\n          </div>\r\n  \r\n          <div *ngIf=\"f.company.invalid && f.company.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(company)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(company)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(company)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n          <!-- JSON.stringify(masseges)  -->\r\n  \r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"contact\">איש קשר</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.contact }}\" class=\"col-11 px-1\" type=\"text\" name=\"contact\" id=\"contact\"\r\n              formControlName=\"contact\" required #contact />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['contact']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['contact'].type\">\r\n                <p class=\"p-0 m-0\"> * {{ masseges['contact'].contact }} </p>\r\n              </div>\r\n            </div>\r\n          <div *ngIf=\"f.contact.invalid && f.contact.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n  \r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(contact)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(contact)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(contact)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"tel\">פלאפון/טלפון</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.tel }}\" type=\"tel\" id=\"tel\" name=\"tel\" class=\"col-11 px-1\" formControlName=\"tel\"\r\n              [pattern]=\"phoneNum\" required #tel />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.tel.invalid && f.tel.touched\" class=\"invalid-feedback d-block\">* נא למלא שדה בתבנית המתאימה\r\n            לפאלפון/טלפון</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['tel']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['tel'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['tel'].tel }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(tel)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(tel)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(tel)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"address\">כתובת</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.address }}\" class=\"col-11 px-1\" type=\"text\" name=\"address\" id=\"address\"\r\n              formControlName=\"address\" required #address />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.address.invalid && f.address.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['address']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['address'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['address'].address }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(address)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(address)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(address)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col form-group py-2 my-0\">\r\n          <label for=\"email\">אימייל</label>\r\n          <div class=\"inputTypeNumber my-2\">\r\n            <input value=\"{{ customer.email }}\" class=\"col-11 px-1\" type=\"email\" name=\"email\" id=\"email\" formControlName=\"email\"\r\n              [pattern]=\"emailPatteren\" required #email />\r\n  \r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.email.invalid && f.email.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div  class=\"text-right\">\r\n              <div *ngIf=\"masseges['email']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['email'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['email'].email }} </p>\r\n                </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(email)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(email)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(email)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- about edite -->\r\n  \r\n    <div class=\"row\">\r\n      <div class=\"col-sm-12\">\r\n        <div class=\"col-sm-12 form-group py-3\">\r\n          <label for=\"title\">תיאור או כותרת החברה</label>\r\n  \r\n          <div class=\"inputTypeNumber my-2 textarea\">\r\n            <textarea value=\"{{ customer.title }}\" class=\"col-11 px-1\" type=\"text\" name=\"title\" id=\"title\"\r\n              formControlName=\"title\" required minlength=\"12\" #title>\r\n            </textarea>\r\n            <span class=\"validity float-left\"></span>\r\n          </div>\r\n          <div *ngIf=\"f.title.invalid && f.title.touched\" class=\"invalid-feedback d-block\">* שדה חובה</div>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['title']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['title'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['title'].title }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(title)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(title)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(title)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n  \r\n        <div class=\"col-sm-12 form-group border p-3\">\r\n  \r\n          <label for=\"discription\">אודות החברה</label>\r\n          <textarea wrap=\"hard\" value=\"{{ customer.discription | removeWhiteSpace  }}\" class=\"w-100 form-control text-right note\"\r\n            (mouseenter)=\"textAreaAdjust($event)\" (mouseleave)=\"textAreamouseleave($event)\" type=\"text\" name=\"discription\"\r\n            id=\"discription\" formControlName=\"discription\" minlength=\"6\" #discription>\r\n  \r\n          </textarea>\r\n          <div class=\"text-right\">\r\n              <div *ngIf=\"masseges['discription']\" [ngClass]=\"'my-1 p-1 alert alert-'+ masseges['discription'].type\">\r\n                  <p class=\"p-0 m-0\"> * {{ masseges['discription'].discription }} </p>\r\n            </div>\r\n          </div>\r\n          <div class=\"my-2\">\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"update(discription)\">\r\n              <span>\r\n                עדכן\r\n                <i class=\"material-icons text-success\">\r\n                  person_add\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"inputReset(discription)\">\r\n              <span>\r\n                נקה\r\n                <i class=\"material-icons text-warning\">\r\n                  clear\r\n                </i>\r\n              </span>\r\n            </a>\r\n            <a class=\"ml-1 px-2 py-2 my-2 border rounded text-center active\" (click)=\"default(discription)\">\r\n              <span>\r\n                מקור\r\n                <i class=\"material-icons text-danger\">\r\n                  redo\r\n                </i>\r\n              </span>\r\n            </a>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  \r\n    <!-- media and galleries edite -->\r\n  \r\n    <div class=\"row\">\r\n  \r\n      <div class=\"col-sm-12\">\r\n  \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">שמור הכל</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n          <a class=\"btn btn-info\" (click)=\"allTodefault()\">שחזר ברירת מחדל</a>\r\n        </div>\r\n      </div>\r\n  \r\n    </div>\r\n  </form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts":
 /*!**********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts ***!
   \**********************************************************************************************************/
 /*! exports provided: PhotoBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5288,11 +5288,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
+/* harmony import */ var _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../../../customers/form-proccesor.service */ "./src/app/customers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5324,13 +5324,13 @@ var PhotoBasicEditComponent = /** @class */ (function () {
     }
     PhotoBasicEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_7__["first"])(function (val) { return val['customer']['id']; })).subscribe(function (cost) {
             var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
             var authUser = _this.http.authUser;
             var uId = authUser ? authUser["id"] : false;
-            console.log('costumerId: ' + cId + " userId " + uId);
+            console.log('customerId: ' + cId + " userId " + uId);
             if (cId === uId) {
-                _this.costumer = cost;
+                _this.customer = cost;
                 _this.apiKey = _this.http.getApiKey();
                 _this.formInt();
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(true);
@@ -5344,25 +5344,25 @@ var PhotoBasicEditComponent = /** @class */ (function () {
             }
         });
     };
-    PhotoBasicEditComponent.prototype.update = function (costumer) {
-        var comp = costumer['id'];
-        var controls = this.addCostumerForm.controls[comp];
-        var items = this.valForm.validate(controls, this.costumer, comp);
+    PhotoBasicEditComponent.prototype.update = function (customer) {
+        var comp = customer['id'];
+        var controls = this.addCustomerForm.controls[comp];
+        var items = this.valForm.validate(controls, this.customer, comp);
         this.masseges = items['errors'];
         if (items['status'])
             this.send(items['success']);
     };
-    PhotoBasicEditComponent.prototype.inputReset = function (costumer) {
-        var comp = costumer['id'];
-        this.addCostumerForm.controls[comp].reset();
+    PhotoBasicEditComponent.prototype.inputReset = function (customer) {
+        var comp = customer['id'];
+        this.addCustomerForm.controls[comp].reset();
     };
-    PhotoBasicEditComponent.prototype.default = function (costumer) {
-        var comp = costumer.id;
-        this.addCostumerForm.controls[comp].setValue(this.costumer[comp]);
+    PhotoBasicEditComponent.prototype.default = function (customer) {
+        var comp = customer.id;
+        this.addCustomerForm.controls[comp].setValue(this.customer[comp]);
     };
     PhotoBasicEditComponent.prototype.canDeactivate = function () {
         console.log("canDeactivate called!");
-        if (this.addCostumerForm.dirty || this.addCostumerForm.touched) {
+        if (this.addCustomerForm.dirty || this.addCustomerForm.touched) {
             return confirm("לא שמרתה את הפרטים. תרצה לעזוב דף זה בכל זאת?");
         }
         else {
@@ -5380,26 +5380,26 @@ var PhotoBasicEditComponent = /** @class */ (function () {
         target.style.height = ((target.scrollHeight) - 50 + '%') + "px";
     };
     Object.defineProperty(PhotoBasicEditComponent.prototype, "f", {
-        get: function () { return this.addCostumerForm.controls; },
+        get: function () { return this.addCustomerForm.controls; },
         enumerable: true,
         configurable: true
     });
     PhotoBasicEditComponent.prototype.formInt = function () {
-        this.addCostumerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
-            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            // 'businessType': new FormControl(this.costumer.businessType, [Validators.required]),
-            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
-            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.costumer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
+        this.addCustomerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            'company': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.company, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            // 'businessType': new FormControl(this.customer.businessType, [Validators.required]),
+            'title': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.title, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'contact': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.contact, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'tel': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.tel, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'email': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.email, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'address': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.address, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required]),
+            'discription': new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](this.customer.discription, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
         });
     };
     PhotoBasicEditComponent.prototype.onSubmit = function () {
         // this.masseges = [];
-        var controls = this.addCostumerForm.controls;
-        var items = this.valForm.validate(controls, this.costumer);
+        var controls = this.addCustomerForm.controls;
+        var items = this.valForm.validate(controls, this.customer);
         //if(items['status'] === false) this.masseges.push(items['errors']);
         console.log(items);
         if (items['status']) {
@@ -5410,25 +5410,25 @@ var PhotoBasicEditComponent = /** @class */ (function () {
         }
     };
     PhotoBasicEditComponent.prototype.reset = function () {
-        this.addCostumerForm.reset();
+        this.addCustomerForm.reset();
     };
     PhotoBasicEditComponent.prototype.close = function () {
         this.router.navigate(['../']);
     };
     PhotoBasicEditComponent.prototype.allTodefault = function () {
-        var controls = this.addCostumerForm.controls;
+        var controls = this.addCustomerForm.controls;
         for (var ii in controls) {
             if (controls.hasOwnProperty(ii)) {
-                if (controls[ii].value !== this.costumer[ii]) {
-                    if (this.costumer[ii])
-                        controls[ii].setValue(this.costumer[ii]);
+                if (controls[ii].value !== this.customer[ii]) {
+                    if (this.customer[ii])
+                        controls[ii].setValue(this.customer[ii]);
                 }
             }
         }
     };
     PhotoBasicEditComponent.prototype.send = function (body) {
         var _this = this;
-        var updaterUrl = "http://ethio/costumers/" + this.costumer["id"];
+        var updaterUrl = "http://ethio/customers/" + this.customer["id"];
         console.log(body);
         this.halls.patchData(updaterUrl, body, {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpHeaders"]({
@@ -5477,13 +5477,13 @@ var PhotoBasicEditComponent = /** @class */ (function () {
     PhotoBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photo-basic-edit',
-            template: __webpack_require__(/*! ./photo-basic-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./photo-basic-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./photo-basic-edit.component.html */ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./photo-basic-edit.component.css */ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"],
-            _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"],
+            _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"],
             _http_service__WEBPACK_IMPORTED_MODULE_6__["HttpService"],
-            _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
+            _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_8__["FormProccesorService"]])
     ], PhotoBasicEditComponent);
     return PhotoBasicEditComponent;
 }());
@@ -5492,9 +5492,9 @@ var PhotoBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.css":
 /*!***********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.css ***!
   \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -5503,20 +5503,20 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.html":
 /*!************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.html ***!
   \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCostumerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n  <!-- basic edite -->\r\n\r\n  \r\n\r\n  <!-- media and galleries edite -->\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"h-100 p-3\">\r\n        <!-- Chose loggo -->\r\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n            <span>\r\n              החלף לוגו\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n        </div>\r\n\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n          <div *ngIf=\"costumer.loggo\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"costumer.loggo\" alt=\"{{ costumer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n               />\r\n          </div>\r\n        </div>\r\n        \r\n        \r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose video -->\r\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n            <span>\r\n              הוסף סרטון\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n\r\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n          />\r\n        </div>\r\n        \r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <video controls=true class=\"w-25\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose image dallery -->\r\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n        <div class=\"form-group bg-white border clearfix\">\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n            <span>\r\n              הוסף תמונות\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n          />\r\n        </div>\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n            alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n        </div>\r\n        <div class=\"btn-group\">\r\n\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"col-sm-12\">\r\n      \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n</form>"
+module.exports = "\r\n<!-- *ngIf=\"isTrue\" [formGroup]=\"addCustomerForm\"  -->\r\n<form *ngIf=\"isTrue | async\" class=\"border border rounded text-right mt-2\" (ngSubmit)=\"onSubmit()\">\r\n  <!-- basic edite -->\r\n\r\n  \r\n\r\n  <!-- media and galleries edite -->\r\n\r\n  <div class=\"row\">\r\n    <div class=\"col-sm-12\">\r\n      <div class=\"h-100 p-3\">\r\n        <!-- Chose loggo -->\r\n        <p class=\"pb-2 m-0\">לוגו החברה</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"loggo\">\r\n            <span>\r\n              החלף לוגו\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"loggo\" style=\"display: none;\" accept=\"image/*\" required (change)=\"selectedFiles($event,'loggo')\" />\r\n        </div>\r\n\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n          <div *ngIf=\"customer.loggo\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <img style=\"height:90px; cursor: pointer\" class=\"m-1\" [src]=\"customer.loggo\" alt=\"{{ customer.loggo | splitText:'/' | splitText:'.':0 }}\"\r\n               />\r\n          </div>\r\n        </div>\r\n        \r\n        \r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose video -->\r\n        <p class=\"pb-2 m-0\">סרטון תדמיתי</p>\r\n        <div class=\"form-group border bg-white clearfix\">\r\n\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"files2\">\r\n            <span>\r\n              הוסף סרטון\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n\r\n          <input type=\"file\" id=\"files2\" style=\"display: none;\" accept=\"video/*\" (change)=\"selectedFiles($event,'video')\" required\r\n          />\r\n        </div>\r\n        \r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <div *ngFor=\"let video of videos;let ii = index\" class=\"d-inline\">\r\n            <a id=\"tzeyur4_598427\" data-target=\"loggo\" class=\"close bg-secondary\"><span aria-hidden=\"true\">×</span></a>\r\n            <video controls=true class=\"w-25\">\r\n              <source type=\"video/mp4\" [src]=\"video\" />\r\n            </video>\r\n          </div>\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n        <!-- Chose image dallery -->\r\n        <p class=\"pb-2 m-0\">גלרית תמונות</p>\r\n        <div class=\"form-group bg-white border clearfix\">\r\n\r\n          <span class=\"py-2 px-2 m-0 float-right\">\r\n            בחר קובץ...\r\n          </span>\r\n          <label class=\"border border-primary py-2 px-2 m-0 float-left text-center\" for=\"file\">\r\n            <span>\r\n              הוסף תמונות\r\n              <i class=\"fa fa-search text-success\"></i>\r\n            </span>\r\n          </label>\r\n          <input type=\"file\" id=\"file\" style=\"display: none;\" accept=\"image/*\" required multiple (change)=\"selectedFiles($event,'galleries')\"\r\n          />\r\n        </div>\r\n        <div class=\"border border-success bg-dark d-flex-row\">\r\n\r\n          <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n            alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"activeItem(ii)\" />\r\n        </div>\r\n        <div class=\"btn-group\">\r\n\r\n        </div>\r\n        <div class=\"col-sm-2 py-1 my-2 border rounded text-center\">\r\n          <span>\r\n            עדכן\r\n            <i class=\"material-icons text-success\">\r\n              person_add\r\n            </i>\r\n          </span>\r\n        </div>\r\n\r\n      </div>\r\n\r\n    </div>\r\n    <div class=\"col-sm-12\">\r\n      \r\n        <div class=\"btn-group w-100 p-3 bg-light\">\r\n          <button class=\"btn btn-success\" type=\"submit\">העלה</button>\r\n          <a class=\"btn btn-warning\" (click)=\"reset()\">אפס</a>\r\n          <a class=\"btn btn-danger\" (click)=\"close()\">בטל וסגור</a>\r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n</form>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts":
 /*!**********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts ***!
   \**********************************************************************************************************/
 /*! exports provided: PhotoMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5526,12 +5526,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotoMediaEditComponent", function() { return PhotoMediaEditComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../costumers/form-proccesor.service */ "./src/app/costumers/form-proccesor.service.ts");
+/* harmony import */ var _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../customers/form-proccesor.service */ "./src/app/customers/form-proccesor.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5564,16 +5564,16 @@ var PhotoMediaEditComponent = /** @class */ (function () {
     }
     PhotoMediaEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["find"])(function (val) { return val['id']; })).subscribe(function (cost) {
             var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
             var uId = _this.http.authUser["id"];
-            console.log('costumerId: ' + cId + " userId " + uId);
+            console.log('customerId: ' + cId + " userId " + uId);
             if (cId === uId) {
                 var id = cost.id;
                 var gal = _this.halls.getGallery(id);
                 _this.galleries = gal['image'];
                 _this.videos = gal['video'];
-                _this.costumer = cost;
+                _this.customer = cost;
                 _this.apiKey = _this.http.getApiKey();
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
             }
@@ -5597,8 +5597,8 @@ var PhotoMediaEditComponent = /** @class */ (function () {
     PhotoMediaEditComponent.prototype.onSubmit = function () {
         var _this = this;
         var input = new FormData();
-        var posterUrl = "http://ethio:8080/api/auth/costumers";
-        var formInputs = this.costumer;
+        var posterUrl = "http://ethio:8080/api/auth/customers";
+        var formInputs = this.customer;
         var urls = formInputs['businessType'] + "/" + formInputs['company'];
         var checkFilesSizes = (Math.round(this.filesSize / Math.pow(1024, 2)) > 6) ? true : false;
         var errors = {};
@@ -5789,10 +5789,10 @@ var PhotoMediaEditComponent = /** @class */ (function () {
     PhotoMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photo-media-edit',
-            template: __webpack_require__(/*! ./photo-media-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./photo-media-edit.component.css */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.css")]
+            template: __webpack_require__(/*! ./photo-media-edit.component.html */ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./photo-media-edit.component.css */ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _costumers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__["FormProccesorService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"], _customers_form_proccesor_service__WEBPACK_IMPORTED_MODULE_7__["FormProccesorService"]])
     ], PhotoMediaEditComponent);
     return PhotoMediaEditComponent;
 }());
@@ -5801,9 +5801,9 @@ var PhotoMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.html":
 /*!**************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.html ***!
   \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -5812,9 +5812,9 @@ module.exports = "<!-- header edite -->\n<div *ngIf=\"isTrue | async\" class=\"r
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.ts":
 /*!************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.ts ***!
   \************************************************************************************************/
 /*! exports provided: PhotographerEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5826,7 +5826,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5852,14 +5852,14 @@ var PhotographerEditComponent = /** @class */ (function () {
     }
     PhotographerEditComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.halls.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (val) { return val['customer']; }))
+        this.halls.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(function (val) { return val['customer']; }))
             .subscribe(function (cost) {
             var cId = (cost && cost["user_id"]) ? cost["user_id"] : false;
             // let uId = this.http.authUser["id"];
             var userId = _this.http.authUser;
             var uId = userId ? userId['id'] : false;
             console.log(userId);
-            console.log('costumerId: ' + cId + " userId " + uId);
+            console.log('customerId: ' + cId + " userId " + uId);
             if (cId === uId) {
                 _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(true);
             }
@@ -5875,10 +5875,10 @@ var PhotographerEditComponent = /** @class */ (function () {
     PhotographerEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photographer-edit',
-            template: __webpack_require__(/*! ./photographer-edit.component.html */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.html"),
+            template: __webpack_require__(/*! ./photographer-edit.component.html */ "./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
-        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_4__["CustomersDataService"]])
     ], PhotographerEditComponent);
     return PhotographerEditComponent;
 }());
@@ -5887,9 +5887,9 @@ var PhotographerEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.css":
 /*!***************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer-media/photographer-media.component.css ***!
   \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -5898,20 +5898,20 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.html":
 /*!****************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer-media/photographer-media.component.html ***!
   \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"costumer | async\" class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 >גלריית {{ (costumer | async).company }}</h2>\r\n    <div class=\"media-slider border border-success bg-dark\">\r\n      <div id=\"meidiaCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n        <ol class=\"carousel-indicators p-0\">\r\n          <li  *ngFor=\"let gallery of galleries;let idx = index\" data-target=\"#meidiaCarousel\" attr.data-slide-to=\"{{ idx }}\" [ngClass]=\"{ 'active': idx === 0 }\" ></li>\r\n          <!-- <li data-target=\"#meidiaCarousel\" data-slide-to=\"1\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"2\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"3\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"4\"></li> -->\r\n        </ol>\r\n        <div class=\"carousel-inner\">\r\n          <div *ngFor=\"let gallery of galleries;let ii = index\" [ngClass]=\"{ 'carousel-item active': ii === 0,'carousel-item': i !== 0 }\">\r\n            <img class=\"my-5 mx-0 px-0\" style=\"height:240px\" [src]=\"gallery\" alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" />\r\n          </div>\r\n        </div>\r\n  \r\n        <a class=\"carousel-control-prev\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"next\">\r\n          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Previous</span>\r\n        </a>\r\n        <a class=\"carousel-control-next\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"prev\">\r\n          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Next</span>\r\n        </a>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>\r\n  <hr>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר תמונות</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"galActiveItem(ii)\" />\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">סרטוני תדמית</h2>\r\n  \r\n    <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\" style=\"height:300px;\">\r\n      <video controls=true height=\"100%\">\r\n        <source  type=\"video/mp4\" [src]=\"video\" />\r\n      </video>\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר סרטון</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"vidActiveItem(ii)\" />\r\n    </div>\r\n  </div>\r\n  <!-- <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let video of videos;let ii = index\" [src]=\"video.video\" alt=\"first-slide1\" /> -->"
+module.exports = "<div *ngIf=\"customer | async\" class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 >גלריית {{ (customer | async).company }}</h2>\r\n    <div class=\"media-slider border border-success bg-dark\">\r\n      <div id=\"meidiaCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\r\n        <ol class=\"carousel-indicators p-0\">\r\n          <li  *ngFor=\"let gallery of galleries;let idx = index\" data-target=\"#meidiaCarousel\" attr.data-slide-to=\"{{ idx }}\" [ngClass]=\"{ 'active': idx === 0 }\" ></li>\r\n          <!-- <li data-target=\"#meidiaCarousel\" data-slide-to=\"1\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"2\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"3\"></li>\r\n          <li data-target=\"#meidiaCarousel\" data-slide-to=\"4\"></li> -->\r\n        </ol>\r\n        <div class=\"carousel-inner\">\r\n          <div *ngFor=\"let gallery of galleries;let ii = index\" [ngClass]=\"{ 'carousel-item active': ii === 0,'carousel-item': i !== 0 }\">\r\n            <img class=\"my-5 mx-0 px-0\" style=\"height:240px\" [src]=\"gallery\" alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" />\r\n          </div>\r\n        </div>\r\n  \r\n        <a class=\"carousel-control-prev\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"next\">\r\n          <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Previous</span>\r\n        </a>\r\n        <a class=\"carousel-control-next\" href=\"#meidiaCarousel\" role=\"button\" data-slide=\"prev\">\r\n          <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\r\n          <span class=\"sr-only\">Next</span>\r\n        </a>\r\n      </div>\r\n  \r\n    </div>\r\n  </div>\r\n  <hr>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר תמונות</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"galActiveItem(ii)\" />\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-success text-center text-white p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">סרטוני תדמית</h2>\r\n  \r\n    <div *ngFor=\"let video of videos;let ii = index\" class=\"border border-success bg-dark d-flex-row\" style=\"height:300px;\">\r\n      <video controls=true height=\"100%\">\r\n        <source  type=\"video/mp4\" [src]=\"video\" />\r\n      </video>\r\n    </div>\r\n  \r\n  </div>\r\n  <div class=\"bg-light text-right text-success p-2 rounded\">\r\n    <h2 class=\"col-sm-12\">בחר סרטון</h2>\r\n  \r\n    <div class=\"border border-success bg-dark d-flex-row\">\r\n  \r\n      <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let gallery of galleries;let ii = index\" [src]=\"gallery\"\r\n        alt=\"{{ gallery | splitText:'/' | splitText:'.':0 }}\" (click)=\"vidActiveItem(ii)\" />\r\n    </div>\r\n  </div>\r\n  <!-- <img style=\"height:90px; cursor: pointer\" class=\"m-1\" *ngFor=\"let video of videos;let ii = index\" [src]=\"video.video\" alt=\"first-slide1\" /> -->"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.ts":
 /*!**************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer-media/photographer-media.component.ts ***!
   \**************************************************************************************************/
 /*! exports provided: PhotographerMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -5921,7 +5921,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerMediaComponent", function() { return PhotographerMediaComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../http.service */ "./src/app/http.service.ts");
@@ -5949,10 +5949,10 @@ var PhotographerMediaComponent = /** @class */ (function () {
     ;
     PhotographerMediaComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.hall.costumerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])()).subscribe(function (data) {
+        this.hall.customerObsever.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["first"])()).subscribe(function (data) {
             var co = data['customer'];
             var gal = data['gallery'];
-            _this.costumer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(co);
+            _this.customer = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(co);
             _this.galleries = JSON.parse(gal['image']);
             _this.videos = JSON.parse(gal['video']);
             $('.carousel').carousel();
@@ -5967,10 +5967,10 @@ var PhotographerMediaComponent = /** @class */ (function () {
     PhotographerMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photographer-media',
-            template: __webpack_require__(/*! ./photographer-media.component.html */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.html"),
-            styles: [__webpack_require__(/*! ./photographer-media.component.css */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.css")]
+            template: __webpack_require__(/*! ./photographer-media.component.html */ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.html"),
+            styles: [__webpack_require__(/*! ./photographer-media.component.css */ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
     ], PhotographerMediaComponent);
     return PhotographerMediaComponent;
 }());
@@ -5979,9 +5979,9 @@ var PhotographerMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer/photographer.component.css":
+/***/ "./src/app/pages/customers/photographers/photographer/photographer.component.css":
 /*!***************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer/photographer.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographer/photographer.component.css ***!
   \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -5990,20 +5990,20 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer/photographer.component.html":
+/***/ "./src/app/pages/customers/photographers/photographer/photographer.component.html":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer/photographer.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographer/photographer.component.html ***!
   \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<hr class=\"d-sm-none\">\r\n<div *ngIf=\"(costumerProps | async)?.company != null\" class=\"row text-right\">\r\n    <div class=\"costum-query col-xs-12 col-xl-4\">\r\n        <div class=\"row card-group\">\r\n\r\n            <div class=\"col-sm-12 col-md-7 d-md-flex d-xl-block col-xl-12 mb-3\">\r\n                <div class=\"w-100 border text-center\">\r\n\r\n                    <div class=\"shadow-sm bg-light\">\r\n                        <h5 class=\"p-3 text-success\">{{ (costumerProps | async)?.company }}</h5>\r\n                    </div>\r\n                    <img class=\"card-img-top py-3 w-25 m-auto\" [src]=\"(costumerProps | async)?.loggo\" [alt]=\"(costumerProps | async)?.company\" />\r\n\r\n                    <div class=\"card-footer col\">\r\n                        <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}\" class=\"btn btn-outline-success btn-sm\">\r\n                                <i class=\"fa fa-location-arrow\"></i>\r\n                                חזור\r\n                            </a>\r\n                            <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\r\n                                <i class=\"fa fa-envelope text-success\"></i>\r\n\r\n                                שלח הודעה</a>\r\n                            <a routerLink=\"media\" class=\"btn btn-danger btn-sm\">מדיה וגלריה</a>\r\n                            <a routerLink=\"about\" class=\"btn btn-info btn-sm\">אודות</a>\r\n                            \r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"isTrue | async\" class=\"btn-group border mt-2 w-100\">\r\n                    <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}/{{ (costumerProps | async)?.company  }}/create\" class=\"btn btn-primary btn-sm\">\r\n                                <!-- <i class=\"fa fa-location-arrow\"></i> -->\r\n                                + צור דף\r\n                            </a>\r\n                            <a routerLink=\"/{{ (costumerProps | async)?.businessType }}/{{ (costumerProps | async)?.company }}/edit/basic\" class=\"btn btn-danger text-light btn-sm\">\r\n                                <i class=\"fa fa-pencil\"></i>\r\n                                ערוך דף \r\n                                <!-- <i class=\"material-icons text-primary\"> edit</i> -->\r\n                            </a>\r\n                    </div>\r\n                    \r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-5 d-md-flex d-xl-block col-xl-12 text-right mb-3\">\r\n                <div class=\"card  border border-warning\">\r\n                    <div class=\"card-header bg-warning\">\r\n                        <h4 class=\"card-title text-center text-light\">\r\n                            צור קשר\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> {{ (costumerProps | async)?.contact }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> {{ (costumerProps | async)?.tel }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> {{ (costumerProps | async)?.address }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-col-xl-12\">\r\n                <div class=\"border border-danger text-right\">\r\n                    <div class=\"card-header bg-danger\">\r\n                        <h4 class=\"text-center text-light\">\r\n                            {{ (costumerProps | async)?.company }}\r\n                            <span class=\"font-weight-bold text-warning\">*מבצעים</span>\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"costum-query-datil col-xs-12 col-xl-8\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>\r\n\r\n<!-- (imgLoggo)=\"(costumerProps | async).loggo\" -->\r\n<!--Contact Modal -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg\">\r\n\r\n        <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\r\n            <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\r\n            <div class=\"card-body\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"mb-2\">\r\n                <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<!-- form model -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg row\">\r\n        <div class=\"modal-content col-sm-8 mx-auto text-right\">\r\n\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <div class=\"p-3\">\r\n                <h2 class=\"text-right text-success\">שלח הודעה</h2>\r\n                <p>\r\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\r\n                    <span class=\"text-danger\">\r\n\r\n                        צוות אתיופיה אירועים.\r\n                    </span>\r\n                </p>\r\n            </div>\r\n\r\n            <hr>\r\n            <form class=\"p-3\">\r\n                <div class=\"form-group\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\r\n\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"email\" class=\"form-control\" id=\"contactEmail\" placeholder=\"אימייל\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n\r\n                    <select id=\"contactRigion\" class=\"rigion\">\r\n                        <option selected>אזור</option>\r\n                        <option value=\"1\">צפון</option>\r\n                        <option value=\"2\">מרכז והשפלה</option>\r\n                        <option value=\"3\">דרום</option>\r\n                    </select>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <input type=\"tel\" class=\"form-control\" id=\"contactPhone\" placeholder=\"טלפון/פלאפון\">\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <textarea class=\"form-control\" id=\"contactTextarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\r\n                </div>\r\n                <button type=\"submit\" class=\"btn btn-success btn-sm\">\r\n                    <i class=\"fa fa-envelope\"></i>\r\n                    שלח</button>\r\n                <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">סגור</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<hr class=\"d-sm-none\">\r\n<div *ngIf=\"(customerProps | async)?.company != null\" class=\"row text-right\">\r\n    <div class=\"costum-query col-xs-12 col-xl-4\">\r\n        <div class=\"row card-group\">\r\n\r\n            <div class=\"col-sm-12 col-md-7 d-md-flex d-xl-block col-xl-12 mb-3\">\r\n                <div class=\"w-100 border text-center\">\r\n\r\n                    <div class=\"shadow-sm bg-light\">\r\n                        <h5 class=\"p-3 text-success\">{{ (customerProps | async)?.company }}</h5>\r\n                    </div>\r\n                    <img class=\"card-img-top py-3 w-25 m-auto\" [src]=\"(customerProps | async)?.loggo\" [alt]=\"(customerProps | async)?.company\" />\r\n\r\n                    <div class=\"card-footer col\">\r\n                        <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (customerProps | async)?.businessType }}\" class=\"btn btn-outline-success btn-sm\">\r\n                                <i class=\"fa fa-location-arrow\"></i>\r\n                                חזור\r\n                            </a>\r\n                            <a class=\"btn btn-warning btn-sm\" data-toggle=\"modal\" data-target=\".bd-example-modal-lg\">\r\n                                <i class=\"fa fa-envelope text-success\"></i>\r\n\r\n                                שלח הודעה</a>\r\n                            <a routerLink=\"media\" class=\"btn btn-danger btn-sm\">מדיה וגלריה</a>\r\n                            <a routerLink=\"about\" class=\"btn btn-info btn-sm\">אודות</a>\r\n                            \r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div *ngIf=\"isTrue | async\" class=\"btn-group border mt-2 w-100\">\r\n                    <div class=\"div p-3\">\r\n                            <a routerLink=\"/{{ (customerProps | async)?.businessType }}/{{ (customerProps | async)?.company  }}/create\" class=\"btn btn-primary btn-sm\">\r\n                                <!-- <i class=\"fa fa-location-arrow\"></i> -->\r\n                                + צור דף\r\n                            </a>\r\n                            <a routerLink=\"/{{ (customerProps | async)?.businessType }}/{{ (customerProps | async)?.company }}/edit/basic\" class=\"btn btn-danger text-light btn-sm\">\r\n                                <i class=\"fa fa-pencil\"></i>\r\n                                ערוך דף \r\n                                <!-- <i class=\"material-icons text-primary\"> edit</i> -->\r\n                            </a>\r\n                    </div>\r\n                    \r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-5 d-md-flex d-xl-block col-xl-12 text-right mb-3\">\r\n                <div class=\"card  border border-warning\">\r\n                    <div class=\"card-header bg-warning\">\r\n                        <h4 class=\"card-title text-center text-light\">\r\n                            צור קשר\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> {{ (customerProps | async)?.contact }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> {{ (customerProps | async)?.tel }}\r\n                            </div>\r\n                            <div class=\"col-sm-12 border-bottom p-2\">\r\n                                <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> {{ (customerProps | async)?.address }}\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n            <div class=\"col-sm-12 col-md-col-xl-12\">\r\n                <div class=\"border border-danger text-right\">\r\n                    <div class=\"card-header bg-danger\">\r\n                        <h4 class=\"text-center text-light\">\r\n                            {{ (customerProps | async)?.company }}\r\n                            <span class=\"font-weight-bold text-warning\">*מבצעים</span>\r\n                        </h4>\r\n                    </div>\r\n                    <div class=\"card-body\">\r\n                        <div class=\"row\">\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                            <div class=\"col-sm-4 col-xl-12 border-bottom p-2\">\r\n                                <p>\r\n                                    <span class=\"font-weight-bold text-danger rounded p-1\">*</span>\r\n                                    מבצע מטורף חתונה מעל 500 אורחים ,סוף שבוע האולם במתנה כן זה אמיתי מהרו לסגור עוד היום כי מבצע כזה לא תמצאו בשום מקום אחר.\r\n                                </p>\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <div class=\"costum-query-datil col-xs-12 col-xl-8\">\r\n        <router-outlet></router-outlet>\r\n    </div>\r\n</div>\r\n\r\n<!-- (imgLoggo)=\"(customerProps | async).loggo\" -->\r\n<!--Contact Modal -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg1\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg\">\r\n\r\n        <div class=\"border-danger modal-content col-sm-6 mx-auto text-right\">\r\n            <button type=\"button\" class=\"close float-left\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <h5 class=\"text-success\">ארמונות לב המחודשים</h5>\r\n            <div class=\"card-body\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">איש קשר:</span> הנהלה\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">טלפון/פלאפון:</span> 08-6640450 או 08-664042\r\n                    </div>\r\n                    <div class=\"col-sm-12 border-bottom p-2\">\r\n                        <span class=\"font-weight-bold text-dark rounded p-1\">כתובת:</span> אשקלון, ההסתדרות 40 (קניון לב אשקלון)\r\n                    </div>\r\n                </div>\r\n            </div>\r\n            <div class=\"mb-2\">\r\n                <a class=\"btn btn-danger btn-sm float-left text-white\" data-dismiss=\"modal\">סגור</a>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n\r\n\r\n<!-- form model -->\r\n\r\n<div class=\"modal fade bd-example-modal-lg container\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myLargeModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog modal-lg row\">\r\n        <div class=\"modal-content col-sm-8 mx-auto text-right\">\r\n\r\n            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                <span class=\"float-left\" aria-hidden=\"true\">&times;</span>\r\n            </button>\r\n            <div class=\"p-3\">\r\n                <h2 class=\"text-right text-success\">שלח הודעה</h2>\r\n                <p>\r\n                    לקוחות יקרים, מלאו את הפרטים בשדות הבאים ונחזור אליכם תוך זמן קצר\r\n                    <span class=\"text-danger\">\r\n\r\n                        צוות אתיופיה אירועים.\r\n                    </span>\r\n                </p>\r\n            </div>\r\n\r\n            <hr>\r\n            <form class=\"p-3\">\r\n                <div class=\"form-group\">\r\n                    <input type=\"text\" class=\"form-control\" placeholder=\"שם מלא\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"city\" class=\"form-control\" placeholder=\"עיר מגורים\">\r\n\r\n                </div>\r\n                <div class=\"form-group\">\r\n                    <input type=\"email\" class=\"form-control\" id=\"contactEmail\" placeholder=\"אימייל\">\r\n                </div>\r\n                <div class=\"form-group\">\r\n\r\n                    <select id=\"contactRigion\" class=\"rigion\">\r\n                        <option selected>אזור</option>\r\n                        <option value=\"1\">צפון</option>\r\n                        <option value=\"2\">מרכז והשפלה</option>\r\n                        <option value=\"3\">דרום</option>\r\n                    </select>\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <input type=\"tel\" class=\"form-control\" id=\"contactPhone\" placeholder=\"טלפון/פלאפון\">\r\n                </div>\r\n\r\n                <div class=\"form-group\">\r\n                    <textarea class=\"form-control\" id=\"contactTextarea\" rows=\"3\" placeholder=\"הוסף הודעה\"></textarea>\r\n                </div>\r\n                <button type=\"submit\" class=\"btn btn-success btn-sm\">\r\n                    <i class=\"fa fa-envelope\"></i>\r\n                    שלח</button>\r\n                <button type=\"button\" class=\"btn btn-danger btn-sm float-left\" data-dismiss=\"modal\">סגור</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographer/photographer.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographer/photographer.component.ts":
 /*!**************************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographer/photographer.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographer/photographer.component.ts ***!
   \**************************************************************************************/
 /*! exports provided: PhotographerComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6012,7 +6012,7 @@ module.exports = "<hr class=\"d-sm-none\">\r\n<div *ngIf=\"(costumerProps | asyn
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographerComponent", function() { return PhotographerComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
@@ -6044,22 +6044,22 @@ var PhotographerComponent = /** @class */ (function () {
         // let pathUrl = this.route.url["value"][0].path;this.route.snapshot.params['id']
         var pathUrl = this.route.snapshot.params['id'];
         this.user = this.http.authUser;
-        this.http.userObs.subscribe(function (logged) { _this.checkCostumer(pathUrl, logged); });
+        this.http.userObs.subscribe(function (logged) { _this.checkCustomer(pathUrl, logged); });
     };
-    PhotographerComponent.prototype.checkCostumer = function (uri, authUser) {
+    PhotographerComponent.prototype.checkCustomer = function (uri, authUser) {
         var _this = this;
         this.halls.getById(uri).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["first"])(function (param) { return (typeof param === "object") || param === 1; }))
             .subscribe(function (cost) {
             // console.log(cost);
             var co = cost['customer'];
             if (co && co['id']) {
-                var costumerEmail = co["email"];
+                var customerEmail = co["email"];
                 var authEmail = authUser ? authUser['email'] : false;
-                if (costumerEmail)
-                    _this.costumerProps = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(co);
-                if (costumerEmail === authEmail) {
+                if (customerEmail)
+                    _this.customerProps = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(co);
+                if (customerEmail === authEmail) {
                     _this.http.authUser = authUser;
-                    // this.halls.costumerEmit(co);
+                    // this.halls.customerEmit(co);
                     _this.isTrue = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(true);
                 }
                 else {
@@ -6077,39 +6077,39 @@ var PhotographerComponent = /** @class */ (function () {
     PhotographerComponent.prototype.locSetItem = function (keyName, data) {
         localStorage.setItem(keyName, JSON.stringify(data));
     };
-    PhotographerComponent.prototype.getSavedCostumer = function (costumerName) {
-        // console.log(("geting costumer from saved rxjs").toUpperCase());
-        // this.hallService.costumerEmitter$
+    PhotographerComponent.prototype.getSavedCustomer = function (customerName) {
+        // console.log(("geting customer from saved rxjs").toUpperCase());
+        // this.hallService.customerEmitter$
         //   .pipe(
         //     first()
         //   )
         //   .subscribe(
         //     res => {
-        //       this.costumerProps = res;
-        //       if(typeof res.id === "undefined") this.getCostumerByNameFromSever(costumerName);
-        //       if((costumerName in localStorage) === false) this.locSetItem(costumerName, res);
+        //       this.customerProps = res;
+        //       if(typeof res.id === "undefined") this.getCustomerByNameFromSever(customerName);
+        //       if((customerName in localStorage) === false) this.locSetItem(customerName, res);
         //       // (Object.prototype.hasOwnProperty()) 
         //     },
-        //     () => this.getCostumerByNameFromSever(costumerName)
+        //     () => this.getCustomerByNameFromSever(customerName)
         //   );
     };
-    PhotographerComponent.prototype.getCostumerByNameFromSever = function (costumerName) {
-        // console.log(("geting costumer from server ").toUpperCase()+ costumerName);
-        //this.costumerProps = this.hallService.getById(costumerName);
-        // this.hallService.getById(costumerName).subscribe(
+    PhotographerComponent.prototype.getCustomerByNameFromSever = function (customerName) {
+        // console.log(("geting customer from server ").toUpperCase()+ customerName);
+        //this.customerProps = this.hallService.getById(customerName);
+        // this.hallService.getById(customerName).subscribe(
         //   (evt) => console.log(evt)
         // );
     };
     PhotographerComponent.prototype.locGetItem = function (keyName) {
-        console.log(("geting costumer from saved localStorge").toUpperCase());
-        var geTCostumer = JSON.parse(localStorage.getItem(keyName));
-        this.costumerProps = geTCostumer;
+        console.log(("geting customer from saved localStorge").toUpperCase());
+        var geTCustomer = JSON.parse(localStorage.getItem(keyName));
+        this.customerProps = geTCustomer;
     };
-    PhotographerComponent.prototype.getCostumerName = function () {
-        var hallCostumer = decodeURIComponent(this.router.url).slice(1).split('/')[1];
-        if (hallCostumer === "ארמונות-לב")
-            hallCostumer = hallCostumer.split('-')[0] + " " + hallCostumer.split('-')[1];
-        return hallCostumer;
+    PhotographerComponent.prototype.getCustomerName = function () {
+        var hallCustomer = decodeURIComponent(this.router.url).slice(1).split('/')[1];
+        if (hallCustomer === "ארמונות-לב")
+            hallCustomer = hallCustomer.split('-')[0] + " " + hallCustomer.split('-')[1];
+        return hallCustomer;
     };
     PhotographerComponent.prototype.ngOnDestroy = function () {
         //this.costtumerSubscriber.unsubscribe();
@@ -6117,11 +6117,11 @@ var PhotographerComponent = /** @class */ (function () {
     PhotographerComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photographer',
-            template: __webpack_require__(/*! ./photographer.component.html */ "./src/app/pages/costumers/photographers/photographer/photographer.component.html"),
-            styles: [__webpack_require__(/*! ./photographer.component.css */ "./src/app/pages/costumers/photographers/photographer/photographer.component.css")],
+            template: __webpack_require__(/*! ./photographer.component.html */ "./src/app/pages/customers/photographers/photographer/photographer.component.html"),
+            styles: [__webpack_require__(/*! ./photographer.component.css */ "./src/app/pages/customers/photographers/photographer/photographer.component.css")],
             providers: []
         }),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_1__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _http_service__WEBPACK_IMPORTED_MODULE_5__["HttpService"]])
     ], PhotographerComponent);
     return PhotographerComponent;
 }());
@@ -6130,9 +6130,9 @@ var PhotographerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts":
+/***/ "./src/app/pages/customers/photographers/photographers-resolver.service.ts":
 /*!*********************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers-resolver.service.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographers-resolver.service.ts ***!
   \*********************************************************************************/
 /*! exports provided: PhotographersResolver */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6142,7 +6142,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhotographersResolver", function() { return PhotographersResolver; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6161,11 +6161,11 @@ var PhotographersResolver = /** @class */ (function () {
         this.router = router;
     }
     PhotographersResolver.prototype.resolve = function () {
-        return this.halls.getCostumers('photographers');
+        return this.halls.getCustomers('photographers');
     };
     PhotographersResolver = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_customers_customers_data_service__WEBPACK_IMPORTED_MODULE_2__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], PhotographersResolver);
     return PhotographersResolver;
 }());
@@ -6174,9 +6174,9 @@ var PhotographersResolver = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers-routing.module.ts":
+/***/ "./src/app/pages/customers/photographers/photographers-routing.module.ts":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers-routing.module.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographers-routing.module.ts ***!
   \*******************************************************************************/
 /*! exports provided: PhotographersRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6187,15 +6187,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/costumers/photographers/photographers.component.ts");
-/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/costumers/photographers/photographer/photographer.component.ts");
-/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts");
-/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts");
-/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts");
-/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
-/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
-/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
-/* harmony import */ var _photographers_resolver_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographers-resolver.service */ "./src/app/pages/costumers/photographers/photographers-resolver.service.ts");
+/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/customers/photographers/photographers.component.ts");
+/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/customers/photographers/photographer/photographer.component.ts");
+/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.ts");
+/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.ts");
+/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.ts");
+/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
+/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
+/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
+/* harmony import */ var _photographers_resolver_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographers-resolver.service */ "./src/app/pages/customers/photographers/photographers-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6253,9 +6253,9 @@ var PhotographersRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers.component.css":
+/***/ "./src/app/pages/customers/photographers/photographers.component.css":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers.component.css ***!
+  !*** ./src/app/pages/customers/photographers/photographers.component.css ***!
   \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6264,9 +6264,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers.component.html":
+/***/ "./src/app/pages/customers/photographers/photographers.component.html":
 /*!****************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers.component.html ***!
+  !*** ./src/app/pages/customers/photographers/photographers.component.html ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6275,9 +6275,9 @@ module.exports = "\n<router-outlet *ngIf=\"! path\"></router-outlet>\n<hr class=
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers.component.ts":
+/***/ "./src/app/pages/customers/photographers/photographers.component.ts":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers.component.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographers.component.ts ***!
   \**************************************************************************/
 /*! exports provided: PhotographersComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6288,7 +6288,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6330,8 +6330,8 @@ var PhotographersComponent = /** @class */ (function () {
         });
         this.path = urlPath;
     };
-    PhotographersComponent.prototype.onSelectedLink = function (costumer) {
-        //this.halls.costumerEmit(costumer);
+    PhotographersComponent.prototype.onSelectedLink = function (customer) {
+        //this.halls.customerEmit(customer);
     };
     PhotographersComponent.prototype.ngOnDestroy = function () {
         this.urlUnsubscribe.unsubscribe();
@@ -6339,10 +6339,10 @@ var PhotographersComponent = /** @class */ (function () {
     PhotographersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-photographers',
-            template: __webpack_require__(/*! ./photographers.component.html */ "./src/app/pages/costumers/photographers/photographers.component.html"),
-            styles: [__webpack_require__(/*! ./photographers.component.css */ "./src/app/pages/costumers/photographers/photographers.component.css")]
+            template: __webpack_require__(/*! ./photographers.component.html */ "./src/app/pages/customers/photographers/photographers.component.html"),
+            styles: [__webpack_require__(/*! ./photographers.component.css */ "./src/app/pages/customers/photographers/photographers.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"]])
     ], PhotographersComponent);
     return PhotographersComponent;
 }());
@@ -6351,9 +6351,9 @@ var PhotographersComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/photographers/photographers.module.ts":
+/***/ "./src/app/pages/customers/photographers/photographers.module.ts":
 /*!***********************************************************************!*\
-  !*** ./src/app/pages/costumers/photographers/photographers.module.ts ***!
+  !*** ./src/app/pages/customers/photographers/photographers.module.ts ***!
   \***********************************************************************/
 /*! exports provided: PhotographersModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6364,15 +6364,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _photographers_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers-routing.module */ "./src/app/pages/costumers/photographers/photographers-routing.module.ts");
-/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/costumers/photographers/photographers.component.ts");
-/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/costumers/photographers/photographer/photographer.component.ts");
-/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/costumers/photographers/photographer-media/photographer-media.component.ts");
-/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/costumers/photographers/photographer-about/photographer-about.component.ts");
-/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/photographer-edit.component.ts");
-/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
-/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
-/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/costumers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
+/* harmony import */ var _photographers_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photographers-routing.module */ "./src/app/pages/customers/photographers/photographers-routing.module.ts");
+/* harmony import */ var _photographers_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./photographers.component */ "./src/app/pages/customers/photographers/photographers.component.ts");
+/* harmony import */ var _photographer_photographer_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./photographer/photographer.component */ "./src/app/pages/customers/photographers/photographer/photographer.component.ts");
+/* harmony import */ var _photographer_media_photographer_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./photographer-media/photographer-media.component */ "./src/app/pages/customers/photographers/photographer-media/photographer-media.component.ts");
+/* harmony import */ var _photographer_about_photographer_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./photographer-about/photographer-about.component */ "./src/app/pages/customers/photographers/photographer-about/photographer-about.component.ts");
+/* harmony import */ var _photographer_edit_photographer_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./photographer-edit/photographer-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/photographer-edit.component.ts");
+/* harmony import */ var _photographer_edit_all_edit_photo_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./photographer-edit/all-edit/photo-all-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/all-edit/photo-all-edit.component.ts");
+/* harmony import */ var _photographer_edit_media_edit_photo_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./photographer-edit/media-edit/photo-media-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/media-edit/photo-media-edit.component.ts");
+/* harmony import */ var _photographer_edit_basic_edit_photo_basic_edit_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./photographer-edit/basic-edit/photo-basic-edit.component */ "./src/app/pages/customers/photographers/photographer-edit/basic-edit/photo-basic-edit.component.ts");
 /* harmony import */ var _shared_pipes_module_pipes_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../shared/pipes-module/pipes-module */ "./src/app/shared/pipes-module/pipes-module.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6425,9 +6425,9 @@ var PhotographersModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-about/print-about.component.css":
+/***/ "./src/app/pages/customers/printing/print-about/print-about.component.css":
 /*!********************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-about/print-about.component.css ***!
+  !*** ./src/app/pages/customers/printing/print-about/print-about.component.css ***!
   \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6436,9 +6436,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-about/print-about.component.html":
+/***/ "./src/app/pages/customers/printing/print-about/print-about.component.html":
 /*!*********************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-about/print-about.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-about/print-about.component.html ***!
   \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6447,9 +6447,9 @@ module.exports = "<p>\n  print- Nd rabbi-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-about/print-about.component.ts":
+/***/ "./src/app/pages/customers/printing/print-about/print-about.component.ts":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-about/print-about.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-about/print-about.component.ts ***!
   \*******************************************************************************/
 /*! exports provided: PrintAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6476,8 +6476,8 @@ var PrintAboutComponent = /** @class */ (function () {
     PrintAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-about',
-            template: __webpack_require__(/*! ./print-about.component.html */ "./src/app/pages/costumers/printing/print-about/print-about.component.html"),
-            styles: [__webpack_require__(/*! ./print-about.component.css */ "./src/app/pages/costumers/printing/print-about/print-about.component.css")]
+            template: __webpack_require__(/*! ./print-about.component.html */ "./src/app/pages/customers/printing/print-about/print-about.component.html"),
+            styles: [__webpack_require__(/*! ./print-about.component.css */ "./src/app/pages/customers/printing/print-about/print-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintAboutComponent);
@@ -6488,9 +6488,9 @@ var PrintAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.css":
+/***/ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.css":
 /*!*******************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.css ***!
   \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6499,9 +6499,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.html":
+/***/ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.html":
 /*!********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.html ***!
   \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6510,9 +6510,9 @@ module.exports = "<h2>print- all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.ts":
+/***/ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.ts":
 /*!******************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.ts ***!
   \******************************************************************************************/
 /*! exports provided: PrintAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6548,8 +6548,8 @@ var PrintAllEditComponent = /** @class */ (function () {
     PrintAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-all-edit',
-            template: __webpack_require__(/*! ./print-all-edit.component.html */ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./print-all-edit.component.css */ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.css")]
+            template: __webpack_require__(/*! ./print-all-edit.component.html */ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./print-all-edit.component.css */ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintAllEditComponent);
@@ -6560,9 +6560,9 @@ var PrintAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.css":
+/***/ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.css":
 /*!***********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.css ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6571,9 +6571,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.html":
+/***/ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.html":
 /*!************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.html ***!
   \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6582,9 +6582,9 @@ module.exports = "<h2>print-- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.ts":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.ts ***!
   \**********************************************************************************************/
 /*! exports provided: PrintBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6613,8 +6613,8 @@ var PrintBasicEditComponent = /** @class */ (function () {
     PrintBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-basic-edit',
-            template: __webpack_require__(/*! ./print-basic-edit.component.html */ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./print-basic-edit.component.css */ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./print-basic-edit.component.html */ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./print-basic-edit.component.css */ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintBasicEditComponent);
@@ -6625,9 +6625,9 @@ var PrintBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.css":
+/***/ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.css":
 /*!***********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.css ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6636,9 +6636,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.html":
+/***/ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.html":
 /*!************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.html ***!
   \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6647,9 +6647,9 @@ module.exports = "<h2>salon- media edit works fine!</h2>\r\n<router-outlet></rou
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.ts":
+/***/ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.ts":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.ts ***!
   \**********************************************************************************************/
 /*! exports provided: PrintMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6676,8 +6676,8 @@ var PrintMediaEditComponent = /** @class */ (function () {
     PrintMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-media-edit',
-            template: __webpack_require__(/*! ./print-media-edit.component.html */ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./print-media-edit.component.css */ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.css")]
+            template: __webpack_require__(/*! ./print-media-edit.component.html */ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./print-media-edit.component.css */ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintMediaEditComponent);
@@ -6688,9 +6688,9 @@ var PrintMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/print-edit.component.html":
+/***/ "./src/app/pages/customers/printing/print-edit/print-edit.component.html":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/print-edit.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-edit/print-edit.component.html ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6699,9 +6699,9 @@ module.exports = "<h2>print- and rabbinate- edit worka!</h2>\n<router-outlet></r
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-edit/print-edit.component.ts":
+/***/ "./src/app/pages/customers/printing/print-edit/print-edit.component.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-edit/print-edit.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-edit/print-edit.component.ts ***!
   \*****************************************************************************/
 /*! exports provided: PrintEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6728,7 +6728,7 @@ var PrintEditComponent = /** @class */ (function () {
     PrintEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-edit',
-            template: __webpack_require__(/*! ./print-edit.component.html */ "./src/app/pages/costumers/printing/print-edit/print-edit.component.html"),
+            template: __webpack_require__(/*! ./print-edit.component.html */ "./src/app/pages/customers/printing/print-edit/print-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -6740,9 +6740,9 @@ var PrintEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-media/print-media.component.css":
+/***/ "./src/app/pages/customers/printing/print-media/print-media.component.css":
 /*!********************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-media/print-media.component.css ***!
+  !*** ./src/app/pages/customers/printing/print-media/print-media.component.css ***!
   \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6751,9 +6751,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-media/print-media.component.html":
+/***/ "./src/app/pages/customers/printing/print-media/print-media.component.html":
 /*!*********************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-media/print-media.component.html ***!
+  !*** ./src/app/pages/customers/printing/print-media/print-media.component.html ***!
   \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6762,9 +6762,9 @@ module.exports = "<h2>\n  print--media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print-media/print-media.component.ts":
+/***/ "./src/app/pages/customers/printing/print-media/print-media.component.ts":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print-media/print-media.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print-media/print-media.component.ts ***!
   \*******************************************************************************/
 /*! exports provided: PrintMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6791,8 +6791,8 @@ var PrintMediaComponent = /** @class */ (function () {
     PrintMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print-media',
-            template: __webpack_require__(/*! ./print-media.component.html */ "./src/app/pages/costumers/printing/print-media/print-media.component.html"),
-            styles: [__webpack_require__(/*! ./print-media.component.css */ "./src/app/pages/costumers/printing/print-media/print-media.component.css")]
+            template: __webpack_require__(/*! ./print-media.component.html */ "./src/app/pages/customers/printing/print-media/print-media.component.html"),
+            styles: [__webpack_require__(/*! ./print-media.component.css */ "./src/app/pages/customers/printing/print-media/print-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintMediaComponent);
@@ -6803,9 +6803,9 @@ var PrintMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print/print.component.css":
+/***/ "./src/app/pages/customers/printing/print/print.component.css":
 /*!********************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print/print.component.css ***!
+  !*** ./src/app/pages/customers/printing/print/print.component.css ***!
   \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6814,9 +6814,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print/print.component.html":
+/***/ "./src/app/pages/customers/printing/print/print.component.html":
 /*!*********************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print/print.component.html ***!
+  !*** ./src/app/pages/customers/printing/print/print.component.html ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6825,9 +6825,9 @@ module.exports = "<h2>\n  print and rabbi comp works!\n</h2>\n<router-outlet></r
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/print/print.component.ts":
+/***/ "./src/app/pages/customers/printing/print/print.component.ts":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/print/print.component.ts ***!
+  !*** ./src/app/pages/customers/printing/print/print.component.ts ***!
   \*******************************************************************/
 /*! exports provided: PrintComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6854,8 +6854,8 @@ var PrintComponent = /** @class */ (function () {
     PrintComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-print',
-            template: __webpack_require__(/*! ./print.component.html */ "./src/app/pages/costumers/printing/print/print.component.html"),
-            styles: [__webpack_require__(/*! ./print.component.css */ "./src/app/pages/costumers/printing/print/print.component.css")]
+            template: __webpack_require__(/*! ./print.component.html */ "./src/app/pages/customers/printing/print/print.component.html"),
+            styles: [__webpack_require__(/*! ./print.component.css */ "./src/app/pages/customers/printing/print/print.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintComponent);
@@ -6866,9 +6866,9 @@ var PrintComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/prints-routing.module.ts":
+/***/ "./src/app/pages/customers/printing/prints-routing.module.ts":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/prints-routing.module.ts ***!
+  !*** ./src/app/pages/customers/printing/prints-routing.module.ts ***!
   \*******************************************************************/
 /*! exports provided: PrintsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6879,14 +6879,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _prints_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prints.component */ "./src/app/pages/costumers/printing/prints.component.ts");
-/* harmony import */ var _print_print_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./print/print.component */ "./src/app/pages/costumers/printing/print/print.component.ts");
-/* harmony import */ var _print_media_print_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./print-media/print-media.component */ "./src/app/pages/costumers/printing/print-media/print-media.component.ts");
-/* harmony import */ var _print_about_print_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./print-about/print-about.component */ "./src/app/pages/costumers/printing/print-about/print-about.component.ts");
-/* harmony import */ var _print_edit_print_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./print-edit/print-edit.component */ "./src/app/pages/costumers/printing/print-edit/print-edit.component.ts");
-/* harmony import */ var _print_edit_all_edit_print_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./print-edit/all-edit/print-all-edit.component */ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.ts");
-/* harmony import */ var _print_edit_basic_edit_print_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./print-edit/basic-edit/print-basic-edit.component */ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.ts");
-/* harmony import */ var _print_edit_media_edit_print_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./print-edit/media-edit/print-media-edit.component */ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.ts");
+/* harmony import */ var _prints_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prints.component */ "./src/app/pages/customers/printing/prints.component.ts");
+/* harmony import */ var _print_print_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./print/print.component */ "./src/app/pages/customers/printing/print/print.component.ts");
+/* harmony import */ var _print_media_print_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./print-media/print-media.component */ "./src/app/pages/customers/printing/print-media/print-media.component.ts");
+/* harmony import */ var _print_about_print_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./print-about/print-about.component */ "./src/app/pages/customers/printing/print-about/print-about.component.ts");
+/* harmony import */ var _print_edit_print_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./print-edit/print-edit.component */ "./src/app/pages/customers/printing/print-edit/print-edit.component.ts");
+/* harmony import */ var _print_edit_all_edit_print_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./print-edit/all-edit/print-all-edit.component */ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.ts");
+/* harmony import */ var _print_edit_basic_edit_print_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./print-edit/basic-edit/print-basic-edit.component */ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.ts");
+/* harmony import */ var _print_edit_media_edit_print_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./print-edit/media-edit/print-media-edit.component */ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6943,9 +6943,9 @@ var PrintsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/prints.component.css":
+/***/ "./src/app/pages/customers/printing/prints.component.css":
 /*!***************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/prints.component.css ***!
+  !*** ./src/app/pages/customers/printing/prints.component.css ***!
   \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6954,9 +6954,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/prints.component.html":
+/***/ "./src/app/pages/customers/printing/prints.component.html":
 /*!****************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/prints.component.html ***!
+  !*** ./src/app/pages/customers/printing/prints.component.html ***!
   \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -6965,9 +6965,9 @@ module.exports = "<p>\n  prints main works!\n</p>\n<router-outlet></router-outle
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/prints.component.ts":
+/***/ "./src/app/pages/customers/printing/prints.component.ts":
 /*!**************************************************************!*\
-  !*** ./src/app/pages/costumers/printing/prints.component.ts ***!
+  !*** ./src/app/pages/customers/printing/prints.component.ts ***!
   \**************************************************************/
 /*! exports provided: PrintsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -6994,8 +6994,8 @@ var PrintsComponent = /** @class */ (function () {
     PrintsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-prints',
-            template: __webpack_require__(/*! ./prints.component.html */ "./src/app/pages/costumers/printing/prints.component.html"),
-            styles: [__webpack_require__(/*! ./prints.component.css */ "./src/app/pages/costumers/printing/prints.component.css")]
+            template: __webpack_require__(/*! ./prints.component.html */ "./src/app/pages/customers/printing/prints.component.html"),
+            styles: [__webpack_require__(/*! ./prints.component.css */ "./src/app/pages/customers/printing/prints.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], PrintsComponent);
@@ -7006,9 +7006,9 @@ var PrintsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/printing/prints.module.ts":
+/***/ "./src/app/pages/customers/printing/prints.module.ts":
 /*!***********************************************************!*\
-  !*** ./src/app/pages/costumers/printing/prints.module.ts ***!
+  !*** ./src/app/pages/customers/printing/prints.module.ts ***!
   \***********************************************************/
 /*! exports provided: PrintsgModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7018,15 +7018,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PrintsgModule", function() { return PrintsgModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _prints_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prints-routing.module */ "./src/app/pages/costumers/printing/prints-routing.module.ts");
-/* harmony import */ var _prints_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prints.component */ "./src/app/pages/costumers/printing/prints.component.ts");
-/* harmony import */ var _print_print_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./print/print.component */ "./src/app/pages/costumers/printing/print/print.component.ts");
-/* harmony import */ var _print_media_print_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./print-media/print-media.component */ "./src/app/pages/costumers/printing/print-media/print-media.component.ts");
-/* harmony import */ var _print_about_print_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./print-about/print-about.component */ "./src/app/pages/costumers/printing/print-about/print-about.component.ts");
-/* harmony import */ var _print_edit_print_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./print-edit/print-edit.component */ "./src/app/pages/costumers/printing/print-edit/print-edit.component.ts");
-/* harmony import */ var _print_edit_all_edit_print_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./print-edit/all-edit/print-all-edit.component */ "./src/app/pages/costumers/printing/print-edit/all-edit/print-all-edit.component.ts");
-/* harmony import */ var _print_edit_basic_edit_print_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./print-edit/basic-edit/print-basic-edit.component */ "./src/app/pages/costumers/printing/print-edit/basic-edit/print-basic-edit.component.ts");
-/* harmony import */ var _print_edit_media_edit_print_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./print-edit/media-edit/print-media-edit.component */ "./src/app/pages/costumers/printing/print-edit/media-edit/print-media-edit.component.ts");
+/* harmony import */ var _prints_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./prints-routing.module */ "./src/app/pages/customers/printing/prints-routing.module.ts");
+/* harmony import */ var _prints_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./prints.component */ "./src/app/pages/customers/printing/prints.component.ts");
+/* harmony import */ var _print_print_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./print/print.component */ "./src/app/pages/customers/printing/print/print.component.ts");
+/* harmony import */ var _print_media_print_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./print-media/print-media.component */ "./src/app/pages/customers/printing/print-media/print-media.component.ts");
+/* harmony import */ var _print_about_print_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./print-about/print-about.component */ "./src/app/pages/customers/printing/print-about/print-about.component.ts");
+/* harmony import */ var _print_edit_print_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./print-edit/print-edit.component */ "./src/app/pages/customers/printing/print-edit/print-edit.component.ts");
+/* harmony import */ var _print_edit_all_edit_print_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./print-edit/all-edit/print-all-edit.component */ "./src/app/pages/customers/printing/print-edit/all-edit/print-all-edit.component.ts");
+/* harmony import */ var _print_edit_basic_edit_print_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./print-edit/basic-edit/print-basic-edit.component */ "./src/app/pages/customers/printing/print-edit/basic-edit/print-basic-edit.component.ts");
+/* harmony import */ var _print_edit_media_edit_print_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./print-edit/media-edit/print-media-edit.component */ "./src/app/pages/customers/printing/print-edit/media-edit/print-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7072,9 +7072,9 @@ var PrintsgModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-about/salon-about.component.css":
+/***/ "./src/app/pages/customers/salons/salon-about/salon-about.component.css":
 /*!******************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-about/salon-about.component.css ***!
+  !*** ./src/app/pages/customers/salons/salon-about/salon-about.component.css ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7083,9 +7083,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-about/salon-about.component.html":
+/***/ "./src/app/pages/customers/salons/salon-about/salon-about.component.html":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-about/salon-about.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon-about/salon-about.component.html ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7094,9 +7094,9 @@ module.exports = "<p>\n  salon-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-about/salon-about.component.ts":
+/***/ "./src/app/pages/customers/salons/salon-about/salon-about.component.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-about/salon-about.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon-about/salon-about.component.ts ***!
   \*****************************************************************************/
 /*! exports provided: SalonAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7123,8 +7123,8 @@ var SalonAboutComponent = /** @class */ (function () {
     SalonAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon-about',
-            template: __webpack_require__(/*! ./salon-about.component.html */ "./src/app/pages/costumers/salons/salon-about/salon-about.component.html"),
-            styles: [__webpack_require__(/*! ./salon-about.component.css */ "./src/app/pages/costumers/salons/salon-about/salon-about.component.css")]
+            template: __webpack_require__(/*! ./salon-about.component.html */ "./src/app/pages/customers/salons/salon-about/salon-about.component.html"),
+            styles: [__webpack_require__(/*! ./salon-about.component.css */ "./src/app/pages/customers/salons/salon-about/salon-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonAboutComponent);
@@ -7135,9 +7135,9 @@ var SalonAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.css":
+/***/ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.css":
 /*!*****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.css ***!
   \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7146,9 +7146,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.html":
+/***/ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.html":
 /*!******************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.html ***!
   \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7157,9 +7157,9 @@ module.exports = "<h2>salon all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.ts":
+/***/ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.ts":
 /*!****************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.ts ***!
   \****************************************************************************************/
 /*! exports provided: SalonAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7195,8 +7195,8 @@ var SalonAllEditComponent = /** @class */ (function () {
     SalonAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon-all-edit',
-            template: __webpack_require__(/*! ./salon-all-edit.component.html */ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./salon-all-edit.component.css */ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.css")]
+            template: __webpack_require__(/*! ./salon-all-edit.component.html */ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./salon-all-edit.component.css */ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonAllEditComponent);
@@ -7207,9 +7207,9 @@ var SalonAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.css":
+/***/ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.css":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.css ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7218,9 +7218,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.html":
+/***/ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.html":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.html ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7229,9 +7229,9 @@ module.exports = "<h2>salon- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts":
 /*!********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts ***!
   \********************************************************************************************/
 /*! exports provided: SalonBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7260,8 +7260,8 @@ var SalonBasicEditComponent = /** @class */ (function () {
     SalonBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon-basic-edit',
-            template: __webpack_require__(/*! ./salon-basic-edit.component.html */ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./salon-basic-edit.component.css */ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./salon-basic-edit.component.html */ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./salon-basic-edit.component.css */ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonBasicEditComponent);
@@ -7272,9 +7272,9 @@ var SalonBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/salon-edit.component.html":
+/***/ "./src/app/pages/customers/salons/salon-edit/salon-edit.component.html":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/salon-edit.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/salon-edit.component.html ***!
   \*****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7283,9 +7283,9 @@ module.exports = "<h2>salon- edit worka!</h2>\n<router-outlet></router-outlet>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-edit/salon-edit.component.ts":
+/***/ "./src/app/pages/customers/salons/salon-edit/salon-edit.component.ts":
 /*!***************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-edit/salon-edit.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon-edit/salon-edit.component.ts ***!
   \***************************************************************************/
 /*! exports provided: SalonEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7312,7 +7312,7 @@ var SalonEditComponent = /** @class */ (function () {
     SalonEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon-edit',
-            template: __webpack_require__(/*! ./salon-edit.component.html */ "./src/app/pages/costumers/salons/salon-edit/salon-edit.component.html"),
+            template: __webpack_require__(/*! ./salon-edit.component.html */ "./src/app/pages/customers/salons/salon-edit/salon-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -7324,9 +7324,9 @@ var SalonEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-media/salon-media.component.css":
+/***/ "./src/app/pages/customers/salons/salon-media/salon-media.component.css":
 /*!******************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-media/salon-media.component.css ***!
+  !*** ./src/app/pages/customers/salons/salon-media/salon-media.component.css ***!
   \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7335,9 +7335,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-media/salon-media.component.html":
+/***/ "./src/app/pages/customers/salons/salon-media/salon-media.component.html":
 /*!*******************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-media/salon-media.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon-media/salon-media.component.html ***!
   \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7346,9 +7346,9 @@ module.exports = "<h2>\n  salon-media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon-media/salon-media.component.ts":
+/***/ "./src/app/pages/customers/salons/salon-media/salon-media.component.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon-media/salon-media.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon-media/salon-media.component.ts ***!
   \*****************************************************************************/
 /*! exports provided: SalonMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7375,8 +7375,8 @@ var SalonMediaComponent = /** @class */ (function () {
     SalonMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon-media',
-            template: __webpack_require__(/*! ./salon-media.component.html */ "./src/app/pages/costumers/salons/salon-media/salon-media.component.html"),
-            styles: [__webpack_require__(/*! ./salon-media.component.css */ "./src/app/pages/costumers/salons/salon-media/salon-media.component.css")]
+            template: __webpack_require__(/*! ./salon-media.component.html */ "./src/app/pages/customers/salons/salon-media/salon-media.component.html"),
+            styles: [__webpack_require__(/*! ./salon-media.component.css */ "./src/app/pages/customers/salons/salon-media/salon-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonMediaComponent);
@@ -7387,9 +7387,9 @@ var SalonMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon/salon.component.css":
+/***/ "./src/app/pages/customers/salons/salon/salon.component.css":
 /*!******************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon/salon.component.css ***!
+  !*** ./src/app/pages/customers/salons/salon/salon.component.css ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7398,9 +7398,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon/salon.component.html":
+/***/ "./src/app/pages/customers/salons/salon/salon.component.html":
 /*!*******************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon/salon.component.html ***!
+  !*** ./src/app/pages/customers/salons/salon/salon.component.html ***!
   \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7409,9 +7409,9 @@ module.exports = "<h2>salon component works fine!</h2>\r\n<router-outlet></route
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salon/salon.component.ts":
+/***/ "./src/app/pages/customers/salons/salon/salon.component.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salon/salon.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salon/salon.component.ts ***!
   \*****************************************************************/
 /*! exports provided: SalonComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7438,8 +7438,8 @@ var SalonComponent = /** @class */ (function () {
     SalonComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salon',
-            template: __webpack_require__(/*! ./salon.component.html */ "./src/app/pages/costumers/salons/salon/salon.component.html"),
-            styles: [__webpack_require__(/*! ./salon.component.css */ "./src/app/pages/costumers/salons/salon/salon.component.css")]
+            template: __webpack_require__(/*! ./salon.component.html */ "./src/app/pages/customers/salons/salon/salon.component.html"),
+            styles: [__webpack_require__(/*! ./salon.component.css */ "./src/app/pages/customers/salons/salon/salon.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonComponent);
@@ -7450,9 +7450,9 @@ var SalonComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salons-routing.module.ts":
+/***/ "./src/app/pages/customers/salons/salons-routing.module.ts":
 /*!*****************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salons-routing.module.ts ***!
+  !*** ./src/app/pages/customers/salons/salons-routing.module.ts ***!
   \*****************************************************************/
 /*! exports provided: SalonsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7463,13 +7463,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _salons_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./salons.component */ "./src/app/pages/costumers/salons/salons.component.ts");
-/* harmony import */ var _salon_salon_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./salon/salon.component */ "./src/app/pages/costumers/salons/salon/salon.component.ts");
-/* harmony import */ var _salon_media_salon_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./salon-media/salon-media.component */ "./src/app/pages/costumers/salons/salon-media/salon-media.component.ts");
-/* harmony import */ var _salon_about_salon_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./salon-about/salon-about.component */ "./src/app/pages/costumers/salons/salon-about/salon-about.component.ts");
-/* harmony import */ var _salon_edit_salon_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./salon-edit/salon-edit.component */ "./src/app/pages/costumers/salons/salon-edit/salon-edit.component.ts");
-/* harmony import */ var _salon_edit_all_edit_salon_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./salon-edit/all-edit/salon-all-edit.component */ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.ts");
-/* harmony import */ var _salon_edit_basic_edit_salon_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./salon-edit/basic-edit/salon-basic-edit.component */ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts");
+/* harmony import */ var _salons_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./salons.component */ "./src/app/pages/customers/salons/salons.component.ts");
+/* harmony import */ var _salon_salon_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./salon/salon.component */ "./src/app/pages/customers/salons/salon/salon.component.ts");
+/* harmony import */ var _salon_media_salon_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./salon-media/salon-media.component */ "./src/app/pages/customers/salons/salon-media/salon-media.component.ts");
+/* harmony import */ var _salon_about_salon_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./salon-about/salon-about.component */ "./src/app/pages/customers/salons/salon-about/salon-about.component.ts");
+/* harmony import */ var _salon_edit_salon_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./salon-edit/salon-edit.component */ "./src/app/pages/customers/salons/salon-edit/salon-edit.component.ts");
+/* harmony import */ var _salon_edit_all_edit_salon_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./salon-edit/all-edit/salon-all-edit.component */ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.ts");
+/* harmony import */ var _salon_edit_basic_edit_salon_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./salon-edit/basic-edit/salon-basic-edit.component */ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7525,9 +7525,9 @@ var SalonsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salons.component.css":
+/***/ "./src/app/pages/customers/salons/salons.component.css":
 /*!*************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salons.component.css ***!
+  !*** ./src/app/pages/customers/salons/salons.component.css ***!
   \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7536,9 +7536,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salons.component.html":
+/***/ "./src/app/pages/customers/salons/salons.component.html":
 /*!**************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salons.component.html ***!
+  !*** ./src/app/pages/customers/salons/salons.component.html ***!
   \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7547,9 +7547,9 @@ module.exports = "<!-- Main Contant -->\n<h2>salons main works fine!</h2>\n<rout
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salons.component.ts":
+/***/ "./src/app/pages/customers/salons/salons.component.ts":
 /*!************************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salons.component.ts ***!
+  !*** ./src/app/pages/customers/salons/salons.component.ts ***!
   \************************************************************/
 /*! exports provided: SalonsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7575,8 +7575,8 @@ var SalonsComponent = /** @class */ (function () {
     SalonsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-salons',
-            template: __webpack_require__(/*! ./salons.component.html */ "./src/app/pages/costumers/salons/salons.component.html"),
-            styles: [__webpack_require__(/*! ./salons.component.css */ "./src/app/pages/costumers/salons/salons.component.css")]
+            template: __webpack_require__(/*! ./salons.component.html */ "./src/app/pages/customers/salons/salons.component.html"),
+            styles: [__webpack_require__(/*! ./salons.component.css */ "./src/app/pages/customers/salons/salons.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], SalonsComponent);
@@ -7587,9 +7587,9 @@ var SalonsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/salons/salons.module.ts":
+/***/ "./src/app/pages/customers/salons/salons.module.ts":
 /*!*********************************************************!*\
-  !*** ./src/app/pages/costumers/salons/salons.module.ts ***!
+  !*** ./src/app/pages/customers/salons/salons.module.ts ***!
   \*********************************************************/
 /*! exports provided: SalonsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7600,14 +7600,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _salons_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./salons-routing.module */ "./src/app/pages/costumers/salons/salons-routing.module.ts");
-/* harmony import */ var _salons_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./salons.component */ "./src/app/pages/costumers/salons/salons.component.ts");
-/* harmony import */ var _salon_salon_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./salon/salon.component */ "./src/app/pages/costumers/salons/salon/salon.component.ts");
-/* harmony import */ var _salon_media_salon_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./salon-media/salon-media.component */ "./src/app/pages/costumers/salons/salon-media/salon-media.component.ts");
-/* harmony import */ var _salon_about_salon_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./salon-about/salon-about.component */ "./src/app/pages/costumers/salons/salon-about/salon-about.component.ts");
-/* harmony import */ var _salon_edit_salon_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./salon-edit/salon-edit.component */ "./src/app/pages/costumers/salons/salon-edit/salon-edit.component.ts");
-/* harmony import */ var _salon_edit_all_edit_salon_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./salon-edit/all-edit/salon-all-edit.component */ "./src/app/pages/costumers/salons/salon-edit/all-edit/salon-all-edit.component.ts");
-/* harmony import */ var _salon_edit_basic_edit_salon_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./salon-edit/basic-edit/salon-basic-edit.component */ "./src/app/pages/costumers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts");
+/* harmony import */ var _salons_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./salons-routing.module */ "./src/app/pages/customers/salons/salons-routing.module.ts");
+/* harmony import */ var _salons_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./salons.component */ "./src/app/pages/customers/salons/salons.component.ts");
+/* harmony import */ var _salon_salon_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./salon/salon.component */ "./src/app/pages/customers/salons/salon/salon.component.ts");
+/* harmony import */ var _salon_media_salon_media_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./salon-media/salon-media.component */ "./src/app/pages/customers/salons/salon-media/salon-media.component.ts");
+/* harmony import */ var _salon_about_salon_about_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./salon-about/salon-about.component */ "./src/app/pages/customers/salons/salon-about/salon-about.component.ts");
+/* harmony import */ var _salon_edit_salon_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./salon-edit/salon-edit.component */ "./src/app/pages/customers/salons/salon-edit/salon-edit.component.ts");
+/* harmony import */ var _salon_edit_all_edit_salon_all_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./salon-edit/all-edit/salon-all-edit.component */ "./src/app/pages/customers/salons/salon-edit/all-edit/salon-all-edit.component.ts");
+/* harmony import */ var _salon_edit_basic_edit_salon_basic_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./salon-edit/basic-edit/salon-basic-edit.component */ "./src/app/pages/customers/salons/salon-edit/basic-edit/salon-basic-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7654,9 +7654,9 @@ var SalonsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.css":
+/***/ "./src/app/pages/customers/transportation/transport-about/transport-about.component.css":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-about/transport-about.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport-about/transport-about.component.css ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7665,9 +7665,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-about/transport-about.component.html":
 /*!***********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-about/transport-about.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-about/transport-about.component.html ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7676,9 +7676,9 @@ module.exports = "<p>\n  transport-about works!\n</p>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-about/transport-about.component.ts":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-about/transport-about.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-about/transport-about.component.ts ***!
   \*********************************************************************************************/
 /*! exports provided: TransportAboutComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7705,8 +7705,8 @@ var TransportAboutComponent = /** @class */ (function () {
     TransportAboutComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-about',
-            template: __webpack_require__(/*! ./transport-about.component.html */ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.html"),
-            styles: [__webpack_require__(/*! ./transport-about.component.css */ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.css")]
+            template: __webpack_require__(/*! ./transport-about.component.html */ "./src/app/pages/customers/transportation/transport-about/transport-about.component.html"),
+            styles: [__webpack_require__(/*! ./transport-about.component.css */ "./src/app/pages/customers/transportation/transport-about/transport-about.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportAboutComponent);
@@ -7717,9 +7717,9 @@ var TransportAboutComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.css":
+/***/ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.css":
 /*!*********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.css ***!
   \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7728,9 +7728,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.html":
 /*!**********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.html ***!
   \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7739,9 +7739,9 @@ module.exports = "<h2>transport all edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.ts":
 /*!********************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.ts ***!
   \********************************************************************************************************/
 /*! exports provided: TransportAllEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7777,8 +7777,8 @@ var TransportAllEditComponent = /** @class */ (function () {
     TransportAllEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-all-edit',
-            template: __webpack_require__(/*! ./transport-all-edit.component.html */ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.html"),
-            styles: [__webpack_require__(/*! ./transport-all-edit.component.css */ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.css")]
+            template: __webpack_require__(/*! ./transport-all-edit.component.html */ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.html"),
+            styles: [__webpack_require__(/*! ./transport-all-edit.component.css */ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportAllEditComponent);
@@ -7789,9 +7789,9 @@ var TransportAllEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css":
+/***/ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css":
 /*!*************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css ***!
   \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7800,9 +7800,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html":
 /*!**************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html ***!
   \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7811,9 +7811,9 @@ module.exports = "<h2>transport- basic edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts":
 /*!************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts ***!
   \************************************************************************************************************/
 /*! exports provided: TransportBasicEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7842,8 +7842,8 @@ var TransportBasicEditComponent = /** @class */ (function () {
     TransportBasicEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-basic-edit',
-            template: __webpack_require__(/*! ./transport-basic-edit.component.html */ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html"),
-            styles: [__webpack_require__(/*! ./transport-basic-edit.component.css */ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css")]
+            template: __webpack_require__(/*! ./transport-basic-edit.component.html */ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.html"),
+            styles: [__webpack_require__(/*! ./transport-basic-edit.component.css */ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportBasicEditComponent);
@@ -7854,9 +7854,9 @@ var TransportBasicEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.css":
+/***/ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.css":
 /*!*************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.css ***!
   \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7865,9 +7865,9 @@ module.exports = ".inputTypeNumber{\r\n    height: calc(2.25rem + 2px);\r\n    p
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.html":
 /*!**************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.html ***!
   \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7876,9 +7876,9 @@ module.exports = "<h2>transport- media edit works fine!</h2>"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.ts":
 /*!************************************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.ts ***!
   \************************************************************************************************************/
 /*! exports provided: TransportMediaEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7898,9 +7898,9 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 /* import { ActivatedRoute, Router } from '@angular/router';
-import { CustomersDataService } from '../../../../../costumers/customers-data-service';
+import { CustomersDataService } from '../../../../../customers/customers-data-service';
 import { Observable, of } from 'rxjs';
-import { HallType } from '../../../../../costumers/hall-type';
+import { HallType } from '../../../../../customers/hall-type';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../../../../../http.service';
@@ -7915,8 +7915,8 @@ var TransportMediaEditComponent = /** @class */ (function () {
     TransportMediaEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-media-edit',
-            template: __webpack_require__(/*! ./transport-media-edit.component.html */ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.html"),
-            styles: [__webpack_require__(/*! ./transport-media-edit.component.css */ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.css")]
+            template: __webpack_require__(/*! ./transport-media-edit.component.html */ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.html"),
+            styles: [__webpack_require__(/*! ./transport-media-edit.component.css */ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportMediaEditComponent);
@@ -7927,9 +7927,9 @@ var TransportMediaEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-edit/transport-edit.component.html":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/transport-edit.component.html ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7938,9 +7938,9 @@ module.exports = "<h2>transport- edit worka!</h2>\n<router-outlet></router-outle
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-edit/transport-edit.component.ts":
 /*!*******************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-edit/transport-edit.component.ts ***!
   \*******************************************************************************************/
 /*! exports provided: TransportEditComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7967,7 +7967,7 @@ var TransportEditComponent = /** @class */ (function () {
     TransportEditComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-edit',
-            template: __webpack_require__(/*! ./transport-edit.component.html */ "./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.html"),
+            template: __webpack_require__(/*! ./transport-edit.component.html */ "./src/app/pages/customers/transportation/transport-edit/transport-edit.component.html"),
             styles: [__webpack_require__(/*! ../../../../styles/style.component.css */ "./src/app/styles/style.component.css")]
         }),
         __metadata("design:paramtypes", [])
@@ -7979,9 +7979,9 @@ var TransportEditComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.css":
+/***/ "./src/app/pages/customers/transportation/transport-media/transport-media.component.css":
 /*!**********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-media/transport-media.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport-media/transport-media.component.css ***!
   \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -7990,9 +7990,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.html":
+/***/ "./src/app/pages/customers/transportation/transport-media/transport-media.component.html":
 /*!***********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-media/transport-media.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport-media/transport-media.component.html ***!
   \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8001,9 +8001,9 @@ module.exports = "<h2>\n  transport-media works!\n</h2>\n"
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport-media/transport-media.component.ts":
 /*!*********************************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport-media/transport-media.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport-media/transport-media.component.ts ***!
   \*********************************************************************************************/
 /*! exports provided: TransportMediaComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8030,8 +8030,8 @@ var TransportMediaComponent = /** @class */ (function () {
     TransportMediaComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport-media',
-            template: __webpack_require__(/*! ./transport-media.component.html */ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.html"),
-            styles: [__webpack_require__(/*! ./transport-media.component.css */ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.css")]
+            template: __webpack_require__(/*! ./transport-media.component.html */ "./src/app/pages/customers/transportation/transport-media/transport-media.component.html"),
+            styles: [__webpack_require__(/*! ./transport-media.component.css */ "./src/app/pages/customers/transportation/transport-media/transport-media.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportMediaComponent);
@@ -8042,9 +8042,9 @@ var TransportMediaComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport/transport.component.css":
+/***/ "./src/app/pages/customers/transportation/transport/transport.component.css":
 /*!**********************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport/transport.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transport/transport.component.css ***!
   \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8053,9 +8053,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport/transport.component.html":
+/***/ "./src/app/pages/customers/transportation/transport/transport.component.html":
 /*!***********************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport/transport.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transport/transport.component.html ***!
   \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8064,9 +8064,9 @@ module.exports = "<p>\n  transport works!\n</p>\n<router-outlet></router-outlet>
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transport/transport.component.ts":
+/***/ "./src/app/pages/customers/transportation/transport/transport.component.ts":
 /*!*********************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transport/transport.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transport/transport.component.ts ***!
   \*********************************************************************************/
 /*! exports provided: TransportComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8093,8 +8093,8 @@ var TransportComponent = /** @class */ (function () {
     TransportComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transport',
-            template: __webpack_require__(/*! ./transport.component.html */ "./src/app/pages/costumers/transportation/transport/transport.component.html"),
-            styles: [__webpack_require__(/*! ./transport.component.css */ "./src/app/pages/costumers/transportation/transport/transport.component.css")]
+            template: __webpack_require__(/*! ./transport.component.html */ "./src/app/pages/customers/transportation/transport/transport.component.html"),
+            styles: [__webpack_require__(/*! ./transport.component.css */ "./src/app/pages/customers/transportation/transport/transport.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportComponent);
@@ -8105,9 +8105,9 @@ var TransportComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transports-routing.module.ts":
+/***/ "./src/app/pages/customers/transportation/transports-routing.module.ts":
 /*!*****************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transports-routing.module.ts ***!
+  !*** ./src/app/pages/customers/transportation/transports-routing.module.ts ***!
   \*****************************************************************************/
 /*! exports provided: TransportsRoutingModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8118,14 +8118,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _transports_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transports.component */ "./src/app/pages/costumers/transportation/transports.component.ts");
-/* harmony import */ var _transport_transport_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transport/transport.component */ "./src/app/pages/costumers/transportation/transport/transport.component.ts");
-/* harmony import */ var _transport_media_transport_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transport-media/transport-media.component */ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.ts");
-/* harmony import */ var _transport_about_transport_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./transport-about/transport-about.component */ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.ts");
-/* harmony import */ var _transport_edit_transport_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transport-edit/transport-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.ts");
-/* harmony import */ var _transport_edit_all_edit_transport_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./transport-edit/all-edit/transport-all-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.ts");
-/* harmony import */ var _transport_edit_basic_edit_transport_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./transport-edit/basic-edit/transport-basic-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts");
-/* harmony import */ var _transport_edit_media_edit_transport_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./transport-edit/media-edit/transport-media-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.ts");
+/* harmony import */ var _transports_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transports.component */ "./src/app/pages/customers/transportation/transports.component.ts");
+/* harmony import */ var _transport_transport_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transport/transport.component */ "./src/app/pages/customers/transportation/transport/transport.component.ts");
+/* harmony import */ var _transport_media_transport_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transport-media/transport-media.component */ "./src/app/pages/customers/transportation/transport-media/transport-media.component.ts");
+/* harmony import */ var _transport_about_transport_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./transport-about/transport-about.component */ "./src/app/pages/customers/transportation/transport-about/transport-about.component.ts");
+/* harmony import */ var _transport_edit_transport_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transport-edit/transport-edit.component */ "./src/app/pages/customers/transportation/transport-edit/transport-edit.component.ts");
+/* harmony import */ var _transport_edit_all_edit_transport_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./transport-edit/all-edit/transport-all-edit.component */ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.ts");
+/* harmony import */ var _transport_edit_basic_edit_transport_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./transport-edit/basic-edit/transport-basic-edit.component */ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts");
+/* harmony import */ var _transport_edit_media_edit_transport_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./transport-edit/media-edit/transport-media-edit.component */ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8182,9 +8182,9 @@ var TransportsRoutingModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transports.component.css":
+/***/ "./src/app/pages/customers/transportation/transports.component.css":
 /*!*************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transports.component.css ***!
+  !*** ./src/app/pages/customers/transportation/transports.component.css ***!
   \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8193,9 +8193,9 @@ module.exports = ""
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transports.component.html":
+/***/ "./src/app/pages/customers/transportation/transports.component.html":
 /*!**************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transports.component.html ***!
+  !*** ./src/app/pages/customers/transportation/transports.component.html ***!
   \**************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -8204,9 +8204,9 @@ module.exports = "<p>\n  transportation works!\n</p>\n<router-outlet></router-ou
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transports.component.ts":
+/***/ "./src/app/pages/customers/transportation/transports.component.ts":
 /*!************************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transports.component.ts ***!
+  !*** ./src/app/pages/customers/transportation/transports.component.ts ***!
   \************************************************************************/
 /*! exports provided: TransportsComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8233,8 +8233,8 @@ var TransportsComponent = /** @class */ (function () {
     TransportsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-transports',
-            template: __webpack_require__(/*! ./transports.component.html */ "./src/app/pages/costumers/transportation/transports.component.html"),
-            styles: [__webpack_require__(/*! ./transports.component.css */ "./src/app/pages/costumers/transportation/transports.component.css")]
+            template: __webpack_require__(/*! ./transports.component.html */ "./src/app/pages/customers/transportation/transports.component.html"),
+            styles: [__webpack_require__(/*! ./transports.component.css */ "./src/app/pages/customers/transportation/transports.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], TransportsComponent);
@@ -8245,9 +8245,9 @@ var TransportsComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/pages/costumers/transportation/transports.module.ts":
+/***/ "./src/app/pages/customers/transportation/transports.module.ts":
 /*!*********************************************************************!*\
-  !*** ./src/app/pages/costumers/transportation/transports.module.ts ***!
+  !*** ./src/app/pages/customers/transportation/transports.module.ts ***!
   \*********************************************************************/
 /*! exports provided: TransportsModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8257,15 +8257,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TransportsModule", function() { return TransportsModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
-/* harmony import */ var _transports_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transports-routing.module */ "./src/app/pages/costumers/transportation/transports-routing.module.ts");
-/* harmony import */ var _transports_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transports.component */ "./src/app/pages/costumers/transportation/transports.component.ts");
-/* harmony import */ var _transport_transport_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transport/transport.component */ "./src/app/pages/costumers/transportation/transport/transport.component.ts");
-/* harmony import */ var _transport_media_transport_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transport-media/transport-media.component */ "./src/app/pages/costumers/transportation/transport-media/transport-media.component.ts");
-/* harmony import */ var _transport_about_transport_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./transport-about/transport-about.component */ "./src/app/pages/costumers/transportation/transport-about/transport-about.component.ts");
-/* harmony import */ var _transport_edit_transport_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transport-edit/transport-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/transport-edit.component.ts");
-/* harmony import */ var _transport_edit_all_edit_transport_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./transport-edit/all-edit/transport-all-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/all-edit/transport-all-edit.component.ts");
-/* harmony import */ var _transport_edit_basic_edit_transport_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./transport-edit/basic-edit/transport-basic-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts");
-/* harmony import */ var _transport_edit_media_edit_transport_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./transport-edit/media-edit/transport-media-edit.component */ "./src/app/pages/costumers/transportation/transport-edit/media-edit/transport-media-edit.component.ts");
+/* harmony import */ var _transports_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./transports-routing.module */ "./src/app/pages/customers/transportation/transports-routing.module.ts");
+/* harmony import */ var _transports_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./transports.component */ "./src/app/pages/customers/transportation/transports.component.ts");
+/* harmony import */ var _transport_transport_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./transport/transport.component */ "./src/app/pages/customers/transportation/transport/transport.component.ts");
+/* harmony import */ var _transport_media_transport_media_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./transport-media/transport-media.component */ "./src/app/pages/customers/transportation/transport-media/transport-media.component.ts");
+/* harmony import */ var _transport_about_transport_about_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./transport-about/transport-about.component */ "./src/app/pages/customers/transportation/transport-about/transport-about.component.ts");
+/* harmony import */ var _transport_edit_transport_edit_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./transport-edit/transport-edit.component */ "./src/app/pages/customers/transportation/transport-edit/transport-edit.component.ts");
+/* harmony import */ var _transport_edit_all_edit_transport_all_edit_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./transport-edit/all-edit/transport-all-edit.component */ "./src/app/pages/customers/transportation/transport-edit/all-edit/transport-all-edit.component.ts");
+/* harmony import */ var _transport_edit_basic_edit_transport_basic_edit_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./transport-edit/basic-edit/transport-basic-edit.component */ "./src/app/pages/customers/transportation/transport-edit/basic-edit/transport-basic-edit.component.ts");
+/* harmony import */ var _transport_edit_media_edit_transport_media_edit_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./transport-edit/media-edit/transport-media-edit.component */ "./src/app/pages/customers/transportation/transport-edit/media-edit/transport-media-edit.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8589,7 +8589,7 @@ module.exports = "/* .carousel{\r\n    margin: auto;\r\n} */\r\nh1,h2,h3,h4,h5,h
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<main class=\"main\" role=\"main\">\n  <!-- <img src=\"../assets/pages/image2.jpg\" alt=\"img\"> -->\n  <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"3\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"4\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div class=\"carousel-item active\">\n        <!-- <div class=\"first-slide\"></div> -->\n        <img class=\"img-fluid first-slide\" src=\"./assets/pages/home/carousel/event.jpg\" alt=\"first-slide\">\n\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light bg-dark rounded p-2\">הצטרף לאינדקס</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">\n              צוות אתיופיה אירועים חוסך לכם זמן ומשאבים הצטרפו לאינדקס בקליק מכל מקום. \n            הרשמו עם כל הפרטים של העסק ,לאחר בירור פרטים של הצוות ,העסק שלכם אוליין!\n            </p>\n            <p>\n              <a routerLink =\"/join\" class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">הצטרף לאינקס עכשיו!</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"second-slide\"></div> -->\n        <img class=\"img-fluid second-slide\" src=\"./assets/pages/home/carousel/event0.jpg\" alt=\"second-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">עוד פרטים</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"third-slide\"> </div> -->\n        <img class=\"img-fluid third-slide\" src=\"./assets/pages/home/carousel/event3.jpg\" alt=\"third-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">עבור לגלריה</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"third-slide\"> </div> -->\n        <img class=\"img-fluid forth-slide\" src=\"./assets/pages/home/carousel/event5.png\" alt=\"forth-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">\n                    צור קשר\n                    \n                <i class=\"material-icons alingn-self-center\">\n                  contact_mail\n                </i>\n              </a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"first-slide\"></div> -->\n        <img class=\"img-fluid fifth-slide\" src=\"./assets/pages/home/carousel/flawer.jpg\" alt=\"fifth-slide\">\n\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">הרשם עכשיו!</a>\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n  </div>\n\n\n  <!-- Marketing messaging and featurettes\n    ================================================== -->\n  <!-- Wrap the rest of the page in another container to center all the content. -->\n\n  <div class=\"container marketing mt-5\">\n\n    <!-- Three columns of text below the carousel -->\n    <div class=\"row\">\n      <div class=\"col-lg-4\">\n        <div style=\"width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle img-responsive\" src=\"./assets/pages/costumers/djs/shlomi/shlomi.jpg\" height=\"100%\" width=\"100%\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-success\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n      <div class=\"col-lg-4\">\n        <div style=\"background-color: gray;width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle\" src=\"./assets/pages/costumers/djs/yoni/yoni.jpg\" height=\"140\" width=\"140\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-warning\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n      <div class=\"col-lg-4\">\n        <div style=\"background-color: gray;width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle\" src=\"./assets/pages/costumers/djs/gili/gili.jpg\" height=\"140\" width=\"140\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-danger\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n    </div>\n    <!-- /.row -->\n\n\n    <!-- START THE FEATURETTES -->\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect1\">\n        <h2 class=\"featurette-heading\">First featurette heading.\n          <span class=\"text-muted\">It'll blow your mind.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect2\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_01.jpg\" alt=\"img_01\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect3 order-md-2\">\n        <h2 class=\"featurette-heading\">Oh yeah, it's that good.\n          <span class=\"text-muted\">See for yourself.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect4 order-md-1\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_04.jpg\" alt=\"img1\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect5\">\n        <h2 class=\"featurette-heading\">And lastly, this one.\n          <span class=\"text-muted\">Checkmate.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect6\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_03.jpg\" alt=\"img_03\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <!-- /END THE FEATURETTES -->\n\n  </div>\n  <!-- /.container -->\n\n\n  <!-- FOOTER -->\n  <app-footer></app-footer>\n\n</main>"
+module.exports = "<main class=\"main\" role=\"main\">\n  <!-- <img src=\"../assets/pages/image2.jpg\" alt=\"img\"> -->\n  <div id=\"myCarousel\" class=\"carousel slide\" data-ride=\"carousel\">\n    <ol class=\"carousel-indicators\">\n      <li data-target=\"#myCarousel\" data-slide-to=\"0\" class=\"active\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"1\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"2\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"3\"></li>\n      <li data-target=\"#myCarousel\" data-slide-to=\"4\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div class=\"carousel-item active\">\n        <!-- <div class=\"first-slide\"></div> -->\n        <img class=\"img-fluid first-slide\" src=\"./assets/pages/home/carousel/event.jpg\" alt=\"first-slide\">\n\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light bg-dark rounded p-2\">הצטרף לאינדקס</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">\n              צוות אתיופיה אירועים חוסך לכם זמן ומשאבים הצטרפו לאינדקס בקליק מכל מקום. \n            הרשמו עם כל הפרטים של העסק ,לאחר בירור פרטים של הצוות ,העסק שלכם אוליין!\n            </p>\n            <p>\n              <a routerLink =\"/join\" class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">הצטרף לאינקס עכשיו!</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"second-slide\"></div> -->\n        <img class=\"img-fluid second-slide\" src=\"./assets/pages/home/carousel/event0.jpg\" alt=\"second-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">עוד פרטים</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"third-slide\"> </div> -->\n        <img class=\"img-fluid third-slide\" src=\"./assets/pages/home/carousel/event3.jpg\" alt=\"third-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">עבור לגלריה</a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"third-slide\"> </div> -->\n        <img class=\"img-fluid forth-slide\" src=\"./assets/pages/home/carousel/event5.png\" alt=\"forth-slide\">\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">\n                    צור קשר\n                    \n                <i class=\"material-icons alingn-self-center\">\n                  contact_mail\n                </i>\n              </a>\n            </p>\n          </div>\n        </div>\n      </div>\n      <div class=\"carousel-item\">\n        <!-- <div class=\"first-slide\"></div> -->\n        <img class=\"img-fluid fifth-slide\" src=\"./assets/pages/home/carousel/flawer.jpg\" alt=\"fifth-slide\">\n\n        <div class=\"container\">\n          <div class=\"carousel-caption rounded w-25 mx-auto\">\n            <h1 class=\"text-light rounded bg-dark p-2\">לורם איפסום דולור.</h1>\n            <p class=\"text-light bg-dark p-2 rounded\">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט\n              - לפתיעם ברשג - ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. קולורס מונפרד אדנדום סילקוף,\n              מרגשי ומרגשח\n            </p>\n            <p>\n              <a class=\"btn btn-lg btn-primary\" href=\"#\" role=\"button\">הרשם עכשיו!</a>\n            </p>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <a class=\"carousel-control-prev\" href=\"#myCarousel\" role=\"button\" data-slide=\"next\">\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"carousel-control-next\" href=\"#myCarousel\" role=\"button\" data-slide=\"prev\">\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n  </div>\n\n\n  <!-- Marketing messaging and featurettes\n    ================================================== -->\n  <!-- Wrap the rest of the page in another container to center all the content. -->\n\n  <div class=\"container marketing mt-5\">\n\n    <!-- Three columns of text below the carousel -->\n    <div class=\"row\">\n      <div class=\"col-lg-4\">\n        <div style=\"width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle img-responsive\" src=\"./assets/pages/customers/djs/shlomi/shlomi.jpg\" height=\"100%\" width=\"100%\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-success\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n      <div class=\"col-lg-4\">\n        <div style=\"background-color: gray;width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle\" src=\"./assets/pages/customers/djs/yoni/yoni.jpg\" height=\"140\" width=\"140\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-warning\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n      <div class=\"col-lg-4\">\n        <div style=\"background-color: gray;width: 140px;height: 140px\" class=\"rounded-circle\">\n          <img class=\"rounded-circle\" src=\"./assets/pages/customers/djs/gili/gili.jpg\" height=\"140\" width=\"140\" alt=\"img1\">\n        </div>\n        <div class=\"market-text\">\n          <h2>לורם איפסום</h2>\n          <p class=\"shadow-lg p-3 mb-5 bg-white rounded\">\n            לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית סחטיר בלובק. תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט - לפתיעם\n            ברשג - ולתיעם גדדיש. קוויז דומור\n          </p>\n          <p>\n            <a class=\"btn btn-danger\" href=\"#\" role=\"button\">\n              הצג מידע נוסף\n              <i class=\"fa fa-angle-double-left\"></i>\n            </a>\n          </p>\n        </div>\n      </div>\n      <!-- /.col-lg-4 -->\n    </div>\n    <!-- /.row -->\n\n\n    <!-- START THE FEATURETTES -->\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect1\">\n        <h2 class=\"featurette-heading\">First featurette heading.\n          <span class=\"text-muted\">It'll blow your mind.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect2\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_01.jpg\" alt=\"img_01\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect3 order-md-2\">\n        <h2 class=\"featurette-heading\">Oh yeah, it's that good.\n          <span class=\"text-muted\">See for yourself.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect4 order-md-1\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_04.jpg\" alt=\"img1\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <div class=\"row featurette\">\n      <div class=\"col-md-7 costum-effect5\">\n        <h2 class=\"featurette-heading\">And lastly, this one.\n          <span class=\"text-muted\">Checkmate.</span>\n        </h2>\n        <p class=\"lead shadow-lg p-3 mb-5 bg-white\">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo\n          cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>\n      </div>\n      <div class=\"col-md-5 costum-effect6\">\n        <div style=\"height: 500px;background-color: gray\">\n          <img class=\"img-fluid\" src=\"./assets/pages/home/marketing/img_03.jpg\" alt=\"img_03\">\n        </div>\n      </div>\n    </div>\n\n    <hr class=\"featurette-divider\">\n\n    <!-- /END THE FEATURETTES -->\n\n  </div>\n  <!-- /.container -->\n\n\n  <!-- FOOTER -->\n  <app-footer></app-footer>\n\n</main>"
 
 /***/ }),
 
@@ -8994,7 +8994,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _http_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./http.service */ "./src/app/http.service.ts");
-/* harmony import */ var _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./costumers/customers-data-service */ "./src/app/costumers/customers-data-service.ts");
+/* harmony import */ var _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./customers/customers-data-service */ "./src/app/customers/customers-data-service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9019,30 +9019,30 @@ var RouteGuardService = /** @class */ (function () {
     RouteGuardService.prototype.canActivate = function (route, state) {
         /******
          * if costumr recourse is true else ->> return false and redirect to main path recourse
-         * then check if user authenticated is true else ->> rediract to recourse/costumer/media and ask to Log-in
-         * then check if costumer recourse blong to user authenticated true else ->> rediract to recourse/costumer/media
+         * then check if user authenticated is true else ->> rediract to recourse/customer/media and ask to Log-in
+         * then check if customer recourse blong to user authenticated true else ->> rediract to recourse/customer/media
          * then user is owner and return true
         ******/
         var _this = this;
         /** lets defined somes props **/
         var intendedUrl = decodeURIComponent(state.url);
-        var costumerUriRecourse = route.parent.params.id;
+        var customerUriRecourse = route.parent.params.id;
         this.autUser = this.http.authUser;
         var uEmail = this.autUser ? this.autUser['email'] : false;
         var join = intendedUrl.indexOf('/join');
         var reg = intendedUrl.indexOf('/register');
         console.log(intendedUrl);
-        /** if our uri is /join, lets check if auth user is already our costumer member and let him access join page if false **/
+        /** if our uri is /join, lets check if auth user is already our customer member and let him access join page if false **/
         if (join >= 0 && uEmail) {
             this.halls.intendedUrl = intendedUrl;
-            return this.userAlreadyCostumer(uEmail).then(function (res) {
+            return this.userAlreadyCustomer(uEmail).then(function (res) {
                 console.log(intendedUrl);
                 return (!res) ? true : _this.goTo(intendedUrl);
             });
         }
-        /**** so if we have auth user lats check if we have costumer and let access intended page if user are owner ****/
+        /**** so if we have auth user lats check if we have customer and let access intended page if user are owner ****/
         if (uEmail) {
-            return this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
+            return this.checkCustomer(customerUriRecourse, uEmail, intendedUrl);
         }
         ;
         return this.http.userPromise()
@@ -9050,15 +9050,15 @@ var RouteGuardService = /** @class */ (function () {
             /*** attach auth user props ***/
             uEmail = response['email'];
             _this.autUser = response && response['email'] ? response : null;
-            /** if our uri is /join, lets check if auth user is already our costumer member and let him access join page if false **/
+            /** if our uri is /join, lets check if auth user is already our customer member and let him access join page if false **/
             if (join >= 0 && response['email']) {
                 _this.halls.intendedUrl = intendedUrl;
-                return _this.userAlreadyCostumer(uEmail).then(function (res) {
+                return _this.userAlreadyCustomer(uEmail).then(function (res) {
                     return (!res) ? true : _this.goTo(intendedUrl);
                 });
             }
-            /**** so if we have auth user lats check if we have costumer and let access intended page if user are owner ****/
-            return _this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
+            /**** so if we have auth user lats check if we have customer and let access intended page if user are owner ****/
+            return _this.checkCustomer(customerUriRecourse, uEmail, intendedUrl);
         }, function (reject) {
             /****** if we in /join page and we have no user. lets get user to log in ******/
             if (join >= 0 && !uEmail) {
@@ -9066,11 +9066,11 @@ var RouteGuardService = /** @class */ (function () {
                 _this.http.allowLogIn.next(true);
                 return _this.goTo(intendedUrl);
             }
-            /****** we have no user. lets check costumer uri recourse ******/
-            if (!costumerUriRecourse)
+            /****** we have no user. lets check customer uri recourse ******/
+            if (!customerUriRecourse)
                 return _this.goTo(intendedUrl);
-            /**** lats check if we have costumer and navigate recourse if true and let user log in ****/
-            return _this.checkCostumer(costumerUriRecourse, uEmail, intendedUrl);
+            /**** lats check if we have customer and navigate recourse if true and let user log in ****/
+            return _this.checkCustomer(customerUriRecourse, uEmail, intendedUrl);
         });
     };
     RouteGuardService.prototype.goTo = function (intendedUrl) {
@@ -9078,11 +9078,11 @@ var RouteGuardService = /** @class */ (function () {
         this.router.navigate([goTo]);
         return false;
     };
-    RouteGuardService.prototype.checkCostumer = function (costumerUriRecourse, uEmail, intendedUrl) {
+    RouteGuardService.prototype.checkCustomer = function (customerUriRecourse, uEmail, intendedUrl) {
         var _this = this;
-        return this.halls.costumerPromis(costumerUriRecourse)
+        return this.halls.customerPromis(customerUriRecourse)
             .then(function (res) {
-            /****** if we have user and costumer. lets check if auth user is owen recourse if true give auth user access ******/
+            /****** if we have user and customer. lets check if auth user is owen recourse if true give auth user access ******/
             if (uEmail === res['email']) {
                 return true;
             }
@@ -9092,19 +9092,19 @@ var RouteGuardService = /** @class */ (function () {
                 _this.http.IntendedUri = intendedUrl;
             }
             /****** redirect user to recourse/media  ******/
-            var goToMedia = "/" + res['businessType'] + "/" + costumerUriRecourse + "/media";
+            var goToMedia = "/" + res['businessType'] + "/" + customerUriRecourse + "/media";
             _this.router.navigate([goToMedia]);
             return false;
         }, function (rej) {
             if (!uEmail) {
-                console.log("No costumer recourse and No auth User");
+                console.log("No customer recourse and No auth User");
             }
             /****** redirect user to main page or main recourse ******/
             return _this.goTo(intendedUrl);
         });
     };
-    RouteGuardService.prototype.userAlreadyCostumer = function (param) {
-        return this.halls.costumerPromis(param).then(function (res) { return res; }, function (rej) { return rej; });
+    RouteGuardService.prototype.userAlreadyCustomer = function (param) {
+        return this.halls.customerPromis(param).then(function (res) { return res; }, function (rej) { return rej; });
     };
     RouteGuardService.prototype.canActivateChild = function (route, state) {
         return this.canActivate(route, state);
@@ -9113,7 +9113,7 @@ var RouteGuardService = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _costumers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [_http_service__WEBPACK_IMPORTED_MODULE_2__["HttpService"], _customers_customers_data_service__WEBPACK_IMPORTED_MODULE_3__["CustomersDataService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], RouteGuardService);
     return RouteGuardService;
 }());

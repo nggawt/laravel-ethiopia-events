@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Gallery extends Model
 {
-    protected $fillable  = ['costumer_id', 'image', 'video'];
+    protected $fillable  = ['customer_id', 'image', 'video'];
 
-    public function costumer()
+    public function customer()
     {
-        return $this->belongsTo('App\Costumer');
+        return $this->belongsTo('App\Customer');
     }
 }

@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
-use App\Repo\CostumersRepo;
-use App\Costumer;
+use App\Repo\CustomersRepo;
+use App\Customer;
 use App\Gallery;
 use App\User;
-use App\Http\Requests\UpdateCostumersRequest;
+use App\Http\Requests\UpdateCustomersRequest;
 use Validator;
 
-class CostumersController extends Controller
+class CustomersController extends Controller
 {
     protected  $masseges = [
         "errors" => [],
         'success' => []
     ];
-    protected $costumers;
+    protected $customers;
     protected $formRoles = [
             "company" => "required|min:3",
             "businessType" => "required|min:3",
@@ -41,20 +41,20 @@ class CostumersController extends Controller
            "discription" => "אודות"
         ];
         protected $validateFiles = [
-        	'galleries' => "required|file|max:5000000|image|mimes:jpeg,bmp",
-        	'video' => 'required|file|max:1000000|mimetypes:video/avi,video/mpeg,video/quicktime'
+        	'galleries' => "required|file|max:5000000|image|mimes:png,jpeg,bmp",
+        	'video' => 'required|file|max:1000000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime'
         ];//png, video/mp4,
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(CostumersRepo $coRepo)
+    public function __construct(CustomersRepo $coRepo)
     {
         // $this->middleware('cors');
         // $this->middleware('auth:api', ['except' => ['getLogin']]);
         $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
-        $this->costumers = $coRepo;
+        $this->customers = $coRepo;
     }
 
     /**
@@ -64,7 +64,7 @@ class CostumersController extends Controller
      */
     public function index()
     {
-    	$cost = $this->costumers->getCostumers();
+    	$cost = $this->customers->getCustomers();
 
         return response()->json($cost,200);
     }
@@ -73,7 +73,7 @@ class CostumersController extends Controller
     public function show($id)
     {
     	
-    	$cost = Costumer::where('id', $id)->first();
+    	$cost = Customer::where('id', $id)->first();
        return response()->json($cost,200);
     }
 
@@ -100,35 +100,40 @@ class CostumersController extends Controller
         /***** handel form input before store into database *****/
         /***** check and return errors if any  *****/
 
-        $costumersDetails = $this->costumers->handelDetails($inputsDecoded);
+        $customersDetails = $this->customers->handelDetails($inputsDecoded);
 
-        if(isset($costumersDetails["errors"])){ 
-        	return response()->json(collect($costumersDetails['errors'])->only('inputs'),200);
+        if(isset($customersDetails["errors"])){ 
+        	return response()->json(collect($customersDetails['errors'])->only('inputs'),200);
         }
 
         /***** download files before store into database *****/
         /***** check and return errors if any before store into database *****/
         
-        $files = $this->costumers->downloadFiles($reqsFils,$true = true);
+        $files = $this->customers->downloadFiles($reqsFils,$true = true);
         
         /*if(isset($files["errors"]) && count($files["errors"])){
         	return response()->json(["errors" => $files['errors']],200);
         }
         */
-        // $filesTsave = [];
-        // return $files;
-        $filesTsave['image'] = json_encode($files['downloaded']['image']);
-        $filesTsave['video'] = json_encode($files['downloaded']['video']);
+        $downloaded = collect($files)->only('downloaded');
+
+        $filesTsave['image'] = json_encode($downloaded['downloaded']['image']);
+        $filesTsave['video'] = json_encode($downloaded['downloaded']['video']);
         
-        /***** store form inputs costumer into database *****/
-        /*Costumer::create($costumersDetails);
+        /***** store form inputs customer into database *****/
+        if(! isset($customersDetails["errors"]) && $filesTsave['image'] && $filesTsave['video']){
+
+            Customer::create($customersDetails);
+            sleep(1);
+            $customer_id = Customer::where('email',$customersDetails['email'])->first()->id;
+            $filesTsave['customer_id'] = $customer_id;
+            
+            /***** store form filse customer into database *****/
+            Gallery::create($filesTsave);
+        }else{
+            array_push($this->masseges['errors']['files'], ['unexcepted-err' => "unexcepted server error."]);
+        } 
         
-        sleep(1);
-        $costumer_id = Costumer::where('email',$costumersDetails['email'])->first()->id;
-        $filesTsave['costumer_id'] = $costumer_id;*/
-        
-        /***** store form filse costumer into database *****/
-       // Gallery::create($filesTsave);
 
         /******* get and send back messages ******/
         $filesErrors = collect($files)->only(['errors', 'success']);
@@ -145,9 +150,9 @@ class CostumersController extends Controller
         
         /****** declare all variables *******/
         $reqMethod = request()->isMethod('patch') || request()->isMethod('put');
-        $costumer = Costumer::find($id);
+        $customer = Customer::find($id);
         $user = auth()->user();
-        $same = ($costumer->user_id === $user->id)? true:false;
+        $same = ($customer->user_id === $user->id)? true:false;
         $reqsFils = $request->except(['token','_method', 'filesToDelete','formInputs']);
         $filesTodelete = $request->only('filesToDelete');
 
@@ -166,7 +171,7 @@ class CostumersController extends Controller
         //if(! $afterValFiles && ! is_null($afterValFiles)){return response()->json($this->masseges,200);}
         
         /***** delete and update files *****/
-    	$UpFiles = ((isset($reqsFils) && ! empty($reqsFils)) || (isset($reqsFils) && ! empty($fd))) ? $this->costumers->updateFiles($reqsFils, $costumer, $fd):[];
+    	$UpFiles = ((isset($reqsFils) && ! empty($reqsFils)) || (isset($reqsFils) && ! empty($fd))) ? $this->customers->updateFiles($reqsFils, $customer, $fd):[];
         // return ["hhhjj" => $UpFiles];
     	
         /**** return deleted and downloaded files errors if any || update success mesages ****/
@@ -188,12 +193,12 @@ class CostumersController extends Controller
 
         	if(empty($userEmailTeken)){
 
-        		//$costumer->user->update(['email' => $formInputs['email']]);
+        		//$customer->user->update(['email' => $formInputs['email']]);
         	}else{
     			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
         	}
         }
-        if($inputsIsValidated) $costumer->update($formInputs);
+        if($inputsIsValidated) $customer->update($formInputs);
         
 
         $messagesTosend['errors'] = $this->whileMsgs($this->masseges['errors'], $UpFiles['errors']);
@@ -265,11 +270,11 @@ class CostumersController extends Controller
 
     public function destroy(Request $request, $id){
     	return $request;
-    	$imgs = Costumer::find($id)->gallery->image;
+    	$imgs = Customer::find($id)->gallery->image;
     	$imgs = json_decode($imgs, true);
     	$fd = json_decode($request['filesToDelete'], true);
 
-    	$delFiles = $this->costumers->delFromGal($imgs, $fd);
+    	$delFiles = $this->customers->delFromGal($imgs, $fd);
         return ['success' => $delFiles['success']];
 
     }

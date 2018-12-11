@@ -15,12 +15,12 @@ class CreateGalariesTable extends Migration
     {
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('costumer_id');
+            $table->unsignedInteger('customer_id');
             $table->text("video");
             $table->text("image");
             
-            $table->foreign('costumer_id')
-              ->references('id')->on('costumers')
+            $table->foreign('customer_id')
+              ->references('id')->on('customers')
               ->onDelete('cascade');
 
             $table->timestamps();

@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
-use App\Costumer;
+use App\Customer;
 use App\Gallery;
 use App\User;
 use Validator;
@@ -14,9 +14,9 @@ use Validator;
 /**
  * 
  */
-class CostumersRepo 
+class CustomersRepo 
 {
-	// private $costumer;
+	// private $customer;
     protected  $masseges = [
                 'errors' => [
                     'gallery' => [],
@@ -30,25 +30,25 @@ class CostumersRepo
                     'video' => []
                 ]
     ];
-    protected $dataUrl = "./assets/pages/costumers/";
+    protected $dataUrl = "./assets/pages/customers/";
 
-	function __construct(/*Costumer $costumer*/)
+	function __construct(/*Customer $customer*/)
 	{
 		# code...
-		//$this->costumer = $costumer;
+		//$this->customer = $customer;
 	}
 
-	public function getCostumers(){
-		$cost['costumers'] = $this->filterCostumers(Costumer::all());
+	public function getCustomers(){
+		$cost['customers'] = $this->filterCustomers(Customer::all());
         //$cost['galleries'] = $this->filterGalleries(Gallery::all());
         return $cost;
 	}
 
-	private function filterCostumers($costumers){
-        $filteredCostumers = [];
+	private function filterCustomers($customers){
+        $filteredCustomers = [];
         $businessType = null;
-        // return count($costumers);
-        foreach ($costumers as $value) {
+        // return count($customers);
+        foreach ($customers as $value) {
             $fixCbt = explode(" ", $value->businessType);
             $fixCcn = explode(" ", $value->company);
 
@@ -57,7 +57,7 @@ class CostumersRepo
 
             if((isset($businessType) && $businessType != $fixCbt) || is_null($businessType)){
                 $businessType = $fixCbt;
-                $filteredCostumers[$fixCbt] = [];
+                $filteredCustomers[$fixCbt] = [];
             }
             $imgs = $value->gallery->image;
             $vids = $value->gallery->video;
@@ -84,21 +84,21 @@ class CostumersRepo
             ];
             
             
-            array_push($filteredCostumers[$businessType], $en);
+            array_push($filteredCustomers[$businessType], $en);
         }
-        return $filteredCostumers;
+        return $filteredCustomers;
     }
 
     //responsable for get key value of customers before stor database
     public function handelDetails($inputs){
 
         $user = User::where('email',$inputs['email'])->first();
-    	$compName = Costumer::where('company',$inputs['company'])->first();
+    	$compName = Customer::where('company',$inputs['company'])->first();
         $hasErrors = false;
     	$autUser = auth()->user();
-    	$userisCostumer = $autUser->costumer;
-        // return  $userisCostumer;
-    	if(! $compName && ! $userisCostumer && isset($user) && $autUser->email === $inputs['email']){
+    	$userisCustomer = $autUser->customer;
+        // return  $userisCustomer;
+    	if(! $compName && ! $userisCustomer && isset($user) && $autUser->email === $inputs['email']){
     	
     	    $inputs['user_id'] = $autUser->id;
     	    $inputs['loggo'] = $this->dataUrl . $inputs['loggo'];
@@ -163,7 +163,7 @@ class CostumersRepo
                 array_push($this->masseges['success']['video'], ['video' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
             } 
 
-            //Storage::disk('arc')->putFileAs('costumers', new File($value), $fileName);
+            //Storage::disk('arc')->putFileAs('customers', new File($value), $fileName);
             //Storage::disk('arc')->put('/sysfiles/', $value);
             Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
             
@@ -268,7 +268,7 @@ class CostumersRepo
                 }
             }
         }
-        //return $filesToDelete;
+        
         $df =  $fDelete? count($fDelete):false;
         $count = count($imgs) > 2;
         
@@ -282,7 +282,7 @@ class CostumersRepo
 
         } 
         
-        return $this->masseges;//empty($this->masseges["errors"])? $this->masseges['success']: $this->masseges;
+        return $this->masseges;
     }
 
 
