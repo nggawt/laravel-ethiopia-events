@@ -27,8 +27,8 @@ class CustomersController extends Controller
             "contact" => "required|min:3",
             "email" => "required|email",
             "tel" => "required|numeric|min:8",
-            "address" => "required|min:8",
-            "discription" => "required|min:15"
+            "address" => "required|min:4",
+            "discription" => "required|min:12"
         ];
 	protected  $convetedMasseges = [
            "company" => "שם חברה",
