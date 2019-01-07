@@ -111,7 +111,7 @@ class CustomersRepo
 		return ($hasErrors)? $this->masseges:$inputs;
     }
 
-    protected function extractFileName($linkName, $file){
+    protected function getUrlParms($linkName, $file){
 
         $exploded = explode('/', $linkName);
         $ext = ($file)->extension();
@@ -131,41 +131,43 @@ class CustomersRepo
     public function downloadFiles($files, $nameFlag = false){
 
         $downloadedFiles = [
-                    'image' => [],
+                    'gallery' => [],
                     'loggo' => [],
                     'video' => []
                 ];
               
-        foreach($files as $key => $value){
-            
-            $fileName = $this->extractFileName($key, $value);
-            $fileExists = $this->fileExist($fileName['fullName'],$value);
+            /*$key = key($file);
+            $value = $file[$key];*/
+        foreach ($files as $key => $value) {
+            # code...
+            $fileNameParams = $this->getUrlParms($key, $value);
+            $fileExists = $this->fileExist($fileNameParams['fullName'],$value);
 
             if($fileExists){
-                array_push($this->masseges["errors"][$fileName["target"]],  [$fileName['target'] => "הקובץ כבר קיים במערכת " .$fileName['name']]);
+                array_push($this->masseges["errors"][$fileNameParams["target"]],  [$fileNameParams['target'] => "הקובץ כבר קיים במערכת " .$fileNameParams['name']]);
                 continue;
             }
 
 
-            if($fileName["target"] === "gallery"){
-                array_push($downloadedFiles['image'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                array_push($this->masseges['success']['gallery'], ['gallery' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            if($fileNameParams["target"] === "gallery"){
+                array_push($downloadedFiles['gallery'], ($nameFlag)? $fileNameParams["fullUrl"]: $fileNameParams["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['gallery'], ['gallery' => "הקובץ עודכן בהצלחה " . $fileNameParams["name"]]);
             }
             
                
-            if($fileName["target"] === "loggo"){
-                array_push($downloadedFiles['loggo'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                array_push($this->masseges['success']['loggo'], ['loggo' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            if($fileNameParams["target"] === "loggo"){
+                array_push($downloadedFiles['loggo'], ($nameFlag)? $fileNameParams["fullUrl"]: $fileNameParams["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['loggo'], ['loggo' => "הקובץ עודכן בהצלחה " . $fileNameParams["name"]]);
             }
             
-            if($fileName["target"] === "video"){
-                array_push($downloadedFiles['video'], ($nameFlag)? $fileName["fullUrl"]: $fileName["fullName"]);//($nameFlag)?
-                array_push($this->masseges['success']['video'], ['video' => "הקובץ עודכן בהצלחה " . $fileName["name"]]);
+            if($fileNameParams["target"] === "video"){
+                array_push($downloadedFiles['video'], ($nameFlag)? $fileNameParams["fullUrl"]: $fileNameParams["fullName"]);//($nameFlag)?
+                array_push($this->masseges['success']['video'], ['video' => "הקובץ עודכן בהצלחה " . $fileNameParams["name"]]);
             } 
 
             //Storage::disk('arc')->putFileAs('customers', new File($value), $fileName);
             //Storage::disk('arc')->put('/sysfiles/', $value);
-            Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
+            // Storage::putFileAs('/public/', new File($value), $fileName["fullName"]);
             
         }
         
@@ -174,110 +176,143 @@ class CustomersRepo
         return $this->masseges;
     }
 
+    public function filterArrayItemes(array $items, $item){
+
+        return array_filter($items, function($value, $key) use($item){
+            return $value == $item;
+        },ARRAY_FILTER_USE_BOTH);
+    }
+
     public function updateFiles($files, $customer, $filesToDelete = false){
         
         $gals = $customer->gallery;
         $imgs = json_decode($gals['image'],true);
         $video = json_decode($gals['video'],true);
         $loggo = $customer->loggo;
-
+       
         $fDelete = $filesToDelete? $filesToDelete:false;
 
         $downloadedFiles = [
-                    'image' => [],
+                    'gallery' => [],
                     'loggo' => [],
                     'video' => []
                 ];
-                    
+        $num = 1;
+
         foreach ($files as $keyFile => $fileObj) {
-            # code...
-            // return $files ;
-            $fileNameEx = $keyFile.'.'. ($fileObj)->extension();
-            $fileName = $fileNameEx;
-            $fullName = $this->dataUrl . $fileNameEx;
+
+            $reqName = $fileObj->getClientOriginalName();
+            $exPlode = explode(':', $reqName);
+            $target = $exPlode[0];
+
+            $fileName = $exPlode[count($exPlode) - 1];
+            $path = $this->getFullPath($exPlode);
+            $fullUrl = $this->dataUrl . $path .'.'. ($fileObj)->extension();
+
+
+            $fileNameEx = $fileName.'.'. ($fileObj)->extension();
+            $fullName = $this->dataUrl . $path;
+
             $fileExists = $this->fileExist($fullName,$fileObj);
             
-            if($this->strContaines($keyFile, 'loggo') && $fDelete){
+            /*   *********  file to delete procces   **********   */
+            $fdTarget = $fDelete && isset($fDelete[$target]) && count($fDelete[$target])? $fDelete[$target]:false;
+
+            $loggoDelFileName = ($target == "loggo" && $fdTarget)? explode($target .'/',$fdTarget[0])[1]:false;
+            $videoDelFileName =($target == "video" && $fdTarget)? explode($target .'/',$fdTarget[0])[1]:false;
+
+            $galleryDelFile =($target == "gallery" && $fdTarget)? 
+                        array_filter($fDelete[$target], function($value, $key) use($imgs, $target){
                 
-                $fn = explode('loggo/',  $loggo)[1];
-                $df = in_array($loggo, $fDelete);
-        
-                if($df && ! $fileExists){
+                        return array_intersect([$value], $imgs);
+            },ARRAY_FILTER_USE_BOTH): false;
 
-                    $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    $downloaded = collect($dl)->only('downloaded');
+            $galleryDelFileName = $galleryDelFile? explode($target .'/',  $galleryDelFile[0])[1]: false;
 
-                    $item = isset($downloaded["loggo"]) && count($downloaded["loggo"])? $downloaded["loggo"]: false;
-                    if(! $item) { continue;}
+            
+            if($target == 'loggo' && ! $fileExists){
+                
+                $dl = $this->downloadFiles([$path => $fileObj]);
+                $downloaded = $dl['downloaded'];
+                // array_push($this->masseges['success'][$target], [$target => $fName]);
+                $item = isset($downloaded["loggo"]) && count($downloaded["loggo"])? $downloaded["loggo"]: false;
+                if(! $item) { continue;}
 
-                    //$customer->loggo = $item;
-                    //$gals->save();
-                    //Storage::delete($loggo);
+                //$customer->loggo = $item;
+                //$gals->save();
+                //Storage::delete($loggo);
 
-                    array_push($downloadedFiles['loggo'], $item);
-                    unset($files[$keyFile]);
+                array_push($downloadedFiles['loggo'], $item);
+                unset($files[$keyFile]);
 
-                    $deleted = ['deletedFiles' => $fn];
-                    $fDelete = array_diff($fDelete,array($loggo));
-                    array_push($this->masseges['success']['loggo'], $item);
-                    array_push($this->masseges['success']['loggo'], $deleted);
-                }
+                $fdTarget = array_diff($fdTarget,array($loggo));
+                $fDelete[$target] = $fdTarget;
+
+                $deleted = ['deletedFiles' => $loggoDelFileName];
+                // array_push($this->masseges['success']['loggo'], $item);
+                array_push($this->masseges['success']['loggo'], $deleted);
             }
-            if($this->strContaines($keyFile, 'video') && $fDelete){
+            if($target == 'video' && ! $fileExists){//&& $fdTarget
 
-                $fn = explode('video/',  $video[0])[1];
-                $df = in_array($video[0], $fDelete);
-                
-                if($df && ! $fileExists){
+                $dl = $this->downloadFiles([$path => $fileObj]);
+                $downloaded = $dl['downloaded'];
 
-                    $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    $downloaded = collect($dl)->only('downloaded');
+                $item = isset($downloaded["video"]) && count($downloaded["video"])? $downloaded["video"]: false;
+                if(! $item) { continue;}
 
-                    $item = isset($downloaded["video"]) && count($downloaded["video"])? $downloaded["video"]: false;
-                    if(! $item) { continue;}
+                //$gals->video = json_encode($item);
+                //$gals->save();
+                //Storage::delete($video);
+                array_push($downloadedFiles['video'], $item);
+                unset($files[$keyFile]);
 
-                    //$gals->video = json_encode($item);
-                    //$gals->save();
-                    //Storage::delete($video);
-                    array_push($downloadedFiles['video'], $item);
-                    unset($files[$keyFile]);
-                    $fDelete = array_diff($fDelete,$video);
+                $fdTarget = array_diff($fDelete[$target],$video);
+                $fDelete[$target] = $fdTarget;
 
-                    $deleted = ['deletedFiles' => $fn];
-                    array_push($this->masseges['success']['video'], $item);
-                    array_push($this->masseges['success']['video'], $deleted);
-                    //return $this->masseges['success']['video'][0];
-                }
+                $deleted = ['deletedFiles' => $videoDelFileName];
+                // array_push($this->masseges['success']['video'], $item);
+                array_push($this->masseges['success']['video'], $deleted);
             }
             // return $files;
-            if($this->strContaines($keyFile, 'gallery')){
+            if($target == 'gallery' && ! $fileExists){// && $fdTarget
 
-                if(! $fileExists){
 
-                    $dl = $this->downloadFiles([$keyFile => $fileObj]);
-                    $downloaded = collect($dl)->only('downloaded');
+                $dl = $this->downloadFiles([$path => $fileObj], true);
+                $downloaded = $dl['downloaded'];
+                
+                $item = isset($downloaded["gallery"]) && count($downloaded["gallery"])? $downloaded["gallery"][0]: false;
+                if(! $item) continue;
+                
+                array_push($downloadedFiles['gallery'], $item);
 
-                    $item = isset($downloaded["image"]) && count($downloaded["image"])? $downloaded["image"]: false;
-                    if(! $item) { continue;}
-
+                if($fdTarget){
+                    // $fdTarget = array_diff($fdTarget,$imgs);
+                    // $fDelete[$target] = $fdTarget;
+                // array_push($this->masseges['success']['video'], $item);
                     
-                    array_push($downloadedFiles['image'], $item);
-                    array_push($this->masseges['success']['gallery'], $galItem);
-                    unset($files[$keyFile]);
-                    //array_push($this->masseges['success']['gallery'], $galItem);
+                    // array_push($this->masseges['success']['gallery'], ['deletedFiles' => $item]);
+                    // $fDelete[$target] = unset($fDelete[$target]);
+                    array_push($this->masseges['success']['gallery'], ['deletedFiles' => $galleryDelFileName]);
+                    $fdTarget = array_diff($fDelete[$target],[$galleryDelFile[0]]);
+                    $fDelete[$target] = $fdTarget;
+                    // array_push($this->masseges['success']['gallery'], ['deletedFiles' => $fDelete[$target]]);
                 }
+                
+                unset($files[$keyFile]);
+                // $files = array_diff($files,array($keyFile));
+                //array_push($this->masseges['success']['gallery'], $galItem);
             }
         }
         
-        $df =  $fDelete? count($fDelete):false;
+        
+        $df =  $fDelete && isset($fDelete['gallery'])? count($fDelete['gallery']):false;
         $count = count($imgs) > 2;
         
         if($count && $df){
             
-            $dlFiles = $this->delFromGal($imgs, $fDelete, count($downloadedFiles['image']));
-
-            $imgs = array_merge($dlFiles,$downloadedFiles['image']);
-            //$gals['image'] = json_encode($imgs);
+            $dlFiles = $this->delFromGal($imgs, $fDelete['gallery'], $downloadedFiles['gallery']);
+            $imgs = array_merge($dlFiles,$downloadedFiles['gallery']);
+            //$gals['gallery'] = json_encode($imgs);
             //$gals->save();
 
         } 
@@ -289,26 +324,36 @@ class CustomersRepo
     public function delFromGal($imgs, $fDelete, $downloadedFiles = false){
         $fd = $fDelete;
         $galImgs = $imgs;
-
+        // return [];
         foreach ($galImgs as $key => $img) {
                 
             $fileName = explode('gallery/', $img)[1];
             $fileExists = $this->fileExist($img);
             $inarr = in_array($img, $fd);
             $imgCount = (int) $downloadedFiles? ((int) count($downloadedFiles) + count($galImgs)) > 2: count($galImgs) > 3;
-
+            // array_push($this->masseges['success']['gallery'], ['couint' => $img]);
+            
             if($inarr && $imgCount){
                 //Storage::delete($img);
                 $fd = array_diff($fd,array($img));
                 unset($galImgs[$key]);
                 array_push($this->masseges['success']['gallery'], ['deletedFiles' => $fileName]);
             }else{
-                break;
+                // break;
                 //array_push($this->masseges['errors']['gallery'], ["gallery" => "error ocurs with the file name ". $fileName . " in_array ". $inarr ." imgcount ". count($galImgs)]);
             }
         }
 
         return $galImgs;
+    }
+
+    function getFullPath($paths){
+        $path;
+        foreach ($paths as $key => $value) {
+            if($key === 0) continue;
+            (! isset($path))? $path = $value: $path = $path.'/'.$value;
+        }
+        return $path;
     }
 
     protected function strContaines($h, $n){
