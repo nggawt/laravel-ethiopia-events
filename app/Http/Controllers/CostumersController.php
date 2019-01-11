@@ -161,34 +161,34 @@ class CustomersController extends Controller
         $customer = Customer::find($id);
         $gals = json_decode($customer->gallery['image']);
         $user = auth()->user();
-
         $same = ($customer->user_id === $user->id)? true:false;
-        $filesTodelete = $request->only('filesToDelete');
+        if(! $same) return response()->json(['error' => 'Unauthorized'], 401);
+
+        /****** grab and decode exissted objects *******/
         $filesToUdate = $request->file('filesToUpdate');
-        
-        /****** decode objects *******///->getClientOriginalName()//$file     = request()->file('file');
-        $filesTodelete? $filesTodelete = json_decode($request['filesToDelete'], true):[];
-        $formInputs = json_decode($request['formInputs'], true);
-        // return ['fileName' => $request->file('filesToUpdate')[0]->getClientOriginalName()];
+        $filesToUdate = isset($filesToUdate) && ! empty($filesToUdate)? $filesToUdate: [];
+
+        $filesTodelete = $request->only('filesToDelete');
+        $filesTodelete = isset($filesTodelete) && ! empty($filesTodelete)? json_decode($request['filesToDelete'], true): [];
+
+        /****** decode objects *******/
+        $formInputs = $request->only('formInputs');
+        $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($request['formInputs'], true): [];
 
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs($formInputs):null;
         $afterValFiles = (isset($filesToUdate) && count($filesToUdate))? $this->validatefiles($filesToUdate): null;
         $afterValDelFiles = $this->validateDelFiles($filesToUdate, $filesTodelete, $gals);
 
-        //return [count($gals), count($filesTodelete['gallery']), (count($gals) - count($filesTodelete['gallery']))];
         
         if(!$afterValDelFiles || (! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
             // return $this->messages;
         	return response()->json(collect($this->messages)->except('success'),200);
         }
-        
+
+        // return ["hhhjj" => $filesToUdate];
         /***** delete and update files *****/
-        $exFtoUp = isset($filesToUdate) && ! empty($filesToUdate);
-        $exFtoDl = isset($filesTodelete) && ! empty($filesTodelete);
-        
-    	$UpFiles = ($exFtoUp || $exFtoDl)? $this->customers->updateFiles($filesToUdate, $customer, $filesTodelete): [];
-        // return ["hhhjj" => $exFtoDl];
+    	$UpFiles = ($filesToUdate || $filesTodelete)? $this->customers->updateFiles($filesToUdate, $customer, $filesTodelete): [];
         
         
         $formInputs = collect($formInputs)->except('company')->toArray();
@@ -222,7 +222,7 @@ class CustomersController extends Controller
         // $gal = 0;
         foreach ($fDel as $key => $linkArrays) {
 
-            if(count($linkArrays) && ($key == "loggo" || $key == "video")){// && ($key == "loggo" || $key == "video")
+            if(count($linkArrays) && ($key == "loggo" || $key == "video")){
 
                 $arr[$key] = $fUp && count($fUp)? $this->looper($fUp, $key, function($param) use($key){
                     return $param? $param:false;
@@ -241,7 +241,7 @@ class CustomersController extends Controller
 
                     if(! isset($this->messages['errors'][$key])) $this->messages['errors'][$key] = [];
                     $arr['status'] = false;
-                    array_push($this->messages['errors'][$key], [$key => " גלריה: חייב מינימום קובץ תמונה 1."]);
+                    array_push($this->messages['errors'][$key], [$key => " גלריה: חייב מינימום 3 קבצי תמונה"]);
                 }
             }
             
@@ -254,7 +254,7 @@ class CustomersController extends Controller
         $arr =[];
         // return count($files[$cbk]);
         foreach ($files as $key => $file) {
-            # code...
+            
             $reqName = $file->getClientOriginalName();
             $exPlode = explode(':', $reqName);
             

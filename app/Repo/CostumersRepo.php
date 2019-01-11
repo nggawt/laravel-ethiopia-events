@@ -176,11 +176,13 @@ class CustomersRepo
         return $this->masseges;
     }
 
-    public function filterArrayItemes(array $items, $item){
+    public function findDelFile(array $items){
 
-        return array_filter($items, function($value, $key) use($item){
-            return $value == $item;
-        },ARRAY_FILTER_USE_BOTH);
+        foreach ($items as $key => $value) {
+            # code...
+            if($items[$key]) return $value;
+        }
+        return false;
     }
 
     public function updateFiles($files, $customer, $filesToDelete = false){
@@ -221,13 +223,15 @@ class CustomersRepo
             $loggoDelFileName = ($target == "loggo" && $fdTarget)? explode($target .'/',$fdTarget[0])[1]:false;
             $videoDelFileName =($target == "video" && $fdTarget)? explode($target .'/',$fdTarget[0])[1]:false;
 
-            $galleryDelFile =($target == "gallery" && $fdTarget)? 
-                        array_filter($fDelete[$target], function($value, $key) use($imgs, $target){
+            /*$galleryDelFile =($target == "gallery" && $fdTarget)? 
+                        array_filter($fdTarget, function($value, $key) use($imgs, $target){
                 
-                        return array_intersect([$value], $imgs);
-            },ARRAY_FILTER_USE_BOTH): false;
+                        return in_array($value, $imgs);
+            },ARRAY_FILTER_USE_BOTH): false;*/
 
-            $galleryDelFileName = $galleryDelFile? explode($target .'/',  $galleryDelFile[0])[1]: false;
+            $findDel = ($target == "gallery" && $fdTarget && isset($fdTarget[0]) && in_array($fdTarget[0], $imgs))? $fdTarget[0]: false;
+
+            $galleryDelFileName = $findDel? explode($target .'/',  $findDel)[1]: false;
 
             
             if($target == 'loggo' && ! $fileExists){
@@ -251,8 +255,7 @@ class CustomersRepo
                 $deleted = ['deletedFiles' => $loggoDelFileName];
                 // array_push($this->masseges['success']['loggo'], $item);
                 array_push($this->masseges['success']['loggo'], $deleted);
-            }
-            if($target == 'video' && ! $fileExists){//&& $fdTarget
+            }else if($target == 'video' && ! $fileExists){//&& $fdTarget
 
                 $dl = $this->downloadFiles([$path => $fileObj]);
                 $downloaded = $dl['downloaded'];
@@ -272,9 +275,7 @@ class CustomersRepo
                 $deleted = ['deletedFiles' => $videoDelFileName];
                 // array_push($this->masseges['success']['video'], $item);
                 array_push($this->masseges['success']['video'], $deleted);
-            }
-            // return $files;
-            if($target == 'gallery' && ! $fileExists){// && $fdTarget
+            }else if($target == 'gallery'  && ! $fileExists){// && $fdTarget
 
 
                 $dl = $this->downloadFiles([$path => $fileObj], true);
@@ -285,17 +286,11 @@ class CustomersRepo
                 
                 array_push($downloadedFiles['gallery'], $item);
 
-                if($fdTarget){
-                    // $fdTarget = array_diff($fdTarget,$imgs);
-                    // $fDelete[$target] = $fdTarget;
-                // array_push($this->masseges['success']['video'], $item);
+                if($fdTarget && $findDel){
                     
-                    // array_push($this->masseges['success']['gallery'], ['deletedFiles' => $item]);
-                    // $fDelete[$target] = unset($fDelete[$target]);
                     array_push($this->masseges['success']['gallery'], ['deletedFiles' => $galleryDelFileName]);
-                    $fdTarget = array_diff($fDelete[$target],[$galleryDelFile[0]]);
+                    $fdTarget = array_diff($fdTarget,[$findDel]);
                     $fDelete[$target] = $fdTarget;
-                    // array_push($this->masseges['success']['gallery'], ['deletedFiles' => $fDelete[$target]]);
                 }
                 
                 unset($files[$keyFile]);
@@ -310,7 +305,7 @@ class CustomersRepo
         
         if($count && $df){
             
-            $dlFiles = $this->delFromGal($imgs, $fDelete['gallery'], $downloadedFiles['gallery']);
+            $dlFiles = $this->delFromGal($imgs, $fDelete['gallery'], count($downloadedFiles['gallery']));
             $imgs = array_merge($dlFiles,$downloadedFiles['gallery']);
             //$gals['gallery'] = json_encode($imgs);
             //$gals->save();
@@ -330,9 +325,9 @@ class CustomersRepo
             $fileName = explode('gallery/', $img)[1];
             $fileExists = $this->fileExist($img);
             $inarr = in_array($img, $fd);
-            $imgCount = (int) $downloadedFiles? ((int) count($downloadedFiles) + count($galImgs)) > 2: count($galImgs) > 3;
+            $imgCount = (int) $downloadedFiles? ((int) $downloadedFiles + count($galImgs)) > 2: count($galImgs) > 3;
             // array_push($this->masseges['success']['gallery'], ['couint' => $img]);
-            
+
             if($inarr && $imgCount){
                 //Storage::delete($img);
                 $fd = array_diff($fd,array($img));
