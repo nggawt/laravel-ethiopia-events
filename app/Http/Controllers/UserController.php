@@ -62,14 +62,14 @@ class UserController extends Controller
         
         $this->validate($req,[
 
-            'name' => 'required|min:3',
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-            'passwordConfirm' => 'required|same:password',
-            'city' => 'min:3',
-            'area' => 'required|min:3',
-            'about' => 'min:6',
-            'tel' => 'digits_between:9,10',
+            'name' => 'required|string|min:3',
+            'email' => 'required|string|email',
+            'password' => 'required|string|min:6',
+            'passwordConfirm' => 'required|string|same:password',
+            'city' => 'min|string:3',
+            'area' => 'required|string|min:3',
+            'about' => 'min|string:6',
+            'tel' => 'digits_between|string:9,10',
         ]);
         $credentials = request(['email', 'password']);
         // $req['password'] =  bcrypt($req['password']);

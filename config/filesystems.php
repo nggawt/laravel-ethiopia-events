@@ -45,7 +45,8 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            // 'root' => storage_path('app'),
+            'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/',
         ],
 
         'public' => [
@@ -53,6 +54,13 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+        'customers' => [
+            'driver' => 'local',
+            'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/customers/',
+            // 'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/customers/',
+            // 'url' => env('APP_URL')."/files",
+            // 'visibility' => 'public',
         ],
         's3' => [
             'driver' => 's3',

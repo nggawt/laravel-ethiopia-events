@@ -27,14 +27,15 @@ class UpdateCustomersRequest extends FormRequest
     public function rules()
     {
         $data = [
-            "company" => "required|min:3",
-            "businessType" => "required|min:3",
-            "title" => "required|min:3",
-            "contact" => "required|min:3",
-            "email" => "required|email",
-            "tel" => "required|min:8",
-            "address" => "required|min:3",
-            "discription" => "required|min:6"
+            "company" => "required|string|min:3",
+            "businessType" => "required|string|min:3",
+            "title" => "required|string|min:4",
+            "contact" => "required|string|min:3",
+            "email" => "required|string|email|unique:users,email|unique:customers,email",
+            "tel" => "required|string|numeric|min:8",
+            "address" => "required|string|min:4",
+            "discription" => "required|string|min:12",
+            "deals" => "required|string|min:6"
         ];
         
         if (request()->isMethod('patch') || request()->isMethod('put')) {

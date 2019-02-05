@@ -20,16 +20,17 @@ class CustomersController extends Controller
         'success' => []
     ];
     protected $customers;
+
     protected $formRoles = [
-            "company" => "required|min:3",
-            "businessType" => "required|min:3",
-            "title" => "required|min:4",
-            "contact" => "required|min:3",
-            "email" => "required|email|unique:users,email|unique:customers,email",
-            "tel" => "required|numeric|min:8",
-            "address" => "required|min:4",
-            "discription" => "required|min:12",
-            "deals" => "required|min:6"
+            "company" => "required|string|min:3",
+            "businessType" => "required|string|min:3",
+            "title" => "required|string|min:4",
+            "contact" => "required|string|min:3",
+            "email" => "required|string|email|unique:customers,email",
+            "tel" => "required|string|numeric|min:8",
+            "address" => "required|string|min:4",
+            "discription" => "required|string|min:12",
+            // "deals" => "required|string|min:6"
         ];
 	protected  $convetedMasseges = [
            "company" => "שם חברה",
@@ -112,30 +113,41 @@ class CustomersController extends Controller
        return response()->json($cost,200);
     }
 
+    protected function mapItems($files, $tar){
+        
+        $items = $this->customers->looper($files,'downloadFiles', $true = true)['downloaded'];
+        return $items;
+    }
     public function store(Request $request){
 
-        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         /****** grab and decode exissted objects *******/
         $files = $request->file('files');
-        $files = isset($files) && ! empty($files)? $files: false;
-
-        
+        $files = isset($files) && ! empty($files)? $this->customers->getFilesParams($files): false;
+        $method = $request->method();
+        // $filesToUdate = $request->file('files');
+        // $filesToUdate = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
 
         /****** decode objects *******/
         $formInputs = $request->only('formInputs');
-        $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($request['formInputs'], true): false;
+        // return ['formInputs' => $formInputs, "files" => $files];
+        $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($formInputs['formInputs'], true): false;
 
         /**** send message errors if rquires params not exisst ****/
         if(! $files || ! $formInputs){
-            $msg = "missing required parameters.";
-            return response()->json(['errors' => $msg, $formInputs, $files],200);
+            $badRequest = ['badRequest' => array(["request" => "missing data rquest"])];
+            return response()->json(['errors' => $badRequest],200);
         }
 
 
         /**** valadete before any task ****/
-        $afterValInputs = ($formInputs)? $this->validInputs(collect($formInputs)->except('loggo')):null;
-        $afterValFiles = (isset($files) && count($files))? $this->validatefiles($files, $formInputs): null;
+        $afterValInputs = ($formInputs)? $this->validInputs(collect($formInputs)->except('loggo'), $method):null;
+        // $afterValFiles = (isset($files) && count($files))? $this->mainValidation($files, [], []): null;
 
+        $valItems = ['store'=> $files];
+        $afterValFiles = $this->mainValidation($valItems, $method);//$filesToUdate, $filesTodelete, $customer
+        
+        // return ['afterValInputs' => $afterValInputs, "files" => $files];
 
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
             // return $this->messages;
@@ -154,58 +166,38 @@ class CustomersController extends Controller
             return response()->json(collect($customersDetails['errors'])->only('inputs'),200);
         }
         
-        $renemedFiles = $this->customers->getFilesParams($files);
 
         /***** download files before store into database *****/
         /***** check and return errors if any before store into database *****/
+        $filesKeys = array_keys($files);
+        $download = array_map([$this, 'mapItems'], $files, $filesKeys);
         
-        $download = $this->customers->downloadFiles($renemedFiles['files'],$true = true);
-        
-        
-        // return ['items' => $download, "formCallback" => $renemedFiles];
+        $downloaded = collect($download)->collapse();
+        // return ['download' => $downloaded, "files" => $files];
 
-        $downloaded = collect($download)->only('downloaded');
-        $filesTsave['image'] = json_encode($downloaded['downloaded']['gallery']);
-        $filesTsave['video'] = json_encode($downloaded['downloaded']['video']);
+        $filesTsave['image'] = json_encode($downloaded['gallery']);
+        $filesTsave['video'] = json_encode($downloaded['video']);
 
         /***** store form inputs customer into database *****/
-        if($filesTsave['image'] && $filesTsave['video'] && ! isset($download['errors'])){
+        if($filesTsave['image'] && $filesTsave['video']){
 
 
-            Customer::create($customersDetails);
-            $this->messages['customer'] = $customersDetails;
-            sleep(1);
-            $customer_id = Customer::where('email',$customersDetails['email'])->first()->id;
-            $filesTsave['customer_id'] = $customer_id;
+            // Customer::create($customersDetails);
+            // $this->messages['customer'] = $customersDetails;
+            // sleep(1);
+            // $customer_id = Customer::where('email',$customersDetails['email'])->first()->id;
+            // $filesTsave['customer_id'] = $customer_id;
             
             /***** store form filse customer into database *****/
-            Gallery::create($filesTsave);
+            // Gallery::create($filesTsave);
         }else{
             $message = ['files' => ['unexceptedErr' => "unexcepted server error."]];
             // array_push($this->messages['errors'], $message);
-            $this->customers->setMessages('errors', $key, $message);
+            $this->customers->setMessages('errors', "unexcepted", $message);
         } 
         
 
         /******* get and send back messages ******/
-        $msgs = [];
-
-        $haveMessagesErrors = (isset($download['errors']) && count($download['errors'])) ? true: false;
-        $haveMessagesSuccess =  (isset($download['success'])  && count($download['success'])) ? true: false;
-
-        if($haveMessagesErrors && $haveMessagesSuccess){
-            $msgs = ['errors' => $download['errors'], 'success' => $download['success']];
-        }else if($haveMessagesErrors){
-            $msgs['errors'] = $download['errors'];
-        }else if($haveMessagesSuccess){
-            $msgs['success'] = $download['success'];
-        }
-        
-
-        /*if($msgs && count($msgs)){
-            
-            return response()->json($this->responseMessages($msgs),200);
-        } */
         return response()->json($this->customers->getMessages(),200);
     }
 
@@ -219,34 +211,37 @@ class CustomersController extends Controller
         $same = ($customer->user_id === $user->id)? true:false;
         if(! $same) return response()->json(['error' => 'Unauthorized'], 401);
 
-        /****** grab and decode exissted objects *******/
+        /****** grab and procces existed uploaded files objects *******/
         $filesToUdate = $request->file('files');
-        $filesToUdate = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
-        // $renemedFiles = $this->customers->getFilesParams($filesToUdate);
+        $files = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
         
+        /****** decode objects *******/
         $filesTodelete = $request->only('filesToDelete');
         $filesTodelete = isset($filesTodelete) && ! empty($filesTodelete)? json_decode($request['filesToDelete'], true): [];
 
-        /****** decode objects *******/
         $formInputs = $request->only('formInputs');
         $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($request['formInputs'], true): [];
-        // return ["hhhjj" => $filesTodelete];
+
+        /***** if we have no data at all return ******/
+        if((! $files || empty($files)) && (! $filesTodelete || empty($filesTodelete)) && (! $formInputs || empty($formInputs))){
+            $badRequest = ['badRequest' => array(["request" => "missing data rquest"])];
+            return response()->json(['errors' => $badRequest],200);
+        }
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs($formInputs):null;
-        $afterValFiles = (1 > 2) && (isset($filesToUdate) && count($filesToUdate))? $this->validatefiles($filesToUdate): null;
-        $afterValDelFiles = $this->mainValidation($filesToUdate, $filesTodelete, $customer);
+
+        $valItems = ['update'=> $files, 'delete' => $filesTodelete, 'customer' => $customer];
+        $afterValDelFiles = ($files || $filesTodelete)? $this->mainValidation($valItems, request()->method()): null;
 
         
-        
-        if(!$afterValDelFiles || (! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
-            // return $this->messages;
+        if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValDelFiles && ! is_null($afterValDelFiles))){
+            
         	// return response()->json(collect($this->messages)->except('success'),200);
             return response()->json($this->customers->getMessages(),200);
         }
 
-        // return ["hhhjj" => $filesToUdate];
         /***** delete and update files *****/
-    	$UpFiles = ($filesToUdate || $filesTodelete)? $this->customers->updateFiles($filesToUdate, $customer, $filesTodelete): [];
+    	$UpFiles = ($files || $filesTodelete)? $this->customers->updateFiles($files, $customer, $filesTodelete): [];
         
         
         $formInputs = collect($formInputs)->except('company')->toArray();
@@ -263,12 +258,7 @@ class CustomersController extends Controller
     			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
         	}
         }
-        //if($inputsIsValidated) $customer->update($formInputs);
-        
-        /*if(isset($UpFiles['errors']) && count($UpFiles)){
-            
-            return response()->json($this->responseMessages($UpFiles),200);
-        } */
+        /******* get and send back messages ******/
         return response()->json($this->customers->getMessages(),200);
     }
 
@@ -284,7 +274,6 @@ class CustomersController extends Controller
         # have no update and delete
 
     # validations attributes
-
     # minFiles
         # min files allowed
     # maxFiles
@@ -305,7 +294,6 @@ class CustomersController extends Controller
         # file exisst in diroctry or database
 
     /**** validate min-maxFile example when request is update ****/
-
     # have to update and to delete
         # have to updat more than allowed
         # have to delete more than allowed
@@ -316,17 +304,33 @@ class CustomersController extends Controller
         # have to delete more than allowed
     # have no update and delete
 
-    private function mainValidation(array $upFiles = [], array $toDelFiles = [], object $customer){
+    private function mainValidation(array $files = [], string $requestMethod){
 
         $filesSize = 0;
         $valFils = [];
         $valFilsNames = [];
         $isValid = true;
+        $galFiles = [];
+        $upFiles = [];
+        // $upFiles = isset($files['update'])? $files['update']:($requestMethod == "POST" && isset($files['store']))? $files['store']: [];
 
-        $gals = $customer->gallery;
-        $galFiles = json_decode($gals['image'],true);
-        $video = json_decode($gals['video'],true);
-        $loggo = $customer->loggo;
+        if(isset($files['update']) && count($files['update'])){
+            $upFiles = $files['update'];
+
+        }else if(isset($files['store']) && count($files['store'])){
+            $upFiles = $files['store'];
+        }
+
+        $toDelFiles = isset($files['delete'])? $files['delete']: [];
+        $customer = isset($files['customer'])? $files['customer']: [];
+        
+        if($customer){
+            $gals = $customer->gallery;
+            $galFiles = json_decode($gals['image'],true);
+            $video = json_decode($gals['video'],true);
+            $loggo = $customer->loggo;
+        }
+        
 
         $upFilesKeys = $upFiles && count($upFiles)? array_keys($upFiles):false;
         $delFilesKeys = $toDelFiles && count($toDelFiles)? array_keys($toDelFiles):false;
@@ -345,30 +349,29 @@ class CustomersController extends Controller
         }
 
         # validate required ,fileSize ,fileType ,mimeType
-        $fileIsValid = count($valFils)? $this->validateItems($valFils['items'], $valFils['ruls']):"";
+        $fileIsValid = count($valFils)? $this->validateItems($valFils['items'], $valFils['ruls']): true;
         
         # validate filesMinMaxCharLen
-        $filesCharLenIsValid = count($valFilsNames)? $this->validateItems($valFilsNames['items'], $valFilsNames['ruls']): "";
+        $filesCharLenIsValid = count($valFilsNames)? $this->validateItems($valFilsNames['items'], $valFilsNames['ruls']): true;
 
         # validate files to delete exisst
             # files to deleted must be exist in dir and db
             # files uploaded must no exist in dir and db
-        $map['del'] = $this->maper($toDelFiles, 'isExist');
-        $map['up'] = $this->maper($upFiles, 'isExist');
+        $map['del'] = $toDelFiles? $this->maper($toDelFiles, 'isExist', $customer, 'delete'): [];
+        $map['up'] = $upFiles? $this->maper($upFiles, 'isExist', $customer, 'uploade'): [];
+        $this->customers->setMessages('errors', 'TEST357', $map);
 
         $statusDel = array_column($map['del'], 'status');
         $statusUp = array_column($map['up'], 'status');
 
         # before production need change status variable conditions to not oparator;
-        $existStatus = in_array(false, $statusDel) && in_array(true, $statusUp)? false: true;
+        $exist = in_array(false, $statusUp) || in_array(false, $statusDel)? false: true;//in_array(false, $statusDel) && 
 
 
         /**** validate min-maxFile ****/
         $minMaxfiles = $this->validateMinMaxFiles($upFiles, $toDelFiles, $galFiles);
-        $statusMinMax = array_column($minMaxfiles, 'status');
-        $minMaxStatus = in_array(false, $statusMinMax)? false: true;
-
-        $this->customers->setMessages('errors', "minMaxF", $minMaxfiles);
+        $minMaxStatus = $minMaxfiles['status'] && $requestMethod == "POST"? $minMaxfiles['allow_store']: $minMaxfiles['status'];
+        (! $minMaxStatus)? $this->customers->setMessages('errors', 'minMaxFile', $minMaxfiles): "";
 
         /**** validate total filesSizes ****/
         if($sizeEx = $filesSize? $this->sizeGratherThen($filesSize): 0){
@@ -377,17 +380,20 @@ class CustomersController extends Controller
             $isValid = false;
         }
 
-        (! $fileIsValid || ! $filesCharLenIsValid || ! $existStatus || ! $minMaxStatus)? $isValid = false: '';
-
+        (! $fileIsValid || ! $filesCharLenIsValid || ! $exist || ! $minMaxStatus)? $isValid = false: '';
+        $this->customers->setMessages('errors', "TEST379isValid", ['isValid' => $isValid]);
+        
         return $isValid;
     }
 
-    protected function isExist($target, $items, $exisstedFiles){
+    protected function isExist($target, $items, $exisstedFiles, string $typeFiles = ""){
         $arr = ['status' => true];
 
         foreach ($items as $key => $value) {
-            $item = isset($value['fullPath'])? $value['fullPath']: $value;
+            $item = isset($value['fullPath'])? $value['fullPath'].".".$value['ext']: $value;
             $file = isset($value['file'])? $value['file']: false;
+
+            $fileName = explode('/', $item)[count(explode('/', $item)) - 1];
 
             $itemDir = (string) $item;
             if(strpos($item, './assets/pages/customers/') !== false){
@@ -397,43 +403,58 @@ class CustomersController extends Controller
 
             $dir = $this->customers->fileExist($itemDir, $file);
             $db = in_array($item, $exisstedFiles);
-            $arr['status'] = (! $dir || ! $db)? false: '';
+
+            //(! $dir || ! $db)? $arr['status'] = false: '';
             $arr[$target][$item] = ['db' => $db, 'dir' => $dir];
-            // array_push($arr[$target], [$item => ['db' => $db, 'dir' => $dir]]);
+
+            //test
+            // $this->customers->setMessages('errors', $typeFiles, [$itemDir => ["dir" => $dir , "db" => $db]]);
+
+            if($typeFiles == 'delete' && (! $db || ! $dir)){ 
+                $msgNotExist = ['fileExist' => $fileName . " ". "הקובץ לא קיים במערכת."];
+                $this->customers->setMessages('errors', $target, $msgNotExist);
+                $arr['status'] = false;
+            }
+            if($typeFiles == 'uploade' && ($db || $dir)){ 
+                $msgExist = ['fileExist' => $fileName . " ". "קיים במערכת."];
+                $arr['status'] = false;
+                $this->customers->setMessages('errors', $target, $msgExist);
+            }
         }
         return $arr;
     }
 
-    protected function maper(array $files = [], $fn, array $galFiles = []){
+    protected function maper(array $files = [], $fn, $customer = false, string $typeFiles = ""){
 
         $filesKeys = $files && count($files)? array_keys($files):false;
-        $maperOb = $filesKeys? array_map(function($attrs) use($files, $fn, $galFiles){
+        $maperOb = $filesKeys? array_map(function($attrs) use($files, $fn, $customer, $typeFiles){
+            $arr = [];
+            if($customer){
+                $gals = $customer->gallery;
+                $arrItems = [
+                    'gallery' => json_decode($gals['image'],true),
+                    'loggo' => [$customer->loggo],
+                    'video' => json_decode($gals['video'],true)
+                ];
+                $arr = $arrItems[$attrs];
+            }
 
-            $items = isset($files[$attrs]) && count($files[$attrs])? $this->$fn($attrs, $files[$attrs], $galFiles): false;
-
+            $items = isset($files[$attrs]) && count($files[$attrs])? $this->$fn($attrs, $files[$attrs], $arr, $typeFiles): ["no-data"];
             return $items;
 
         }, $filesKeys): [];
 
-        if($arr = count(array_keys($maperOb, false))){
+        if($arr = count(array_keys($maperOb, "no-data"))){
             $maperOb = array_splice($maperOb, $arr);
         }
 
         if($maperOb && count($maperOb) && ! empty($maperOb)) return $maperOb;
     }
 
-    protected function getValidationProps(string $target, array $items = [], $galFiles){
+    protected function getValidationProps(string $target, array $items = [], array $galFiles = [], string $typeFiles = ""){
 
         $data = [
-            'fileSize' => 0,
-            'valFils' => [
-                'items' => [],
-                'ruls' => []
-            ],
-            'valFilsNames' => [
-                'items' => [],
-                'ruls' => []
-            ]
+            'fileSize' => 0
         ];
 
         foreach ($items as $key => $value) {
@@ -441,12 +462,6 @@ class CustomersController extends Controller
             $file = (object) $value['file'];
             $target = (string) $value['target'];
             $fullPath =  (string) $value['fullPath'];
-
-            $item[$fullPath] = $file;
-            $FilesRuls[$fullPath] = ($target == "loggo")? $this->filesRules['gallery']: $this->filesRules[$target];
-
-            $itemName[$fullPath] = $fullPath;
-            $FilesNameRuls[$fullPath] = $this->conFilesAttr[$target]['ruls'];
             
             $data['valFils']['items'][$fullPath] = $file;
             $data['valFils']['ruls'][$fullPath] = ($target == "loggo")? $this->filesRules['gallery']: $this->filesRules[$target];
@@ -455,30 +470,34 @@ class CustomersController extends Controller
             $data['valFilsNames']['ruls'][$fullPath] = $this->conFilesAttr[$target]['ruls'];
 
             $data['fileSize'] = $data['fileSize'] + filesize($file);
-            /*if(is_callable($cBFn)){
-
-                if($delimiter && $delimiter && ($key + 1) == $delimiter) return $cBFn($value);
-                $cBFn($value);
-            }*/
         }
         return $data;
     }
 
     private function validateMinMaxFiles(array $upFiles = [], array $toDelFiles = [], array $galFiles = []){
 
-        $isValid = true;
         $validationsItems = ['gallery', 'video', 'loggo'];
 
-        $delFIlesMap = array_map(function($target) use($upFiles, $toDelFiles, $galFiles){
-            $cUpfiles = isset($upFiles[$target])? $upFiles[$target]: [];
-            $cDelFiles = isset($toDelFiles[$target])? $toDelFiles[$target]: [];
+        $filesMaper = array_map(function($target) use($upFiles, $toDelFiles, $galFiles){
+            $cUpfiles = isset($upFiles[$target]) && count($upFiles[$target])? $upFiles[$target]: [];
+            $cDelFiles = isset($toDelFiles[$target]) && count($toDelFiles[$target])? $toDelFiles[$target]: [];
 
-            $maxFiles = $this->minMaxFiles($target, $cUpfiles, $cDelFiles, $galFiles);
+            $minMax = ($cUpfiles || $cDelFiles)? $this->minMaxFiles($target, $cUpfiles, $cDelFiles, $galFiles): false;
+            (! $minMax)? $minMax['allow_store'] = false:"";
 
-            return $maxFiles;//['valStatus' => $maxFiles, $target => ['upFile' => $cUpfiles, 'delFile' => $cDelFiles]];
+            return $minMax;
 
         }, $validationsItems);
-        return $delFIlesMap;
+
+        $columnStatus = array_column($filesMaper, "status");
+        $columnStore = array_column($filesMaper, "allow_store");
+
+        $filesMaper = collect($filesMaper)->collapse();
+
+        $filesMaper['status'] = in_array(false, $columnStatus)? false: true;
+        $filesMaper['allow_store'] = !$filesMaper['status'] || in_array(false, $columnStore)? false: true;
+
+        return $filesMaper;
     }
 
     protected function minMaxFiles($target, array $upFiles = [], array $delFiles = [], array $galFiles = []){
@@ -488,68 +507,53 @@ class CustomersController extends Controller
         $isValid = true;
         $countedUpfiles = count($upFiles);
         $countedDelfiles = count($delFiles);
-        $msgs = ['status' => true];
+        $countedGalfiles = count($galFiles);
+        $msgs = [];
 
         if($isLoggoOrVideo){
-            /*** min ***/
-            if(($countedUpfiles && ! $countedDelfiles) || (! $countedUpfiles && $countedDelfiles) || ($countedDelfiles > 1)){
-                $convertedMsg = $this->conFilesAttr[$target]["name"] . ": חייב להכיל קובץ " .$this->conFilesAttr[$target]["type"] . " " .$this->conFilesAttr[$target]['minMaxFiles']["min"] . " לפחות";
+            
+            if($countedGalfiles && (($countedUpfiles && ! $countedDelfiles) || (! $countedUpfiles && $countedDelfiles) || ($countedDelfiles > 1))){
+                $convertedMsg = $this->conFilesAttr[$target]["name"] 
+                . ": חייב להכיל קובץ " 
+                .$this->conFilesAttr[$target]["type"] . " " .$this->conFilesAttr[$target]['minMaxFiles']["min"] 
+                . " לפחות";
                 $isValid = false;
             }else if(($countedUpfiles > 1)){
-                $convertedMsg = $this->conFilesAttr[$target]["name"] . ": יכול להכיל " . $this->conFilesAttr[$target]['minMaxFiles']["max"]." קבצי ".$this->conFilesAttr[$target]["type"]  . " בלבד.";
+                $convertedMsg = $this->conFilesAttr[$target]["name"] 
+                . ": יכול להכיל " 
+                . $this->conFilesAttr[$target]['minMaxFiles']["max"]
+                ." קבצי "
+                .$this->conFilesAttr[$target]["type"]  
+                . " בלבד.";
                 $isValid = false;
             }
         }else if($target == "gallery"){
 
-             $totalItemsGal = ((count($galFiles) + $countedUpfiles) - $countedDelfiles);
+             $totalItemsGal = (($countedGalfiles + $countedUpfiles) - $countedDelfiles);
             if($totalItemsGal < 3){
                 
-                $convertedMsg = $this->conFilesAttr[$target]["name"] . ": חייב להכיל קובץ " .$this->conFilesAttr[$target]["type"] . " " .$this->conFilesAttr[$target]['minMaxFiles']["min"] . " לפחות";
+                $convertedMsg = $this->conFilesAttr[$target]["name"] .": "
+                . "חייב להכיל " 
+                .$this->conFilesAttr[$target]['minMaxFiles']["min"]
+                . " קבצי "
+                .$this->conFilesAttr[$target]["type"] 
+                . " לפחות";
                 $isValid = false;
             }else if($totalItemsGal > 12){
                 
-                $convertedMsg = $this->conFilesAttr[$target]["name"] . ": יכול להכיל " . $this->conFilesAttr[$target]['minMaxFiles']["max"]." קבצי ".$this->conFilesAttr[$target]["type"]  . " בלבד.";
+                $convertedMsg = $this->conFilesAttr[$target]["name"] 
+                . ": יכול להכיל " 
+                . $this->conFilesAttr[$target]['minMaxFiles']["max"]
+                ." קבצי "
+                .$this->conFilesAttr[$target]["type"]  
+                . " בלבד.";
                 $isValid = false;
             }
         }
-        $status = $countedUpfiles && $countedDelfiles && $isValid? true: false;
-        $msgs[$target] = ! $status? 'no_data': $isValid;
-        $msgs['status'] = $status;
-
+        ! $isValid? $msgs['status'] = false:"";
+        $msgs[$target] = $isValid;
         ! $isValid? $this->customers->setMessages('errors', $target, $convertedMsg): "";
         return $msgs;
-    }
-
-    private function responseMessages($msgs){
-        $messagesTosend = [];
-        $messagesTosend['errors'] = isset($msgs['errors']) && count($msgs['errors'])? $this->whileMsgs($this->messages['errors'], $msgs['errors']): $this->messages['errors'];
-        $messagesTosend['success'] = isset($msgs['success']) && count($msgs['success'])? $this->whileMsgs($this->messages['success'], $msgs['success']): $this->messages['success'];
-        return $messagesTosend;
-    }
-
-    private function whileMsgs($firstMsgs, $secondMsgs){
-
-    	$msgsArr = [
-    		$firstMsgs,
-    		$secondMsgs
-    	];
-    	$msgsReturn = [];
-
-    	if(empty($firstMsgs)) return $secondMsgs;
-    	
-    	while ($msgsCurrent = current($msgsArr)) {
-
-    		foreach ($msgsCurrent as $key => $value) {
-    			
-    			if(count($msgsCurrent[$key])){
-
-    				(isset($msgsReturn[$key]) && count($msgsReturn[$key]))? array_push($msgsReturn[$key], $msgsCurrent[$key]): $msgsReturn[$key] = $msgsCurrent[$key];
-    			}
-    		}
-    		next($msgsArr);
-    	}
-
-    	return $msgsReturn;
     }
 
     public function destroy(Request $request, $id){
@@ -563,14 +567,14 @@ class CustomersController extends Controller
 
     }
 
-    private function validInputs($inputes){
+    private function validInputs($inputes, $method){
 
     	$myRequest = [];
         $newValRole = [];
         $massegeSuccess = [];
        
     	foreach($inputes as $key => $value) {
-
+            //if($key == "email") {continue;}
             if(! isset($this->formRoles[$key])) {
                 return response()->json(['errors' => $key . " dos not exisst in our system"],200);
             }
@@ -578,16 +582,11 @@ class CustomersController extends Controller
             $myRequest[$key] = $value;
             $newValRole[$key] = $this->formRoles[$key];
             $massegeSuccess[$key] = $this->convetedMasseges[$key] . " עודכן בהצלחה.";
-            // if(! isset($this->messages["success"][$key])) $this->messages["success"][$key] = [];
-            $message = [$key => $massegeSuccess[$key]];
-            // array_push($this->messages["success"][$key], $message);
-
-            $this->customers->setMessages('success', $key, $message);
+            $this->customers->setMessages('success', $key, $massegeSuccess[$key]);
         }
     	
-        $val = $this->validateItems($myRequest, $newValRole);
-        
-        // array_push($this->masseges["success"], $massegeSuccess);
+        $val = ($method == "POST")? $this->validateItems($myRequest, $this->formRoles):
+                                    $this->validateItems($myRequest, $newValRole);
         return $val;
     }
 
@@ -600,7 +599,7 @@ class CustomersController extends Controller
     	]);
     	
         if($valFiles->fails()) {
-            $msgs = $this->prityMessges($valFiles->errors()->all());
+            $this->prityMessges($valFiles->errors()->all());
             return false;
         }
         return true;
@@ -618,68 +617,42 @@ class CustomersController extends Controller
     		$targetLoggo = $this->getTarget($value, 'loggo')? 'loggo': false;
             $targetVideo = $this->getTarget($value, 'video')? 'video':false;
             $targetGallery =  $this->getTarget($value, 'gallery')? 'gallery':false;
-
+            $target;
+            $message;
 
             if($targetLoggo){
-                $fNameAndMsg = explode($targetLoggo.'/', $value)[1];
 
+                $target = $targetLoggo;
+                $fNameAndMsg = explode($targetLoggo.'/', $value)[1];
                 $fName = explode(' ', $fNameAndMsg)[0];
                 $msg = explode($fName, $fNameAndMsg)[1];
-
                 $message = [$targetLoggo => $fName . $msg];
+            }else if($targetVideo){
 
-                $this->customers->setMessages('errors', $targetLoggo, $message);
-            }
+                $target = $targetVideo;
 
-            if($targetVideo){
                 $fNameAndMsg = explode($targetVideo.'/', $value)[1];
-
                 $fName = explode(' ', $fNameAndMsg)[0];
                 $msg = explode($fName, $fNameAndMsg)[1];
 
                 $message = [$targetVideo => $fName . $msg];
+            }else if($targetGallery){
 
-                $this->customers->setMessages('errors', $targetVideo, $message);
-            }
-
-            if($targetGallery){
+                $target = $targetGallery;
                 $fNameAndMsg = explode($targetGallery.'/', $value)[1];
-                // $fNameAndMsg = trim($fNameAndMsg);
-                $fName = explode(' ', $fNameAndMsg)[0];
+                $fName = explode(' ', $fNameAndMsg)[1];
                 $msg = explode($fName, $fNameAndMsg)[1];
-
                 $message = [$targetGallery => $fName . $msg];
+            }else{
 
-                $this->customers->setMessages('errors', $targetGallery, $message);
+                $exp = explode('The ', $value);
+                $targetAttr = explode(' ', $exp[1])[0];
+                $target = $targetAttr;
+                $message = $exp[1];
             }
-            /*
-            return;
-    		$inputsTarget = (strpos($value , 'target=') !== false)? explode('target=', $value)[1]:false;
-
-            $this->customers->setMessages('errors', $key, $value);
-
-    		if($target){
-
-    			$target = explode('/', $value)[2];
-    			$fNname = explode($target.'/', $value)[1];
-    			
-    		}else if($inputsTarget){
-    			
-    			$target = explode(' ', $inputsTarget)[0];
-    			$fNname = explode($target.' ', $value)[1];
-    			if(isset($this->messages['success'][$target])) unset($this->messages['success'][$target]);
-    		}else{
-    			$target = "שגיאה";
-    			$fNname = " שגיאה בלתי צפוייה בדוק ערכים שנשלחו";
-    		}
-
-    		$message = [$target => $fNname];
-			// if(! isset($this->messages["errors"][$target])) $this->messages["errors"][$target] = [];
-			// array_push($this->messages["errors"][$target],$message);
-            $this->customers->setMessages('errors', $key, $message);*/
+            ($target)? $this->customers->setMessages('errors', $target, $message): '';
     	}
 	}
-	
     	
 
 	private function sizeGratherThen($size)
@@ -691,8 +664,38 @@ class CustomersController extends Controller
 	    $roundedeSize = round($size/pow(1024, $e), 1, PHP_ROUND_HALF_EVEN);
 	    $pow = pow(1024, 2) * 6;
         $isBig =  $size > $pow;
-        $this->customers->setMessages('success', 'TESTsize', ['pow' => $pow, 'size' => $size, 'size/pow(1024, mathLog)' => $roundedeSize, 'mathLog' => log($size, 1024)]);
 	    return $isBig? $roundedeSize . $s[$e]:false;
 	}
+    private function responseMessages($msgs){
+        $messagesTosend = [];
+        $messagesTosend['errors'] = isset($msgs['errors']) && count($msgs['errors'])? $this->whileMsgs($this->messages['errors'], $msgs['errors']): $this->messages['errors'];
+        $messagesTosend['success'] = isset($msgs['success']) && count($msgs['success'])? $this->whileMsgs($this->messages['success'], $msgs['success']): $this->messages['success'];
+        return $messagesTosend;
+    }
 
+    private function whileMsgs($firstMsgs, $secondMsgs){
+
+        $msgsArr = [
+            $firstMsgs,
+            $secondMsgs
+        ];
+        $msgsReturn = [];
+
+        if(empty($firstMsgs)) return $secondMsgs;
+        
+        while ($msgsCurrent = current($msgsArr)) {
+
+            foreach ($msgsCurrent as $key => $value) {
+                
+                if(count($msgsCurrent[$key])){
+
+                    (isset($msgsReturn[$key]) && count($msgsReturn[$key]))? array_push($msgsReturn[$key], $msgsCurrent[$key]): $msgsReturn[$key] = $msgsCurrent[$key];
+                }
+            }
+            next($msgsArr);
+        }
+
+        return $msgsReturn;
+    }
 }
+
