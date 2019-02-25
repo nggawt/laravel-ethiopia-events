@@ -77,17 +77,29 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
-        $user = auth()->user();
-
-        return response()->json([
-            'user' => [
-                'name' => $user->name,
-                'id' => $user->id,
-                'email' => $user->email
-            ],
+        
+        return [
+            'user' => $this->getUser(),
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
-        ]);
+        ];
+    }
+
+    private function getUser(){
+
+        $user = auth()->user();
+        $customer = $user->customer;
+
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'tel' => $user->tel,
+            'about' => $user->about,
+            'area' => $user->area,
+            'city' => $user->city,
+            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false
+        ];
     }
 }

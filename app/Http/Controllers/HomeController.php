@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return User::all();
-        return view('home');
+        
     }
 }

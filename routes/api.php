@@ -41,7 +41,8 @@ Route::group([
 
 ], function () {
 	// Route::post('getlogin', 'UserController@getLogin');
-	Route::post('store', 'UserController@store');
+    Route::post('store', 'UserController@store');
+	// Route::get('events', 'ScheduleEventController@index');
     Route::post('isauth', 'UserController@getUserLogged');
     Route::delete('users/{id}', 'UserController@destroy');
 
@@ -49,5 +50,6 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::resource('customers','CustomersController');
+    Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
+    Route::resource('customers','CustomersController')->except(['create', 'edit']);
 });

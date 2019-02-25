@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use App\Customer;
-use Carbon\Carbon;
 
 class CustomerTableSeeder extends Seeder
 {

@@ -18,20 +18,12 @@ class UserController extends Controller
 
     public function getUserLogged()
     {
-        //$credentials = request(['email', 'password']);
-        //return $request->all();
-        $user = [];
-        if(Auth::check()){
-            $autUser = Auth::user();
 
-            $user = [
-                'name' => $autUser->name,
-                'id' => $autUser->id,
-                'email' => $autUser->email
-            ];
+        if($status = Auth::check()){
+            return response()->json(['status' => $status, 'user' => $this->getUser()],200);
         } 
-        
-        return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):response()->json(['status' => Auth::check()],200);
+        return response()->json(['status' => $status],200);
+        // return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):
         // return $this->respondWithToken($token);
     }
     
@@ -66,10 +58,10 @@ class UserController extends Controller
             'email' => 'required|string|email',
             'password' => 'required|string|min:6',
             'passwordConfirm' => 'required|string|same:password',
-            'city' => 'min|string:3',
+            'city' => 'min:3|string',
             'area' => 'required|string|min:3',
-            'about' => 'min|string:6',
-            'tel' => 'digits_between|string:9,10',
+            'about' => 'min:12|string',
+            'tel' => 'digits_between:8,10',
         ]);
         $credentials = request(['email', 'password']);
         // $req['password'] =  bcrypt($req['password']);
@@ -104,17 +96,29 @@ class UserController extends Controller
 
     protected function respondWithToken($token)
     {
-        $user = auth()->user();
-
+        
         return [
-            'user' => [
-                'name' => $user->name,
-                'id' => $user->id,
-                'email' => $user->email
-            ],
+            'user' => $this->getUser(),
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
+        ];
+    }
+
+    private function getUser(){
+
+        $user = auth()->user();
+        $customer = $user->customer;
+
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'tel' => $user->tel,
+            'about' => $user->about,
+            'area' => $user->area,
+            'city' => $user->city,
+            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false
         ];
     }
  
