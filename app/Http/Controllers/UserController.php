@@ -109,6 +109,7 @@ class UserController extends Controller
 
         $user = auth()->user();
         $customer = $user->customer;
+        $events = $user->events;
 
         return [
             'id' => $user->id,
@@ -118,7 +119,8 @@ class UserController extends Controller
             'about' => $user->about,
             'area' => $user->area,
             'city' => $user->city,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false
+            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
+            'events' => $events? $events: false
         ];
     }
  

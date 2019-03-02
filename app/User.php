@@ -52,4 +52,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne('App\Customer');
     }
+
+    public function events()
+    {
+        return $this->hasMany('App\ScheduleEvent');
+    }
 }
