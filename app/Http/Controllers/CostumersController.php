@@ -118,6 +118,7 @@ class CustomersController extends Controller
         $items = $this->customers->looper($files,'downloadFiles', $true = true)['downloaded'];
         return $items;
     }
+
     public function store(Request $request){
 
         if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
@@ -203,6 +204,7 @@ class CustomersController extends Controller
 
     public function update(Request $request, $id){
         
+        if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         /****** declare all variables *******/
         $reqMethod = request()->isMethod('patch') || request()->isMethod('put');
         $customer = Customer::find($id);

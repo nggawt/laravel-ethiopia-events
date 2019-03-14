@@ -8,6 +8,7 @@ use Illuminate\Http\File;
 use App\Customer;
 use App\Gallery;
 use App\User;
+use App\Repo\traits\Messages;
 use Validator;
 
 
@@ -17,19 +18,8 @@ use Validator;
 class CustomersRepo 
 {
 	// private $customer;
-    protected  $messages = [
-                /*'errors' => [
-                    'gallery' => [],
-                    'loggo' => [],
-                    'video' => [],
-                    'inputs' => []
-                ],
-                'success' => [
-                    'gallery' => [],
-                    'loggo' => [],
-                    'video' => []
-                ]*/
-    ];
+    
+    use Messages;
     protected $dataUrl = "./assets/pages/customers/";
 
 	function __construct(/*Customer $customer*/)
@@ -61,6 +51,7 @@ class CustomersRepo
             }
             $imgs = $value->gallery->image;
             $vids = $value->gallery->video;
+            $evt = $value->user->events;
             $en = [
                 "customer" => [
                     'id' => $value->id,
@@ -80,7 +71,8 @@ class CustomersRepo
                 "gallery" => [
                     'image' => $imgs?json_decode($imgs):[],
                     'video' => $vids?json_decode($vids):[]
-                ]
+                ],
+                "events" => $evt
             ];
             
             
@@ -112,17 +104,17 @@ class CustomersRepo
 		return ($hasErrors)? $this->messages:$inputs;
     }
 
-    public function setMessages($type, $target, $message){
+    // public function setMessages($type, $target, $message){
 
-        if(! isset($this->messages[$type])) $this->messages[$type] = [];
-        if(! isset($this->messages[$type][$target])) $this->messages[$type][$target] = [];
+    //     if(! isset($this->messages[$type])) $this->messages[$type] = [];
+    //     if(! isset($this->messages[$type][$target])) $this->messages[$type][$target] = [];
 
-        array_push($this->messages[$type][$target], $message);
-    }
+    //     array_push($this->messages[$type][$target], $message);
+    // }
 
-    public function getMessages(){
-        return $this->messages;
-    }
+    // public function getMessages(){
+    //     return $this->messages;
+    // }
 
     public function getFilesParams($files, $callBack = false, $delimiter = false){
         
