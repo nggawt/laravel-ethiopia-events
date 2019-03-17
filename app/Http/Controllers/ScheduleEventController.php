@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\ScheduleEvent;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreEvents;
 use App\Repo\traits\Messages;
+use App\ScheduleEvent;
+use Illuminate\Http\Request;
 
 class ScheduleEventController extends Controller
 {
     use Messages;
     private $itemsRule = [
-        "name" => "required|string|min:3|email|max:7",
+        "name" => "required|string|min:3",//|email|max:7",
         "eventType" => "required|string|min:3",
         "date" => "required",//|numric|exact:10
         "email" => "required",
@@ -51,10 +51,15 @@ class ScheduleEventController extends Controller
     public function store(Request $request)
     {
         if(! (\Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
+        
+        $req = $request->all();
+        $val = $this->valInputs($req);
 
-        $val = $this->valInputs($request->all());
-        //if(! $val) 
-            return $this->getMessages();
+        if(! $val) return $this->getMessages();
+        $req['user_id'] = auth()->user()->id;
+        ScheduleEvent::create($req);
+
+        return response()->json($this->getMessages(), 200);
     }
 
     /**
@@ -64,10 +69,22 @@ class ScheduleEventController extends Controller
      * @param  \App\ScheduleEvent  $scheduleEvent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ScheduleEvent $scheduleEvent)
+    public function update(Request $request, ScheduleEvent $scheduleEvent, $id)
     {
         if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
-        return ["updated" => $request->all()];
+        $requestAll = $request->all();
+
+        // $isBadRequest = $this->badRequest(collect($requestAll)->except('_method'));
+        // if($isBadRequest) return response()->json($this->getMessages(), 200);
+
+        $rules = collect($this->itemsRule)->intersectByKeys($requestAll)->toArray();
+        $items = collect($requestAll)->intersectByKeys($this->itemsRule)->toArray();
+        $isValid = $this->valInputs($items, $rules);
+
+        if(! $isValid) return $this->getMessages();
+        $scheduleEvent->find($id)->update($items);
+        //$scheduleEvent->update($items);
+        return response()->json($this->getMessages(), 200);
         
     }
 
@@ -84,22 +101,18 @@ class ScheduleEventController extends Controller
         return ['dd' => $scheduleEvent::find($id)];
     }
 
-    protected function valInputs(array $inputs = []){
+    protected function valInputs(array $inputs = [], array $rules = []){
 
-        $keys = array_keys($this->itemsRule);
-        $iputCollect = collect($inputs)->except($keys);
+        $isBadRequest = $this->badRequest($inputs);
+        if($isBadRequest) return false;
+        return $this->isValid($inputs, $rules);
+    }
 
-        if(count($iputCollect)){
-            $msg = "Blocked User";
-
-            $msg = [key($iputCollect->toArray()) => $msg];
-            $this->setMessages('errors', key($iputCollect->toArray()), $msg);
-            return false;
-        }
-
-        $validator = \Validator::make($inputs, $this->itemsRule);
+    private function isValid(array $inputs = [], array $rules = []){
+        $rules = count($rules)? $rules: $this->itemsRule;
+        $validator = \Validator::make($inputs, $rules);
         $validator->fails()? $this->getErrorsMessages($validator): $this->getSuccessMessages($inputs);
-
+        return true;
         return $validator->fails()? false:true;
     }
 
@@ -121,5 +134,19 @@ class ScheduleEventController extends Controller
             $msg = [$key => "עודכן בהצלחה"];
             $this->setMessages('success', $key, $msg);
         }
+    }
+
+    private function badRequest($inp){
+        $keys = array_keys($this->itemsRule);
+        $iputCollect = collect($inp)->except($keys);
+
+        if($iputCollect->count()){
+            $msg = "Blocked User";
+
+            $msg = [key($iputCollect->toArray()) => $msg];
+            $this->setMessages('errors', key($iputCollect->toArray()), $msg);
+            return true;
+        }
+        return false;
     }
 }
