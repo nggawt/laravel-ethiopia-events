@@ -43,13 +43,16 @@ Route::group([
 	// Route::post('getlogin', 'UserController@getLogin');
     Route::post('store', 'UserController@store');
 	// Route::get('events', 'ScheduleEventController@index');
-    Route::post('isauth', 'UserController@getUserLogged');
-    Route::delete('users/{id}', 'UserController@destroy');
+    Route::post('authUser', 'UserController@getUserLogged');
+    Route::patch('users/{user}/change_password', 'UserController@changePassword');
+    Route::patch('users/{user}/change_email', 'UserController@changeEmail');
+    Route::delete('users/{user}', 'UserController@destroy');
 
-    Route::post('login', 'AuthController@login');
+    // Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
     Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
     Route::resource('customers','CustomersController')->except(['create', 'edit']);
+    Auth::routes();
 });

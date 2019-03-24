@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreEvents;
+use App\Mail\Event_created;
 use App\Repo\traits\Messages;
 use App\ScheduleEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduleEventController extends Controller
 {
     use Messages;
+
     private $itemsRule = [
         "name" => "required|string|min:3",//|email|max:7",
         "eventType" => "required|string|min:3",
@@ -50,15 +53,18 @@ class ScheduleEventController extends Controller
      */
     public function store(Request $request)
     {
-        if(! (\Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
+        if(! (Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
         
         $req = $request->all();
         $val = $this->valInputs($req);
 
         if(! $val) return $this->getMessages();
         $req['user_id'] = auth()->user()->id;
-        ScheduleEvent::create($req);
+        // ScheduleEvent::create($req);
 
+        \Mail::to('nggawt100@gmail.com')->send(
+            new Event_created($req)
+        );
         return response()->json($this->getMessages(), 200);
     }
 
@@ -69,9 +75,10 @@ class ScheduleEventController extends Controller
      * @param  \App\ScheduleEvent  $scheduleEvent
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ScheduleEvent $scheduleEvent, $id)
+    public function update(Request $request, ScheduleEvent $event)
     {
-        if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        
         $requestAll = $request->all();
 
         // $isBadRequest = $this->badRequest(collect($requestAll)->except('_method'));
@@ -82,8 +89,8 @@ class ScheduleEventController extends Controller
         $isValid = $this->valInputs($items, $rules);
 
         if(! $isValid) return $this->getMessages();
-        $scheduleEvent->find($id)->update($items);
-        //$scheduleEvent->update($items);
+        // $scheduleEvent->find($id)->update($items);
+        $event->update($items);
         return response()->json($this->getMessages(), 200);
         
     }
@@ -94,11 +101,11 @@ class ScheduleEventController extends Controller
      * @param  \App\ScheduleEvent  $scheduleEvent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ScheduleEvent $scheduleEvent, $id)
+    public function destroy(ScheduleEvent $event)
     {
-        if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         
-        return ['dd' => $scheduleEvent::find($id)];
+        return ['dd' => $event->delete()];
     }
 
     protected function valInputs(array $inputs = [], array $rules = []){
@@ -111,30 +118,12 @@ class ScheduleEventController extends Controller
     private function isValid(array $inputs = [], array $rules = []){
         $rules = count($rules)? $rules: $this->itemsRule;
         $validator = \Validator::make($inputs, $rules);
-        $validator->fails()? $this->getErrorsMessages($validator): $this->getSuccessMessages($inputs);
-        return true;
+        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages($inputs);
+        //return true;
         return $validator->fails()? false:true;
     }
 
-    private function getErrorsMessages($validator){
-
-        foreach ($validator->errors()->get("*") as $key => $value) {
-
-            foreach ($value as $message) {
-                $msg = [$key => $message];
-                $this->setMessages('errors', $key, $msg);
-            }
-        }
-    }
-
-    private function getSuccessMessages(array $inputs = []){
-
-        foreach ($inputs as $key => $value) {
-
-            $msg = [$key => "עודכן בהצלחה"];
-            $this->setMessages('success', $key, $msg);
-        }
-    }
+    
 
     private function badRequest($inp){
         $keys = array_keys($this->itemsRule);

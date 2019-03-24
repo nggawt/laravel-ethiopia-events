@@ -17,4 +17,24 @@ trait Messages{
     public function getMessages(){
         return $this->messages;
     }
+
+    protected function setErrorsMessages($validator){
+
+        foreach ($validator->errors()->get("*") as $key => $value) {
+
+            foreach ($value as $message) {
+                $msg = [$key => $message];
+                $this->setMessages('errors', $key, $msg);
+            }
+        }
+    }
+
+    protected function setSuccessMessages(array $inputs = []){
+
+        foreach ($inputs as $key => $value) {
+
+            $msg = [$key => "עודכן בהצלחה"];
+            $this->setMessages('success', $key, $msg);
+        }
+    }
 }

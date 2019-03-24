@@ -25,7 +25,7 @@ Route::get('/', function () {
 // 	   return ['status'=>'success'];
 // 	});
 // });
-Auth::routes();
+// Auth::routes();
 //Route::post('/login', 'UserController@getLogin')->name('login');
 //Route::get('/customers', 'CustomerController@index')->name('customers');
 

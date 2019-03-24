@@ -140,7 +140,6 @@ class CustomersController extends Controller
             return response()->json(['errors' => $badRequest],200);
         }
 
-
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs(collect($formInputs)->except('loggo'), $method):null;
         // $afterValFiles = (isset($files) && count($files))? $this->mainValidation($files, [], []): null;
@@ -148,7 +147,6 @@ class CustomersController extends Controller
         $valItems = ['store'=> $files];
         $afterValFiles = $this->mainValidation($valItems, $method);//$filesToUdate, $filesTodelete, $customer
         
-        // return ['afterValInputs' => $afterValInputs, "files" => $files];
 
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
             // return $this->messages;

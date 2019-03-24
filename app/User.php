@@ -19,10 +19,7 @@ class User extends Authenticatable implements JWTSubject
         'name', 'email', 'password', 'tel', 'area', 'about', 'city'
     ];
 
-    protected function setPasswordAttribute($value){
-
-        $this->attributes['password'] = bcrypt($value);
-    }
+    
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,6 +35,10 @@ class User extends Authenticatable implements JWTSubject
         return $this->getKey();
     }
 
+    // protected function setPasswordAttribute($value){
+
+    //     $this->attributes['password'] = bcrypt($value);
+    // }
     /**
      * Return a key value array, containing any custom claims to be added to the JWT.
      *
@@ -56,5 +57,10 @@ class User extends Authenticatable implements JWTSubject
     public function events()
     {
         return $this->hasMany('App\ScheduleEvent');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
 }
