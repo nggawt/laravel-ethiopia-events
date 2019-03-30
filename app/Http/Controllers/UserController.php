@@ -64,32 +64,50 @@ class UserController extends Controller
             'email' => $this->user_ruls['email'],
             'currentPassword' => $this->user_ruls['password'],
             'newPassword' => $this->user_ruls['password'],
-            'passwordConf' => $this->user_ruls['passwordConfirm']
+            'passwordConf' => 'required|string|same:newPassword'
         ];
 
         $items = collect($req->all())->intersectByKeys($ruls)->toArray();
 
-        $isValid = $this->isValid($items, $ruls);
+        $isValid = $this->isValid($items, $ruls, 'newPassword');
 
         if(! $isValid) return response()->json($this->getMessages(), 200);
         
         $hasMatch =  \Hash::check($req->only('currentPassword')['currentPassword'], $user->password);
 
         if($user->email == $req['email'] && $hasMatch){
-            return response()->json(["user" => $user, "passwordMatch" => $hasMatch], 200);
+            return response()->json($this->getMessages(), 200);
+            return response()->json(["user" => $user, "passwordMatch" => $hasMatch, "messages" => $this->getMessages()], 200);
         }
         return response()->json($this->getMessages(), 200);
     }
     
     public function changeEmail(User $user, Request $req){
-        return ["user" => $user];
+
+        $ruls = [
+            'currentEmail' => $this->user_ruls['email'],
+            'newEmail' => $this->user_ruls['email'],
+            'passwordEmail' => $this->user_ruls['password'],
+        ];
+
+        $items = collect($req->all())->intersectByKeys($ruls)->toArray();
+
+        $isValid = $this->isValid($items, $ruls, 'newEmail');
+
+        if(! $isValid) return response()->json($this->getMessages(), 200);
+
+        if($user->email == $req['email']){
+            return response()->json(["user" => $user, "messages" => $this->getMessages()], 200);
+        }
+        return response()->json($this->getMessages(), 200);
     }
 
     
-    private function isValid(array $inputs = [], array $rules = []){
+    private function isValid(array $inputs = [], array $rules = [], $item){
         $rules = count($rules)? $rules: $this->itemsRule;
         $validator = \Validator::make($inputs, $rules);
-        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages($inputs);
+
+        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages([$item => $inputs[$item]]);
         //return true;
         return $validator->fails()? false:true;
     }

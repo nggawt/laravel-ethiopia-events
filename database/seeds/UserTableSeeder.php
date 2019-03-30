@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
             "city" =>"אשקלון, ההסתדרות 40 (קניון לב אשקלון)",
             "about" => "ארמונות לב המחודשים 2012",
             "tel" => "08-6640450",
-            "password" => "qweqwe"
+            "password" => bcrypt("qweqwe")
         ]);
 
        User::create([
@@ -32,7 +32,7 @@ class UserTableSeeder extends Seeder
             "area" => "שפלה",
             "about" => "ארמונות בינסטל ",
             "tel" => "08-8522668, 08822669",
-            "password" => "qweqwe"
+            "password" => bcrypt("qweqwe")
         ]);
        
        User::create([
@@ -43,7 +43,7 @@ class UserTableSeeder extends Seeder
             "area" => "שפלה",
             "tel" =>  "08-8566070, 057-3109340",
             "about" => "גולדן קראון",
-            "password" => "qweqwe"
+            "password" => bcrypt("qweqwe")
         ]);
 
        User::create([
@@ -54,7 +54,7 @@ class UserTableSeeder extends Seeder
             "area" => "מרכז",
 	        "tel" => "08-6722256 ,077-270789",
             "about" => "סילבר אירועים ",
-            "password" => "qweqwe"
+            "password" => bcrypt("qweqwe")
 	    ]);
     }
 }

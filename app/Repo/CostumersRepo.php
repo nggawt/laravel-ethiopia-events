@@ -236,7 +236,7 @@ class CustomersRepo
 
             //$gals->video = json_encode($item);
             //$gals->save();
-            //Storage::delete($video);
+            ($fdl)? Storage::delete($fdl): '';
 
             $messege = ['deletedFiles' => $delFileName];
             $this->setMessages('success', $target, $messege);
@@ -284,7 +284,9 @@ class CustomersRepo
             // (! $dlTarget)? $downloadedFiles[$target] = [$url]: array_push($downloadedFiles[$target], $url);
 
             $this->setMessages('success', $target, $messege);
-            // Storage::putFileAs('customers', new File($file), $fullPath);
+
+            Storage::putFileAs('customers', new File($file), $fullPath);
+
             //Storage::disk('arc')->putFileAs('customers', new File($files), $fileName);
             //Storage::disk('arc')->put('/sysfiles/', $files);
             // Storage::putFileAs('/public/', new File($file), $fullPath);
@@ -299,14 +301,21 @@ class CustomersRepo
         $imgs = json_decode($gals['image'],true);
         $video = json_decode($gals['video'],true);
         $loggo = $customer->loggo;
-       
+        $downloadedFiles = [
+            'image' => [],
+            'video' => [],
+            'loggo' => []
+        ];
+
         foreach ($files as $key => $value) {
 
             $fDelete = ($filesToDelete && count($filesToDelete[$key]))? $filesToDelete[$key]:[];
             $items = $this->looper($files[$key], 'updateFilesTEst', $fDelete);
-
+            // return $key;
             if(isset($items['downloaded'][$key]) && count($items['downloaded'][$key])){
-                $imgs = array_merge($imgs, $items['downloaded'][$key]);
+                if(isset($items['downloaded']["gallery"])) $imgs = array_merge($imgs, $items['downloaded'][$key]);
+                (! isset($downloadedFiles[$key]))? $downloadedFiles[$key] = [] : '';
+                array_push($downloadedFiles[$key], $items['downloaded'][$key][0]);
             }
 
             if(isset($items['deleted'][$key]) && count($items['deleted'][$key])){
@@ -321,6 +330,8 @@ class CustomersRepo
             $dl = $this->delFromGal($filesToDelete['gallery'], $imgs);
             $this->setMessages('success', 'TESTrepo320', ['toDelete' => $deletedFilesExist, 'imgs' => $dl]);
         }
+        $downloadedFiles['image'] = $imgs;
+        return $downloadedFiles;
     }
 
 

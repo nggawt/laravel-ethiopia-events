@@ -55,7 +55,9 @@ class ScheduleEventController extends Controller
     {
         if(! (Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
         
-        $req = $request->all();
+        $req = collect($request->all())->except('_method');
+        if(count($req) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
+        
         $val = $this->valInputs($req);
 
         if(! $val) return $this->getMessages();
@@ -79,14 +81,16 @@ class ScheduleEventController extends Controller
     {
         if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         
-        $requestAll = $request->all();
-
+        $requestAll = collect($request->all())->except('_method');
+        if(count($requestAll) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
         // $isBadRequest = $this->badRequest(collect($requestAll)->except('_method'));
         // if($isBadRequest) return response()->json($this->getMessages(), 200);
 
         $rules = collect($this->itemsRule)->intersectByKeys($requestAll)->toArray();
-        $items = collect($requestAll)->intersectByKeys($this->itemsRule)->toArray();
+        $items = $requestAll->intersectByKeys($this->itemsRule)->toArray();
         $isValid = $this->valInputs($items, $rules);
+
+        return ['requestAll' => $requestAll, 'rules' => $rules, 'items' => $items];
 
         if(! $isValid) return $this->getMessages();
         // $scheduleEvent->find($id)->update($items);

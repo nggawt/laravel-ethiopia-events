@@ -45,7 +45,7 @@ class CustomersController extends Controller
         ];
         protected $filesRules = [
             'gallery' => "required|file|between:20,4000|image|mimes:png,jpg,bmp",
-        	'video' => "required|file|between:200,4000|mimetypes:video/mp4,video/mp4,video/avi,video/mpeg,video/quicktime"
+        	'video' => "required|file|between:200,8000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime"
         ];//png, video/mp4,
 
         protected $conFilesAttr = [
@@ -206,7 +206,7 @@ class CustomersController extends Controller
         /****** declare all variables *******/
         $reqMethod = request()->isMethod('patch') || request()->isMethod('put');
         $customer = Customer::find($id);
-        $gals = json_decode($customer->gallery['image']);
+        $gals = $customer->gallery;
         $user = auth()->user();
         $same = ($customer->user_id === $user->id)? true:false;
         if(! $same) return response()->json(['error' => 'Unauthorized'], 401);
@@ -227,23 +227,45 @@ class CustomersController extends Controller
             $badRequest = ['badRequest' => array(["request" => "missing data rquest"])];
             return response()->json(['errors' => $badRequest],200);
         }
+
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs($formInputs):null;
 
         $valItems = ['update'=> $files, 'delete' => $filesTodelete, 'customer' => $customer];
         $afterValDelFiles = ($files || $filesTodelete)? $this->mainValidation($valItems, request()->method()): null;
 
-        
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValDelFiles && ! is_null($afterValDelFiles))){
             
         	// return response()->json(collect($this->messages)->except('success'),200);
             return response()->json($this->customers->getMessages(),200);
         }
-
-        /***** delete and update files *****/
+        
+        /***** update and delete files *****/
     	$UpFiles = ($files || $filesTodelete)? $this->customers->updateFiles($files, $customer, $filesTodelete): [];
-        
-        
+
+        // $saved = $this->itemsSave($files, $UpFiles, $gals);
+        $videos = json_decode($gals['video']);
+        $images =json_decode($gals['image']);
+
+        $vidDelLink = collect($UpFiles)->intersectByKeys($filesTodelete);
+
+        if(isset($UpFiles['video']) && count($UpFiles['video']) && isset($filesTodelete['video']) && count($filesTodelete['video'])){
+            $gals['video'] = json_encode($UpFiles['video']);
+            $gals->save();
+        }
+
+        if(isset($UpFiles['loggo']) && count($UpFiles['loggo']) && isset($filesTodelete['loggo']) && count($filesTodelete['loggo'])){
+            $customer->loggo = $UpFiles['loggo'][0];
+            $customer->save();
+        }
+
+        if(isset($UpFiles['image']) && count($UpFiles['image']) && isset($filesTodelete['gallery']) && count($filesTodelete['gallery'])){
+            $gals['image'] = json_encode($UpFiles['image']);
+            $gals->save();
+        }
+
+        // return ["files" => $files,"up files" => $UpFiles, 'to delete' => $filesTodelete ];
+
         $formInputs = collect($formInputs)->except('company')->toArray();
         $inputsIsValidated = (isset($formInputs) && count($formInputs));
 
@@ -253,13 +275,23 @@ class CustomersController extends Controller
 
         	if(empty($userEmailTeken)){
 
-        		//$customer->user->update(['email' => $formInputs['email']]);
+        		$customer->user->update(['email' => $formInputs['email']]);
         	}else{
     			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
         	}
         }
         /******* get and send back messages ******/
         return response()->json($this->customers->getMessages(),200);
+    }
+
+    protected function itemsSave($requestFiles, $uploadedFiles, $gals){
+
+        foreach ($requestFiles as $key => $value) {
+            # code...
+            if(isset($uploadedFiles[$key]) && count($uploadedFiles[$key])){
+
+            }
+        }
     }
 
     /******* custom validation *******/
