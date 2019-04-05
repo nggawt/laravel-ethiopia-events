@@ -1,0 +1,98 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[2019-03-31 08:32:52][1] Processing: App\Jobs\SendEmailJob
+[2019-03-31 08:32:55][1] Processed:  App\Jobs\SendEmailJob
+[2019-03-31 08:34:01][2] Processing: App\Jobs\SendEmailJob
+[2019-03-31 08:34:03][2] Processed:  App\Jobs\SendEmailJob
+[2019-03-31 10:44:02][3] Processing: App\Jobs\SendEmailJob
+[2019-03-31 10:44:04][3] Processed:  App\Jobs\SendEmailJob
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[2019-04-04 00:53:21][1] Processing: App\Jobs\SandMailToEeJob
+[2019-04-04 00:53:24][1] Processed:  App\Jobs\SandMailToEeJob
+[2019-04-04 00:54:09][2] Processing: App\Jobs\SandMailToEeJob
+[2019-04-04 00:54:10][2] Processed:  App\Jobs\SandMailToEeJob
+[2019-04-04 00:57:10][3] Processing: App\Jobs\SendEmailJob
+[2019-04-04 00:57:10][4] Processing: App\Jobs\SendEmailJob
+[2019-04-04 00:57:10][5] Processing: App\Jobs\SendEmailJob
+[2019-04-04 00:57:11][5] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:00:32][6] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:00:32][7] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:00:32][8] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:00:32][8] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:02:14][9] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:02:14][10] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:02:14][11] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:02:14][11] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:07:56][12] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:07:56][13] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:07:56][14] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:07:56][14] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:08:54][15] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:08:54][16] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:08:54][17] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:08:54][17] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:12:27][18] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:12:27][19] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:12:27][20] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:12:27][20] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:17:01][21] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:17:01][22] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:17:01][23] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:17:01][23] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:20:43][24] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:20:43][25] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:20:44][26] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:20:44][26] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:24:25][1] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:24:25][2] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:24:25][3] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:24:25][3] Failed:     App\Jobs\SendEmailJob
+[2019-04-04 01:28:35][4] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:28:37][4] Processed:  App\Jobs\SendEmailJob
+[2019-04-04 01:42:20][5] Processing: App\Jobs\SendEmailJob
+[2019-04-04 01:42:22][5] Processed:  App\Jobs\SendEmailJob
+
+
+
+
+
+
+
+

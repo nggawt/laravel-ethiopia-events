@@ -18,7 +18,7 @@ trait Messages{
         return $this->messages;
     }
 
-    protected function setErrorsMessages($validator){
+    public function setErrorsMessages($validator){
 
         foreach ($validator->errors()->get("*") as $key => $value) {
 
@@ -29,7 +29,7 @@ trait Messages{
         }
     }
 
-    protected function setSuccessMessages(array $inputs = []){
+    public function setSuccessMessages(array $inputs = []){
 
         foreach ($inputs as $key => $value) {
 

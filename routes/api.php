@@ -41,6 +41,7 @@ Route::group([
 
 ], function () {
 	// Route::post('getlogin', 'UserController@getLogin');
+    Route::post('contact', 'UserController@contact');
     Route::post('store', 'UserController@store');
 	// Route::get('events', 'ScheduleEventController@index');
     Route::post('authUser', 'UserController@getUserLogged');

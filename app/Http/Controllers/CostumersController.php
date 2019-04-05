@@ -45,7 +45,7 @@ class CustomersController extends Controller
         ];
         protected $filesRules = [
             'gallery' => "required|file|between:20,4000|image|mimes:png,jpg,bmp",
-        	'video' => "required|file|between:200,8000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime"
+        	'video' => "required|file|between:200,6000|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime"
         ];//png, video/mp4,
 
         protected $conFilesAttr = [
@@ -631,7 +631,8 @@ class CustomersController extends Controller
     	]);
     	
         if($valFiles->fails()) {
-            $this->prityMessges($valFiles->errors()->all());
+            //$this->prityMessges($valFiles->errors()->all());
+            $this->customers->setErrorsMessages($valFiles);
             return false;
         }
         return true;

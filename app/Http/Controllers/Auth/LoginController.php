@@ -111,6 +111,7 @@ class LoginController extends Controller
         $user = auth()->user();
         $customer = $user->customer;
         $events = $user->events;
+        $messages = $user->messages;
 
         return [
             'id' => $user->id,
@@ -120,6 +121,7 @@ class LoginController extends Controller
             'about' => $user->about,
             'area' => $user->area,
             'city' => $user->city,
+            'messages' => $messages? $messages: false,
             'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
             'events' => $events? $events: false
         ];

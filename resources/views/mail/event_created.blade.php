@@ -2,10 +2,11 @@
 # Introduction
 
 The body of your message.
-
-	@foreach ($eventUser as $key => $value)
-    	<p>This is events {{ $key }}: {{ $value }}</p>
-	@endforeach
+	@if(count($eventUser))
+		@foreach ($eventUser as $key => $value)
+	    	<p>This is events {{ $key }}: {{ $value }}</p>
+		@endforeach
+	@endif
 	
 @component('mail::button', ['url' => ''])
 	Button Text

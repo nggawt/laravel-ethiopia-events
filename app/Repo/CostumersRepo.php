@@ -213,7 +213,7 @@ class CustomersRepo
 
         if($target == 'loggo'){
         
-            $download = $this->downloadFiles($fileItem, true);
+            $download = $this->downloadFiles($fileItem, $fdl, true);
             $downloaded['downloaded'][$target] = $download[$target][0];
 
             //$item = isset($downloaded["loggo"]) && count($downloaded["loggo"])? $downloaded["loggo"]: false;
@@ -229,21 +229,21 @@ class CustomersRepo
         }else if($target == 'video'){//&& $fdTarget
 
 
-            $download = $this->downloadFiles($fileItem, true);
+            $download = $this->downloadFiles($fileItem, $fdl, true);
             $downloaded['downloaded'][$target] = $download[$target][0];
 
             //$item = isset($downloaded["video"]) && count($downloaded["video"])? $downloaded["video"]: false;
 
             //$gals->video = json_encode($item);
             //$gals->save();
-            ($fdl)? Storage::delete($fdl): '';
+            // ($fdl)? Storage::delete($fdl): '';
 
             $messege = ['deletedFiles' => $delFileName];
             $this->setMessages('success', $target, $messege);
             
         }else if($target == 'gallery'){
 
-            $download = $this->downloadFiles($fileItem, true);
+            $download = $this->downloadFiles($fileItem, $fdl, true);
             // $this->setMessages('success', "TST2", $download);
 
             $dled =  (isset($downloaded[$target]) && count($downloaded[$target]));
@@ -260,7 +260,7 @@ class CustomersRepo
         return $downloaded;
     }
 
-    public function downloadFiles($files, $nameFlag = false){
+    public function downloadFiles($files, $toDel, $nameFlag = false){
 
         $downloadedFiles = [
                     /*'gallery' => [],
@@ -287,6 +287,11 @@ class CustomersRepo
 
             Storage::putFileAs('customers', new File($file), $fullPath);
 
+            (isset($toDel))? Storage::disk('customers')->delete(explode('customers/', $toDel)[1]): '';
+
+            // $msg = [$fullPath => explode('customers/', $toDel)[1]];
+            // $this->setMessages('success', 'video', $msg);
+            
             //Storage::disk('arc')->putFileAs('customers', new File($files), $fileName);
             //Storage::disk('arc')->put('/sysfiles/', $files);
             // Storage::putFileAs('/public/', new File($file), $fullPath);

@@ -7,22 +7,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Event_created extends Mailable
+class SandMailToEe extends Mailable
 {
-    public $eventUser;
+    public $props;
 
-    use Queueable;
+    use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-
-    public function __construct($eventUser)
+    public function __construct($props)
     {
-        
-        $this->eventUser = $eventUser;
+        //
+        $this->props = $props;
     }
 
     /**
@@ -32,6 +31,6 @@ class Event_created extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.event_created', ['eventUser' => $this->eventUser]);
+        return $this->markdown('mail.send_mail_to_ee', ['users' => $this->props]);
     }
 }

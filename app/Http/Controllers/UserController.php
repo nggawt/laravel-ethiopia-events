@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use App\Events\MessagesEvents;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailJob;
+use App\Mail\SandMailToEe;
 use App\Repo\traits\Messages;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -14,20 +18,46 @@ class UserController extends Controller
     use Messages;
     private $user_ruls = [
 
-            'name' => 'required|string|min:3',
-            'email' => 'required|string|email',
-            'password' => 'required|string|min:6',
-            'passwordConfirm' => 'required|string|same:password',
-            'city' => 'min:3|string',
-            'area' => 'required|string|min:3',
-            'about' => 'min:12|string',
+            'name' => 'required|string|min:3|max:30',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|max:255',
+            'passwordConfirm' => 'required|string|same:password|max:255',
+            'city' => 'string|min:3|max:30',
+            'area' => 'required|string|min:3|max:30',
+            'about' => 'string|min:12',
             'tel' => 'digits_between:8,10',
         ];
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store', 'destroy']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store', 'destroy', 'contact']]);
        
+    }
+
+    public function contact(Request $request, User $user){
+
+        $user = isset($user)? $user: auth()->user();
+        $this->validate($request,[
+            'name' => 'string|min:3',
+            'email' => $this->user_ruls['email'],
+            'phone' => $this->user_ruls['tel'],
+            'area' => $this->user_ruls['city'],
+            'city' => $this->user_ruls['city'],
+            'msg_subject' => $this->user_ruls['area'],
+            'message' => 'required|string|min:12',
+        ]);
+        
+        SendEmailJob::dispatch($request->all(), SandMailToEe::class);
+        $user_id = $user['id']? $user['id']: $user->id? $user->id: false;
+        $msgs = [
+            'user_id' => $user_id? $user_id: 1,
+            'name' => $user->name? $user->name: $request['name'],
+            'title' => "your mail: ". $request['msg_subject'] . " was sent.",
+            'body' => $request['message'],
+            'date' => Carbon::now(),
+        ];
+        event(new MessagesEvents($msgs));
+        return $request;
     }
 
     public function getUserLogged()
@@ -168,6 +198,7 @@ class UserController extends Controller
         $user = auth()->user();
         $customer = $user->customer;
         $events = $user->events;
+        $messages = $user->messages;
 
         return [
             'id' => $user->id,
@@ -177,6 +208,7 @@ class UserController extends Controller
             'about' => $user->about,
             'area' => $user->area,
             'city' => $user->city,
+            'messages' => $messages? $messages: false,
             'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
             'events' => $events? $events: false
         ];

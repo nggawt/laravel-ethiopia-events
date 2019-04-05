@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreEvents;
+// use App\Http\Requests\StoreEvents;
+use App\Events\MessagesEvents;
+use App\Jobs\SendEmailJob;
 use App\Mail\Event_created;
 use App\Repo\traits\Messages;
 use App\ScheduleEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ScheduleEventController extends Controller
@@ -58,15 +61,30 @@ class ScheduleEventController extends Controller
         $req = collect($request->all())->except('_method');
         if(count($req) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
         
-        $val = $this->valInputs($req);
+        $val = $this->valInputs($req->toArray());
 
         if(! $val) return $this->getMessages();
         $req['user_id'] = auth()->user()->id;
-        // ScheduleEvent::create($req);
+        //ScheduleEvent::create($req);
 
-        \Mail::to('nggawt100@gmail.com')->send(
-            new Event_created($req)
-        );
+        // \Mail::to('nggawt100@gmail.com')->send(
+        //     new Event_created($req)
+        // );
+
+        SendEmailJob::dispatch($req, Event_created::class);//->onConnection('database');//->onQueue('default');
+
+        $msgs = [
+            'user_id' => $req['user_id'],
+            'name' => auth()->user()->name,
+            'title' => "your event: " . $req['eventType'] ." was created",
+            'body' => "event " . $req['eventType'] .": " . $req['description'],
+            'date' => Carbon::now(),
+        ];
+        event(new MessagesEvents($msgs));
+
+        // dispatch(new SendEmailJob($req));
+        // SendEmailJob::dispatch(['buzz' => "wt"])
+        //         ->delay(Carbon::now()->addSeconds(5));
         return response()->json($this->getMessages(), 200);
     }
 
