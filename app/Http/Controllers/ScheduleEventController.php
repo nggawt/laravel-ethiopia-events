@@ -77,7 +77,7 @@ class ScheduleEventController extends Controller
             'user_id' => $req['user_id'],
             'name' => auth()->user()->name,
             'title' => "your event: " . $req['eventType'] ." was created",
-            'body' => "event " . $req['eventType'] .": " . $req['description'],
+            'body' => $req['description'],
             'date' => Carbon::now(),
         ];
         event(new MessagesEvents($msgs));

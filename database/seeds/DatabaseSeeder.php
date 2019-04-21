@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(CustomerTableSeeder::class);
         $this->call(GalleryTableSeeder::class);
+        $this->call(PostTableSeeder::class);
         factory(App\ScheduleEvent::class, 50)->create();
+        // factory(App\Post::class)->create();
     }
 }

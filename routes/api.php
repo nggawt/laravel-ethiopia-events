@@ -55,5 +55,6 @@ Route::group([
     Route::post('me', 'AuthController@me');
     Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
     Route::resource('customers','CustomersController')->except(['create', 'edit']);
+    Route::resource('blog','PostController')->except(['create', 'edit']);
     Auth::routes();
 });

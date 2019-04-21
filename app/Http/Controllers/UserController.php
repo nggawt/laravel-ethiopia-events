@@ -48,9 +48,9 @@ class UserController extends Controller
         ]);
         
         SendEmailJob::dispatch($request->all(), SandMailToEe::class);
-        $user_id = $user['id']? $user['id']: $user->id? $user->id: false;
+        $user_id = $user['id']? $user['id']: $user->id? $user->id: null;
         $msgs = [
-            'user_id' => $user_id? $user_id: 1,
+            'user_id' => $user_id,
             'name' => $user->name? $user->name: $request['name'],
             'title' => "your mail: ". $request['msg_subject'] . " was sent.",
             'body' => $request['message'],
