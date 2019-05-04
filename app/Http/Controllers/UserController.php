@@ -7,6 +7,7 @@ use App\Events\MessagesEvents;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendEmailJob;
 use App\Mail\SandMailToEe;
+use App\Post;
 use App\Repo\traits\Messages;
 use App\User;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class UserController extends Controller
         return $request;
     }
 
-    public function getUserLogged()
+    public function getUserLogged(Post $post)
     {
 
         if($status = Auth::check()){

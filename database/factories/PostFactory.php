@@ -64,7 +64,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
 
 	// $address = ["ashdod haetzel 70","natanya harov 55", "rehovot havtzelet 12"];
 	// $description = ["אירוע פעם בחיים בואו להיות חלק ממנו","מזמינים אותכם לחתונה שלנו", "נשמח לראותכם באירוע"];
-	$postsToCreate = [];
+	
 	foreach ($posts as $post) {
 
 		$uId = rand(0, count($userPublicName) -1);
@@ -80,7 +80,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
 			$id = $uId;
 		}
 
-		$postsToCreate[] =  [
+		return [
 						'user_id' => $id,
 						'name' => $userName,
 						'title' => $post['title'],
@@ -88,6 +88,5 @@ $factory->define(App\Post::class, function (Faker $faker) {
 						'date' => Carbon::now()
 		];
 	}
-	return $postsToCreate;
 });
 	

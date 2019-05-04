@@ -11,6 +11,10 @@ class ScheduleEvent extends Model
     	'location','address','description','phone', 'published_at'
     ];
 
+    protected $casts = [
+        'confirmed' => 'boolean',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\User');

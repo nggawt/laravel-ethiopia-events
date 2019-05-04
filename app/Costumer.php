@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Customer extends Model
 {
     protected  $fillable =['user_id', 'company', 'businessType', 'contact','title','loggo','discription','email','tel','address','deals', 'published_at'];
+    
+    protected $casts = [
+        'confirmed' => 'boolean',
+	];
+
 
     public function user()
     {

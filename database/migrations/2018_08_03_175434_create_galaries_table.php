@@ -16,6 +16,8 @@ class CreateGalariesTable extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('customer_id');
+            $table->boolean('confirmed')->nullable($value = true);
+            
             $table->text("video");
             $table->text("image");
             

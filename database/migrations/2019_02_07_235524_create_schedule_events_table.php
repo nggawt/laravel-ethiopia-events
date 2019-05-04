@@ -16,6 +16,7 @@ class CreateScheduleEventsTable extends Migration
         Schema::create('schedule_events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->boolean('confirmed')->default($value = 0);
 
             $table->string("eventType");
             $table->string("name");

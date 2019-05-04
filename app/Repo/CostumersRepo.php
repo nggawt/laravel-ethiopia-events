@@ -69,13 +69,11 @@ class CustomersRepo
                 ],
 
                 "gallery" => [
-                    'image' => $imgs?json_decode($imgs):[],
-                    'video' => $vids?json_decode($vids):[]
+                    'image' => $imgs? json_decode($imgs):[],
+                    'video' => $vids? json_decode($vids):[]
                 ],
                 "events" => $evt
             ];
-            
-            
             array_push($filteredCustomers[$businessType], $en);
         }
         return $filteredCustomers;

@@ -38,17 +38,6 @@ class ScheduleEventController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\ScheduleEvent  $scheduleEvent
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ScheduleEvent $scheduleEvent)
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

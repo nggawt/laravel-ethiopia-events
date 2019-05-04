@@ -16,6 +16,7 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->boolean('confirmed')->default($value = 0);
             $table->string('company');
             $table->string('businessType');
             $table->string('loggo');

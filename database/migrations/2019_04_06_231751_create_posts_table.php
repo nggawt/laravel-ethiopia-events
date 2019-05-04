@@ -17,6 +17,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
             // $table->string('email')->unique();
+            $table->boolean('confirmed')->default($value = 0);
+
             $table->string('name');
             $table->string('title');
             $table->text('body');
