@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use App\Policies\PostPolicy;
-use App\Post;
+// use App\Post;
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -41,8 +42,8 @@ class AuthServiceProvider extends ServiceProvider
             // }
         // });
 
-         Gate::define('posts', function ($post) {
-            return true;
+        Gate::define('posts', function (User $user, $post) {
+            return true;//$post->find(2)->user_id == 2;
         });
     }
 }

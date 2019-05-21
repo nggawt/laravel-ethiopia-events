@@ -41,13 +41,16 @@ Route::group([
 
 ], function () {
 	// Route::post('getlogin', 'UserController@getLogin');
-    Route::post('contact', 'UserController@contact');
-    Route::post('store', 'UserController@store');
+    // Route::post('store', 'UserController@store');
 	// Route::get('events', 'ScheduleEventController@index');
-    Route::post('authUser', 'UserController@getUserLogged');
+    // Route::get('users', 'UserController@index');
+    // Route::delete('users/{user}', 'UserController@destroy');
+    
+    Route::post('authUser', 'UserController@getLoggedUser');
+    Route::post('contact', 'UserController@contact');
+    Route::resource('users','UserController')->except(['create', 'edit', 'show']);
     Route::patch('users/{user}/change_password', 'UserController@changePassword');
     Route::patch('users/{user}/change_email', 'UserController@changeEmail');
-    Route::delete('users/{user}', 'UserController@destroy');
 
     // Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
@@ -55,6 +58,6 @@ Route::group([
     Route::post('me', 'AuthController@me');
     Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
     Route::resource('customers','CustomersController')->except(['create', 'edit']);
-    Route::resource('blog','PostController')->except(['create', 'edit']);//->middleware('can:view,App\Post')//->middleware('can:posts,App\Post');
+    Route::resource('blog','PostController')->except(['create', 'edit']);//->middleware('can:posts,App\Post');//->middleware('can:view,App\Post')//;
     Auth::routes();
 });

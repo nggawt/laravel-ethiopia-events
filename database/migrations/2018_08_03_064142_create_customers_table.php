@@ -22,11 +22,12 @@ class CreateCustomersTable extends Migration
             $table->string('loggo');
             $table->string('title');
             $table->string('contact');
-            $table->text('discription');
+            $table->text('descriptions');
             $table->string('email')->unique();
             $table->string('tel');
             $table->string('address');
             $table->text('deals');
+            $table->string('slug')->unique()->nullable();
 
             $table->foreign('user_id')
               ->references('id')->on('users')

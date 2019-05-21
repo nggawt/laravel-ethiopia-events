@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/app';
+    // protected $redirectTo = '/app';
 
     /**
      * Create a new controller instance.
@@ -49,9 +49,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|min:3|max:30',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|max:255',
+            'passwordConfirm' => 'required|string|same:password|max:255',
+            'city' => 'string|min:3|max:30',
+            'area' => 'required|string|min:3|max:30',
+            'about' => 'string|min:12',
+            'tel' => 'digits_between:8,10',
         ]);
     }
 
@@ -63,10 +68,59 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $useData = collect($data);
+        $credentials = $useData->only(['email', 'password']);
+
+        $useData['password'] = Hash::make($useData['password']);
+        $user = collect($useData)->except('passwordConfirm')->toArray();
+
+        User::create($user);
+        sleep(1);
+        // User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'city' => $data['city'],
+        //     'area' => $data['area'],
+        //     'about' => $data['about'],
+        //     'tel' => $data['tel'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
+
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        return response()->json($this->respondWithToken($token),200);
+    }
+
+    protected function respondWithToken($token)
+    {
+        
+        return [
+            'user' => $this->getUser(),
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ];
+    }
+
+    private function getUser(){
+
+        $user = auth()->user();
+        $customer = $user->customer;
+        $events = $user->events;
+        $messages = $user->messages;
+
+        return [
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'tel' => $user->tel,
+            'about' => $user->about,
+            'area' => $user->area,
+            'city' => $user->city,
+            'messages' => $messages? $messages: false,
+            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
+            'events' => $events? $events: false
+        ];
     }
 }

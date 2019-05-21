@@ -18,10 +18,11 @@ class CustomerTableSeeder extends Seeder
             "user_id" =>  1,
             'company' => 'ארמונות לב',
             "businessType" => "halls events",
+            "confirmed" => rand(0, 1),
             "contact" => "הנהלה",
             "title" => "ארמונות לב המחודשים 2012",
             "loggo" => "./assets/pages/customers/halls-events/palace-lev/loggo/123.png",
-            "discription" => 'אולמות לב השוכנים בקניון לב באשקלון מתגאים בעיצוב חדש, איכותי ויוקרתי מאין כמוהו
+            "descriptions" => 'אולמות לב השוכנים בקניון לב באשקלון מתגאים בעיצוב חדש, איכותי ויוקרתי מאין כמוהו
              ובהנהלה חדשה, שמעניקה למקום מניסיונה העשיר. האחים לב, המפורסמים והפעילים בתחום הפקת האירועים
              בישראל,זה זמן רב מתחייבים לסטנדרטים הכי טובים באחריות.להפיק לכם את האירוע המושלם בשבילכם.
 
@@ -43,16 +44,18 @@ class CustomerTableSeeder extends Seeder
             "address" =>"אשקלון, ההסתדרות 40 (קניון לב אשקלון)",
             "deals" => ""
         ]);
+
        Customer::create([
 
 
             "user_id" =>  2,
         	"company" => "בניסטל",
             "businessType" => "halls events",
+            "confirmed" => rand(0, 1),
             "contact" => "הנהלה",
             "title" => "ארמונות בינסטל ",
             "loggo" => "./assets/pages/customers/halls-events/benistal/loggo/benistal.jpg",
-            "discription" => 'הנהלתו החדשה של יצחק פדידה,מציעים לכם שלושה אולמות 
+            "descriptions" => 'הנהלתו החדשה של יצחק פדידה,מציעים לכם שלושה אולמות 
             מפוארים הקרויים בשמות אבני החושן,המתאימים לכם לכל אירוע בכל סדר גודל.
             אולם ספיר-עד 180 איש.
             אולם ברקת-עד 280 איש.
@@ -68,10 +71,11 @@ class CustomerTableSeeder extends Seeder
             "user_id" =>  3,
         	"company" =>  "גולדן",
             "businessType" => "halls events",
+            "confirmed" => rand(0, 1),
             "contact" =>  "הנהלה",
             "title" =>  "גולדן קראון",
             "loggo" =>  "./assets/pages/customers/halls-events/golden/loggo/golden.jpg",
-            "discription" =>  'ולדן קראון. מרכז ארועים. 3 אולמות מפוארים עומדים לרשותכם. חתונות,
+            "descriptions" =>  'ולדן קראון. מרכז ארועים. 3 אולמות מפוארים עומדים לרשותכם. חתונות,
             בר מצווה, בריתות, כנסים עד 900 איש. אולם מיוחד לחינות בסגנון מרוקאי עד 250 איש. 
             
              מבצע רק לפונים דרך אתיופיה אירועים במחירים אטרקטיביים
@@ -89,10 +93,11 @@ class CustomerTableSeeder extends Seeder
             "user_id" =>  4,
 	        "company" => "סילבר",
             "businessType" => "halls events",
+            "confirmed" => rand(0, 1),
 	        "contact" => "הנהלה",
 	        "title" => "סילבר אירועים ",
 	        "loggo" => "./assets/pages/customers/halls-events/silver/loggo/silver.jpg",
-	        "discription" => 'סילבר...אולם אירועים ששודרג זה עתה לפי מיטב הקידמה והטכנולוגיה,בכירי
+	        "descriptions" => 'סילבר...אולם אירועים ששודרג זה עתה לפי מיטב הקידמה והטכנולוגיה,בכירי
 	         האדריכלים השקיעו מאמצים רבים על מנת להפוך את המקום למקום חוותי.מתחם קבלת הפנים תוכנן
 	         ועוצב להעניק לראשוני האורחים חווית אירוח ברוח חדשה.התאורה ,המטעמים,הרהיטים 
 	        והצוות המקצועי כל אלה נבחרו בקפידה בכדי לחמם את תחילת האירוע ולהזרימו לאולם המרכזי.

@@ -19,11 +19,21 @@ class PostController extends Controller
         "body" => "required|string|min:12",
     ];
 
-    public function index() {
-    	// $this->authorize('posts', Post::class);
+       /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('api');
+    }
+
+    public function index(Post $post) {
+    	// $this->authorize('posts', $post);
     	// $this->authorize('view', $post);
     	// if(Gate::can('view', 2)){
-			return Post::all();//$this->getConfirmedPosts(Post::all());
+			return $post->all();//$this->getConfirmedPosts(Post::all());
     	// }
 
 	}

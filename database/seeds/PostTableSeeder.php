@@ -79,7 +79,7 @@ class PostTableSeeder extends Seeder{
 		
 		$dt = Carbon::now();
 		$thisMonth = $dt->month;
-		foreach ($posts as $post) {
+		foreach ($posts as $key => $post) {
 
 			$uId = rand(0, count($userPublicName) -1);
 
@@ -95,13 +95,14 @@ class PostTableSeeder extends Seeder{
 			}
 			$dt->month = rand(1, ($thisMonth - 1));
 			$dt->day = rand(1, 30);
+
 			Post::create([
-							'user_id' => $id,
-							'confirmed' => rand(0, 1),
-							'name' => $userName,
-							'title' => $post['title'],
-							'body' => $post['body'],
-							'date' => $dt
+				'user_id' => $id,
+				'confirmed' => rand(0, 1),
+				'name' => $userName,
+				'title' => $post['title'],
+				'body' => $post['body'],
+				'date' => $dt
 			]);
 		}
 	}

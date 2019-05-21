@@ -54,6 +54,7 @@ $factory->define(App\ScheduleEvent::class, function (Faker $faker) {
 
     return [
         'user_id' => $id,
+        "confirmed" => rand(0, 1),
         'eventType' => $eventType[rand(0, count($eventType) - 1)],
         'name' => $userName,
         'date' => $dt,

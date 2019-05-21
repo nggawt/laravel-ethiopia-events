@@ -31,8 +31,16 @@ class UserController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'getUserLogged', 'store', 'destroy', 'contact']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'getLoggedUser', 'contact', 'index', 'store']]);// 'store', 'destroy'
        
+    }
+
+    public function index(){
+        // return User::all();
+        if($status = Auth::check()){
+            return response()->json(User::all(),200);
+        } 
+        return response()->json(['status' => $status],200);
     }
 
     public function contact(Request $request, User $user){
@@ -61,15 +69,13 @@ class UserController extends Controller
         return $request;
     }
 
-    public function getUserLogged(Post $post)
+    public function getLoggedUser(Post $post)
     {
 
         if($status = Auth::check()){
             return response()->json(['status' => $status, 'user' => $this->getUser()],200);
         } 
         return response()->json(['status' => $status],200);
-        // return isset($autUser)? response()->json(['status' => true, 'user' => $user],200):
-        // return $this->respondWithToken($token);
     }
     
     public function getLogin(Request $req){
@@ -165,7 +171,6 @@ class UserController extends Controller
         if (! $token = auth()->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
         return response()->json($this->respondWithToken($token),200);
 
     }

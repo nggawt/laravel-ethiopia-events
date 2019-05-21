@@ -23,6 +23,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->dateTime('date');
+            $table->string('slug')->unique()->nullable();
+
             $table->timestamps();
 
             // $table->foreign('user_id')
