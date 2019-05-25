@@ -12,15 +12,20 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-    /*'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
-    ],*/
+    // 'defaults' => [
+    //     'guard' => 'web',
+    //     'passwords' => 'users',
+    // ],
+
     'defaults' => [
         'guard' => 'api',
         'passwords' => 'users',
     ],
 
+    'admins' => [
+        'guard' => 'api',
+        'passwords' => 'users',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -48,6 +53,11 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+
+        'admins' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
     ],
 
     /*
@@ -68,9 +78,15 @@ return [
     */
 
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
         ],
 
         // 'users' => [
@@ -99,6 +115,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 
