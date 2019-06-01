@@ -11,6 +11,7 @@ use App\Gallery;
 use App\User;
 use App\Repo\traits\Messages;
 use Validator;
+use Carbon\Carbon;
 
 
 /**
@@ -67,7 +68,8 @@ class CustomersRepo
                     'descriptions' => $value->descriptions,
                     'address' => $value->address,
                     'tel' => $value->tel,
-                    'deals' => $value->deals
+                    'deals' => $value->deals,
+                    'created_at' => Carbon::parse($value->created_at)->format('Y-m-d H:i:s')
                 ],
 
                 "gallery" => [

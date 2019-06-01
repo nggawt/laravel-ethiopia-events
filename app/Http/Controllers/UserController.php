@@ -215,7 +215,7 @@ class UserController extends Controller
             'area' => $user->area,
             'city' => $user->city,
             'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
+            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'descriptions']): false,
             'events' => $events? $events: false
         ];
     }
