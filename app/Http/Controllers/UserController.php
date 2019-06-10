@@ -72,29 +72,12 @@ class UserController extends Controller
     public function getLoggedUser(Post $post)
     {
 
-        if($status = Auth::check()){
+        if($status = Auth::guard('api')->check()){
             return response()->json(['status' => $status, 'user' => $this->getUser()],200);
         } 
         return response()->json(['status' => $status],200);
     }
     
-    public function getLogin(Request $req){
-        
-        $this->validate($req,[
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ]);
-        //return "jjkkkjk";
-        
-        $credentials = request(['email', 'password']);
-        //return $request->all();
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return response()->json($this->respondWithToken($token),200);
-    }
-
     public function changePassword(Request $req, User $user){
 
         $ruls = [
@@ -151,7 +134,7 @@ class UserController extends Controller
 
     public function getLogout(){
         Auth::logout();
-        return redirect()->route('home');
+        // return redirect()->route('home');
     }
 
     public function store(Request $req){
@@ -201,7 +184,7 @@ class UserController extends Controller
 
     private function getUser(){
 
-        $user = auth()->user();
+        $user = auth('api')->user();
         $customer = $user->customer;
         $events = $user->events;
         $messages = $user->messages;

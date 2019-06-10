@@ -12,19 +12,19 @@ return [
     | as required, but they're a perfect start for most applications.
     |
     */
-    // 'defaults' => [
-    //     'guard' => 'web',
-    //     'passwords' => 'users',
-    // ],
-
     'defaults' => [
+        'guard' => 'web',
+        'passwords' => 'users',
+    ],
+
+    'api' => [
         'guard' => 'api',
         'passwords' => 'users',
     ],
 
-    'admins' => [
-        'guard' => 'api',
-        'passwords' => 'users',
+    'admin' => [
+        'guard' => 'admin',
+        'passwords' => 'admins',
     ],
     /*
     |--------------------------------------------------------------------------
@@ -54,8 +54,8 @@ return [
             'provider' => 'users',
         ],
 
-        'admins' => [
-            'driver' => 'token',
+        'admin' => [
+            'driver' => 'jwt',
             'provider' => 'admins',
         ],
     ],
@@ -116,6 +116,7 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
         ],
+
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',

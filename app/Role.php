@@ -10,7 +10,7 @@ class Role extends Model
         'name', 'slug', 'permisson'
     ];
 
-    public function users(){
-	    return $this->belongsToMany('App\User');
+    public function admins(){
+	    return $this->belongsToMany('App\Admin');
     }
 }

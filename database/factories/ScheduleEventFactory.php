@@ -13,7 +13,7 @@ $factory->define(App\ScheduleEvent::class, function (Faker $faker) {
 
 	$userPublicName = ['jhon and doe', 'ofer and ora', 'benny and tova', 'david and dana'];
 	// $userName = $userPublicName[rand(0, count($userPublicName) -1)];
-	$uId = rand(0, count($userPublicName) -1);
+	$uId = rand(1, count($users) -1);
 
 	$userArr = [$user, $uId, $user, $uId];
 	$dbUser = rand(0, count($userArr) -1);

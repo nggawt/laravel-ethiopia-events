@@ -29,13 +29,16 @@ class CreateCustomersTable extends Migration
             $table->text('deals');
             $table->string('slug')->unique()->nullable();
 
-            $table->foreign('user_id')
-              ->references('id')->on('users')
-              ->onDelete('cascade');
+            
 
             $table->timestamps();
         });
             // $table->integer('user_id')->default(1);
+        Schema::table('customers', function (Blueprint $table) {
+            $table->foreign('user_id')
+              ->references('id')->on('users')
+              ->onDelete('cascade');
+        });
     }
 
     /**

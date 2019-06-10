@@ -79,6 +79,7 @@ class PostTableSeeder extends Seeder{
 		
 		$dt = Carbon::now();
 		$thisMonth = $dt->month;
+		$nums = 100;
 		foreach ($posts as $key => $post) {
 
 			$uId = rand(0, count($userPublicName) -1);
@@ -102,8 +103,19 @@ class PostTableSeeder extends Seeder{
 				'name' => $userName,
 				'title' => $post['title'],
 				'body' => $post['body'],
-				'date' => $dt
+				'date' => $dt,
+				'slug' => $this->slugName($userName, $key)
 			]);
 		}
+	}
+
+	protected function slugName($name, $apkey){
+		$exs = explode(' ', $name);
+		$slug;
+		foreach ($exs as $key => $value) {
+			# code...
+			(isset($slug) && $value)? $slug.=$apkey.'-'.$value: $value? $slug = $value.$apkey: '';
+		}
+		return $slug;
 	}
 }

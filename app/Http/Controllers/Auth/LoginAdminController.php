@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-class LoginController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+
+class LoginAdminController extends Controller
 {
+
+    protected $maxLoginAttempts = 2; // Amount of bad attempts user can make
+    protected $lockoutTime = 300; // Time for which user is going to be blocked in seconds
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -35,7 +41,7 @@ class LoginController extends Controller
     public function __construct()
     {
         // $this->middleware('auth:api')->except('logout');
-        $this->middleware('auth:api', ['except' => 'login']);
+        $this->middleware('auth:admin', ['except' => 'login']);
     }
 
     /**
@@ -45,17 +51,40 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
-        
-        if (! $token = auth('api')->attempt($credentials)) {
-            
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $request->validate([
+            'name' => 'required|string|min:3|max:30',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|max:255',
+        ]);
+
+        if (method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
         }
 
+        $credentials = request(['email', 'password']);
+        
+        if (! $token = Auth::guard('admin')->attempt($credentials)) {
+            $this->incrementLoginAttempts($request);
+            return response()->json(['error' => 'Unauthorized admin user'], 401);
+        }
+        
+        $this->clearLoginAttempts($request);
         return response()->json($this->respondWithToken($token),200);
     }
 
     
+    // protected function guard()
+    // {
+    //     return Auth::guard('admin');
+    // }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return $user;
+    }
 
     /**
      * Get the authenticated User.
@@ -64,7 +93,7 @@ class LoginController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->guard('admin')->user());
     }
 
     /**
@@ -74,7 +103,7 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        auth('api')->logout();
+        auth()->guard('admin')->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -86,7 +115,7 @@ class LoginController extends Controller
      */
     public function refresh()
     {
-        return response()->json($this->respondWithToken(auth()->refresh()), 200);
+        return response()->json($this->respondWithToken(auth()->guard('admin')->refresh()), 200);
     }
 
     /**
@@ -100,31 +129,10 @@ class LoginController extends Controller
     {
         
         return [
-            'user' => $this->getUser(),
+            'user' => auth('admin')->user(),
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ];
-    }
-
-    private function getUser(){
-
-        $user = auth('api')->user();
-        $customer = $user->customer;
-        $events = $user->events;
-        $messages = $user->messages;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tel' => $user->tel,
-            'about' => $user->about,
-            'area' => $user->area,
-            'city' => $user->city,
-            'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
-            'events' => $events? $events: false
+            'expires_in' => auth('admin')->factory()->getTTL() * 60
         ];
     }
 }

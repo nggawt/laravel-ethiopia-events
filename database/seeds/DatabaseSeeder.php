@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GalleryTableSeeder::class);
         $this->call(PostTableSeeder::class);
         $this->call(RoleTableSeeder::class);
-        $this->call(RoleUserTableSeeder::class);
+        // $this->call(RoleAdminTableSeeder::class);
 
         factory(App\ScheduleEvent::class, 50)->create();
         

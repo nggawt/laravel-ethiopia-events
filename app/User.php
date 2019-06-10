@@ -59,10 +59,6 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\ScheduleEvent');
     }
 
-    public function roles()
-    {
-        return $this->belongsToMany('App\Role', 'role_users');
-    }
 
     public function messages()
     {
