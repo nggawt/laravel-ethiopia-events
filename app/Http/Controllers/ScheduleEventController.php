@@ -27,6 +27,12 @@ class ScheduleEventController extends Controller
         "description" => "required|string|min:12"
     ];
 
+    public function __construct()
+    {
+        // $this->middleware('cors');
+        // $this->middleware('auth:api', ['except' => ['getLogin']]);
+        $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -112,8 +118,9 @@ class ScheduleEventController extends Controller
      * @param  \App\ScheduleEvent  $scheduleEvent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ScheduleEvent $event)
-    {
+    public function destroy(Request $request ,ScheduleEvent $event)
+
+    {   return ["request" => $request->all(), "event" => $event];
         if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         
         return ['dd' => $event->delete()];

@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('api');
+        $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
     }
 
     public function index(Post $post) {
@@ -98,9 +98,9 @@ class PostController extends Controller
      * @param  \App\galary  $galary
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $blog)
     {
-        //
+        return ["request" => $request->all(), "blog" => $blog];
     }
 
     protected function valInputs(array $inputs = [], array $rules = []){

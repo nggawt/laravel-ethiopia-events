@@ -128,8 +128,11 @@ class LoginAdminController extends Controller
     protected function respondWithToken($token)
     {
         
+        $authority = Auth::guard('admin')->user();
         return [
-            'user' => auth('admin')->user(),
+            'status' => true,
+            'authority' => $authority->roles->pluck('id', 'name'),
+            'user' => $authority,
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('admin')->factory()->getTTL() * 60

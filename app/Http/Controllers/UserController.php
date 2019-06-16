@@ -31,21 +31,22 @@ class UserController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'getLoggedUser', 'contact', 'index', 'store']]);// 'store', 'destroy'
+        $this->middleware('auth:api', ['except' => ['getLogin', 'getLoggedUser', 'contact', 'index', 'store']]);
+        // $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
        
     }
 
     public function index(){
         // return User::all();
-        if($status = Auth::check()){
-            return response()->json(User::all(),200);
+        if($status = Auth::guard('admin')->check()){
+            return response()->json(User::all(), 200);//['status' => $status, 'user' => User::all()]
         } 
         return response()->json(['status' => $status],200);
     }
 
     public function contact(Request $request, User $user){
 
-        $user = isset($user)? $user: auth()->user();
+        $user = isset($user)? $user: auth('api')->user();
         $this->validate($request,[
             'name' => 'string|min:3',
             'email' => $this->user_ruls['email'],
@@ -55,7 +56,8 @@ class UserController extends Controller
             'msg_subject' => $this->user_ruls['area'],
             'message' => 'required|string|min:12',
         ]);
-        
+        $sendTo = $request->email;
+
         SendEmailJob::dispatch($request->all(), SandMailToEe::class);
         $user_id = $user['id']? $user['id']: $user->id? $user->id: null;
         $msgs = [
@@ -66,7 +68,7 @@ class UserController extends Controller
             'date' => Carbon::now(),
         ];
         event(new MessagesEvents($msgs));
-        return $request;
+        return response()->json(["request" => $request->all(), 'sendTo' => $sendTo],200);
     }
 
     public function getLoggedUser(Post $post)
@@ -160,6 +162,7 @@ class UserController extends Controller
 
     public function destroy(Request $request,User $user){
 
+        return ["request" => $request->all(), "user" => $user];
         $authUser = auth()->user();
         // $user = User::findOrfail($user);
         // return ["user" => $user];
@@ -178,7 +181,7 @@ class UserController extends Controller
             'user' => $this->getUser(),
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
+            'expires_in' => auth('api')->factory()->getTTL() * 60
         ];
     }
 

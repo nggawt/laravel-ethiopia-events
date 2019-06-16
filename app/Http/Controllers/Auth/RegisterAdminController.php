@@ -91,16 +91,20 @@ class RegisterAdminController extends Controller
         return $admin;
     }
 
-    protected function respondWithToken($token)
+    /*protected function respondWithToken($token)
     {
         
+        $authority = Auth::guard('admin')->user();
+
         return [
-            'admin' => auth()->guard('admin')->user(),
+            'status' => true,
+            'authority' => $authority->roles->pluck('id', 'name'),
+            'user' => $authority,
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->guard('admin')->factory()->getTTL() * 60
+            'expires_in' => auth('admin')->factory()->getTTL() * 60
         ];
-    }
+    }*/
 
     protected function registered(Request $request, $user)
     {
@@ -109,7 +113,7 @@ class RegisterAdminController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return response()->json($this->respondWithToken($token),200);
+        return response()->json($user->respondWithToken($token),200);
     }
 
     protected function guard()

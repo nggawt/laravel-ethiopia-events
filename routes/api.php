@@ -47,6 +47,7 @@ Route::group([
     
     Route::post('auth-user', 'UserController@getLoggedUser');
     Route::post('auth-admin', 'AdminController@authAdmin');
+
     Route::post('contact', 'UserController@contact');
     Route::resource('users','UserController')->except(['create', 'edit', 'show']);
     Route::patch('users/{user}/change_password', 'UserController@changePassword');
@@ -57,8 +58,14 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 
+    // Route::middleware(['auth', 'admin'])->group(function(){
+
+    // });
+
     Route::resource('admins','AdminController')->except(['create', 'edit']);
 
+    // Route::resource('admin', 'AdminController')->except(['create', 'edit']);
+    
     Route::post('admin-register', 'Auth\RegisterAdminController@register');
     Route::post('admin-login', 'Auth\LoginAdminController@login');
     Route::post('admin-logout', 'Auth\LoginAdminController@logout');

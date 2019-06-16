@@ -26,16 +26,23 @@ class AdminController extends Controller
 
 	function __construct()
     {
-        $this->middleware('auth:admin', ['except' => 'authAdmin']);// 'store', 'destroy', ['except' => ['contact', 'index', 'store']]
+        $this->middleware('auth:admin');// , ['except' => 'authAdmin' , 'index']
        
     }
 
     public function index(){
         // return Admin::all();
         if($status = Auth::guard('admin')->check()){
-            return response()->json(Admin::all(),200);
+            return response()->json($this->getAuthoritedAdmin(Admin::all()),200);
         } 
         return response()->json(['status' => $status],200);
+    }
+
+    protected function getAuthoritedAdmin($admins){
+    	foreach ($admins as $admin) {
+    		$admin['authority'] = $admin->getAdminWithAuthority();
+    	}
+    	return $admins;
     }
 
     public function store(Request $req){
@@ -49,8 +56,6 @@ class AdminController extends Controller
         $idRole = Role::where('name', $req['admin_type'])->first()->id;
 
         $admin = Admin::create($createItems);
-        // sleep(1);
-        // return response()->json(['cool' => $credentials], 200);
         $admin->roles()->attach($idRole);
 
         $credentials = request(['email', 'password']);
@@ -63,24 +68,12 @@ class AdminController extends Controller
 
     public function authAdmin(){
 
-    	// $user = Auth::guard('admin')->user(['token' => request('token')]);
-    	if($status = Auth::guard('admin')->check()){
-            return response()->json( $this->respondWithToken(request('token')),200);
-        } 
-    	return response()->json(['status' => $status], 200);
-    }
+    	$admin = Auth::guard('admin');
 
-     protected function respondWithToken($token)
-    {
-        $authority = Auth::guard('admin')->user();
-        return [
-        	'status' => true,
-        	'authority' => Auth::guard('admin')->user()->roles,
-        	'user' => $authority,
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('admin')->factory()->getTTL() * 60
-        ];
+    	if(! $status = $admin->check()){
+    		return response()->json(['status' => $status], 200);
+        } 
+        return response()->json( $admin->user()->respondWithToken(request('token')),200);
     }
 }
 

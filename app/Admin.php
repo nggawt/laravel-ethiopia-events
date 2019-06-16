@@ -16,7 +16,7 @@ class Admin extends Authenticatable implements JWTSubject
     ];
 
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'roles'
     ];
 
       public function getJWTIdentifier()
@@ -41,5 +41,23 @@ class Admin extends Authenticatable implements JWTSubject
     public function roles()
     {
         return $this->belongsToMany('App\Role', 'role_admins');
+    }
+
+    public function getAdminWithAuthority(){
+
+        return $this->roles[0]->only(['id', 'name', 'slug']);
+    }
+
+    public function respondWithToken($token)
+    {
+        
+        return [
+            'status' => true,
+            'authority' => $this->getAdminWithAuthority(),
+            'user' => $this,
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('admin')->factory()->getTTL() * 60
+        ];
     }
 }

@@ -29,7 +29,7 @@ class CustomersController extends Controller
             "email" => "required|string|email|unique:customers,email",
             "tel" => "required|string|numeric|min:8",
             "address" => "required|string|min:4",
-            "discription" => "required|string|min:12",
+            "descriptions" => "required|string|min:12",
             // "deals" => "required|string|min:6"
         ];
 	protected  $convetedMasseges = [
@@ -40,7 +40,7 @@ class CustomersController extends Controller
            "email" => "אימייל",
            "tel" => "פלאפון או טלפון",
            "address" => "כתובת",
-           "discription" => "אודות",
+           "descriptions" => "אודות",
            "deals" => "מבצעים"
         ];
         protected $filesRules = [
@@ -282,8 +282,8 @@ class CustomersController extends Controller
         return response()->json($this->customers->getMessages(),200);
     }
 
-    public function destroy(Request $request, $id){
-        return $request;
+    public function destroy(Request $request,Customer $customer){
+        return ["request" => $request->all(), "customer" => $customer];
         $imgs = Customer::find($id)->gallery->image;
         $imgs = json_decode($imgs, true);
         $fd = json_decode($request['filesToDelete'], true);
@@ -366,7 +366,7 @@ class CustomersController extends Controller
 
         
         
-        if($customer){
+        if(isset($customer)){
             $gals = $customer->gallery;
             $galFiles = json_decode($gals['image'],true);
             $video = json_decode($gals['video'],true);
@@ -374,8 +374,8 @@ class CustomersController extends Controller
         }
         
 
-        $upFilesKeys = $upFiles && count($upFiles)? array_keys($upFiles):false;
-        $delFilesKeys = $toDelFiles && count($toDelFiles)? array_keys($toDelFiles):false;
+        $upFilesKeys = isset($upFiles) && count($upFiles)? array_keys($upFiles):false;
+        $delFilesKeys = isset($toDelFiles) && count($toDelFiles)? array_keys($toDelFiles):false;
 
         $item = $this->maper($upFiles, 'getValidationProps');
         
