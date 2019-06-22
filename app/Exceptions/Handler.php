@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
          {
             return $request->expectsJson()
-                    ? response()->json(['status' => false], 200)
+                    ? response()->json(['status' => false, 'msg' => "please get login"], 200)
                     : redirect()->guest(route('authentication.index'));
     }
 }

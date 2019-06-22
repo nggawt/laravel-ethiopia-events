@@ -99,7 +99,7 @@ class UserController extends Controller
 
         if($user->email == $req['email'] && $hasMatch){
             return response()->json($this->getMessages(), 200);
-            return response()->json(["user" => $user, "passwordMatch" => $hasMatch, "messages" => $this->getMessages()], 200);
+            // return response()->json(["user" => $user, "passwordMatch" => $hasMatch, "messages" => $this->getMessages()], 200);
         }
         return response()->json($this->getMessages(), 200);
     }
@@ -146,17 +146,17 @@ class UserController extends Controller
         $credentials = request(['email', 'password']);
         $req['password'] =  bcrypt($req['password']);
         $req = $req->except(['passwordConfirm']);
-        User::create($req);
-        sleep(1);
+        $user = User::create($req);
+        // sleep(1);
         //$this->getLogin($credentials);
 
         // $credentials = request(['email', 'password']);
         
         // //return $request->all();
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (! $user->email) {
+            return response()->json(['user create was faild' => $request->all()], 200);
         }
-        return response()->json($this->respondWithToken($token),200);
+        return response()->json(["user was created" => $user],200);
 
     }
 

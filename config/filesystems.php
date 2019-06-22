@@ -46,7 +46,7 @@ return [
         'local' => [
             'driver' => 'local',
             // 'root' => storage_path('app'),
-            'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/',
+            'root' => '/media/sf_ngga_wt/angular-ee/src/assets/pages/',
         ],
 
         'public' => [
@@ -57,10 +57,10 @@ return [
         ],
         'customers' => [
             'driver' => 'local',
-            'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/customers/',
-            // 'root' => '/media/sf_ngga_wt/ngproject/src/assets/pages/customers/',
-            // 'url' => env('APP_URL')."/files",
-            // 'visibility' => 'public',
+            'root' => '/media/sf_ngga_wt/angular-ee/src/assets/pages/customers/',
+            // 'root' => '/media/sf_ngga_wt/angular-ee/src/assets/pages/customers/',
+            // 'url' => env('APP_URL').'/media/sf_ngga_wt/angular-ee/src/assets/pages/customers/',
+            'visibility' => 'public',
         ],
         's3' => [
             'driver' => 's3',

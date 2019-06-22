@@ -30,7 +30,7 @@ class CustomersController extends Controller
             "tel" => "required|string|numeric|min:8",
             "address" => "required|string|min:4",
             "descriptions" => "required|string|min:12",
-            // "deals" => "required|string|min:6"
+            "deals" => "required|string|min:3"
         ];
 	protected  $convetedMasseges = [
            "company" => "שם חברה",
@@ -136,7 +136,7 @@ class CustomersController extends Controller
 
         /**** send message errors if rquires params not exisst ****/
         if(! $files || ! $formInputs){
-            $badRequest = ['badRequest' => array(["request" => "missing data rquest"])];
+            $badRequest = ['badRequest' => array(["request" => "missing data rquest", 'req' => $request->all()])];
             return response()->json(['errors' => $badRequest],200);
         }
 
@@ -150,8 +150,9 @@ class CustomersController extends Controller
 
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
             // return $this->messages;
-            //return response()->json(collect($this->messages)->except('success'),200);
-            return response()->json($this->customers->getMessages(),200);
+            // return response()->json(["afterValInputs" => $afterValInputs, "afterValFiles" => $afterValFiles],200);
+            return response()->json(collect($this->customers->getMessages())->except('success'),200);
+            // return response()->json($this->customers->getMessages(),200);
         }
 
 
@@ -172,7 +173,7 @@ class CustomersController extends Controller
         $download = array_map([$this, 'mapItems'], $files, $filesKeys);
         
         $downloaded = collect($download)->collapse();
-        // return ['download' => $downloaded, "files" => $files];
+        // return ['download' => $downloaded, "customersDetails" => $customersDetails];
 
         $filesTsave['image'] = json_encode($downloaded['gallery']);
         $filesTsave['video'] = json_encode($downloaded['video']);
@@ -183,6 +184,7 @@ class CustomersController extends Controller
             Customer::create($customersDetails);
             $this->messages['customer'] = $customersDetails;
             sleep(1);
+            
             $customer_id = Customer::where('email',$customersDetails['email'])->first()->id;
             $filesTsave['customer_id'] = $customer_id;
             
@@ -353,6 +355,7 @@ class CustomersController extends Controller
         $isValid = true;
         $galFiles = [];
         $upFiles = [];
+        $customer = [];
         // $upFiles = isset($files['update'])? $files['update']:($requestMethod == "POST" && isset($files['store']))? $files['store']: [];
 
         if(isset($files['update']) && count($files['update'])){
@@ -366,7 +369,7 @@ class CustomersController extends Controller
 
         
         
-        if(isset($customer)){
+        if(isset($customer) && count($customer)){
             $gals = $customer->gallery;
             $galFiles = json_decode($gals['image'],true);
             $video = json_decode($gals['video'],true);
@@ -399,8 +402,8 @@ class CustomersController extends Controller
         # validate files to delete exisst
             # files to deleted must be exist in dir and db
             # files uploaded must no exist in dir and db
-        $map['del'] = $toDelFiles? $this->maper($toDelFiles, 'isExist', $customer, 'delete'): [];
-        $map['up'] = $upFiles? $this->maper($upFiles, 'isExist', $customer, 'uploade'): [];
+        $map['del'] = $delFilesKeys? $this->maper($toDelFiles, 'isExist', $customer, 'delete'): [];
+        $map['up'] = $upFilesKeys? $this->maper($upFiles, 'isExist', $customer, 'uploade'): [];
         $this->customers->setMessages('errors', 'TEST357', $map);
 
         $statusDel = array_column($map['del'], 'status');
@@ -411,7 +414,7 @@ class CustomersController extends Controller
 
 
         /**** validate min-maxFile ****/
-        $minMaxfiles = $this->validateMinMaxFiles($upFiles, $toDelFiles, $galFiles);
+        $minMaxfiles = $this->validateMinMaxFiles($upFiles, $delFilesKeys? $toDelFiles: [], $galFiles);
         $minMaxStatus = $minMaxfiles['status'] && $requestMethod == "POST"? $minMaxfiles['allow_store']: $minMaxfiles['status'];
         (! $minMaxStatus)? $this->customers->setMessages('errors', 'minMaxFile', $minMaxfiles): "";
 
@@ -607,7 +610,9 @@ class CustomersController extends Controller
     	foreach($inputes as $key => $value) {
             //if($key == "email") {continue;}
             if(! isset($this->formRoles[$key])) {
-                return response()->json(['errors' => $key . " dos not exisst in our system"],200);
+                $msg = $key . " dos not exisst in our system";
+                $this->customers->setMessages('errors', $key, $msg);
+                return false;
             }
 
             $myRequest[$key] = $value;
