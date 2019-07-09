@@ -31,7 +31,7 @@ class UserController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'getLoggedUser', 'contact', 'index', 'store']]);
+        $this->middleware('auth:api', ['except' => ['getLogin', 'contact', 'index', 'store']]);
         // $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
        
     }
@@ -143,6 +143,10 @@ class UserController extends Controller
         
         $this->validate($req,$this->user_ruls);
 
+        if(! $admin = auth('admin')->check()){
+            return response()->json(['status' => "please log in as admin! ", $admin], 200);
+        }
+        // return response()->json(['status' => "thanks you log in as admin! ", $admin], 200);
         $credentials = request(['email', 'password']);
         $req['password'] =  bcrypt($req['password']);
         $req = $req->except(['passwordConfirm']);

@@ -83,34 +83,11 @@ class CustomersRepo
         return $filteredCustomers;
     }
 
-    //responsable for get key value of customers before stor database
-    public function handelDetails($inputs){
-
-        $user = User::where('email',$inputs['email'])->first();
-    	$compName = Customer::where('company',$inputs['company'])->first();
-        $hasErrors = false;
-    	$autUser = auth()->user();
-    	$userisCustomer = $autUser->customer;
-        // return  $userisCustomer;
-    	if(! $compName && ! $userisCustomer && isset($user) && $autUser->email === $inputs['email']){
-    	
-    	    $inputs['user_id'] = $autUser->id;
-    	    $inputs['loggo'] = $this->dataUrl . $inputs['loggo'];
-    	    $inputs['deals'] =  "מבצעים בהמשך.";
-
-    	}else{
-    	    $messege = ["Auth-error" => "somthing went wrong with your request."];
-            $this->setMessages('errors', 'AuthError', $messege);
-            $hasErrors = true;
-    	}
-		return ($hasErrors)? $this->messages:$inputs;
-    }
-
     public function getFilesParams($files, $callBack = false, $delimiter = false){
         
 
         $media = [];
-        $allowedAttribute = ['gallery', 'video', 'loggo'];
+        $allowedAttribute = ['images', 'video', 'loggo'];
 
         foreach ($files as $key => $file) {
 
@@ -151,182 +128,133 @@ class CustomersRepo
         return $delimiter || (count($media) < 1)? false: $media;
     }
 
-    public function looper($files, $fn, $delFiles = [], $istrue = false){
+    public function looper($target, $files, $fn){
         
-        $downloaded = [
-            'downloaded' => [],
-            'deleted' => []
-        ];
+        $fnResponse = [];
         foreach ($files as $key => $value) {
 
-            $target = $value["target"];
-            if(! isset($downloaded['downloaded'][$target])) $downloaded['downloaded'][$target] = [];
-            if(! isset($downloaded['deleted'][$target])) $downloaded['deleted'][$target] = [];
-               
-            $fnResponse = $this->$fn($value, $delFiles, $istrue);
-            $this->setMessages('errors', "TESTrepo185", $fnResponse);
-            $fnTarget = isset($fnResponse[$target])? true:false;
-
-            $resDlTarget = isset($fnResponse['downloaded']) && count($fnResponse['downloaded'])? true:false;
-            $resDelTarget = isset($fnResponse['deleted']) && count($fnResponse['deleted'])? true: false;
-
-            $resultTarget = $resDlTarget && isset($fnResponse['downloaded'][$target])? true:false;
-            $resultDelTarget = $resDelTarget && isset($fnResponse['deleted'][$target])? true:false;
-
-            ($resultTarget)? array_push($downloaded['downloaded'][$target], $fnResponse['downloaded'][$target]):"";
-            $fnTarget? array_push($downloaded['downloaded'][$target], $fnResponse[$target][0]): "";
-
-            ($resultDelTarget)? array_push($downloaded['deleted'][$target], $fnResponse['deleted'][$target]): "";
-            ($fnTarget && $resDelTarget)? array_push($downloaded['deleted'][$target], $fnResponse[$target][0]): "";
-
-            $this->setMessages('errors', "TESTrepo200", $downloaded);
-            ($delFiles && is_array($delFiles) && count($delFiles))? array_shift($delFiles): '';
-
-        }
-       return $downloaded;
-    }
-
-    protected function updateFilesTEst($fileItem, $fDelete){
-
-        $target = $fileItem['target'];
-        $downloaded = [
-            'downloaded' => [],
-            'deleted' => []
-        ];
-
-        $fdTarget = [];
-        $fdl = isset($fDelete[0]) && count($fDelete)? $fDelete[0]: false;
-        ($fdl)? $downloaded['deleted'][$target] = $fdl: "";
-
-        $exDelFileName = $fdl? explode('/', $fdl): false;
-        $delFileName = $exDelFileName? $exDelFileName[count($exDelFileName) - 1]: false;
-
-        if($target == 'loggo'){
-        
-            $download = $this->downloadFiles($fileItem, $fdl, true);
-            $downloaded['downloaded'][$target] = $download[$target][0];
-
-            //$item = isset($downloaded["loggo"]) && count($downloaded["loggo"])? $downloaded["loggo"]: false;
-
-            //$customer->loggo = $item;
-            //$gals->save();
-            //Storage::delete($loggo);
-
-
-            $messege = ['deletedFiles' => $delFileName];
-            $this->setMessages('success', $target, $messege);
-
-        }else if($target == 'video'){//&& $fdTarget
-
-
-            $download = $this->downloadFiles($fileItem, $fdl, true);
-            $downloaded['downloaded'][$target] = $download[$target][0];
-
-            //$item = isset($downloaded["video"]) && count($downloaded["video"])? $downloaded["video"]: false;
-
-            //$gals->video = json_encode($item);
-            //$gals->save();
-            // ($fdl)? Storage::delete($fdl): '';
-
-            $messege = ['deletedFiles' => $delFileName];
-            $this->setMessages('success', $target, $messege);
-            
-        }else if($target == 'gallery'){
-
-            $download = $this->downloadFiles($fileItem, $fdl, true);
-            // $this->setMessages('success', "TST2", $download);
-
-            $dled =  (isset($downloaded[$target]) && count($downloaded[$target]));
-
-            $downloaded['downloaded'][$target] = $download[$target][0];
-
-            if($fdl){
-
-                //Storage::delete($fdl[0];
-                $messege = ['deletedFiles' => $delFileName];
-                $this->setMessages('success', $target, $messege);
+            $item = $this->$fn($target, $value, true)[$target];
+            if($item){
+                if(! isset($fnResponse[$target])) $fnResponse[$target] = [];
+                array_push($fnResponse[$target], $item);
             }
         }
-        return $downloaded;
+       return $fnResponse;
     }
 
-    public function downloadFiles($files, $toDel, $nameFlag = false){
+    public function downloadFiles($target, $files, $nameFlag = false){
 
-        $downloadedFiles = [
-                    /*'gallery' => [],
-                    'loggo' => [],
-                    'video' => []*/
-                ];
+        $downloadedFiles = [];
 
-        // foreach ($files as $key => $value) {
-            
-            $file = $files['file'];
-            $target = $files["target"];
-            $name = $files["name"];
-            $fullPath =  $files['fullPath']. '.' . $files['ext'];
-            $fullUrl = $this->dataUrl . $fullPath;
+        $file = $files['file'];
+        $target = $files["target"];
+        $name = $files["name"];
+        $fullPath =  $files['fullPath']. '.' . $files['ext'];
+        $fullUrl = $this->dataUrl . $fullPath;
 
-            $messege = [$target => "הקובץ עודכן בהצלחה " . $name];
-            $url = ($nameFlag)? $fullUrl: $name;
+        $url = ($nameFlag)? $fullUrl: $name;
 
-            // $dlTarget = isset($downloadedFiles[$target]) && count($downloadedFiles[$target]);
 
-            // (! $dlTarget)? $downloadedFiles[$target] = [$url]: array_push($downloadedFiles[$target], $url);
+        $down = Storage::putFileAs('customers', new File($file), $fullPath);//
+        $messege = [$target => "הקובץ עודכן בהצלחה " . $name ,'status' => $down];
+        $this->setMessages('success', $target, $messege);
+        
+        $downloadedFiles[$target] = $down? $url: $down;
+        return $downloadedFiles;
+    }
 
-            $this->setMessages('success', $target, $messege);
+    protected function deleteFromStorage($target, string $link = ''){
+        $deletedItems = [];
+        $posTarget = (strpos($link , $target.'/') === false)? "gallery/": $target.'/';
 
-            Storage::putFileAs('customers', new File($file), $fullPath);
+        $fileName = explode($posTarget , $link)[1];
+        
+        $linkToFile = explode('customers/', $link)[1];
 
-            (isset($toDel) && (is_array($toDel) || is_object($toDel)) && count($toDel))? Storage::disk('customers')->delete(explode('customers/', $toDel)[1]): '';
+        $deleted = Storage::disk('customers')->delete($linkToFile);
+        $messege = ['deletedFiles' => $fileName, "status" => $deleted];
 
-            // $msg = [$fullPath => explode('customers/', $toDel)[1]];
-            // $this->setMessages('success', 'video', $msg);
-            
-            //Storage::disk('arc')->putFileAs('customers', new File($files), $fileName);
-            //Storage::disk('arc')->put('/sysfiles/', $files);
-            // Storage::putFileAs('/public/', new File($file), $fullPath);
+        $this->setMessages('success', $target, $messege);
+        $deletedItems[$target] = $deleted? $link: $deleted;//$deleted
+        return $deletedItems;
+    }
+
+    public function updateFiles($items, $deles, $customer){
+        
+        $proccesed = [];
+        $itemsKeys = [];
+        $galImages = json_decode($customer->gallery->image, true);
+        $galvideo = json_decode($customer->gallery->video, true);
+        // foreach ($items as $key => $value) {
+        //     $proccesed[$key] = $this->looper($key, $value, $fn)[$key];
         // }
-        $downloadedFiles[$target] = [$url];
-        return $downloadedFiles;
-    }
+        $collectionDown = collect($items);
+        $collectionDeles = collect($deles);
 
-    public function updateFiles($files, $customer, $filesToDelete = false){
-        
-        $gals = $customer->gallery;
-        $imgs = json_decode($gals['image'],true);
-        $video = json_decode($gals['video'],true);
-        $loggo = $customer->loggo;
-        $downloadedFiles = [
-            'image' => [],
-            'video' => [],
-            'loggo' => []
-        ];
+        $itemsKeys['down']  = $items? $collectionDown->map(function($value, $itemKeys){
+            $downLoadResault = $this->looper($itemKeys, $value, 'downloadFiles');
+            if($downLoadResault && $downLoadResault[$itemKeys]) return $downLoadResault[$itemKeys];
+        })->toArray(): false;
 
-        foreach ($files as $key => $value) {
+        $itemsKeys['del']  = $deles? $collectionDeles->map(function($value, $itemKeys){
+            $deletedResault = $this->looper($itemKeys, $value, 'deleteFromStorage');
+            if($deletedResault && $deletedResault[$itemKeys]) return $deletedResault[$itemKeys];
+        })->toArray(): false;
 
-            $fDelete = ($filesToDelete && count($filesToDelete[$key]))? $filesToDelete[$key]:[];
-            $items = $this->looper($files[$key], 'updateFilesTEst', $fDelete);
-            // return $key;
-            if(isset($items['downloaded'][$key]) && count($items['downloaded'][$key])){
-                if(isset($items['downloaded']["gallery"])) $imgs = array_merge($imgs, $items['downloaded'][$key]);
-                (! isset($downloadedFiles[$key]))? $downloadedFiles[$key] = [] : '';
-                array_push($downloadedFiles[$key], $items['downloaded'][$key][0]);
+        // return $itemsKeys;
+        $resaults = [];
+
+        if($itemsKeys['down'] && count($itemsKeys['down'])){
+            $downLoaded = $itemsKeys['down'];
+            $images = (isset($downLoaded['images']) && count($downLoaded['images']))? $downLoaded['images']: false;
+            $video = (isset($downLoaded['video']) && count($downLoaded['video']))? $downLoaded['video']: false;
+            $loggo = (isset($downLoaded['loggo']) && count($downLoaded['loggo']))? $downLoaded['loggo']: false;
+            
+            if($images){
+                $resultImages = array_merge($galImages, $images);
+                $resaults['image'] = $resultImages;
             }
 
-            if(isset($items['deleted'][$key]) && count($items['deleted'][$key])){
-                $imgs = array_diff($imgs, $items['deleted'][$key]);
-                $filesToDelete[$key] = array_diff($fDelete, $items['deleted'][$key]);
+            if($video){
+                $resaults['video'] = $video;
+            }
+
+            if($loggo){
+                $resaults['loggo'] = $loggo;
             }
         }
 
-        $deletedFilesExist = $filesToDelete && isset($filesToDelete['gallery']) && count($filesToDelete['gallery']);
-        
-        if($deletedFilesExist){
-            $dl = $this->delFromGal($filesToDelete['gallery'], $imgs);
-            $this->setMessages('success', 'TESTrepo320', ['toDelete' => $deletedFilesExist, 'imgs' => $dl]);
+        if($itemsKeys['del'] && count($itemsKeys['del'])){
+
+            $deleted = $itemsKeys['del'];
+
+            $images = (isset($deleted['images']) && count($deleted['images']))? $deleted['images']: false;
+            $video = (isset($deleted['video']) && count($deleted['video']))? $deleted['video']: false;
+            $loggo = (isset($deleted['loggo']) && count($deleted['loggo']))? $deleted['loggo']: false;
+            
+            if($images){
+                $result =  (isset($resaults['image']) && count($resaults['image']))? array_diff($resaults['image'], $images): 
+                array_diff($galImages, $images);
+                $resaults['image'] = $result;
+
+                $messege = ['deletedFiles' => $images, "result" => $result, 'original' => $galImages];
+                $this->setMessages('success', 'images', $messege);
+            }
+
+            if($video){
+                $result =  (isset($resaults['video']) && count($resaults['video']))? array_diff($resaults['video'], $video): $video;
+                $resaults['video'] = $result;
+            }
+
+            if($loggo){
+                $result =  (isset($resaults['loggo']) && count($resaults['loggo']))? 
+                array_diff($resaults['loggo'], $loggo): $loggo;
+                $resaults['loggo'] = $result;
+            }
         }
-        $downloadedFiles['image'] = $imgs;
-        return $downloadedFiles;
+
+        
+        return $resaults;
     }
 
 
@@ -343,7 +271,7 @@ class CustomersRepo
             $this->setMessages('success', 'gallery', $messege);
 
             # extract left item wthin gll imgs
-            $imgs = array_diff($imgs,array($link));
+            $imgs = array_diff($imgs, array($link));
         }
 
         return $imgs;

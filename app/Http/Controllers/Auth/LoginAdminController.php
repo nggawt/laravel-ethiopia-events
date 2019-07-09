@@ -11,8 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class LoginAdminController extends Controller
 {
 
-    protected $maxLoginAttempts = 2; // Amount of bad attempts user can make
-    protected $lockoutTime = 300; // Time for which user is going to be blocked in seconds
+    //protected $maxLoginAttempts = 2; // Amount of bad attempts user can make
+    //protected $lockoutTime = 300; // Time for which user is going to be blocked in seconds
     /*
     |--------------------------------------------------------------------------
     | Login Controller
