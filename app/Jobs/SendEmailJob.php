@@ -39,11 +39,12 @@ class SendEmailJob implements ShouldQueue
             new $this->fn($this->params)
         );
     }
-     public function failed(Exception $exception)
-    {
-        // Send user notification of failure, etc...
-        // Mail::to('nggawt100@gmail.com')->send(
-        //     new Event_created($this->params)
-        // );
-    }
+    //  public function failed(Exception $exception)
+    // {
+    //     // Send user notification of failure, etc...
+    //     // Mail::to('nggawt100@gmail.com')->send(
+    //     //     new Event_created($this->params)
+    //     // );
+    //     return ['faild' => "send message failed"];
+    // }
 }

@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\MessagesEvents;
-use App\Messages;
+use App\Message;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
@@ -27,6 +27,6 @@ class MessegesEventListener
      */
     public function handle(MessagesEvents $event)
     {
-        Messages::create($event->param);
+        Message::create($event->param);
     }
 }

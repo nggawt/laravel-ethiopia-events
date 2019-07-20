@@ -73,8 +73,8 @@ class CustomersRepo
                 ],
 
                 "gallery" => [
-                    'image' => $imgs? json_decode($imgs):[],
-                    'video' => $vids? json_decode($vids):[]
+                    'image' => $imgs? json_decode($imgs, true):[],
+                    'video' => $vids? json_decode($vids, true):[]
                 ],
                 "events" => $evt
             ];

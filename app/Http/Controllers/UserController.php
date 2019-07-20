@@ -47,26 +47,28 @@ class UserController extends Controller
     public function contact(Request $request, User $user){
 
         $user = isset($user)? $user: auth('api')->user();
+        // return response()->json($request->all(),200);
         $this->validate($request,[
             'name' => 'string|min:3',
             'email' => $this->user_ruls['email'],
             'phone' => $this->user_ruls['tel'],
-            'area' => $this->user_ruls['city'],
+            'area' => $this->user_ruls['area'],
             'city' => $this->user_ruls['city'],
-            'msg_subject' => $this->user_ruls['area'],
-            'message' => 'required|string|min:12',
+            'subject' => $this->user_ruls['area'],
+            'message' => 'required|string|min:6',
         ]);
         $sendTo = $request->email;
-
+        
         SendEmailJob::dispatch($request->all(), SandMailToEe::class);
         $user_id = $user['id']? $user['id']: $user->id? $user->id: null;
         $msgs = [
             'user_id' => $user_id,
             'name' => $user->name? $user->name: $request['name'],
-            'title' => "your mail: ". $request['msg_subject'] . " was sent.",
+            'title' => $request['subject'],
             'body' => $request['message'],
             'date' => Carbon::now(),
         ];
+
         event(new MessagesEvents($msgs));
         return response()->json(["request" => $request->all(), 'sendTo' => $sendTo],200);
     }
@@ -151,12 +153,7 @@ class UserController extends Controller
         $req['password'] =  bcrypt($req['password']);
         $req = $req->except(['passwordConfirm']);
         $user = User::create($req);
-        // sleep(1);
-        //$this->getLogin($credentials);
-
-        // $credentials = request(['email', 'password']);
         
-        // //return $request->all();
         if (! $user->email) {
             return response()->json(['user create was faild' => $request->all()], 200);
         }
