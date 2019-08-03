@@ -46,7 +46,7 @@ class RegisterAdminController extends Controller
 
     function __construct()
     {
-        $this->middleware('guest:admin');
+        // $this->middleware('guest:admin');
        
     }
 
@@ -88,6 +88,7 @@ class RegisterAdminController extends Controller
 
         $admin = Admin::create($createItems);
         $admin->roles()->attach($idRole);
+        
         return $admin;
     }
 
@@ -112,8 +113,8 @@ class RegisterAdminController extends Controller
         if (! $token = auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        return response()->json($user->respondWithToken($token),200);
+        return response()->json($user, 200);
+        // return response()->json($user->respondWithToken($token),200);
     }
 
     protected function guard()

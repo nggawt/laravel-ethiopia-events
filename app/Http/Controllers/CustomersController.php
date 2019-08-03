@@ -32,6 +32,7 @@ class CustomersController extends Controller
             "tel" => "required|string|numeric|min:8",
             "address" => "required|string|min:4",
             "descriptions" => "required|string|min:12",
+            "content" => "required|string|min:12",
             "deals" => "required|string|min:3",
             "confirmed" => "boolean"
         ];
@@ -40,6 +41,7 @@ class CustomersController extends Controller
            "businessType" => "סוג העסק",
            "title" => "כותרת",
            "contact" => "איש קשר",
+           "content" => "תוכן",
            "email" => "אימייל",
            "tel" => "פלאפון או טלפון",
            "address" => "כתובת",
@@ -141,7 +143,6 @@ class CustomersController extends Controller
         
         /****** decode objects *******/
         $formInputs = $request->only('formInputs');
-        
         $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($formInputs['formInputs'], true): false;
 
         /**** send message errors if rquires params not exisst ****/
@@ -152,17 +153,14 @@ class CustomersController extends Controller
 
         /**** valadete before any task ****/
         $afterValInputs = ($formInputs)? $this->validInputs(collect($formInputs)->except('loggo'), $method):null;
-        // $afterValFiles = (isset($files) && count($files))? $this->mainValidation($files, [], []): null;
         $valItems = ['store'=> $files];
 
         $afterValFiles = $this->mainValidation($valItems, $method);//$filesToUdate, $filesTodelete, $customer
         
 
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
-            // return $this->messages;
-            // return response()->json(["afterValInputs" => $afterValInputs, "afterValFiles" => $afterValFiles],200);
+            
             return response()->json(collect($this->customers->getMessages())->except('success'),200);
-            // return response()->json($this->customers->getMessages(),200);
         }
         
         /***** download files before store into database *****/
@@ -221,35 +219,50 @@ class CustomersController extends Controller
         $files = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
         $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($request['formInputs'], true): [];
 
-        /***** if we have no data at all return ******/
+        /***** if we have no data at all return whith errors ******/
         if((! $files || empty($files)) && (! $filesTodelete || empty($filesTodelete)) && (! $formInputs || empty($formInputs))){
             $badRequest = ['badRequest' => array(["request" => "missing data rquest"])];
             return response()->json(['errors' => $badRequest],200);
         }
 
         /**** valadete before any task ****/
+        $fileItems = ['update'=> $files, 'delete' => $filesTodelete, 'customer' => $customer];
 
-        $afterValInputs = ($formInputs)? $this->validInputs($formInputs, $method):null;
-        
-        // $valFiles = Validator::make($files, [
-        //     'images' => ['required','array','min:3','max:12',new filesSize]
-        //     // 'fullUrl' => ['required', new filesSize] 
-        // ]);
-
-        // return ["val" => $valFiles->errors(), "items" => $files['images'], 'fails' => $valFiles->fails()];
-
-        $valItems = ['update'=> $files, 'delete' => $filesTodelete, 'customer' => $customer];
-        $afterValDelFiles = ($files || $filesTodelete)? $this->mainValidation($valItems, $method): null;
-
+        $afterValInputs = ($formInputs && count($formInputs))? $this->validInputs($formInputs, $method):null;
+        $afterValDelFiles = ($files || $filesTodelete)? $this->mainValidation($fileItems, $method): null;
 
         if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValDelFiles && ! is_null($afterValDelFiles))){
             
-        	// return response()->json(collect($this->messages)->except('success'),200);
             return response()->json($this->customers->getMessages(),200);
         }
         
-        /***** update and delete files *****/
-        $down = ($files || $filesTodelete)? $this->customers->updateFiles($files, $filesTodelete, $customer): 'no';// "downloadFiles"
+        /***** update and delete gallery files *****/
+        $down = ($files || $filesTodelete)? $this->customers->updateFiles($files, $filesTodelete, $customer): false;// "downloadFiles"
+        ($down && count($down))? $this->gallUpdate($down): '';
+
+        /* check if form inputs have data except company and update */
+        $formInputs = collect($formInputs)->except('company')->toArray();
+        $inputsIsValidated = (isset($formInputs) && count($formInputs));
+
+        /***** if we have input emeil we need to ensure to sync email of user too *****/
+        if($inputsIsValidated && isset($formInputs['email'])) $this->updateUserEmail($customer, $formInputs['email']);
+        if($inputsIsValidated) $customer->update($formInputs);
+
+        /******* get and send back messages ******/
+        return response()->json($this->customers->getMessages(),200);
+    }
+
+    protected function updateUserEmail($customer, $requestEmail){
+
+        $userEmailTeken = User::where('email', $requestEmail)->first();
+        if(empty($userEmailTeken)){
+            $customer->user->update(['email' => $requestEmail]);
+        }else{
+            return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
+        }
+    }
+
+    protected function gallUpdate($down){
         if(isset($down['image']) && count($down['image'])) {
             $customer->gallery['image'] = json_encode($down['image']);
             $customer->gallery->save();
@@ -263,28 +276,10 @@ class CustomersController extends Controller
             $customer->loggo = $loggo;
             $customer->save();
         }
-        // return response()->json(['down' => $down, 'msgs' => $this->customers->getMessages()], 200);
-
-        $formInputs = collect($formInputs)->except('company')->toArray();
-        $inputsIsValidated = (isset($formInputs) && count($formInputs));
-
-        if($inputsIsValidated) $customer->update($formInputs);
-        /***** if we have input emeil we need to ensure to sync email of user too *****/
-        if($inputsIsValidated && isset($formInputs['email'])){
-        	$userEmailTeken = User::where('email', $formInputs['email'])->first();
-
-        	if(empty($userEmailTeken)){
-
-        		$customer->user->update(['email' => $formInputs['email']]);
-        	}else{
-    			return response()->json(['errors' => [ "email"=> array("האימייל כבר קיים במערכת שלנו.")]],200);
-        	}
-        }
-        /******* get and send back messages ******/
-        return response()->json($this->customers->getMessages(),200);
     }
 
     public function destroy(Request $request,Customer $customer){
+        
         return ["request" => $request->all(), "customer" => $customer];
         $imgs = Customer::find($id)->gallery->image;
         $imgs = json_decode($imgs, true);

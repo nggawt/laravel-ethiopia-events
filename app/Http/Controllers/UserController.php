@@ -25,13 +25,14 @@ class UserController extends Controller
             'passwordConfirm' => 'required|string|same:password|max:255',
             'city' => 'string|min:3|max:30',
             'area' => 'required|string|min:3|max:30',
+            'banned_until' =>'date|nullable',
             'about' => 'string|min:12',
             'tel' => 'digits_between:8,10',
         ];
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['getLogin', 'contact', 'index', 'store']]);
+        $this->middleware('auth:api', ['except' => ['index', 'store','update']]);
         // $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
        
     }
@@ -44,121 +45,46 @@ class UserController extends Controller
         return response()->json(['status' => $status],200);
     }
 
-    public function contact(Request $request, User $user){
-
-        $user = isset($user)? $user: auth('api')->user();
-        // return response()->json($request->all(),200);
-        $this->validate($request,[
-            'name' => 'string|min:3',
-            'email' => $this->user_ruls['email'],
-            'phone' => $this->user_ruls['tel'],
-            'area' => $this->user_ruls['area'],
-            'city' => $this->user_ruls['city'],
-            'subject' => $this->user_ruls['area'],
-            'message' => 'required|string|min:6',
-        ]);
-        $sendTo = $request->email;
+    public function store(Request $request){
         
-        SendEmailJob::dispatch($request->all(), SandMailToEe::class);
-        $user_id = $user['id']? $user['id']: $user->id? $user->id: null;
-        $msgs = [
-            'user_id' => $user_id,
-            'name' => $user->name? $user->name: $request['name'],
-            'title' => $request['subject'],
-            'body' => $request['message'],
-            'date' => Carbon::now(),
-        ];
-
-        event(new MessagesEvents($msgs));
-        return response()->json(["request" => $request->all(), 'sendTo' => $sendTo],200);
-    }
-
-    public function getLoggedUser(Post $post)
-    {
-
-        if($status = Auth::guard('api')->check()){
-            return response()->json(['status' => $status, 'user' => $this->getUser()],200);
-        } 
-        return response()->json(['status' => $status],200);
-    }
-    
-    public function changePassword(Request $req, User $user){
-
-        $ruls = [
-            'email' => $this->user_ruls['email'],
-            'currentPassword' => $this->user_ruls['password'],
-            'newPassword' => $this->user_ruls['password'],
-            'passwordConf' => 'required|string|same:newPassword'
-        ];
-
-        $items = collect($req->all())->intersectByKeys($ruls)->toArray();
-
-        $isValid = $this->isValid($items, $ruls, 'newPassword');
-
-        if(! $isValid) return response()->json($this->getMessages(), 200);
-        
-        $hasMatch =  \Hash::check($req->only('currentPassword')['currentPassword'], $user->password);
-
-        if($user->email == $req['email'] && $hasMatch){
-            return response()->json($this->getMessages(), 200);
-            // return response()->json(["user" => $user, "passwordMatch" => $hasMatch, "messages" => $this->getMessages()], 200);
-        }
-        return response()->json($this->getMessages(), 200);
-    }
-    
-    public function changeEmail(User $user, Request $req){
-
-        $ruls = [
-            'currentEmail' => $this->user_ruls['email'],
-            'newEmail' => $this->user_ruls['email'],
-            'passwordEmail' => $this->user_ruls['password'],
-        ];
-
-        $items = collect($req->all())->intersectByKeys($ruls)->toArray();
-
-        $isValid = $this->isValid($items, $ruls, 'newEmail');
-
-        if(! $isValid) return response()->json($this->getMessages(), 200);
-
-        if($user->email == $req['email']){
-            return response()->json(["user" => $user, "messages" => $this->getMessages()], 200);
-        }
-        return response()->json($this->getMessages(), 200);
-    }
-
-    
-    private function isValid(array $inputs = [], array $rules = [], $item){
-        $rules = count($rules)? $rules: $this->itemsRule;
-        $validator = \Validator::make($inputs, $rules);
-
-        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages([$item => $inputs[$item]]);
-        //return true;
-        return $validator->fails()? false:true;
-    }
-
-    public function getLogout(){
-        Auth::logout();
-        // return redirect()->route('home');
-    }
-
-    public function store(Request $req){
-        
-        $this->validate($req,$this->user_ruls);
+        $this->validate($request,$this->user_ruls);
 
         if(! $admin = auth('admin')->check()){
             return response()->json(['status' => "please log in as admin! ", $admin], 200);
         }
-        // return response()->json(['status' => "thanks you log in as admin! ", $admin], 200);
-        $credentials = request(['email', 'password']);
-        $req['password'] =  bcrypt($req['password']);
-        $req = $req->except(['passwordConfirm']);
-        $user = User::create($req);
         
-        if (! $user->email) {
-            return response()->json(['user create was faild' => $request->all()], 200);
-        }
-        return response()->json(["user was created" => $user],200);
+        $credentials = $request->only(['email', 'password']);
+        $request['password'] =  bcrypt($request['password']);
+        $req = $request->except(['passwordConfirm']);
 
+        $user = User::create($req);
+        return response()->json(["message" => "user was created", "user" => $user],200);
+    }
+
+    public function update(Request $request, User $user){
+
+        $requestItems = $request->except(['email', 'password']);
+        $bannedFieald = $request->only('banned_until');
+
+        $items = collect($requestItems)->intersectByKeys($this->user_ruls)->toArray();
+        $ruls = collect($this->user_ruls)->intersectByKeys($items)->toArray();
+        $isValid = $this->isValid($items, $ruls, 'update');
+
+        /* send message fail if invalid */
+        if(! $isValid) return response()->json(['status' => 'fail' ,$this->getMessages()], 200);
+        if(! empty($bannedFieald)) $this->bannedUser($bannedFieald, $user);
+
+        /* update user and send message success */
+        // return ['items' => $items, 'ruls' => $ruls];
+        $updatedUser = $user->update($items);
+        return response()->json(['user' => $user ,$this->getMessages(), 'items' => $items], 200);
+    }
+
+    protected function bannedUser($filed, $user){
+         $dt = is_null($filed['banned_until'])? null: Carbon::parse($filed['banned_until']);
+         $user->banned_until = $dt;
+
+        // is_null($filed['banned_until'])? $user->unbanned(): $user->banned();
     }
 
     public function destroy(Request $request,User $user){
@@ -175,36 +101,59 @@ class UserController extends Controller
         return response()->json(['error' => 'Unauthorized'], 401);
     }
 
-    protected function respondWithToken($token)
-    {
-        
-        return [
-            'user' => $this->getUser(),
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
+    public function changePassword(Request $request, User $user){
+
+        $ruls = [
+            'email' => $this->user_ruls['email'],
+            'currentPassword' => $this->user_ruls['password'],
+            'newPassword' => $this->user_ruls['password'],
+            'passwordConf' => 'required|string|same:newPassword'
         ];
+
+        $items = collect($request->all())->intersectByKeys($ruls)->toArray();
+
+        $isValid = $this->isValid($items, $ruls, 'newPassword');
+
+        if(! $isValid) return response()->json($this->getMessages(), 200);
+        
+        $hasMatch =  \Hash::check($request->only('currentPassword')['currentPassword'], $user->password);
+
+        if($user->email == $request['email'] && $hasMatch){
+            /* update user password and send message success */
+            return response()->json($this->getMessages(), 200);
+        }
+        /* send message fail */
+        return response()->json(['status' => 'fail' ,$this->getMessages()], 200);
+    }
+    
+    public function changeEmail(User $user, Request $req){
+
+        $ruls = [
+            'currentEmail' => $this->user_ruls['email'],
+            'newEmail' => $this->user_ruls['email'],
+            'passwordEmail' => $this->user_ruls['password'],
+        ];
+
+        $items = collect($req->all())->intersectByKeys($ruls)->toArray();
+
+        $isValid = $this->isValid($items, $ruls, 'newEmail');
+
+        if(! $isValid) return response()->json($this->getMessages(), 200);
+        /* update user email and send message success */
+        if($user->email == $req['email']){
+            return response()->json(["user" => $user, "messages" => $this->getMessages()], 200);
+        }
+        /* send message fail */
+        return response()->json(['status' => 'fail' ,$this->getMessages()], 200);
     }
 
-    private function getUser(){
+    private function isValid(array $inputs = [], array $rules = [], $item){
+        $rules = count($rules)? $rules: $this->itemsRule;
+        $validator = \Validator::make($inputs, $rules);
 
-        $user = auth('api')->user();
-        $customer = $user->customer;
-        $events = $user->events;
-        $messages = $user->messages;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tel' => $user->tel,
-            'about' => $user->about,
-            'area' => $user->area,
-            'city' => $user->city,
-            'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'descriptions']): false,
-            'events' => $events? $events: false
-        ];
+        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages([$item => $item]);
+        //return true;
+        return $validator->fails()? false:true;
     }
  
 }

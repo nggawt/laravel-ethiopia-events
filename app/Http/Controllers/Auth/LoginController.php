@@ -67,6 +67,15 @@ class LoginController extends Controller
         return response()->json(auth('api')->user());
     }
 
+    public function getLoggedUser()
+    {
+
+        if($status = auth('api')->check()){
+            return response()->json(['status' => $status, 'user' => $this->getUser()],200);
+        } 
+        return response()->json(['status' => $status],200);
+    }
+
     /**
      * Log the user out (Invalidate the token).
      *
@@ -74,9 +83,8 @@ class LoginController extends Controller
      */
     public function logout()
     {
-        auth('api')->logout();
-
-        return response()->json(['message' => 'Successfully logged out']);
+        $logOut = auth('api')->logout();
+        return response()->json(['message' =>  'Successfully logged out', 'logout' => $logOut], 200);
     }
 
     /**
@@ -86,7 +94,7 @@ class LoginController extends Controller
      */
     public function refresh()
     {
-        return response()->json($this->respondWithToken(auth()->refresh()), 200);
+        return response()->json($this->respondWithToken(auth('api')->refresh()), 200);
     }
 
     /**
@@ -123,7 +131,7 @@ class LoginController extends Controller
             'area' => $user->area,
             'city' => $user->city,
             'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
+            'customer' => $customer? $customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'discription']): false,
             'events' => $events? $events: false
         ];
     }

@@ -66,6 +66,7 @@ class CustomersRepo
                     'loggo' => $value->loggo,
                     'email' => $value->email,
                     'descriptions' => $value->descriptions,
+                    'content' => $value->content,
                     'address' => $value->address,
                     'tel' => $value->tel,
                     'deals' => $value->deals,
@@ -73,14 +74,23 @@ class CustomersRepo
                 ],
 
                 "gallery" => [
-                    'image' => $imgs? json_decode($imgs, true):[],
-                    'video' => $vids? json_decode($vids, true):[]
+                    'image' => $imgs? (gettype(json_decode($imgs)) == "object")? $this->objectToArray(json_decode($imgs)): json_decode($imgs):[],
+                    'video' => $vids? json_decode($vids):[]
                 ],
                 "events" => $evt
             ];
             array_push($filteredCustomers[$businessType], $en);
         }
         return $filteredCustomers;
+    }
+
+    protected function objectToArray($items){
+        $arr = [];
+        foreach ($items as $key => $value) {
+            # code...
+            array_push($arr, $value);
+        }
+        return $arr;
     }
 
     public function getFilesParams($files, $callBack = false, $delimiter = false){
@@ -124,7 +134,6 @@ class CustomersRepo
                 break;
             }
         }
-        
         return $delimiter || (count($media) < 1)? false: $media;
     }
 
@@ -133,7 +142,7 @@ class CustomersRepo
         $fnResponse = [];
         foreach ($files as $key => $value) {
 
-            $item = $this->$fn($target, $value, true)[$target];
+            $item = $this->$fn($target, $value, true)[$target]; 
             if($item){
                 if(! isset($fnResponse[$target])) $fnResponse[$target] = [];
                 array_push($fnResponse[$target], $item);
@@ -172,9 +181,10 @@ class CustomersRepo
         $linkToFile = explode('customers/', $link)[1];
 
         $deleted = Storage::disk('customers')->delete($linkToFile);
-        $messege = ['deletedFiles' => $fileName, "status" => $deleted];
 
+        $messege = ['deletedFiles' => $fileName, "status" => $deleted];
         $this->setMessages('success', $target, $messege);
+        
         $deletedItems[$target] = $deleted? $link: $deleted;//$deleted
         return $deletedItems;
     }
@@ -201,7 +211,6 @@ class CustomersRepo
             if($deletedResault && $deletedResault[$itemKeys]) return $deletedResault[$itemKeys];
         })->toArray(): false;
 
-        // return $itemsKeys;
         $resaults = [];
 
         if($itemsKeys['down'] && count($itemsKeys['down'])){
@@ -253,7 +262,6 @@ class CustomersRepo
             }
         }
 
-        
         return $resaults;
     }
 
@@ -292,7 +300,7 @@ class CustomersRepo
 
     public function fileExist($link, $file = false){
         
-        $result =  $file? Storage::disk('customers')->exists($link) && $file->isValid(): Storage::disk('customers')->exists($link);
+        $result =  $file? (Storage::disk('customers')->exists($link) && $file->isValid()): Storage::disk('customers')->exists($link);
         return $result;
     }
 }

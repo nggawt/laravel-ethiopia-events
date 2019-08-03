@@ -3,16 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Message extends Model
 {
-
+	use SoftDeletes;
+	
 	protected $fillable = [
-        'user_id', 'name', 'title', 'body', 'date'
+        'user_id', 'name', 'email', 'title', 'body', 'date'
     ];
+
+    protected $casts = [
+        'favorites' => 'boolean',
+	];
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'email', 'email');
     }
 }

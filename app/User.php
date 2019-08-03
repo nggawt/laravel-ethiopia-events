@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Support\Carbon;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -19,8 +20,10 @@ class User extends Authenticatable implements JWTSubject
         'name', 'email', 'password', 'tel', 'area', 'about', 'city'
     ];
 
+    protected $dates = [
+        'banned_until'
+    ];
     
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -62,12 +65,24 @@ class User extends Authenticatable implements JWTSubject
 
     public function messages()
     {
-        return $this->hasMany('App\Message');
+        return $this->hasMany('App\Message', 'email', 'email');
     }
 
 
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
+    }
+
+    public function banned()
+    {
+        $this->banned_until = Carbon::now()->addDays(14);
+        $this->update();
+    }
+
+    public function unbanned()
+    {
+        $this->banned_until = null;
+        $this->update();
     }
 }

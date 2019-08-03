@@ -46,6 +46,12 @@ return [
             'level' => 'debug',
         ],
 
+        'ee_events' => [
+              'driver' => 'single',
+              'path' => storage_path('logs/forbidden_emails.log'),
+              'level' => 'info',
+        ],
+
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),

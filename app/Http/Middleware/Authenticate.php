@@ -16,8 +16,8 @@ class Authenticate extends Middleware
     {
         if (! $request->expectsJson()) {
             // return route('login');
-            return response()->json($request->all(), 200);
+        return response()->json(['class' => 'App\Http\Middleware\Authenticate', 'method' => 'redirectTo', 'request' => $request->all()], 200);
         }
-        return response()->json($request->all(), 200);
+        return response()->json(['class' => 'App\Http\Middleware\Authenticate', 'method' => 'redirectTo', 'request' => $request->all()], 200);
     }
 }

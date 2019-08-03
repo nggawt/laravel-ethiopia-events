@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('title');
             $table->string('contact');
             $table->text('descriptions');
+            $table->text('content');
             $table->string('email')->unique();
             $table->string('tel');
             $table->string('address');

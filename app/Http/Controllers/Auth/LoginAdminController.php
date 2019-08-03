@@ -66,9 +66,9 @@ class LoginAdminController extends Controller
 
         $credentials = request(['email', 'password']);
         
-        if (! $token = Auth::guard('admin')->attempt($credentials)) {
+        if (! $token = auth('admin')->attempt($credentials)) {
             $this->incrementLoginAttempts($request);
-            return response()->json(['error' => 'Unauthorized admin user'], 401);
+            return response()->json(['error' => 'Unauthorized admin user, msg from auth\\LoginadminController!.'], 401);
         }
         
         $this->clearLoginAttempts($request);
@@ -105,7 +105,7 @@ class LoginAdminController extends Controller
     {
         auth()->guard('admin')->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out, msg from auth\\LoginadminController!.']);
     }
 
     /**

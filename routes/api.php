@@ -40,38 +40,43 @@ Route::group([
     // 'prefix' => 'auth'
 
 ], function () {
-    // Route::post('store', 'UserController@store');
-	Route::get('messages', 'MessagesController@index');
-    // Route::get('users', 'UserController@index');
-    // Route::delete('users/{user}', 'UserController@destroy');
-    
-    Route::post('auth-user', 'UserController@getLoggedUser');
-    Route::post('auth-admin', 'AdminController@authAdmin');
 
-    Route::post('contact', 'UserController@contact');
-    Route::resource('users','UserController')->except(['create', 'edit', 'show']);
+    /* Messages */
+    Route::get('messages', 'MessagesController@index');
+    Route::post('contact', 'MessagesController@contact')->middleware('banned');
+    Route::post('replay', 'MessagesController@replay');
+    Route::post('trashed', 'MessagesController@trashedItems');
+    Route::post('messages/{id}', 'MessagesController@trashedItems');
+    Route::post('messages/{id}/block', 'MessagesController@banned');
+    Route::resource('messages','MessagesController')->except(['create', 'edit']);
+
+    /* Users */
+    Route::resource('users','UserController')->except(['create', 'edit', 'show'])->middleware('banned');
+    Route::post('login', 'Auth\LoginController@login')->middleware('banned');
+    Route::post('logout', 'Auth\LoginController@logout')->middleware('banned');
+
+    Route::post('auth-user', 'Auth\LoginController@getLoggedUser')->middleware('banned');
+    Route::post('refresh', 'Auth\LoginController@refresh')->middleware('banned');
+    // Route::post('me', 'Auth\LoginController@me');
     Route::patch('users/{user}/change_password', 'UserController@changePassword');
     Route::patch('users/{user}/change_email', 'UserController@changeEmail');
-
-    // Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-    // Route::middleware(['auth', 'admin'])->group(function(){
-
-    // });
-
-    Route::resource('admins','AdminController')->except(['create', 'edit']);
-
-    // Route::resource('admin', 'AdminController')->except(['create', 'edit']);
     
+    /* Admins */
+    Route::resource('admins','AdminController')->except(['create', 'edit', 'show']);
     Route::post('admin-register', 'Auth\RegisterAdminController@register');
+    Route::post('auth-admin', 'AdminController@authAdmin');
     Route::post('admin-login', 'Auth\LoginAdminController@login');
     Route::post('admin-logout', 'Auth\LoginAdminController@logout');
 
+    /* Events */
     Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
+
+    /* Customers */
     Route::resource('customers','CustomersController')->except(['create', 'edit']);
+
+    /* Blog */
     Route::resource('blog','PostController')->except(['create', 'edit']);//->middleware('can:posts,App\Post');//->middleware('can:view,App\Post')//;
-    Auth::routes();
+
+    /* Auth */
+    // Auth::routes();
 });
