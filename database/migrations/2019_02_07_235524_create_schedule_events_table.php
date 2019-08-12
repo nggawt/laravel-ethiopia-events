@@ -23,7 +23,7 @@ class CreateScheduleEventsTable extends Migration
             $table->string('email')->unique();
             $table->dateTime('date');
             $table->string("location");
-            
+            $table->string('slug')->unique()->nullable();
             $table->text("address");
             $table->text("description");
             $table->string('phone');

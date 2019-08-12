@@ -17,6 +17,8 @@ class PostController extends Controller
         "name" => "required|string|min:3",//|email|max:7",
         "title" => "required|string|min:3|max:50",
         "body" => "required|string|min:12",
+        "confirmed" => "boolean",
+        "date" => "required|date",
     ];
 
        /**
@@ -26,7 +28,7 @@ class PostController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
+        $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
     }
 
     public function index(Post $post) {
@@ -49,19 +51,16 @@ class PostController extends Controller
 
 	public function store(Request $request){
 
-		if(! (Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
-        
-        $req = collect($request->all())->except('_method')->toArray();
-        if(count($req) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
-        
-        $val = $this->valInputs($req);
+        $items = collect($request->all())->except('_method')->intersectByKeys($this->itemsRule)->toArray();
+        $validty =\Validator::make($items, $this->itemsRule);
 
-        if(! $val) return response()->json($this->getMessages(), 200);
-        $req['user_id'] = auth()->user()->id;
-        $req['confirmed'] = 0;
-        $req['date'] = Carbon::now();
-        Post::create($req);
-        return response()->json($this->getMessages(), 200);
+        if($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
+
+        $items['user_id'] = auth('api')->user()? auth('api')->user()->id: auth('admin')->user()->id;
+        $items['confirmed'] = 0;
+        $items['slug'] = slug_heb($items['title']);
+        Post::create($items);
+        return response()->json(["message" => "your article/post was created succesfully!", "status" => true, 'validItems' => $validItems], 200);
 	}
 
     /**
@@ -73,23 +72,13 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $blog)
     {
-        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
-        
-        $requestAll = collect($request->all())->except('_method');
-        if(count($requestAll) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
-        // $isBadRequest = $this->badRequest(collect($requestAll)->except('_method'));
-        // if($isBadRequest) return response()->json($this->getMessages(), 200);
-
-        $rules = collect($this->itemsRule)->intersectByKeys($requestAll)->toArray();
-        $items = $requestAll->intersectByKeys($this->itemsRule)->toArray();
-        $isValid = $this->valInputs($items, $rules);
-
-        //return ['requestAll' => $requestAll, 'rules' => $rules, 'items' => $items];
-
-        if(! $isValid) return response()->json($this->getMessages(), 200);
-        // $scheduleEvent->find($id)->update($items);
-        $blog->update($items);
-        return response()->json($this->getMessages(), 200);
+        // if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        $valItems = $this->validate($request, $this->itemsRule);
+        $valItems['title']? $valItems['slug'] = slug_heb($valItems['title']): '';
+        $request->has('confirmed')? $valItems['confirmed'] = $valItems['confirmed']? 1: 0: '';
+       
+        $blog->update($valItems);
+        return response()->json(["message" => "your article/post was updated succesfully!", "status" => true, 'validItems' => $valItems], 200);
     }
 
     /**

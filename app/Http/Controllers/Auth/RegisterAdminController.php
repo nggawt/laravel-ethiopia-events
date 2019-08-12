@@ -12,7 +12,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use App\Repo\traits\Messages;
 use App\Admin;
-use App\Role;
+// use App\Role;
 
 class RegisterAdminController extends Controller
 {
@@ -46,7 +46,7 @@ class RegisterAdminController extends Controller
 
     function __construct()
     {
-        // $this->middleware('guest:admin');
+        $this->middleware('guest:admin');
        
     }
 
@@ -63,7 +63,8 @@ class RegisterAdminController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6|max:255',
             'passwordConfirm' => 'required|string|same:password|max:255',
-            'admin_type' => 'string|min:3|max:30'
+            'authority' => 'numeric|between:1,3'
+            // 'authority' => 'string|min:3|max:30'
         ]);
     }
 
@@ -77,44 +78,27 @@ class RegisterAdminController extends Controller
     protected function create(array $data)
     {
 
-
         $useData = collect($data);
         $credentials = $useData->only(['email', 'password'])->toArray();
 
         $useData['password'] = Hash::make($useData['password']);
-        $createItems = collect($useData)->except('passwordConfirm', 'admin_type')->toArray();
+        $createItems = collect($useData)->except('passwordConfirm', 'authority')->toArray();
 
-        $idRole = Role::where('name', $useData['admin_type'])->first()->id;
 
         $admin = Admin::create($createItems);
-        $admin->roles()->attach($idRole);
+        $admin->roles()->attach($data['authority']);
         
         return $admin;
     }
 
-    /*protected function respondWithToken($token)
-    {
-        
-        $authority = Auth::guard('admin')->user();
 
-        return [
-            'status' => true,
-            'authority' => $authority->roles->pluck('id', 'name'),
-            'user' => $authority,
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('admin')->factory()->getTTL() * 60
-        ];
-    }*/
-
-    protected function registered(Request $request, $user)
+    protected function registered(Request $request, $admin)
     {
         
         if (! $token = auth()->guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        return response()->json($user, 200);
-        // return response()->json($user->respondWithToken($token),200);
+        return response()->json($admin->respondWithToken($token),200);
     }
 
     protected function guard()

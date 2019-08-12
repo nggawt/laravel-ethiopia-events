@@ -45,16 +45,20 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
+        $this->validate($request, [
+            'name' => 'required|string|min:3|max:30',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:6|max:255',
+        ]);
+
+        $credentials = $request->only(['email', 'password']);
         
         if (! $token = auth('api')->attempt($credentials)) {
             
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        return response()->json($this->respondWithToken($token),200);
+        return response()->json(auth('api')->user()->respondWithToken($token),200);
     }
-
     
 
     /**
@@ -71,9 +75,9 @@ class LoginController extends Controller
     {
 
         if($status = auth('api')->check()){
-            return response()->json(['status' => $status, 'user' => $this->getUser()],200);
+            return response()->json(['status' => $status, 'user' => $this->getUser()], 200);
         } 
-        return response()->json(['status' => $status],200);
+        return response()->json(['status' => $status], 200);
     }
 
     /**
@@ -94,25 +98,7 @@ class LoginController extends Controller
      */
     public function refresh()
     {
-        return response()->json($this->respondWithToken(auth('api')->refresh()), 200);
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        
-        return [
-            'user' => $this->getUser(),
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ];
+        return response()->json(auth('api')->user()->respondWithToken(auth('api')->refresh()), 200);
     }
 
     private function getUser(){

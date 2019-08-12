@@ -45,7 +45,7 @@ class Admin extends Authenticatable implements JWTSubject
 
     public function getAdminWithAuthority(){
 
-        return $this->roles[0]->only(['id', 'name', 'slug']);
+        return $this->roles()->first()->only(['id', 'name', 'slug']);
     }
 
     public function respondWithToken($token)
@@ -54,7 +54,7 @@ class Admin extends Authenticatable implements JWTSubject
         return [
             'status' => true,
             'authority' => $this->getAdminWithAuthority(),
-            'user' => $this,
+            'user' => $this->only(['id', 'name', 'email']),
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('admin')->factory()->getTTL() * 60

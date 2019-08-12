@@ -21,7 +21,8 @@ class AdminController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6|max:255',
             'passwordConfirm' => 'required|string|same:password|max:255',
-            'admin_type' => 'string|min:3|max:30'
+            'authority' => 'required|numeric|between:1,3'
+            // 'authority' => 'string|min:3|max:30'
         ];
 
 	function __construct()
@@ -39,31 +40,48 @@ class AdminController extends Controller
     }
 
     protected function getAuthoritedAdmin($admins){
+
     	foreach ($admins as $admin) {
     		$admin['authority'] = $admin->getAdminWithAuthority();
     	}
     	return $admins;
     }
 
-    public function store(Request $req){
+    public function store(Request $request){
         
-        $this->validate($req, $this->admin_ruls);
+        $this->validate($request, $this->admin_ruls);
 
-        $credentials = request(['email', 'password']);
-        $req['password'] =  bcrypt($req['password']);
-        $createItems = $req->except(['passwordConfirm', 'admin_type']);
-
-        $idRole = Role::where('name', $req['admin_type'])->first()->id;
+        $credentials = $request->only(['email', 'password']);
+        $request['password'] =  bcrypt($request['password']);
+        $createItems = $request->except(['passwordConfirm', 'authority']);
 
         $admin = Admin::create($createItems);
-        $admin->roles()->attach($idRole);
+        $admin->roles()->attach($request['authority']);
 
-        $credentials = request(['email', 'password']);
-        
-        if (! $token = Auth::guard('admin')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        return response()->json($admin,200);
+    }
+
+    public function update(Request $request, Admin $admin){
+
+        $requestItems = $request->except(['email', 'password']);
+
+        $items = collect($requestItems)->intersectByKeys($this->admin_ruls);
+        $ruls = collect($this->admin_ruls)->intersectByKeys($items)->toArray();
+        $isValid = $this->isValid($items->toArray(), $ruls, 'update');
+
+        /* send message fail if invalid */
+        if(! $isValid) return response()->json(['status' => false ,$this->getMessages()], 200);
+
+        /* update admin and admin role and send message success */
+        $nonAutority = $items->except('authority')->toArray();
+        if(isset($request['authority'])){
+
+            $admin->roles()->sync($request['authority']);
+            if(! empty($nonAutority)) $admin->update($nonAutority);
+        }else{
+             $admin->update($nonAutority);
         }
-        return response()->json($this->respondWithToken($token),200);
+        return response()->json(['status' => true, 'admin' => $admin ,'messages' => $this->getMessages(), 'items' => $items], 200);
     }
 
     public function authAdmin(){
@@ -80,6 +98,20 @@ class AdminController extends Controller
     {
         $logOut = auth('admin')->logout();
         return response()->json(['message' =>  'Successfully logged out', 'logout' => $logOut], 200);
+    }
+
+    public function destroy(Request $request, Admin $admin){
+
+        return response()->json(['message' =>  'Successfully admin deleted!', 'admin' => $admin], 200);
+    }
+
+    private function isValid(array $inputs = [], array $rules = [], $item){
+        $rules = count($rules)? $rules: $this->itemsRule;
+        $validator = \Validator::make($inputs, $rules);
+
+        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages([$item => $item]);
+        //return true;
+        return $validator->fails()? false:true;
     }
 }
 

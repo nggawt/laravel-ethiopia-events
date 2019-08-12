@@ -57,6 +57,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasOne('App\Customer');
     }
 
+    public function forbidden()
+    {
+        return $this->hasOne('App\Forbidden_user', 'email', 'email');
+    }
+
     public function events()
     {
         return $this->hasMany('App\ScheduleEvent');
@@ -74,15 +79,36 @@ class User extends Authenticatable implements JWTSubject
         $this->notify(new \App\Notifications\MailResetPasswordNotification($token));
     }
 
-    public function banned()
+    public function respondWithToken($token)
     {
-        $this->banned_until = Carbon::now()->addDays(14);
-        $this->update();
+        
+        return [
+            'status' => true,
+            'user' => $this->getUser(),
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ];
     }
 
-    public function unbanned()
-    {
-        $this->banned_until = null;
-        $this->update();
+    private function getUser(){
+
+        
+        $customer = $this->customer;
+        $events = $this->events;
+        $messages = $this->messages;
+
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'tel' => $this->tel,
+            'about' => $this->about,
+            'area' => $this->area,
+            'city' => $this->city,
+            'messages' => $messages? $messages: false,
+            'customer' => $customer? $customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'discription']): false,
+            'events' => $events? $events: false
+        ];
     }
 }

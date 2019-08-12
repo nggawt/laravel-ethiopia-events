@@ -32,7 +32,7 @@ class UserController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'store','update']]);
+        $this->middleware('auth:api', ['except' => ['index', 'store','update', 'destroy']]);
         // $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
        
     }
@@ -49,9 +49,9 @@ class UserController extends Controller
         
         $this->validate($request,$this->user_ruls);
 
-        if(! $admin = auth('admin')->check()){
-            return response()->json(['status' => "please log in as admin! ", $admin], 200);
-        }
+        // if(! $admin = auth('admin')->check()){
+        //     return response()->json(['status' => "please log in as admin! ", $admin], 200);
+        // }
         
         $credentials = $request->only(['email', 'password']);
         $request['password'] =  bcrypt($request['password']);
@@ -64,7 +64,6 @@ class UserController extends Controller
     public function update(Request $request, User $user){
 
         $requestItems = $request->except(['email', 'password']);
-        $bannedFieald = $request->only('banned_until');
 
         $items = collect($requestItems)->intersectByKeys($this->user_ruls)->toArray();
         $ruls = collect($this->user_ruls)->intersectByKeys($items)->toArray();
@@ -72,25 +71,17 @@ class UserController extends Controller
 
         /* send message fail if invalid */
         if(! $isValid) return response()->json(['status' => 'fail' ,$this->getMessages()], 200);
-        if(! empty($bannedFieald)) $this->bannedUser($bannedFieald, $user);
 
         /* update user and send message success */
         // return ['items' => $items, 'ruls' => $ruls];
         $updatedUser = $user->update($items);
-        return response()->json(['user' => $user ,$this->getMessages(), 'items' => $items], 200);
-    }
-
-    protected function bannedUser($filed, $user){
-         $dt = is_null($filed['banned_until'])? null: Carbon::parse($filed['banned_until']);
-         $user->banned_until = $dt;
-
-        // is_null($filed['banned_until'])? $user->unbanned(): $user->banned();
+        return response()->json(['status' => true, $this->getMessages(), 'items' => $items], 200);
     }
 
     public function destroy(Request $request,User $user){
 
         return ["request" => $request->all(), "user" => $user];
-        $authUser = auth()->user();
+        $authUser = auth('api')->user();
         // $user = User::findOrfail($user);
         // return ["user" => $user];
         /***** validate user and delete*****/

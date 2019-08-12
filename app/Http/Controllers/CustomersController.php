@@ -96,7 +96,7 @@ class CustomersController extends Controller
     public function __construct(CustomersRepo $coRepo)
     {
         // $this->middleware('cors');
-        $this->middleware('auth:api', ['except' => ['index', 'store']]);
+        $this->middleware('auth:api', ['except' => ['index', 'store', 'update']]);
         // $this->middleware('auth:api', ['except' => ['getLogin']]);
         // $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
         $this->customers = $coRepo;
@@ -130,37 +130,42 @@ class CustomersController extends Controller
 
     public function store(Request $request){
 
+        // return $request->all();
         // if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         /****** grab and decode exissted objects *******/
         $authUser = auth('api')->user();
         $authAdmin = auth('admin')->user();
 
         $files = $request->file('files');
-        $files = isset($files) && ! empty($files)? $this->customers->getFilesParams($files): false;
+        $files = isset($files) && ! empty($files)? $this->customers->getFilesParams($files): $files;
         $method = $request->method();
         // $filesToUdate = $request->file('files');
         // $filesToUdate = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
         
         /****** decode objects *******/
         $formInputs = $request->only('formInputs');
-        $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($formInputs['formInputs'], true): false;
+        $formInputs = isset($formInputs) && ! empty($formInputs)? json_decode($formInputs['formInputs'], true): $formInputs;
 
         /**** send message errors if rquires params not exisst ****/
-        if(! $files || ! $formInputs){
+        if(empty($files) || is_null($files) || empty($formInputs) || is_null($formInputs)){
             $badRequest = ['badRequest' => array(["request" => "missing data rquest", 'req' => $request->all()])];
-            return response()->json(['errors' => $badRequest],200);
+            return response()->json(['errors' => $badRequest,'files' =>$files, 'formInputs' => $formInputs],200);
         }
 
         /**** valadete before any task ****/
-        $afterValInputs = ($formInputs)? $this->validInputs(collect($formInputs)->except('loggo'), $method):null;
-        $valItems = ['store'=> $files];
+        // $afterValInputs = $this->validInputs(collect($formInputs)->except('loggo'), $method);
 
-        $afterValFiles = $this->mainValidation($valItems, $method);//$filesToUdate, $filesTodelete, $customer
-        
+        $afterValFiles = $this->mainValidation(['store'=> $files], $method);
 
-        if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValFiles && ! is_null($afterValFiles))){
+        $isValid = Validator::make($formInputs, $this->formRoles);
+
+        if(($val = $isValid->fails()) || (! $afterValFiles)){
             
-            return response()->json(collect($this->customers->getMessages())->except('success'),200);
+            return response()->json([
+                'message' => "you customer account created fails!", 
+                'errors' => $isValid->errors()->all(),
+                'afterValFiles' => $afterValFiles,
+                $this->customers->getMessages()],200);
         }
         
         /***** download files before store into database *****/
@@ -169,28 +174,22 @@ class CustomersController extends Controller
         
         $downloaded = collect($download)->collapse();
 
-        // return ['collapsed' => $downloaded, "download" => $download];
-
-        // $filesTsave['image'] = json_encode($downloaded['images']);
-        // $filesTsave['video'] = json_encode($downloaded['video']);
-
         /***** store form inputs customer into database *****/
         if($downloaded['images'] && $downloaded['video']){
-            // $loggo = $files['loggo'][0];
-            // $loggoUrl = $loggo['fullUrl'].'.'.$loggo['ext'];./assets/pages/customers/salons/jhon-salons/loggo/k&m_web.png
-            $formInputs['loggo'] = $downloaded['loggo'][0];//$formInputs
+            
+            $formInputs['loggo'] = $downloaded['loggo'][0];
 
             $formInputs['user_id'] = ($authAdmin && $formInputs['owner'])? (int) $formInputs['owner']:$authUser->id;
-            Customer::create($formInputs);
+            $customer = Customer::create($formInputs);
             // $this->messages['customer'] = $customersDetails;
-            sleep(1);
+            // sleep(1);
             
-            $customer_id = Customer::where('email',$formInputs['email'])->first()->id;
             $gallery = [
-                'customer_id' => $customer_id,
+                'customer_id' => $customer->id,
                 'image' => json_encode($downloaded['images']),
                 "video" => json_encode($downloaded['video'])
             ];
+            
             /***** store form filse customer into database *****/
             Gallery::create($gallery);
         }else{
@@ -200,20 +199,20 @@ class CustomersController extends Controller
         } 
         
         /******* get and send back messages ******/
-        return response()->json($this->customers->getMessages(),200);
+        return response()->json(['message' => "you customer account created successfully!", $this->customers->getMessages()],200);
     }
 
-    public function update(Request $request,Customer $customer){
+    public function update(Request $request, Customer $customer){
         
-        // if(! \Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        // $user = auth('api')->check();
+        // if($user) return response()->json(['error' => 'Unauthorized', $customer], 401);
+
         $method = $request->method();
         $filesToUdate = $request->file('files');
         $filesTodelete = $request->only('filesToDelete');
         $formInputs = $request->only('formInputs');
 
-        $user = auth('api')->user();
-        if($customer->user_id != $user->id) return response()->json(['error' => 'Unauthorized', $customer], 401);
-
+        
         /****** decode files objects *******/
         $filesTodelete = isset($filesTodelete) && ! empty($filesTodelete)? json_decode($request['filesToDelete'], true): [];
         $files = isset($filesToUdate) && ! empty($filesToUdate)? $this->customers->getFilesParams($filesToUdate): [];
@@ -226,30 +225,34 @@ class CustomersController extends Controller
         }
 
         /**** valadete before any task ****/
+        $items = collect($formInputs)->intersectByKeys($this->formRoles)->toArray();
+        $ruls = collect($this->formRoles)->intersectByKeys($items)->toArray();
+        $isValid = $this->validateItems($items, $ruls);
+
         $fileItems = ['update'=> $files, 'delete' => $filesTodelete, 'customer' => $customer];
 
-        $afterValInputs = ($formInputs && count($formInputs))? $this->validInputs($formInputs, $method):null;
+        // $afterValInputs = ($formInputs && count($formInputs))? $this->validInputs($formInputs, $method):null;
         $afterValDelFiles = ($files || $filesTodelete)? $this->mainValidation($fileItems, $method): null;
 
-        if((! $afterValInputs && ! is_null($afterValInputs)) || (! $afterValDelFiles && ! is_null($afterValDelFiles))){
+        if((! $isValid) || (! $afterValDelFiles && ! is_null($afterValDelFiles))){
             
-            return response()->json($this->customers->getMessages(),200);
+            return response()->json(['message' => "update customer failed!",$this->customers->getMessages()],200);
         }
         
         /***** update and delete gallery files *****/
         $down = ($files || $filesTodelete)? $this->customers->updateFiles($files, $filesTodelete, $customer): false;// "downloadFiles"
-        ($down && count($down))? $this->gallUpdate($down): '';
+        ($down && count($down))? $this->gallUpdate($customer, $down): '';
 
         /* check if form inputs have data except company and update */
-        $formInputs = collect($formInputs)->except('company')->toArray();
-        $inputsIsValidated = (isset($formInputs) && count($formInputs));
+        $items = collect($items)->except('company')->toArray();
+        $inputsIsValidated = (isset($items) && count($items));
 
         /***** if we have input emeil we need to ensure to sync email of user too *****/
-        if($inputsIsValidated && isset($formInputs['email'])) $this->updateUserEmail($customer, $formInputs['email']);
-        if($inputsIsValidated) $customer->update($formInputs);
+        if($inputsIsValidated && isset($items['email'])) $this->updateUserEmail($customer, $items['email']);
+        if($inputsIsValidated) $customer->update($items);
 
         /******* get and send back messages ******/
-        return response()->json($this->customers->getMessages(),200);
+        return response()->json(['message' => "customer Successfully updated!",$this->customers->getMessages()],200);
     }
 
     protected function updateUserEmail($customer, $requestEmail){
@@ -262,7 +265,7 @@ class CustomersController extends Controller
         }
     }
 
-    protected function gallUpdate($down){
+    protected function gallUpdate($customer, $down){
         if(isset($down['image']) && count($down['image'])) {
             $customer->gallery['image'] = json_encode($down['image']);
             $customer->gallery->save();
@@ -288,16 +291,6 @@ class CustomersController extends Controller
         $delFiles = $this->customers->delFromGal($imgs, $fd);
         return ['success' => $delFiles['success']];
 
-    }
-
-    protected function itemsSave($requestFiles, $uploadedFiles, $gals){
-
-        foreach ($requestFiles as $key => $value) {
-            # code...
-            if(isset($uploadedFiles[$key]) && count($uploadedFiles[$key])){
-
-            }
-        }
     }
 
     /******* custom validation *******/
@@ -386,7 +379,7 @@ class CustomersController extends Controller
         (! $minMaxStatus)? $this->customers->setMessages('errors', 'minMaxFile', $minMaxfiles): "";
 
         (! $validateUploadedFiles || ! $exist || ! $minMaxStatus)? $isValid = false: '';
-        $this->customers->setMessages('errors', "TEST379isValid", ['isValid' => $isValid]);
+        // $this->customers->setMessages('errors', "TEST379isValid", ['isValid' => $isValid]);
         
         return $isValid;
     }
@@ -395,6 +388,7 @@ class CustomersController extends Controller
         $arr = ['status' => true];
 
         foreach ($items as $key => $value) {
+
             $item = isset($value['fullPath'])? $value['fullPath'].".".$value['ext']: $value;
             $file = isset($value['file'])? $value['file']: false;
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -69,58 +70,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $useData = collect($data);
-        $credentials = $useData->only(['email', 'password']);
+        $credentials = $useData->only(['email', 'password'])->toArray();
 
         $useData['password'] = Hash::make($useData['password']);
         $user = collect($useData)->except('passwordConfirm')->toArray();
 
-        User::create($user);
-        sleep(1);
-        // User::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'city' => $data['city'],
-        //     'area' => $data['area'],
-        //     'about' => $data['about'],
-        //     'tel' => $data['tel'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
-
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-        return response()->json($this->respondWithToken($token),200);
+        $NewUser = User::create($user);
+        
+        return $NewUser;//response()->json($this->respondWithToken($token),200);
     }
 
-    protected function respondWithToken($token)
+    protected function registered(Request $request, $user)
     {
         
-        return [
-            'user' => $this->getUser(),
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ];
-    }
-
-    private function getUser(){
-
-        $user = auth()->user();
-        $customer = $user->customer;
-        $events = $user->events;
-        $messages = $user->messages;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tel' => $user->tel,
-            'about' => $user->about,
-            'area' => $user->area,
-            'city' => $user->city,
-            'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
-            'events' => $events? $events: false
-        ];
+        if (! $token = auth()->guard('api')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+        // return response()->json($user, 200);
+        return response()->json($user->respondWithToken($token),200);
     }
 }

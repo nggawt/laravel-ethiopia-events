@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->dateTime('date');
             $table->string('slug')->unique()->nullable();
-
+            $table->softDeletes();
             $table->timestamps();
 
             // $table->foreign('user_id')

@@ -19,19 +19,19 @@ class ScheduleEventController extends Controller
     private $itemsRule = [
         "name" => "required|string|min:3",//|email|max:7",
         "eventType" => "required|string|min:3",
-        "date" => "required",//|numric|exact:10
+        "date" => "required|date",//|numric|exact:10
         "email" => "required",
         "phone" => "required",
         "location" => "required|string|min:3",
         "address" => "required|string|min:6",
-        "description" => "required|string|min:12"
+        "descriptions" => "required|string|min:12"
     ];
 
     public function __construct()
     {
         // $this->middleware('cors');
         // $this->middleware('auth:api', ['except' => ['getLogin']]);
-        $this->middleware('auth:api', ['only' => ['store','update', 'destroy']]);
+        $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -51,35 +51,22 @@ class ScheduleEventController extends Controller
      */
     public function store(Request $request)
     {
-        if(! (Auth::check())) return response()->json(['error' => 'Unauthorized'], 401);
+
+        $items = collect($request->all())->except('_method')->intersectByKeys($this->itemsRule)->toArray();
+        $validty =\Validator::make($items, $this->itemsRule);
+
+        if($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
         
-        $req = collect($request->all())->except('_method');
-        if(count($req) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
-        
-        $val = $this->valInputs($req->toArray());
-
-        if(! $val) return $this->getMessages();
-        $req['user_id'] = auth()->user()->id;
-        //ScheduleEvent::create($req);
-
-        // \Mail::to('nggawt100@gmail.com')->send(
-        //     new Event_created($req)
-        // );
-
-        SendEmailJob::dispatch($req, Event_created::class);//->onConnection('database');//->onQueue('default');
+        SendEmailJob::dispatch($items, Event_created::class);//->onConnection('database');//->onQueue('default');
 
         $msgs = [
-            'user_id' => $req['user_id'],
-            'name' => auth()->user()->name,
-            'title' => "your event: " . $req['eventType'] ." was created",
-            'body' => $req['description'],
-            'date' => Carbon::now(),
+            'user_id' => isset($items['user_id'])? $items['user_id']: auth('api')->user()? auth('api')->user()->id:auth('admin')->user()->id,
+            'name' => $items['name'],
+            'title' => "your event: " . $items['eventType'] ." was created",
+            'body' => $items['descriptions'],
+            'date' => $items['date'],
         ];
         event(new MessagesEvents($msgs));
-
-        // dispatch(new SendEmailJob($req));
-        // SendEmailJob::dispatch(['buzz' => "wt"])
-        //         ->delay(Carbon::now()->addSeconds(5));
         return response()->json($this->getMessages(), 200);
     }
 

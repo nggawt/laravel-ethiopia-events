@@ -57,34 +57,14 @@ class LoginAdminController extends Controller
             'password' => 'required|string|min:6|max:255',
         ]);
 
-        if (method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)) {
-            $this->fireLockoutEvent($request);
+        $credentials = $request->only(['email', 'password']);
 
-            return $this->sendLockoutResponse($request);
-        }
-
-        $credentials = request(['email', 'password']);
-        
         if (! $token = auth('admin')->attempt($credentials)) {
-            $this->incrementLoginAttempts($request);
             return response()->json(['error' => 'Unauthorized admin user, msg from auth\\LoginadminController!.'], 401);
         }
-        
-        $this->clearLoginAttempts($request);
-        return response()->json($this->respondWithToken($token),200);
+        return response()->json(auth('admin')->user()->respondWithToken(auth('admin')->refresh()),200);
     }
 
-    
-    // protected function guard()
-    // {
-    //     return Auth::guard('admin');
-    // }
-
-    protected function authenticated(Request $request, $user)
-    {
-        return $user;
-    }
 
     /**
      * Get the authenticated User.
@@ -115,27 +95,7 @@ class LoginAdminController extends Controller
      */
     public function refresh()
     {
-        return response()->json($this->respondWithToken(auth()->guard('admin')->refresh()), 200);
+        return response()->json(auth('admin')->user()->getAdminWithAuthority(auth()->guard('admin')->refresh()), 200);
     }
 
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-        
-        $authority = Auth::guard('admin')->user();
-        return [
-            'status' => true,
-            'authority' => $authority->roles->pluck('id', 'name'),
-            'user' => $authority,
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('admin')->factory()->getTTL() * 60
-        ];
-    }
 }

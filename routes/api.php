@@ -52,8 +52,9 @@ Route::group([
 
     /* Users */
     Route::resource('users','UserController')->except(['create', 'edit', 'show'])->middleware('banned');
+    Route::post('register', 'Auth\RegisterController@register')->middleware('banned');
     Route::post('login', 'Auth\LoginController@login')->middleware('banned');
-    Route::post('logout', 'Auth\LoginController@logout')->middleware('banned');
+    Route::post('logout', 'Auth\LoginController@logout');
 
     Route::post('auth-user', 'Auth\LoginController@getLoggedUser')->middleware('banned');
     Route::post('refresh', 'Auth\LoginController@refresh')->middleware('banned');

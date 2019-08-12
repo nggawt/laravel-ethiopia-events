@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('about')->nullable();
             $table->string('password');
             $table->string('tel')->nullable();
-            $table->timestamp('banned_until')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -15,6 +15,7 @@ use App\User;
 use App\Http\Requests\ValidateContactRequest;
 
 use Illuminate\Support\Facades\Log;
+use App\Forbidden_user;
 
 class MessagesController extends Controller
 {
@@ -100,28 +101,30 @@ class MessagesController extends Controller
     }
 
     public function banned(Request $request, $id){
+
         $message = Message::withTrashed()
                 ->where('id', $id)
-                ->firstOrfail();
+                ->first();
 
-        $user = $message->user;
-        if($user){
-            /*
-                $record['extra'] = [
-                    'user_id' => auth()->user() ? auth()->user()->id : NULL,
-                    'origin' => request()->headers->get('origin'),
-                    'ip' => request()->server('REMOTE_ADDR'),token
-                    'email' => $user->email,
-                    'email' => $user->email,
-                    'user_agent' => request()->server('HTTP_USER_AGENT')
-                ];
-            */
-            $user->banned_until = Carbon::now()->addDays(14);
-            $user->update();
-            Log::channel('ee_events')->info(['email' => $user->email]);
-            return response()->json(['message' => 'user was succesfully banned for 14 days!'],200);
+        $record = [
+                //'user_id' => $user->id, //auth()->user() ? auth()->user()->id : NULL,
+                // 'session' => isset($request->session())? $request->session()->all():NULL,
+                'origin' => request()->headers->get('origin'),
+                'ip' => request()->server('REMOTE_ADDR'),
+                'email' => $request->email,
+                'token' => $request->token,
+                'banned_until' => Carbon::now()->addDays(14),
+                'user_agent' => request()->server('HTTP_USER_AGENT')
+            ];
+        $user = $message? $message->user: false;
+        if($user && ! empty($user)){
+            $record['user_id'] = $user->id;
+            $record['email'] = $user->email;
         }
-        return response()->json(['message' => 'banned user was failed!', 'request' => $request->all(), 'user' => $user],200);
+        $forbidden = Forbidden_user::create($record);
+        return response()->json(['message' => 'user was succesfully banned for 14 days!',
+                                     'forbidden' => $forbidden], 200);
+        // return response()->json(['message' => 'banned user was failed!', 'request' => $request->all(), 'user' => $user],200);
     }
 
     public function destroy ($id){

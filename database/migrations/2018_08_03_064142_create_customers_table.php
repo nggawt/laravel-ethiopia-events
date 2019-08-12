@@ -28,6 +28,7 @@ class CreateCustomersTable extends Migration
             $table->string('tel');
             $table->string('address');
             $table->text('deals');
+            $table->softDeletes();
             $table->string('slug')->unique()->nullable();
 
             

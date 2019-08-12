@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class ScheduleEvent extends Model
 {
     protected  $fillable = [
-    	'user_id', 'name', 'eventType', 'email','date',
-    	'location','address','description','phone', 'published_at'
+    	'user_id', 'name', 'eventType', 'email','date', 'slug',
+    	'location','address','descriptions','phone', 'published_at'
     ];
 
     protected $casts = [
