@@ -76,7 +76,7 @@ Route::group([
     Route::resource('customers','CustomersController')->except(['create', 'edit']);
 
     /* Blog */
-    Route::resource('blog','PostController')->except(['create', 'edit']);//->middleware('can:posts,App\Post');//->middleware('can:view,App\Post')//;
+    Route::resource('articles','ArticleController')->except(['create', 'edit']);//->middleware('can:posts,App\Post');//->middleware('can:view,App\Post')//;
 
     /* Auth */
     // Auth::routes();

@@ -51,7 +51,7 @@ class CustomersRepo
                 $businessType = $fixCbt;
                 $filteredCustomers[$fixCbt] = [];
             }
-            $imgs = $value->gallery->image;
+            $imgs = $value->gallery->images;
             $vids = $value->gallery->video;
             $evt = $value->user->events;
             $en = [

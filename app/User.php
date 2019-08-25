@@ -5,7 +5,6 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Illuminate\Support\Carbon;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -67,10 +66,14 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\ScheduleEvent');
     }
 
+    public function articles()
+    {
+        return $this->hasMany('App\Article');
+    }
 
     public function messages()
     {
-        return $this->hasMany('App\Message', 'email', 'email');
+        return $this->hasMany('App\Message');
     }
 
 

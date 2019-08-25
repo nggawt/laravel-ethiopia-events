@@ -19,7 +19,7 @@ class CreateGalariesTable extends Migration
             $table->boolean('confirmed')->nullable($value = true);
             
             $table->text("video");
-            $table->text("image");
+            $table->text("images");
             
             $table->foreign('customer_id')
               ->references('id')->on('customers')

@@ -53,7 +53,7 @@ $factory->define(App\ScheduleEvent::class, function (Faker $faker) {
 	$description = ["אירוע פעם בחיים בואו להיות חלק ממנו","מזמינים אותכם לחתונה שלנו", "נשמח לראותכם באירוע"];
 
     return [
-        'user_id' => $id,
+        'user_id' => $users[rand(1, count($users) - 1)]->id,
         "confirmed" => rand(0, 1),
         'eventType' => $eventType[rand(0, count($eventType) - 1)],
         'name' => $userName,
@@ -62,7 +62,7 @@ $factory->define(App\ScheduleEvent::class, function (Faker $faker) {
         'location' => $location[rand(0, count($location) - 1)],
         'address' => $address[rand(0, count($address) - 1)],
         'phone' => $phone[rand(0, count($phone) - 1)],
-        'description' => $description[rand(0, count($description) - 1)],
+        'descriptions' => $description[rand(0, count($description) - 1)],
     ];
 });
  

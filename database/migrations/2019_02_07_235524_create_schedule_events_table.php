@@ -25,7 +25,7 @@ class CreateScheduleEventsTable extends Migration
             $table->string("location");
             $table->string('slug')->unique()->nullable();
             $table->text("address");
-            $table->text("description");
+            $table->text("descriptions");
             $table->string('phone');
             
             // $table->foreign('user_id')

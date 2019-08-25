@@ -2,8 +2,13 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+
+use App\Repositories\Article\ArticleRepository;
+use App\Repositories\Article\ArticleRepositoryInterface;
+use App\Repositories\Customer\CustomerRepoInterface;
+use App\Repositories\Customer\CustomerRepository;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(ArticleRepositoryInterface::class, ArticleRepository::class);
+        $this->app->singleton(CustomerRepoInterface::class, CustomerRepository::class);
     }
 }

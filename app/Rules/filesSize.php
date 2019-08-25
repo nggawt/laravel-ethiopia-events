@@ -6,17 +6,14 @@ use Illuminate\Contracts\Validation\Rule;
 
 class filesSize implements Rule
 {
-    public $val;
+    
     public $errorsMsgs = [];
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct() {}
 
     /**
      * Determine if the validation rule passes.
@@ -27,40 +24,26 @@ class filesSize implements Rule
      */
     public function passes($attribute, $values)
     {
-        $this->val = $values;
-         $size = 0;
         
+        $isvalid = true;
         
-        foreach ($values as $key => $value) {
-            $size += filesize($value['file']);
-            $type = filetype($value['file']); 
-            $mimetype =['image/jpg', 'image/png'];
+        $ttl = array_reduce($values, function($total, $current) use($attribute){
+            if(! $total) $total = 0;
+            $size = filesize($current);
+            $total += $size;
 
-            if($sz = $this->sizeGratherThen($size)) {
-                $msg = $value['name'] .' is invalid. '. $sz;
-                array_push($this->errorsMsgs, $msg);
+            if($this->sizeGratherThen($size)){
+                $fileName = $this->getFIleName($current->getClientOriginalName());
+                array_push($this->errorsMsgs, "The file name ". $fileName." with size: ".$this->getSize($size)." is too big");
             }
+            return $total;
+        });
 
-            if($type != "file") {
-                $msg = $value['name'] .' is invalid. '. $type;
-                array_push($this->errorsMsgs, $msg);
-            }
-
-            $finfo = finfo_open(FILEINFO_MIME_TYPE);
-            $info = finfo_file($finfo, $value['file']);
-            
-            if(! in_array($info, $mimetype)) {
-                $msg = $value['name'] .' mime type is invalid. '. $info;
-                array_push($this->errorsMsgs, $msg);
-            }
-            finfo_close($finfo);
-        }
-        if(empty($this->errorsMsgs)) return true;
-        // if(count($this->errorsMsgs)) $fail($this->errorsMsgs);
-        //return false;//! is_array($value);
-        // function ($attribute, $values, $fail) {
-                   
-        //         },
+        if($size = $this->sizeGratherThen($ttl)){
+            array_push($this->errorsMsgs,"The total files size ".$size." is too big");
+            $isvalid = false;
+        } 
+        return $isvalid;
     }
 
     /**
@@ -70,13 +53,28 @@ class filesSize implements Rule
      */
     public function message()
     {
-        // return 'The validation :attribute error message.';
-        return $this->errorsMsgs;
+        // $msg[':attribute'] = json_encode($this->errorsMsgs);
+        return  $this->errorsMsgs;
     }
 
-    private function sizeGratherThen($size)
-    {
+    protected function getFIleName($item){
+        $ex = explode(":", $item);
+        return $ex[count($ex) -1];
+    }
+
+    private function getSize($size){
+        if($size === 0) return false;
+        $s = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+        $e = floor(log($size, 1024));
+
+        $roundedeSize = round($size/pow(1024, $e), 1, PHP_ROUND_HALF_EVEN);
         
+        return $roundedeSize . $s[$e];
+    }
+
+    private function sizeGratherThen(int $size)
+    {
+        if($size == 0) return false;
         $s = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
         $e = floor(log($size, 1024));
 

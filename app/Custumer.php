@@ -8,7 +8,7 @@ class Customer extends Model
 {
     protected  $fillable =[
         'user_id', 'company', 'businessType', 'content', 'contact',
-        'title','loggo','descriptions','email','tel',
+        'title','loggo','email','tel','slug',
         'address','deals','confirmed', 'published_at'
     ];
 

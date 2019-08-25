@@ -27,7 +27,7 @@ class AdminController extends Controller
 
 	function __construct()
     {
-        $this->middleware('auth:admin');// , ['except' => 'authAdmin' , 'index']
+        //$this->middleware('auth:admin');// , ['except' => 'authAdmin' , 'index']
        
     }
 

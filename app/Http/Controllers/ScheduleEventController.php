@@ -24,7 +24,8 @@ class ScheduleEventController extends Controller
         "phone" => "required",
         "location" => "required|string|min:3",
         "address" => "required|string|min:6",
-        "descriptions" => "required|string|min:12"
+        "descriptions" => "required|string|min:12",
+        "confirmed" => "boolean"
     ];
 
     public function __construct()
@@ -58,16 +59,19 @@ class ScheduleEventController extends Controller
         if($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
         
         SendEmailJob::dispatch($items, Event_created::class);//->onConnection('database');//->onQueue('default');
-
+        $items['user_id'] = isset($items['user_id'])? $items['user_id']: auth('api')->user()->id;
         $msgs = [
-            'user_id' => isset($items['user_id'])? $items['user_id']: auth('api')->user()? auth('api')->user()->id:auth('admin')->user()->id,
+            'user_id' => $items['user_id'],
             'name' => $items['name'],
-            'title' => "your event: " . $items['eventType'] ." was created",
+            'email' => $items['email'],
+            'title' => "your event: " . $items['eventType'] ." was succesfuly created!",
             'body' => $items['descriptions'],
             'date' => $items['date'],
         ];
         event(new MessagesEvents($msgs));
-        return response()->json($this->getMessages(), 200);
+
+        $event = ScheduleEvent::create($items);
+        return response()->json(["message" => "you event succesfully created!", 'event' => $event, "status" => true], 200);
     }
 
     /**
@@ -79,24 +83,22 @@ class ScheduleEventController extends Controller
      */
     public function update(Request $request, ScheduleEvent $event)
     {
-        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+        // if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         
-        $requestAll = collect($request->all())->except('_method');
-        if(count($requestAll) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
-        // $isBadRequest = $this->badRequest(collect($requestAll)->except('_method'));
-        // if($isBadRequest) return response()->json($this->getMessages(), 200);
+        // $requestAll = collect($request->all())->except('_method');
+        // if(count($requestAll) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
 
-        $rules = collect($this->itemsRule)->intersectByKeys($requestAll)->toArray();
-        $items = $requestAll->intersectByKeys($this->itemsRule)->toArray();
-        $isValid = $this->valInputs($items, $rules);
+        $rules = collect($this->itemsRule)->intersectByKeys($request->all())->toArray();
+        // $items = $requestAll->intersectByKeys($this->itemsRule)->toArray();
+        // $isValid = $this->valInputs($items, $rules);
 
-        return ['requestAll' => $requestAll, 'rules' => $rules, 'items' => $items];
+        // return ['requestAll' => $requestAll, 'rules' => $rules, 'items' => $items];
 
-        if(! $isValid) return $this->getMessages();
+        // if(! $isValid) return $this->getMessages();
         // $scheduleEvent->find($id)->update($items);
+        $items = $this->validate($request, $rules);
         $event->update($items);
-        return response()->json($this->getMessages(), 200);
-        
+        return response()->json(["message" => "you event succesfully created!", 'items' => $items, "status" => true], 200);
     }
 
     /**

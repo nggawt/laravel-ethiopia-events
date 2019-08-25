@@ -32,56 +32,46 @@ class GalleryTableSeeder extends Seeder
        
         foreach ($customers as $customer) { 
                 
-            $fixCbt = explode(" ", $customer->businessType);
-            $fixCcn = explode(" ", $customer->company);
+            $businessType = slug_heb($customer->businessType);
+            $company = slug_heb($customer->company);
 
-            $fixCbt = isset($fixCbt[1])? $fixCbt[0] . '-' . $fixCbt[1]:$customer->businessType;
-            $fixCcn = isset($fixCcn[1])? $fixCcn[0] . '-' . $fixCcn[1]:$customer->company;
-            switch ($fixCcn) {
+            switch ($company) {
 
                 case 'ארמונות-לב':
-                    # code...
-                $fixCcn = "palace-lev";
+                $company = "palace-lev";
                     break;
                 case 'בניסטל':
-                    # code..../assets/pages/customers/halls_events/benistal/loggo/benistal.jpg
-                $fixCcn = "benistal";
+                $company = "benistal";
                     break;
                 case 'סילבר':
-                    # code...
-                $fixCcn = "silver";
+                $company = "silver";
                     break;
                 case 'גולדן':
-                    # code...
-                $fixCcn = "golden";
+                $company = "golden";
                     break;
                 
                 default:
-                    # code...
-
                     break;
             }
-            /* new gallary*/
-            
 
             $img = [
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace1.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace2.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace3.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace4.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace5.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace6.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace7.jpg",
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/gallery/palace8.jpg"
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace1.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace2.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace3.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace4.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace5.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace6.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace7.jpg",
+                "./assets/pages/customers/" .$businessType."/".$company."/images/palace8.jpg"
 
             ];
             $vid = [
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/video/km.mp4"
+                "./assets/pages/customers/" .$businessType."/".$company."/video/km.mp4"
             ];
 
             $gal = [
                 "customer_id" => $customer->id,
-                "image" => json_encode($img),
+                "images" => json_encode($img),
                 "video" => json_encode($vid)
             ];
 
