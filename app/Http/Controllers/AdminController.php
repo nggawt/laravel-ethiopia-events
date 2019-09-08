@@ -15,10 +15,11 @@ class AdminController extends Controller
 {
 
 	use Messages;
+    
     private $admin_ruls = [
 
             'name' => 'required|string|min:3|max:30',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|email|unique:users,email|max:255',
             'password' => 'required|string|min:6|max:255',
             'passwordConfirm' => 'required|string|same:password|max:255',
             'authority' => 'required|numeric|between:1,3'

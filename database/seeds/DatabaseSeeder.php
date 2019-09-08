@@ -17,9 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call(GalleryTableSeeder::class);
         $this->call(ArticleTableSeeder::class);
         $this->call(RoleTableSeeder::class);
+        $this->call(AdminTableSeeder::class);
         // $this->call(RoleAdminTableSeeder::class);
 
-        factory(App\ScheduleEvent::class, 50)->create();
+        factory(App\Event::class, 50)->create();
         
         // factory(App\Post::class)->create();RuleTableSeeder
     }

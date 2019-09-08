@@ -42,12 +42,16 @@ Route::group([
 ], function () {
 
     /* Messages */
-    Route::get('messages', 'MessagesController@index');
+    // Route::get('messages', 'MessagesController@index');
     Route::post('contact', 'MessagesController@contact')->middleware('banned');
     Route::post('replay', 'MessagesController@replay');
-    Route::post('trashed', 'MessagesController@trashedItems');
-    Route::post('messages/{id}', 'MessagesController@trashedItems');
-    Route::post('messages/{id}/block', 'MessagesController@banned');
+    
+    Route::get('forbidden', 'BannTrashController@forbidden');
+    Route::post('banntrash/{id}/restore', 'BannTrashController@untrash');
+    Route::post('banntrash/{id}/trash', 'BannTrashController@trash');
+    Route::post('banntrash/{id}/lock', 'BannTrashController@banned');
+    Route::post('banntrash/{id}/open', 'BannTrashController@unbanned');
+
     Route::resource('messages','MessagesController')->except(['create', 'edit']);
 
     /* Users */
@@ -70,7 +74,7 @@ Route::group([
     Route::post('admin-logout', 'Auth\LoginAdminController@logout');
 
     /* Events */
-    Route::resource('events','ScheduleEventController')->except(['create', 'edit']);
+    Route::resource('events','EventController')->except(['create', 'edit']);
 
     /* Customers */
     Route::resource('customers','CustomersController')->except(['create', 'edit']);

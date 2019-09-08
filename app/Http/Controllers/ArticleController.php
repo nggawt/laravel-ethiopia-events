@@ -32,7 +32,7 @@ class ArticleController extends Controller
     public function __construct(ArticleRepositoryInterface $article)
     {
         $this->article = $article;
-        $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
+        // $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
     }
 
     public function index() {

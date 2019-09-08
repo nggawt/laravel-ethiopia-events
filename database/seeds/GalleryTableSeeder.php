@@ -35,24 +35,24 @@ class GalleryTableSeeder extends Seeder
             $businessType = slug_heb($customer->businessType);
             $company = slug_heb($customer->company);
 
-            switch ($company) {
+            // switch ($company) {
 
-                case 'ארמונות-לב':
-                $company = "palace-lev";
-                    break;
-                case 'בניסטל':
-                $company = "benistal";
-                    break;
-                case 'סילבר':
-                $company = "silver";
-                    break;
-                case 'גולדן':
-                $company = "golden";
-                    break;
+            //     case 'ארמונות-לב':
+            //     $company = "palace-lev";
+            //         break;
+            //     case 'בניסטל':
+            //     $company = "benistal";
+            //         break;
+            //     case 'סילבר':
+            //     $company = "silver";
+            //         break;
+            //     case 'גולדן':
+            //     $company = "golden";
+            //         break;
                 
-                default:
-                    break;
-            }
+            //     default:
+            //         break;
+            // }
 
             $img = [
                 "./assets/pages/customers/" .$businessType."/".$company."/images/palace1.jpg",
@@ -66,7 +66,7 @@ class GalleryTableSeeder extends Seeder
 
             ];
             $vid = [
-                "./assets/pages/customers/" .$businessType."/".$company."/video/km.mp4"
+                "./assets/pages/customers/" .$businessType."/".$company."/video/gazaSlim.mp4"
             ];
 
             $gal = [

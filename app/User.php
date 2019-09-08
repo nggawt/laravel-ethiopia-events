@@ -16,11 +16,15 @@ class User extends Authenticatable implements JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'tel', 'area', 'about', 'city'
+        'name', 'email', 'password', 'tel', 'area', 'about', 'city', 'isAdmin'
     ];
 
     protected $dates = [
         'banned_until'
+    ];
+
+    protected $casts = [
+        'isAdmin' => 'boolean',
     ];
     
     /**
@@ -63,7 +67,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function events()
     {
-        return $this->hasMany('App\ScheduleEvent');
+        return $this->hasMany('App\Event');
     }
 
     public function articles()

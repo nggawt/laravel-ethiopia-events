@@ -13,8 +13,22 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-       User::create([
-            
+
+
+        User::create([
+
+            "name" => "אתיופיה אירועים",
+            "email" => "ngga100@gmail.com",
+            "area" => "ישראל",
+            "city" =>"ישראל",
+            "about" => "שרותי אירועים בקהילה",
+            "tel" => "08-6640450",
+            "password" => bcrypt("qweqwe"),
+            "isAdmin" => 1
+        ]);
+
+        User::create([
+
             "name" => "הנהלה",
             "email" => "armonotlev1@walla.com",
             "area" => "צפון",
@@ -24,8 +38,8 @@ class UserTableSeeder extends Seeder
             "password" => bcrypt("qweqwe")
         ]);
 
-       User::create([
-        	
+        User::create([
+
             "name" => "הנהלה",
             "email" => "benistal23@gmil.com",
             "city" => "רחובות",
@@ -34,9 +48,9 @@ class UserTableSeeder extends Seeder
             "tel" => "08-8522668, 08822669",
             "password" => bcrypt("qweqwe")
         ]);
-       
-       User::create([
-        	
+
+        User::create([
+
             "name" =>  "הנהלה",
             "email" =>  "margalit3312@wall.com",
             "city" => "לוד",
@@ -46,15 +60,15 @@ class UserTableSeeder extends Seeder
             "password" => bcrypt("qweqwe")
         ]);
 
-       User::create([
-	        
-	        "name" => "הנהלה",
-	        "email" => "fakeEmail@kjk.com",
-            "city" => "פתח תקווה",
-            "area" => "מרכז",
-	        "tel" => "08-6722256 ,077-270789",
-            "about" => "סילבר אירועים ",
-            "password" => bcrypt("qweqwe")
-	    ]);
-    }
+        User::create([
+
+             "name" => "הנהלה",
+             "email" => "fakeEmail@kjk.com",
+             "city" => "פתח תקווה",
+             "area" => "מרכז",
+             "tel" => "08-6722256 ,077-270789",
+             "about" => "סילבר אירועים ",
+             "password" => bcrypt("qweqwe")
+        ]);
+   }
 }

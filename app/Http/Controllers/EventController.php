@@ -7,15 +7,14 @@ use App\Events\MessagesEvents;
 use App\Jobs\SendEmailJob;
 use App\Mail\Event_created;
 use App\Repo\traits\Messages;
-use App\ScheduleEvent;
+use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class ScheduleEventController extends Controller
+class EventController extends Controller
 {
     use Messages;
-
     private $itemsRule = [
         "name" => "required|string|min:3",//|email|max:7",
         "eventType" => "required|string|min:3",
@@ -32,7 +31,7 @@ class ScheduleEventController extends Controller
     {
         // $this->middleware('cors');
         // $this->middleware('auth:api', ['except' => ['getLogin']]);
-        $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
+        // $this->middleware('auth:api', ['only' => ['store', 'update', 'destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -41,7 +40,7 @@ class ScheduleEventController extends Controller
      */
     public function index()
     {
-        return response()->json(ScheduleEvent::all()->toArray(), 200);
+        return response()->json(Event::all()->toArray(), 200);
     }
 
     /**
@@ -70,7 +69,7 @@ class ScheduleEventController extends Controller
         ];
         event(new MessagesEvents($msgs));
 
-        $event = ScheduleEvent::create($items);
+        $event = Event::create($items);
         return response()->json(["message" => "you event succesfully created!", 'event' => $event, "status" => true], 200);
     }
 
@@ -78,10 +77,10 @@ class ScheduleEventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ScheduleEvent  $scheduleEvent
+     * @param  \App\event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ScheduleEvent $event)
+    public function update(Request $request, Event $event)
     {
         // if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
         
@@ -95,7 +94,7 @@ class ScheduleEventController extends Controller
         // return ['requestAll' => $requestAll, 'rules' => $rules, 'items' => $items];
 
         // if(! $isValid) return $this->getMessages();
-        // $scheduleEvent->find($id)->update($items);
+        // $event->find($id)->update($items);
         $items = $this->validate($request, $rules);
         $event->update($items);
         return response()->json(["message" => "you event succesfully created!", 'items' => $items, "status" => true], 200);
@@ -104,10 +103,10 @@ class ScheduleEventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ScheduleEvent  $scheduleEvent
+     * @param  \App\Event  $Event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request ,ScheduleEvent $event)
+    public function destroy(Request $request ,Event $event)
 
     {   return ["request" => $request->all(), "event" => $event];
         if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
@@ -129,8 +128,6 @@ class ScheduleEventController extends Controller
         //return true;
         return $validator->fails()? false:true;
     }
-
-    
 
     private function badRequest($inp){
         $keys = array_keys($this->itemsRule);

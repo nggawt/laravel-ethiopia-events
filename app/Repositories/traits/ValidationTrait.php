@@ -27,96 +27,130 @@ trait ValidationTrait {
         $validators = [];
 
         $files = isset($request['files'])? $filesOb['files'] = $this->getFilesParams($request['files']): false;
-        $formInputs = isset($request['formInputs'])? $filesOb['formInputs'] = json_decode($request['formInputs'], true): false;
+        $formInputs = isset($request['formInputs'])? $filesOb['formInputs'] = $this->decodIfIsJson($request['formInputs']): false;
 
-        $linksLens = $this->getCombinedKeys($filesOb['files']);
-        count($linksLens)? $validators['links'] = Validator::make($linksLens, $this->getLinkLenRules()): '';
-
-        $formInputs? $validators['formInputs'] = Validator::make($filesOb['formInputs'], $this->getInputsRule()):'';
-        $files? $validators['files'] = Validator::make($filesOb['files'], $this->getFilesRule()): '';
-        
-        $validated['errors'] = $this->getValidatorErrors($validators);
-
-        if($validated['errors']){
-            $validated['status'] = false;
-            $validated['links'] = $linksLens;
-            return $validated;
-        } 
-        return $filesOb;
-    }
-
-    private function putValidator($request, $id){
-        $filesOb = ['status' => true];
-        $validators = [];
-
-        $files = isset($request['files'])? $filesOb['files'] = $this->getFilesParams($request['files']): false;
-        $formInputs = isset($request['formInputs'])? $filesOb['formInputs'] = json_decode($request['formInputs'], true): false;
-        $filesToDelete = isset($request['filesToDelete'])? $filesOb['filesToDelete'] = json_decode($request['filesToDelete'], true): false;
-        
-        ($files || $filesToDelete)? $validators['minMax'] = Validator::make([
-            'files' => isset($filesOb['files'])? $filesOb['files']: [], 
-            'filesToDelete' => isset($filesOb['filesToDelete'])? $filesOb['filesToDelete']: []], [
-                // 'files' => [new MinMax($this->method, $id, $filesOb)],
-                'filesToDelete' => [new MinMax($this->method, $id, $filesOb)],
-        ]): '';
-
-        $linksLens = ($files || $filesToDelete)? $this->linksValidator($files, $filesToDelete): [];
-
-        count($linksLens)? $validators['links'] = Validator::make($linksLens, $this->getLinkLenRules()): '';
-        $files? $validators['files'] = Validator::make($filesOb['files'], array_intersect_key($this->getFilesRule($id), $filesOb['files'])): '';
-        $formInputs? $validators['formInputs'] = Validator::make($filesOb['formInputs'], array_intersect_key($this->getInputsRule(), $filesOb['formInputs'])):'';
-        $filesToDelete? $validators['filesToDelete'] = Validator::make($filesOb['filesToDelete'], array_intersect_key($this->getFileToDelRules($id), $filesOb['filesToDelete'])): '';
-
-        $validated['errors'] = $this->getValidatorErrors($validators);
+        $validatorHelper = $this->validateItems($filesOb);
+        // return $validatorHelper;
+        $validated['errors'] = $this->getValidatorErrors($validatorHelper);
 
         if($validated['errors']){
             $validated['status'] = false;
             $validated['links'] = $linksLens;
             $validated['files'] = $files;
-            $validated['filesToDelete'] = $filesToDelete;
             $validated['method'] = $this->method;
             return $validated;
         } 
         return $filesOb;
     }
 
-    private function linksValidator($linksFile, $linksFilesDel){
+    private function decodIfIsJson($item){
+        return is_array($item)? $item: json_decode($item, true);
+    }
 
-        $linksLensFi = $linksFile? $this->getCombinedKeys($linksFile): [];
-        $linksLensFd = $linksFilesDel? array_reduce($linksFilesDel, function($total, $item){
-             if(! $total) $total = [];
-            $val = array_values($item)[0];
-            $total[$val] = $val;
-            return $total;
-        }): [];
+    private function putValidator($request, $id){
+        $filesOb = [];
+        $validators = [];
 
-        $resault  = array_merge($linksLensFi, $linksLensFd);
-        return $resault;
+        $files = isset($request['files'])? $filesOb['files'] = $this->getFilesParams($request['files']): false;
+        $formInputs = isset($request['formInputs'])? $filesOb['formInputs'] = $this->decodIfIsJson($request['formInputs']): false;
+        $filesToDelete = isset($request['filesToDelete'])? $filesOb['filesToDelete'] = $this->decodIfIsJson($request['filesToDelete']): false;
+
+        $validatorHelper = $this->validateItems($filesOb, $id);
+        // return $validatorHelper;
+        $validated['errors'] = $this->getValidatorErrors($validatorHelper);
+
+        if($validated['errors']){
+            $validated['status'] = false;
+            $validated['files'] = $files;
+            $validated['filesToDelete'] = $filesToDelete;
+            $validated['method'] = $this->method;
+            return $validated;
+        } 
+        $filesOb['status'] = true;
+        return $filesOb;
+    }
+
+    private function validateItems($items, $id = false){
+
+        return $this->itemsHelper($items, function($item, $keyItem) use($items, $id){
+
+            switch ($keyItem) {
+                case 'files':
+                
+                    $fDel =  isset($items['filesToDelete'])? $items['filesToDelete']: false;
+                    return $this->validateFilesToUpdate($item, $keyItem, $id, $fDel);
+                break;
+                case 'formInputs':
+                    $validators['formInputs'] = ($this->method == "POST")? Validator::make($item, $this->getInputsRule()): 
+                                                    Validator::make($item, array_intersect_key($this->getInputsRule(), $item));
+                    return $validators;
+
+                break;
+                case 'filesToDelete':
+                
+                    $files = isset($items['files'])? $items['files']: false;
+                    return $this->validateFilesToDel($item, $keyItem, $id, $files);
+                break;
+
+                default:
+                    return false;
+                break;
+            }
+            
+        }, true);
+    }
+
+    private function validateFilesToUpdate($currentItem, $keyItem, $id, $itemsDel){
+
+        if($this->method == "POST"){
+            $validators['files'] = Validator::make($currentItem, $this->getFilesRule());
+        }else{
+            $rulesUp = array_intersect_key($this->getFilesRule($id), $currentItem);
+            $validators['files'] = Validator::make($currentItem, $rulesUp);
+
+            $validators['minMaxUp'] = Validator::make([$keyItem => $currentItem], [
+                $keyItem => [new MinMax($this->method, $id, $itemsDel)],
+            ]);
+        }
+        $linksLens = $this->combineKeyValue($currentItem, "keys");
+        $validators['linksUp'] = Validator::make($linksLens, $this->getLinkLenRules());
+
+        return $validators;
+    }
+
+    private function validateFilesToDel($currentItem, $keyItem, $id, $itemsUp){
+
+        $rulesDel = array_intersect_key($this->getFileToDelRules($id), $currentItem);
+        $validators['filesToDelete'] = $rulesDel? Validator::make($currentItem, $rulesDel): [];
+
+        $linksLens = $this->combineKeyValue($currentItem);
+        $validators['linksDel'] = Validator::make($linksLens, $this->getLinkLenRules());
+
+        $validators['minMaxDel'] = Validator::make([$keyItem => $currentItem], [
+            $keyItem => [new MinMax($this->method, $id, $itemsUp)],
+        ]);
+        return $validators;
     }
 
     private function getValidatorErrors($validator){
 
-        return array_reduce($validator, function($total, $current){
-            if(! isset($total)) $total = [];
-            $currentFailErrors = $current->fails()? $current->errors()->all(): false;
-            ($currentFailErrors)? $total = array_merge($total, $currentFailErrors):$total = $total;
-            return $total;
+        return $this->itemsHelper($validator, function($current){
+            $currentFailErrors = (is_object($current) && $current->fails())? $current->errors()->all(): false;
+            return $currentFailErrors;
         });
     }
 
-    private function getCombinedKeys($items){
-
-        return array_reduce($items, function($totalItems, $item){
-                            if(! $totalItems) $totalItems = [];
-                            $key = array_keys($item);
-                            $value = array_values($key);
-                            $item = array_combine($key, $value);
-                            $totalItems = array_merge($totalItems, $item);
-                            return $totalItems; 
-                        });
+    private function combineKeyValue($items, $with = ""){
+        // transform array the keys with keys and value with keys
+        // transform array the keys with value and value value
+        return $this->itemsHelper($items, function($current) use($with){
+            $keys = ($with == "keys")? array_keys($current): $current;
+            $item = array_combine($keys, $keys);
+            return $item;
+        });
     }
 
-    private function getFilesRule($id){
+    private function getFilesRule($id = false){
         return [
             'images' => ['required', 'array', new FileExist($this->method, $id), new filesSize],
             'images.*' => "required|file|between:10,4000|image|mimes:jpeg,jpg,png",
@@ -142,7 +176,7 @@ trait ValidationTrait {
     private function getLinkLenRules(){
 
         return [
-            '*' => "required|string|min:12|max:90|not_regex:/.*[\@\+\%\*\$\<\>\(\)]+.*$/ims",
+            '*' => "required|string|min:10|max:120|not_regex:/.*[\@\+\%\*\$\<\>\(\)]+.*$/ims",
         ];
     }
 
@@ -156,10 +190,10 @@ trait ValidationTrait {
             'email' => "required|string|email|unique:customers,email",
             'tel' => "required|string|min:8|max:10",
             'address' => "required|string|min:3|max:120",
-            'descriptions' => "requiredstring|min:6|max:255",
             'content' => "required|string|min:12",
             'deals' => "required|string|min:3",
             'confirmed' => "boolean"
         ];
+            // 'descriptions' => "requiredstring|min:6|max:255",
     }
 }

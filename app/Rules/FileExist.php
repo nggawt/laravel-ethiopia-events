@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileExist implements Rule
     {
+
     protected $baseUrl = "./assets/pages/customers/";
     public $vlidatedItems = [];
     protected $isFileType = false;
@@ -18,7 +19,7 @@ class FileExist implements Rule
      *
      * @return void
      */
-    public function __construct($method = "POST", $id) { 
+    public function __construct($method = "", $id = false) { 
         $this->customer = ($id && $method != "POST")? Customer::findOrFail($id): null; 
         $this->method = $method;
     }
@@ -74,7 +75,7 @@ class FileExist implements Rule
 
             }else if($this->method == "POST" && $inDir){
                 $valid  = false;
-                array_push($this->vlidatedItems, "The " .$attribute ." in: ". $links['dir'] . " link is exist in directory. " . $inDb);
+                array_push($this->vlidatedItems, "The " .$attribute ." in: ". $links['dir'] . " link is exist in directory. ");
             }
         }
         return $valid;  
@@ -95,6 +96,7 @@ class FileExist implements Rule
         if($attribute == "loggo") return ($this->customer->loggo == $link);
 
         $gals = $this->customer->gallery;
+
         if($attribute == "video"){
             $video = json_decode($gals['video'], true);
             return in_array($link, $video);

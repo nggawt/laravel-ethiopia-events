@@ -28,6 +28,7 @@ class UserController extends Controller
             'banned_until' =>'date|nullable',
             'about' => 'string|min:12',
             'tel' => 'digits_between:8,10',
+            'isAdmin' => 'boolean',
         ];
 
     function __construct()
@@ -139,7 +140,7 @@ class UserController extends Controller
     }
 
     private function isValid(array $inputs = [], array $rules = [], $item){
-        $rules = count($rules)? $rules: $this->itemsRule;
+        $rules = count($rules)? $rules: $this->user_ruls;
         $validator = \Validator::make($inputs, $rules);
 
         $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages([$item => $item]);

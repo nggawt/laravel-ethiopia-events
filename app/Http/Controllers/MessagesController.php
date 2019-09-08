@@ -95,10 +95,7 @@ class MessagesController extends Controller
         return response()->json(['message' => 'somthing went wrong with your request!'],200);
     }
 
-    public function restoreTrashed (Message $message){
-
-        $message->onlyTrashed()->get();
-    }
+    
 
     public function banned(Request $request, $id){
 

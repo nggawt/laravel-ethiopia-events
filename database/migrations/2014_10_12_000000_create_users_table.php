@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('about')->nullable();
             $table->string('password');
             $table->string('tel')->nullable();
+            $table->boolean('isAdmin')->default($value = 0);
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

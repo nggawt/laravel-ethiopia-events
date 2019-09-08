@@ -6,10 +6,11 @@ namespace App\Repositories\Customer;
 use App\Customer;
 use App\Gallery;
 use App\Repo\traits\Messages;
+use App\User;
+use Illuminate\Http\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
 
 class CustomerRepository implements CustomerRepoInterface
 {
@@ -44,15 +45,9 @@ class CustomerRepository implements CustomerRepoInterface
         $inputs = $customerProps['formInputs'];
         $files = $customerProps['files'];
 
-        $dowed = $this->fdownload($files, "downloadFiles");
+        $dowed = $this->fnLooper($files, "downloadFiles");
 
         if(! $dowed) return ['message' => "unknown error"];
-         $gal = [
-            "customer_id" => $customer->id,
-            "images" => json_encode($dowed['images']),
-            "video" => json_encode($dowed['video'])
-        ];
-        $gal = Gallery::create($gal);
 
         $inputs['user_id'] = auth('api')->user()? auth('api')->user()->id: auth('admin')->user()->id;
         $inputs['confirmed'] = $inputs['confirmed']? 1: 0;
@@ -60,9 +55,19 @@ class CustomerRepository implements CustomerRepoInterface
         $inputs['loggo'] = $dowed['loggo'][0];
 
         $customer = $this->customer->create($inputs);
-        // sleep(1);
+        $gal = [
+            "customer_id" => $customer->id,
+            "images" => json_encode($dowed['images']),
+            "video" => json_encode($dowed['video'])
+        ];
+        $gal = Gallery::create($gal);
         
-        return response()->json(["message" => "your customer/post was created succesfully!", "status" => true, 'customer' => $customer], 200);
+        return [
+            'downloaded' => $dowed,
+            'gallery' => $gal,
+            'inputs' => $inputs,
+            'customer created' => $customer
+        ];
     }
 
     /**
@@ -72,84 +77,33 @@ class CustomerRepository implements CustomerRepoInterface
      * @param array
      */
     public function update(array $items, $id){
+
         $fuploaded = isset($items['files'])? $items['files']: [];
-        $inputs = isset($items['formInputs'])? $items['formInputs']: [];
+        $inputs = isset($items['formInputs'])? collect($items['formInputs'])->except(['businessType', 'company'])->toArray(): [];
         $fTodelete = isset($items['filesToDelete'])? $items['filesToDelete']: [];
-
-        $fdownloaded = $this->fdownload($fuploaded, "downloadFiles");
-        if(! $fdownloaded) return ['message' => "unknown error"];
-
         $customer = $this->customer->findOrfail($id);
-        $gal = $this->upgallery($customer, $fuploaded, $fTodelete);
-    	isset($inputs['title'])? $inputs['slug'] = slug_heb($inputs['title']): '';
+        
+        isset($inputs['title'])? $inputs['slug'] = slug_heb($inputs['title']): '';
         Arr::has($inputs, 'confirmed')? $inputs['confirmed'] = $inputs['confirmed']? 1: 0: '';
 
-        $customer->update($inputs);
-        return true;
-    }
+        // download files if fail return fail
+        $fdownloaded = $this->fnLooper($fuploaded, "downloadFiles");
+        if(! $fdownloaded) return ['message' => "unknown error"];
+        // delete files
+        $deleted = $this->fnLooper($fTodelete, 'deleteFromStorage');
+        // update files
+        $gal = $this->upgallery($customer, $fdownloaded, $deleted);
+        // update customer
+        $sycEmail = isset($inputs['email'])? $this->syncUserEmail($customer, $inputs['email']): true;
+        if(! $sycEmail) return ['message' => "Email was taken ".$inputs['email'] ];
+        (count($inputs))? $customer->update($inputs): '';
 
-    protected function fdownload($files, $fn){
-
-        $dowed = collect($files)->map(function($value, $key) use($fn){
-            $download = $this->looper($key, $value, $fn)[$key];
-            return in_array(false, $download)? false :$download;
-        });
-
-        $pass = $dowed->every(function($value, $key){
-            return $value !== false;
-        });
-        return $pass? $dowed: $pass;
-    }
-
-    protected function upgallery($customer, $fu, $fd){
-        $customerGal = $customer->gallery;
-        $images = json_decode($customerGal->images, true);
-        $video = json_decode($customerGal->video, true);
-        $gal = [
-            "customer_id" => $customer->id
+        return [
+            'downloaded' => $fdownloaded,
+            'gallery' => $gal,
+            'inputs' => $inputs,
+            'deleted' => $deleted
         ];
-
-        $deleted = $this->fdownload($fd, 'deleteFromStorage');
-        if(isset($deleted['images'])) {
-            $upImages = isset($fu['images'])? array_keys($fu['images']): false;
-            $mergedImages = $upImages? array_merge($images, $upImages): $images;
-            $diff =  array_diff($mergedImages, $deleted['images']);
-            $gal["images"] = json_encode($diff);
-            // return $diff;
-        };
-
-        if(isset($deleted['video'])) {
-            $upvideo = isset($fu['video'])? array_keys($fu['video']): false;
-            $mergedvideo = $upvideo? array_merge($video, $upvideo): $video;
-            $diff =  array_diff($mergedvideo, $deleted['video']);
-            $gal["video"] = json_encode($diff);
-        };
-
-        if(isset($deleted['loggo'])) {
-            // $logg = array_keys($fu['loggo'])[0];
-            $customer->loggo = array_keys($fu['loggo'])[0];
-            $customer->save();
-            //$gal["loggo"] = $logg;//json_encode($diff);
-        };
-        $gal = $customerGal->update($gal);
-        return $gal;
-    }
-
-    protected function deleteFromStorage($target, $key, $link, $nameFlag = false){// $target, string $link = ''
-        $deletedItems = [];
-        // $posTarget = (strpos($link , $target.'/') === false)? "gallery/": $target.'/';
-
-        $fileName = explode($target.'/' , $link)[1];
-        
-        $linkToFile = explode('customers/', $link)[1];
-
-        $deleted = Storage::disk('customers')->delete($linkToFile);
-
-        // $messege = ['deletedFiles' => $fileName, "status" => $deleted];
-        // $this->setMessages('success', $target, $messege);
-        
-        //$deletedItems[$target] =//$deleted
-        return  $deleted? $link: $deleted; // $deletedItems;
     }
 
     /**
@@ -161,8 +115,82 @@ class CustomerRepository implements CustomerRepoInterface
 
     }
 
-    protected function looper($target, $files, $fn){
+    protected function fnLooper($files, $fn){
+        // loop over images, video, loggo objects:  {}{}[] | {}string[]
+        // 
+        $dowed = collect($files)->map(function($value, $key) use($fn){
+            $download = $this->looper($key, $value, $fn)[$key];
+            return in_array(false, $download)? false :$download;
+        });
 
+        $pass = $dowed->every(function($value, $key){
+            return $value !== false;
+        });
+        return $pass? $dowed: $pass;
+    }
+
+    protected function syncUserEmail($customer, $requestEmail){
+
+        $userEmailTeken = User::where('email', $requestEmail)->first();
+        if(empty($userEmailTeken) || is_null($userEmailTeken)){
+            $customer->user->update(['email' => $requestEmail]);
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    protected function upgallery($customer, $fu, $fd){
+        $customerGallery = $customer->gallery;
+        $images = json_decode($customerGallery->images, true);
+        $video = json_decode($customerGallery->video, true);
+        $gal = [];
+
+        $downloadedImages = isset($fu['images'])? $fu['images']: false;
+        if(isset($fd['images']) || $downloadedImages) {
+
+            $fd = isset($fd['images'])? $fd['images']: [];
+            $mergedImages = $downloadedImages? array_merge($images, $downloadedImages): $images;
+            $diff =  array_diff($mergedImages, $fd);
+            $gal["images"] = json_encode($diff);
+        };
+
+        if(isset($fd['video'])) {
+            $upvideo = isset($fu['video'])? $fu['video']: false;
+            $mergedvideo = $upvideo? array_merge($video, $upvideo): $video;
+            $diff =  array_diff($mergedvideo, $fd['video']);
+            $gal["video"] = json_encode($diff);
+        };
+
+        if(isset($fd['loggo'])) {
+            $customer->loggo = $fu['loggo'][0];
+            $customer->save();
+        };
+        count($gal)? $customerGallery->update($gal): '';
+        return $gal;
+    }
+
+    protected function deleteFromStorage($target, $key, $link, $nameFlag = false){ // $target, string $link = ''
+
+    $deletedItems = [];
+        // $posTarget = (strpos($link , $target.'/') === false)? "gallery/": $target.'/';
+
+    $fileName = explode($target.'/' , $link)[1];
+
+    $linkToFile = explode('customers/', $link)[1];
+
+    $deleted = Storage::disk('customers')->delete($linkToFile);
+
+        // $messege = ['deletedFiles' => $fileName, "status" => $deleted];
+        // $this->setMessages('success', $target, $messege);
+
+        //$deletedItems[$target] =//$deleted
+        return  $deleted? $link: $deleted; // $deletedItems;
+    }
+
+    protected function looper($target, $files, $fn){
+        // loop over objects:  {}[] | string[]
+        // call fn to individual item in array
         $fnResponse = [];
         foreach ($files as $key => $value) {
 
@@ -216,8 +244,10 @@ class CustomerRepository implements CustomerRepoInterface
 
     protected function getCustomersProps($customer){
 
+        
         $imgs = json_decode($customer->gallery->images);
         $vids = json_decode($customer->gallery->video);
+
         $evt = $customer->user->events;
 
         return [
@@ -231,12 +261,12 @@ class CustomerRepository implements CustomerRepoInterface
                 'contact' => $customer->contact,
                 'loggo' => $customer->loggo,
                 'email' => $customer->email,
-                'descriptions' => $customer->descriptions,
                 'content' => $customer->content,
                 'address' => $customer->address,
                 'tel' => $customer->tel,
                 'deals' => $customer->deals,
-                'created_at' => Carbon::parse($customer->created_at)->format('Y-m-d H:i:s')
+                'created_at' => Carbon::parse($customer->created_at)->format('Y-m-d H:i:s'),
+                // "forbidden" => $customer->user->forbidden
             ],
 
             "gallery" => [

@@ -15,8 +15,8 @@ class CustomerTableSeeder extends Seeder
     {
        Customer::create([
 
-            "user_id" =>  1,
-            'company' => 'ארמונות לב',
+            "user_id" =>  2,
+            'company' => 'palace-lev',
             "businessType" => "halls events",
             "confirmed" => rand(0, 1),
             "contact" => "הנהלה",
@@ -48,8 +48,8 @@ class CustomerTableSeeder extends Seeder
        Customer::create([
 
 
-            "user_id" =>  2,
-        	"company" => "בניסטל",
+            "user_id" =>  3,
+        	"company" => "benistal",
             "businessType" => "halls events",
             "confirmed" => rand(0, 1),
             "contact" => "הנהלה",
@@ -68,8 +68,8 @@ class CustomerTableSeeder extends Seeder
         ]);
        Customer::create([
 
-            "user_id" =>  3,
-        	"company" =>  "גולדן",
+            "user_id" =>  4,
+        	"company" =>  "golden",
             "businessType" => "halls events",
             "confirmed" => rand(0, 1),
             "contact" =>  "הנהלה",
@@ -90,8 +90,8 @@ class CustomerTableSeeder extends Seeder
         ]);
        Customer::create([
 
-            "user_id" =>  4,
-	        "company" => "סילבר",
+            "user_id" =>  5,
+	        "company" => "silver",
             "businessType" => "halls events",
             "confirmed" => rand(0, 1),
 	        "contact" => "הנהלה",
