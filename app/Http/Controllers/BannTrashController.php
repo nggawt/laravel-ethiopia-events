@@ -30,39 +30,43 @@ class BannTrashController extends Controller
     	// banned user
 
 	    $modelName =  ucwords($request['model']);
-	    $namespace = '\\App\\'. $modelName;
+	    $model = $this->getModel($request);
 
-	    $model = $namespace::where('id', $id)->first();
-	    $user = ($model && $modelName != "User")? $model->user: $model;
-
+	    $user = ($model && $modelName != "User" && $model->user_id)? $model->user: \App\User::where('email', $request['email'])->first();
+	    // return ['user' => $user, 'model' => $model];
+	    // if(!$user)  
         $record = [
-                //'user_id' => $user->id, //auth()->user() ? auth()->user()->id : NULL,
-                // 'session' => isset($request->session())? $request->session()->all():NULL,
-                'origin' => request()->headers->get('origin'),
-                'ip' => request()->server('REMOTE_ADDR'),
-                'email' => $request->email,
-                'token' => $request->token,
-                'banned_until' => Carbon::now()->addDays(14),
-                'user_agent' => request()->server('HTTP_USER_AGENT')
-            ];
+            //'user_id' => $user->id, //auth()->user() ? auth()->user()->id : NULL,
+            // 'session' => isset($request->session())? $request->session()->all():NULL,
+    		'user_id' => (! empty($user) && $user->id)? $user->id: $request->user_id,
+            'origin' => request()->headers->get('origin'),
+            'ip' => request()->server('REMOTE_ADDR'),
+            'email' => $user->email? $user->email: $request->email,
+            'token' => $request->token,
+            'banned_until' => $request->bannd_until?? Carbon::now()->addDays(14),
+            'user_agent' => request()->server('HTTP_USER_AGENT')
+        ];
 
-
-        if($user && ! empty($user)){	
-            $record['user_id'] = $user->id;
-            $record['email'] = $user->email;
-        }
         // return ['user' => $user, 'model user' => $model, 'request all' => $request->all()];
-        $isForbidden = $user->forbidden;
+        $isForbidden = $user && ! empty($user)? $user->forbidden: false;
 
-        if(! empty($isForbidden)){
+        if($isForbidden && ! empty($isForbidden)){
         	 $banned_days = now()->diffInDays($isForbidden->banned_until);
         	return response()->json(['message' => 'user was alredy banned for 14 days. days left: '.$banned_days.' '.str_plural('day', $banned_days).'.',
-                                     'bann' => $isForbidden, 'user' => $user], 200);
+                                     'forbidden' => $isForbidden, 'user' => $user, 'status' => false], 200);
         }
 
         $forbidden = Forbidden_user::create($record);
         return response()->json(['message' => 'user was succesfully banned for 14 days!',
-                                     'forbidden' => $forbidden, 'user' => $user], 200);
+                                     'forbidden' => $forbidden, 'user' => $user, 'status' => true], 200);
+    }
+
+    protected function getModel($request){
+
+    	$modelName =  ucwords($request['model']);
+	    $namespace = '\\App\\'. $modelName;
+
+	    return $namespace::findOrFail($request->id);
     }
 
     public function unbanned(Request $request, $id){
@@ -70,22 +74,35 @@ class BannTrashController extends Controller
     	// init model
     	// find item on model
     	// unbanned user
+    	$userFinder = $request['email']? 'email': 'user_id';
 
-		//    $modelName =  ucwords($request['model']);
-		//    $namespace = '\\App\\'. $modelName;
 
-		//    $model = $namespace::where('id', $id)->first();
+	   $modelName =  ucwords($request['model']); 
 
-		//    $user = ($model && $modelName != "User")? $model->user: $user;
+    	$status = false;
+        $model = $this->getModel($request);
+        $user = ($model && $modelName != "User")? $model->user:false; 
 
-        $user = \App\User::findOrFail($id);
+        if(! $user && $modelName != "User"){
+        	$userFinder = $request['email']? 'email': 'id';
+        	$finderValue = $userFinder == "id"? 'user_id': $userFinder;
+        	$user = \App\User::where($userFinder, $request[$finderValue])->first();
+        }else if($modelName == "User"){
+        	$user = $model;
+        }
+        // $user =  ? $user = $model: '';
+        // Forbidden_user::where('email', $request['email'])->first();
+        $forbidden = ($user && ! empty($user))? $user->forbidden: false;
+        $forbidden = $forbidden? $forbidden: Forbidden_user::where($userFinder, $request[$userFinder])->first();
 
-        $forbidden = $user->forbidden;
-
-        if($forbidden && ! empty($forbidden)) $forbidden->delete();
+        if($forbidden && ! empty($forbidden)){
+        	$forbidden->delete();
+        	$status = true;
+        }
 
         return response()->json(['message' => 'user was succesfully unbanneded!',
-                                     'forbidden' => $forbidden, 'user' => $user], 200);
+                                     'forbidden' => $forbidden, 'model' => $model, 'user' => $user, 
+                                     'status' => $status, 'forbidden all' => Forbidden_user::all()], 200);
 
         // return response()->json(['message' => 'banned user was failed!', 'request' => $request->all(), 'user' => $user],200);
     }
