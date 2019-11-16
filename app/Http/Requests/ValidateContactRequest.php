@@ -26,9 +26,10 @@ class ValidateContactRequest extends FormRequest
         
         return [
             'name' => 'required|string|min:3|max:30',
-            'email' => 'required|string|email|max:255',
+            'email_from' => 'required|string|email|max:255',
+            'email_to' => 'required|string|email|max:255',
             'phone' => 'digits_between:8,10',
-            'area' => 'required|string|min:3|max:30',
+            'area' => 'string|min:3|max:30',
             'city' => 'string|min:3|max:30',
             'subject' => 'required|string|min:3|max:90',
             'message' => 'required|string|min:6',

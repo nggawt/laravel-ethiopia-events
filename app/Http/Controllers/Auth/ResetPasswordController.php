@@ -44,7 +44,7 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse($response)
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('api')->refresh());
         //return response()->json(["message" => "your password was reseted", "res" => $response, "auth" => auth()->user()], 200);
 
         //return redirect($this->redirectPath())

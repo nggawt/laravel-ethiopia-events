@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('tel')->nullable();
             $table->boolean('isAdmin')->default($value = 0);
+            $table->string('avatar')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

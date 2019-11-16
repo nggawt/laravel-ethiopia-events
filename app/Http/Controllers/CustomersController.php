@@ -47,7 +47,7 @@ class CustomersController extends Controller
    public function store(Request $request){
 
     // if(! auth('api')->check() || ! auth('admin')->check()) return response()->json(['error' => 'Unauthorized'], 401);
-    $checkHaveItems = (! $request->file('files') || ! $request->file('files')->count()) || (!$request->formInputs || ! $request->formInputs->count());
+    $checkHaveItems = (! $request->file('files') || ! $request->file('files')->count()) || (! $request->formInputs || ! $request->formInputs->count());
     if($checkHaveItems) return response()->json(['error' => 'No Data Sented'], 200);
     $validateItems =   $this->validateResponse($request->all(), $request->method());
     $resault = $validateItems['status']? $this->customerRepo->create($validateItems): $validateItems;

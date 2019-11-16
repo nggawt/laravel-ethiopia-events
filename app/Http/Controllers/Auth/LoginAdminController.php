@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Role;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,11 +59,21 @@ class LoginAdminController extends Controller
         ]);
 
         $credentials = $request->only(['email', 'password']);
+        $admin = auth('admin');
 
-        if (! $token = auth('admin')->attempt($credentials)) {
+        if (! $token = $admin->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized admin user, msg from auth\\LoginadminController!.'], 401);
         }
-        return response()->json(auth('admin')->user()->respondWithToken(auth('admin')->refresh()),200);
+        $admin = $admin->user();
+        $admintrator = [
+                'admin' => $admin->respondWithToken(auth('admin')->refresh()),
+                'authority' => $admin->getAdminWithAuthority()
+            ];
+        if($admin  && in_array($admin->email, config("app.adminstrator.email"))){
+            $admintrator['roles'] = Role::all();
+            return response()->json($admintrator, 200);
+        }
+        return response()->json($admintrator, 200);
     }
 
 

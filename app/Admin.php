@@ -11,6 +11,9 @@ class Admin extends Authenticatable implements JWTSubject
 
 {
     //
+
+    protected $guard = "admin";
+    
 	protected $fillable = [
         'name', 'email', 'password'
     ];
@@ -43,9 +46,15 @@ class Admin extends Authenticatable implements JWTSubject
         return $this->belongsToMany('App\Role', 'role_admins');
     }
 
-    public function getAdminWithAuthority(){
+    public function replayMessage()
+    {
+        return $this->hasMany('App\ReplayMessage', 'user_id');
+    }
 
-        return $this->roles()->first()->only(['id', 'name', 'slug']);
+    public function getAdminWithAuthority($admin = false){
+        $authority = $admin? $admin->roles()->first()->only(['id', 'name', 'slug', 'permissions'])
+                            :$this->roles()->first()->only(['id', 'name', 'slug', 'permissions']);
+        return $authority;
     }
 
     public function respondWithToken($token)

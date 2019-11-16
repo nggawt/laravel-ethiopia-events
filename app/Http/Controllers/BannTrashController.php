@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Forbidden_user;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -41,7 +42,7 @@ class BannTrashController extends Controller
     		'user_id' => (! empty($user) && $user->id)? $user->id: $request->user_id,
             'origin' => request()->headers->get('origin'),
             'ip' => request()->server('REMOTE_ADDR'),
-            'email' => $user->email? $user->email: $request->email,
+            'email' => $user? $user->email: $request->email,
             'token' => $request->token,
             'banned_until' => $request->bannd_until?? Carbon::now()->addDays(14),
             'user_agent' => request()->server('HTTP_USER_AGENT')
@@ -112,9 +113,9 @@ class BannTrashController extends Controller
     	// init model
     	// find item on model that trashed and restore
 
-        // $trashed = Message::onlyTrashed()
-        //         ->where('id', $id)
-        //         ->restore();
+        $trashed = Message::onlyTrashed()
+                ->where('id', $id)
+                ->restore();
 
         if($trashed){
             return response()->json(['message' => 'mail was succesfully restored!', 'item' => $trashed], 200);

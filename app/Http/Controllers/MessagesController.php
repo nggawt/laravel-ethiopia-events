@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Message;
-use App\Repo\traits\Messages;
-
 use App\Events\MessagesEvents;
+use App\Forbidden_user;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidateContactRequest;
 use App\Jobs\SendEmailJob;
 use App\Mail\SandMailToEe;
-use Illuminate\Support\Carbon;
+use App\Message;
+use App\ReplayMessage;
+use App\Repo\traits\Messages;
 use App\User;
-use App\Http\Requests\ValidateContactRequest;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
-use App\Forbidden_user;
 
 class MessagesController extends Controller
 {
@@ -41,36 +40,56 @@ class MessagesController extends Controller
     	// $this->authorize('posts', $post);
     	// $this->authorize('view', $post);
     	// if(Gate::can('view', 2)){
-			return $message->withTrashed()->get();//$this->getConfirmedPosts(Post::all());
+			return $this->getMessageWuthReplay($message->withTrashed()->get());//$this->getConfirmedPosts(Post::all());
     	// }
 
 	}
+
+    public function getMessageWuthReplay($messages){
+        
+        foreach($messages as $message):
+            $replay = $message->replay()->get();
+            if($replay->count()){
+                $message->replay = $replay;
+            }
+        endforeach;
+
+        return $messages;
+    }
 
     public function contact(ValidateContactRequest $request, User $user){
 
         $user = isset($user)? $user: auth('api')->user();
         
-        $email_from = $request->email;
-        $request['email_to'] = "nggawt10@gmail.com";
-        
         SendEmailJob::dispatch($request->all(), SandMailToEe::class);
 
-        $user_id = $user['id']? $user['id']: $user->id? $user->id: null;
+        $user_id = $user['id']? $user['id']: null;
         $msgs = [
             'user_id' => $user_id,
             'name' => $user->name? $user->name: $request['name'],
             'title' => $request['subject'],
-            'email' => $request['email'],
+            'email' => $request['email_from'],
             'body' => $request['message'],
             'date' => Carbon::now(),
         ];
 
         event(new MessagesEvents($msgs));
-        return response()->json(["request" => $request->all(), 'email_from' => $email_from, 'email_to' => $request->email_to],200);
+        return response()->json(["request" => $request->all()],200);
     }
 
-    public function replay(Request $request){
-        return $request->all();
+    public function replay(Request $request, Message $message){
+
+        $user = auth('api')->user();
+        $user = $user? $user: auth('admin')->user();
+
+        $replay = $user->replayMessage()->create([
+            'user_id' => $user->id,
+            'message_id' => $message->id,
+            // 'title' => $request->title,
+            'content' => $request->message
+        ]);
+
+        return ['replay'=> $replay, 'msg' => $message, 'request' => $request->all()];
     }
 
     public function update (Request $request, Message $message){

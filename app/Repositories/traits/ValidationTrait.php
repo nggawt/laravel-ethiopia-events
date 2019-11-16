@@ -44,16 +44,23 @@ trait ValidationTrait {
     }
 
     private function decodIfIsJson($item){
-        return is_array($item)? $item: json_decode($item, true);
+        return is_string($item)? json_decode($item, true): $item;// is_array($item) 
     }
 
     private function putValidator($request, $id){
         $filesOb = [];
         $validators = [];
 
-        $files = isset($request['files'])? $filesOb['files'] = $this->getFilesParams($request['files']): false;
-        $formInputs = isset($request['formInputs'])? $filesOb['formInputs'] = $this->decodIfIsJson($request['formInputs']): false;
-        $filesToDelete = isset($request['filesToDelete'])? $filesOb['filesToDelete'] = $this->decodIfIsJson($request['filesToDelete']): false;
+        $files = (isset($request['files']) && $request['files'])? 
+                        $filesOb['files'] = $this->getFilesParams($request['files']): false;
+
+        $formInputs = (isset($request['formInputs']) && $request['formInputs'])?
+                        $filesOb['formInputs'] = $this->decodIfIsJson($request['formInputs']): false;
+
+        $filesToDelete = (isset($request['filesToDelete']) && $request['filesToDelete'])?
+                        $filesOb['filesToDelete'] = $this->decodIfIsJson($request['filesToDelete']): false;
+
+        // return ['filesToDelete' => $filesToDelete, 'status' => false];
 
         $validatorHelper = $this->validateItems($filesOb, $id);
         // return $validatorHelper;

@@ -21,4 +21,9 @@ class Message extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function replay()
+    {
+        return $this->hasOne('App\ReplayMessage');
+    }
 }

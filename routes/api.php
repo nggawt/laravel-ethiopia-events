@@ -34,17 +34,24 @@ use Illuminate\Http\Request;
 
 });*/
 
-Route::group([
+// Route::group([
 	// 'middleware' => 'cors',
     // 'namespace' => 'App\Http\Controllers',
     // 'prefix' => 'auth'
 
-], function () {
+// ], function () {
 
     /* Messages */
     // Route::get('messages', 'MessagesController@index');
+    Route::post('user-type', function(){
+        return [
+            'user' => auth('api')->check(),
+            'admin' => auth('admin')->check()
+        ];
+    });
+    
     Route::post('contact', 'MessagesController@contact')->middleware('banned');
-    Route::post('replay', 'MessagesController@replay');
+    Route::post('messages/{message}/replay', 'MessagesController@replay');
     
     Route::get('forbidden', 'BannTrashController@forbidden');
     Route::post('banntrash/{id}/restore', 'BannTrashController@untrash');
@@ -72,7 +79,10 @@ Route::group([
     Route::post('auth-admin', 'AdminController@authAdmin');
     Route::post('admin-login', 'Auth\LoginAdminController@login');
     Route::post('admin-logout', 'Auth\LoginAdminController@logout');
-
+    Route::patch('admins/{admin}/change_password', 'AdminController@changePassword');
+    Route::patch('admins/{admin}/change_email', 'AdminController@changeEmail');
+    
+    Route::resource('roles','RoleController')->except(['create', 'edit', 'show'])->middleware('banned');
     /* Events */
     Route::resource('events','EventController')->except(['create', 'edit']);
 
@@ -84,4 +94,4 @@ Route::group([
 
     /* Auth */
     // Auth::routes();
-});
+// });

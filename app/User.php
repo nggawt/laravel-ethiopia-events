@@ -80,6 +80,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany('App\Message');
     }
 
+    public function replayMessage()
+    {
+        return $this->hasMany('App\ReplayMessage');
+    }
+
 
     public function sendPasswordResetNotification($token)
     {
