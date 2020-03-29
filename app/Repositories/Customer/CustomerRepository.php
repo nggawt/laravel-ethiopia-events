@@ -51,7 +51,7 @@ class CustomerRepository implements CustomerRepoInterface
 
         $inputs['user_id'] = auth('api')->user()? auth('api')->user()->id: auth('admin')->user()->id;
         $inputs['confirmed'] = $inputs['confirmed']? 1: 0;
-        $inputs['slug'] = slug_heb($inputs['title']);
+        $inputs['slug'] = str_slug($inputs['title']);
         $inputs['loggo'] = $dowed['loggo'][0];
 
         $customer = $this->customer->create($inputs);
@@ -83,7 +83,7 @@ class CustomerRepository implements CustomerRepoInterface
         $fTodelete = isset($items['filesToDelete'])? $items['filesToDelete']: [];
         $customer = $this->customer->findOrfail($id);
         
-        isset($inputs['title'])? $inputs['slug'] = slug_heb($inputs['title']): '';
+        isset($inputs['title'])? $inputs['slug'] = str_slug($inputs['title']): '';
         Arr::has($inputs, 'confirmed')? $inputs['confirmed'] = $inputs['confirmed']? 1: 0: '';
 
         // download files if fail return fail
@@ -225,7 +225,7 @@ class CustomerRepository implements CustomerRepoInterface
 
     	return $this->customer->all()->reduce(function($total, $customer){
 
-            $businessType = slug_heb($customer->businessType);
+            $businessType = str_slug($customer->businessType);
             $customers = $this->getCustomersProps($customer);
 
             isset($total[$businessType])? array_push($total[$businessType], $customers): $total[$businessType] = [$customers];
@@ -255,8 +255,8 @@ class CustomerRepository implements CustomerRepoInterface
                 'id' => $customer->id,
                 'user_id' => $customer->user_id,
                 'confirmed' => $customer->confirmed,
-                'company' => slug_heb($customer->company),
-                'businessType' => slug_heb($customer->businessType),
+                'company' => str_slug($customer->company),
+                'businessType' => str_slug($customer->businessType),
                 'title' => $customer->title,
                 'contact' => $customer->contact,
                 'loggo' => $customer->loggo,

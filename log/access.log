@@ -1,0 +1,3 @@
+192.168.50.1 - - [29/Mar/2020:04:46:44 +0000] "GET / HTTP/1.1" 404 1564 "http://vvv.test/" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0"
+192.168.50.1 - - [29/Mar/2020:04:46:55 +0000] "GET /api/customers HTTP/1.1" 500 282210 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0"
+192.168.50.1 - - [29/Mar/2020:04:48:29 +0000] "GET /api/customers HTTP/1.1" 500 288963 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0"

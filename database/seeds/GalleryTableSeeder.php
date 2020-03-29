@@ -32,8 +32,8 @@ class GalleryTableSeeder extends Seeder
        
         foreach ($customers as $customer) { 
                 
-            $businessType = slug_heb($customer->businessType);
-            $company = slug_heb($customer->company);
+            $businessType = str_slug($customer->businessType);
+            $company = str_slug($customer->company);
 
             // switch ($company) {
 
