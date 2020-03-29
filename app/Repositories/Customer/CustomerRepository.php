@@ -248,7 +248,7 @@ class CustomerRepository implements CustomerRepoInterface
         $imgs = json_decode($customer->gallery->images);
         $vids = json_decode($customer->gallery->video);
 
-        $evt = $customer->user->events;
+        // $evt = $customer->user->events;
 
         return [
             "customer" => [
@@ -273,7 +273,7 @@ class CustomerRepository implements CustomerRepoInterface
                 'images' => $imgs? (gettype($imgs) == "object")? $this->objectToArray($imgs): $imgs :[],
                 'video' => $vids? $vids:[]
             ],
-            "events" => $evt
+            // "events" => $evt
         ];
     }
 }
