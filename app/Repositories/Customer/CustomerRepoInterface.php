@@ -1,16 +1,9 @@
 <?php
 namespace App\Repositories\Customer;
 
-
+use App\Customer;
 interface CustomerRepoInterface
 {
-    /**
-     * Get's a customer by it's ID
-     *
-     * @param int
-     */
-    public function show($id);
-
     /**
      * Get's all customers.
      *

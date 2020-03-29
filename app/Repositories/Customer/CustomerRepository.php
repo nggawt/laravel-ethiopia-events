@@ -23,12 +23,6 @@ class CustomerRepository implements CustomerRepoInterface
         $this->customer = $customer;
     }
 
-	/**
-     * Get's a article by it's ID
-     *
-     * @param int
-     */
-    public function show($id){ }
 
     /**
      * Get's all articles.

@@ -16,9 +16,9 @@ class EventController extends Controller
 {
     use Messages;
     private $itemsRule = [
-        "name" => "required|string|min:3",//|email|max:7",
+        "name" => "required|string|min:3", //|email|max:7",
         "eventType" => "required|string|min:3",
-        "date" => "required|date",//|numric|exact:10
+        "date" => "required|date", //|numric|exact:10
         "email" => "required",
         "phone" => "required",
         "location" => "required|string|min:3",
@@ -53,17 +53,17 @@ class EventController extends Controller
     {
 
         $items = collect($request->all())->except('_method')->intersectByKeys($this->itemsRule)->toArray();
-        $validty =\Validator::make($items, $this->itemsRule);
+        $validty = \Validator::make($items, $this->itemsRule);
 
-        if($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
-        
-        SendEmailJob::dispatch($items, Event_created::class);//->onConnection('database');//->onQueue('default');
-        $items['user_id'] = isset($items['user_id'])? $items['user_id']: auth('api')->user()->id;
+        if ($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
+
+        SendEmailJob::dispatch($items, Event_created::class); //->onConnection('database');//->onQueue('default');
+        $items['user_id'] = isset($items['user_id']) ? $items['user_id'] : auth('api')->user()->id;
         $msgs = [
             'user_id' => $items['user_id'],
             'name' => $items['name'],
             'email' => $items['email'],
-            'title' => "your event: " . $items['eventType'] ." was succesfuly created!",
+            'title' => "your event: " . $items['eventType'] . " was succesfuly created!",
             'body' => $items['descriptions'],
             'date' => $items['date'],
         ];
@@ -83,7 +83,7 @@ class EventController extends Controller
     public function update(Request $request, Event $event)
     {
         // if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
-        
+
         // $requestAll = collect($request->all())->except('_method');
         // if(count($requestAll) < 1) return response()->json(["errors" => ["bad_request" => ['message' => "bad resquest",'type' => "errors"]]]);
 
@@ -106,34 +106,38 @@ class EventController extends Controller
      * @param  \App\Event  $Event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request ,Event $event)
+    public function destroy(Request $request, Event $event)
 
-    {   return ["request" => $request->all(), "event" => $event];
-        if(! Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
-        
+    {
+        return ["request" => $request->all(), "event" => $event];
+        if (!Auth::check()) return response()->json(['error' => 'Unauthorized'], 401);
+
         return ['dd' => $event->delete()];
     }
 
-    protected function valInputs(array $inputs = [], array $rules = []){
+    protected function valInputs(array $inputs = [], array $rules = [])
+    {
 
         $isBadRequest = $this->badRequest($inputs);
-        if($isBadRequest) return false;
+        if ($isBadRequest) return false;
         return $this->isValid($inputs, $rules);
     }
 
-    private function isValid(array $inputs = [], array $rules = []){
-        $rules = count($rules)? $rules: $this->itemsRule;
+    private function isValid(array $inputs = [], array $rules = [])
+    {
+        $rules = count($rules) ? $rules : $this->itemsRule;
         $validator = \Validator::make($inputs, $rules);
-        $validator->fails()? $this->setErrorsMessages($validator): $this->setSuccessMessages($inputs);
+        $validator->fails() ? $this->setErrorsMessages($validator) : $this->setSuccessMessages($inputs);
         //return true;
-        return $validator->fails()? false:true;
+        return $validator->fails() ? false : true;
     }
 
-    private function badRequest($inp){
+    private function badRequest($inp)
+    {
         $keys = array_keys($this->itemsRule);
         $iputCollect = collect($inp)->except($keys);
 
-        if($iputCollect->count()){
+        if ($iputCollect->count()) {
             $msg = "Blocked User";
 
             $msg = [key($iputCollect->toArray()) => $msg];
