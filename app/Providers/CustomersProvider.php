@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repo\CustumersRepo;
+use App\Repo\CustomersRepo;
 
 class CustomersProvider extends ServiceProvider
 {
@@ -24,8 +24,8 @@ class CustomersProvider extends ServiceProvider
      */
     public function register()
     {
-        // $this->app->bind(CustumersRepo::class, function($app){
-        //     return new CustumersRepo();
+        // $this->app->bind(CustomersRepo::class, function($app){
+        //     return new CustomersRepo();
         // });
     }
 }

@@ -7,7 +7,7 @@ use App\Forbidden_user;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidateContactRequest;
 use App\Jobs\SendEmailJob;
-use App\Mail\SandMailToEe;
+use App\Mail\SendMailToEe;
 use App\Message;
 use App\ReplayMessage;
 use App\Repo\traits\Messages;
@@ -61,7 +61,7 @@ class MessagesController extends Controller
 
         $user = isset($user)? $user: auth('api')->user();
         
-        SendEmailJob::dispatch($request->all(), SandMailToEe::class);
+        SendEmailJob::dispatch($request->all(), SendMailToEe::class);
 
         $user_id = $user['id']? $user['id']: null;
         $msgs = [

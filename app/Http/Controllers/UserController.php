@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Events\MessagesEvents;
 use App\Http\Controllers\Controller;
 use App\Jobs\SendEmailJob;
-use App\Mail\SandMailToEe;
+use App\Mail\SendMailToEe;
 use App\Post;
 use App\Repo\traits\Messages;
 use App\User;

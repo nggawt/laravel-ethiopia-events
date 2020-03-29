@@ -35,7 +35,7 @@ class SendMailToEeJob implements ShouldQueue
     public function handle()
     {
         Mail::to('nggawt100@gmail.com')->send(
-            new SandMailToEe($this->props)
+            new SendMailToEe($this->props)
         );
     }
 }
