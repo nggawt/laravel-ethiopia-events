@@ -52,6 +52,9 @@ class LoginAdminController extends Controller
      */
     public function login(Request $request)
     {
+        // return respons()->json(['roles' => Role::all()]);
+
+        // return $request->all();
         $request->validate([
             'name' => 'required|string|min:3|max:30',
             'email' => 'required|string|email|max:255',
@@ -64,11 +67,13 @@ class LoginAdminController extends Controller
         if (! $token = $admin->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized admin user, msg from auth\\LoginadminController!.'], 401);
         }
+        //return respone()->json(["admin" => $admin]);
         $admin = $admin->user();
         $admintrator = [
                 'admin' => $admin->respondWithToken(auth('admin')->refresh()),
                 'authority' => $admin->getAdminWithAuthority()
             ];
+
         if($admin  && in_array($admin->email, config("app.adminstrator.email"))){
             $admintrator['roles'] = Role::all();
             return response()->json($admintrator, 200);

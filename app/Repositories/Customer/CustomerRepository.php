@@ -11,6 +11,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Str;
 
 class CustomerRepository implements CustomerRepoInterface
 {
@@ -45,7 +46,7 @@ class CustomerRepository implements CustomerRepoInterface
 
         $inputs['user_id'] = auth('api')->user()? auth('api')->user()->id: auth('admin')->user()->id;
         $inputs['confirmed'] = $inputs['confirmed']? 1: 0;
-        $inputs['slug'] = str_slug($inputs['title']);
+        $inputs['slug'] = Str::slug($inputs['title']);
         $inputs['loggo'] = $dowed['loggo'][0];
 
         $customer = $this->customer->create($inputs);
@@ -77,7 +78,7 @@ class CustomerRepository implements CustomerRepoInterface
         $fTodelete = isset($items['filesToDelete'])? $items['filesToDelete']: [];
         $customer = $this->customer->findOrfail($id);
         
-        isset($inputs['title'])? $inputs['slug'] = str_slug($inputs['title']): '';
+        isset($inputs['title'])? $inputs['slug'] = Str::slug($inputs['title']): '';
         Arr::has($inputs, 'confirmed')? $inputs['confirmed'] = $inputs['confirmed']? 1: 0: '';
 
         // download files if fail return fail
@@ -219,7 +220,7 @@ class CustomerRepository implements CustomerRepoInterface
 
     	return $this->customer->all()->reduce(function($total, $customer){
 
-            $businessType = str_slug($customer->businessType);
+            $businessType = Str::slug($customer->businessType);
             $customers = $this->getCustomersProps($customer);
 
             isset($total[$businessType])? array_push($total[$businessType], $customers): $total[$businessType] = [$customers];
@@ -249,8 +250,8 @@ class CustomerRepository implements CustomerRepoInterface
                 'id' => $customer->id,
                 'user_id' => $customer->user_id,
                 'confirmed' => $customer->confirmed,
-                'company' => str_slug($customer->company),
-                'businessType' => str_slug($customer->businessType),
+                'company' => Str::slug($customer->company),
+                'businessType' => Str::slug($customer->businessType),
                 'title' => $customer->title,
                 'contact' => $customer->contact,
                 'loggo' => $customer->loggo,

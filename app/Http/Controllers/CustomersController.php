@@ -36,11 +36,13 @@ class CustomersController extends Controller
      */
     public function index()
     {
+        
         return $this->customerRepo->all();
     }
 
     public function show(Customer $customer)
     {
+        return request()->server('REMOTE_ADDR');
         return response()->json($customer, 200);
     }
 

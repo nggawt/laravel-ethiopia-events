@@ -1,16 +1,12 @@
 /node_modules
 /public/hot
 /public/storage
-# /storage/*.key
-/storage/framework
-/storage/logs
+/storage/*.key
 /vendor
-/log/*.log
 .env
-/.vscode
+.env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-database/

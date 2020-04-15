@@ -1,16 +1,13 @@
 <?php return array (
-  'barryvdh/laravel-cors' => 
+  'facade/ignition' => 
   array (
     'providers' => 
     array (
-      0 => 'Barryvdh\\Cors\\ServiceProvider',
+      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
     ),
-  ),
-  'beyondcode/laravel-dump-server' => 
-  array (
-    'providers' => 
+    'aliases' => 
     array (
-      0 => 'BeyondCode\\DumpServer\\DumpServerServiceProvider',
+      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
     ),
   ),
   'fideloper/proxy' => 
@@ -20,11 +17,25 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
+  'fruitcake/laravel-cors' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Fruitcake\\Cors\\CorsServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
     array (
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
+  'laravel/ui' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Ui\\UiServiceProvider',
     ),
   ),
   'nesbot/carbon' => 

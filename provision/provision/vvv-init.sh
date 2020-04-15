@@ -32,8 +32,8 @@ install_plugins() {
   sudo apt-get update -y
   noroot composer self-update 
   noroot composer install
-  echo " * database seed in prograss!!!"
-  noroot php artisan migrate:fresh --seed
+  # echo " * database seed in prograss!!!"
+  # noroot php artisan migrate:fresh --seed
 }
 
 restore_db_backup() {

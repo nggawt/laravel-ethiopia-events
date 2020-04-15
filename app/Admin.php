@@ -43,7 +43,7 @@ class Admin extends Authenticatable implements JWTSubject
 
     public function roles()
     {
-        return $this->belongsToMany('App\Role', 'role_admins');
+        return $this->belongsToMany('App\Role','admin_roles', 'admin_id');
     }
 
     public function replayMessage()
