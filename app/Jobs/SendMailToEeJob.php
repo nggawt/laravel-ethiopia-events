@@ -23,7 +23,6 @@ class SendMailToEeJob implements ShouldQueue
      */
     public function __construct($props)
     {
-        //
         $this->props = $props;
     }
 

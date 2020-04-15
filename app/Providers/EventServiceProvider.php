@@ -7,6 +7,10 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
+use App\Events\MessagesEvents;
+use App\Listeners\MessegesEventListener;
+
+
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +22,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        MessagesEvents::class => [
+            MessegesEventListener::class
+        ]
     ];
 
     /**
@@ -29,6 +36,5 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
     }
 }

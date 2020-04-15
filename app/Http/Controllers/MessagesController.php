@@ -40,14 +40,15 @@ class MessagesController extends Controller
     	// $this->authorize('posts', $post);
     	// $this->authorize('view', $post);
     	// if(Gate::can('view', 2)){
-			return $this->getMessageWuthReplay($message->withTrashed()->get());//$this->getConfirmedPosts(Post::all());
+			return $this->getMessageWithReplay($message->withTrashed()->get());//$this->getConfirmedPosts(Post::all());
     	// }
 
 	}
 
-    public function getMessageWuthReplay($messages){
+    public function getMessageWithReplay($messages){
         
         foreach($messages as $message):
+
             $replay = $message->replay()->get();
             if($replay->count()){
                 $message->replay = $replay;
@@ -85,7 +86,6 @@ class MessagesController extends Controller
         $replay = $user->replayMessage()->create([
             'user_id' => $user->id,
             'message_id' => $message->id,
-            // 'title' => $request->title,
             'content' => $request->message
         ]);
 
