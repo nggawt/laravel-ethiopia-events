@@ -32,7 +32,7 @@ class CustomerRepository implements CustomerRepoInterface
      */
     public function all(){
 
-    	return response()->json(['customers' => $this->transformCustomers()], 200);
+    	return response()->json($this->transformCustomers(), 200);
     }
 
     public function create(array $customerProps){
@@ -78,7 +78,7 @@ class CustomerRepository implements CustomerRepoInterface
         $fTodelete = isset($items['filesToDelete'])? $items['filesToDelete']: [];
         $customer = $this->customer->findOrfail($id);
         
-        isset($inputs['title'])? $inputs['slug'] = Str::slug($inputs['title']): '';
+        isset($inputs['title'])? $inputs['slug'] = Str::slug_heb($inputs['title']): '';
         Arr::has($inputs, 'confirmed')? $inputs['confirmed'] = $inputs['confirmed']? 1: 0: '';
 
         // download files if fail return fail
@@ -220,7 +220,7 @@ class CustomerRepository implements CustomerRepoInterface
 
     	return $this->customer->all()->reduce(function($total, $customer){
 
-            $businessType = Str::slug($customer->businessType);
+            $businessType = Str::slug_heb($customer->businessType);
             $customers = $this->getCustomersProps($customer);
 
             isset($total[$businessType])? array_push($total[$businessType], $customers): $total[$businessType] = [$customers];
@@ -241,7 +241,7 @@ class CustomerRepository implements CustomerRepoInterface
 
         
         $imgs = json_decode($customer->gallery->images);
-        $vids = json_decode($customer->gallery->video);
+        $vids = json_decode($customer->gallery->videos);
 
         // $evt = $customer->user->events;
 
@@ -250,8 +250,8 @@ class CustomerRepository implements CustomerRepoInterface
                 'id' => $customer->id,
                 'user_id' => $customer->user_id,
                 'confirmed' => $customer->confirmed,
-                'company' => Str::slug($customer->company),
-                'businessType' => Str::slug($customer->businessType),
+                'company' => $customer->company,
+                'businessType' => Str::slug_heb($customer->businessType),
                 'title' => $customer->title,
                 'contact' => $customer->contact,
                 'loggo' => $customer->loggo,

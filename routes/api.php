@@ -44,6 +44,7 @@ Route::post('logout', 'Auth\LoginController@logout');
 
 Route::post('auth-user', 'Auth\LoginController@getLoggedUser')->middleware('banned');
 Route::post('refresh', 'Auth\LoginController@refresh')->middleware('banned');
+
 // Route::post('me', 'Auth\LoginController@me');
 Route::patch('users/{user}/change_password', 'UserController@changePassword');
 Route::patch('users/{user}/change_email', 'UserController@changeEmail');
@@ -58,6 +59,7 @@ Route::patch('admins/{admin}/change_password', 'AdminController@changePassword')
 Route::patch('admins/{admin}/change_email', 'AdminController@changeEmail');
 
 Route::resource('roles','RoleController')->except(['create', 'edit', 'show'])->middleware('banned');
+
 /* Events */
 Route::resource('events','EventController')->except(['create', 'edit']);
 

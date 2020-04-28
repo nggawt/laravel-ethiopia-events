@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(AdminsRolesTableSeeder::class);
         $this->call(AdminTableSeeder::class);
-
+        $this->call(MessagesTableSeeder::class);
+        
         factory(App\Event::class, 50)->create();
     }
 }

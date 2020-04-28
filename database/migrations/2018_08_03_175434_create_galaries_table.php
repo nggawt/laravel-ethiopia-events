@@ -18,8 +18,8 @@ class CreateGalariesTable extends Migration
             $table->unsignedInteger('customer_id');
             $table->boolean('confirmed')->nullable($value = true);
             
-            $table->text("video");
-            $table->text("image");
+            $table->text("videos");
+            $table->text("images");
             
             $table->softDeletes();
             

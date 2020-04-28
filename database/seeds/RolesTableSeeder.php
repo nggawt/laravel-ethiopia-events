@@ -15,7 +15,12 @@ class RolesTableSeeder extends Seeder
     {
 
         // DB::table('roles')->truncate();
-       $permissins = json_encode(array('create', 'update', 'delete'));
+       $permissins = json_encode(array(
+            'create' => true,
+            'update' => true, 
+            'delete' => true
+        ));
+
        Role::create([
             
             "name" => "Admin",
@@ -23,7 +28,11 @@ class RolesTableSeeder extends Seeder
             "permissions" => $permissins
         ]);
 
-        $permissins = json_encode(array('create', 'update'));
+        $permissins = json_encode(array(
+            'create' => true, 
+            'update' => true
+        ));
+
         Role::create([
             
             "name" => "Author",
@@ -31,11 +40,12 @@ class RolesTableSeeder extends Seeder
             "permissions" => $permissins
         ]);
         
-        $permissins = json_encode(array('update'));
+        $permissins = json_encode(array('update' => true));
+        
         Role::create([
             
-            "name" => "Writer",
-            "slug" => "writer",
+            "name" => "Editor",
+            "slug" => "editor",
             "permissions" => $permissins
         ]);
     }

@@ -39,7 +39,7 @@ class ArticleRepository implements ArticleRepositoryInterface
 
     	$article['user_id'] = auth('api')->user()? auth('api')->user()->id: auth('admin')->user()->id;
         $article['confirmed'] = $article['confirmed']? 1: 0;
-        $article['slug'] = str_slug($article['title']);
+        $article['slug'] = slug_heb($article['title']);
         $this->article->create($article);
 
         return response()->json(["message" => "your article/post was created succesfully!", "status" => true, 'article' => $article], 200);
@@ -61,7 +61,7 @@ class ArticleRepository implements ArticleRepositoryInterface
      */
     public function update(array $items, $id){
 
-    	isset($items['title'])? $items['slug'] = str_slug($items['title']): '';
+    	isset($items['title'])? $items['slug'] = slug_heb($items['title']): '';
         Arr::has($items, 'confirmed')? $items['confirmed'] = $items['confirmed']? 1: 0: '';
        
         $this->article->findOrfail($id)->update($items);

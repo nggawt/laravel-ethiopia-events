@@ -79,13 +79,13 @@ class GalleryTableSeeder extends Seeder
 
             ];
             $vid = [
-                "./assets/pages/customers/" .$fixCbt."/".$fixCcn."/video/km.mp4"
+                "./assets/pages/customers/" . $fixCbt. "/" . $fixCcn . ($fixCcn == "palace-lev"? "/video/lady-g.mp4": "/video/km.mp4")
             ];
 
             $gal = [
                 "customer_id" => $customer->id,
-                "image" => json_encode($img),
-                "video" => json_encode($vid)
+                "images" => json_encode($img),
+                "videos" => json_encode($vid)
             ];
 
             Gallery::create($gal);

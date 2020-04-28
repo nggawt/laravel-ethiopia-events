@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration
             $table->increments('id');
             // $table->unsignedInteger('admin_id');
 
-            $table->enum('name', array('Admin', 'Author', 'Writer'));
+            $table->enum('name', array('Admin', 'Author', 'Editor'));
             $table->string('slug');
             $table->string('permissions'); 
 

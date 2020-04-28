@@ -28,6 +28,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \Str::macro('slug_heb', function($str = ""){
+            $trimmed = trim($str);
+            $exploded = explode(" ", $trimmed);
+            $slug;
+            foreach($exploded as $item):
+                $slug = isset($slug) ? $slug ."-". $item: $item;
+            endforeach;
+
+            return isset($slug)? $slug: $str;
+        });
         // Schema::defaultStringLength(191);
     }
 }
