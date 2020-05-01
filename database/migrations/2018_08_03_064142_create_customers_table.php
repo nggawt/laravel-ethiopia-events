@@ -14,19 +14,20 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
+
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->boolean('confirmed')->default($value = 0);
             $table->string('company');
+            $table->string('email')->unique();
             $table->string('businessType');
-            $table->string('loggo');
             $table->string('title');
             $table->string('contact');
-            $table->text('discription');
-            $table->string('email')->unique();
-            $table->string('tel');
+            $table->text('descritions');
+            $table->string('loggo');
             $table->string('address');
+            $table->string('tel');
             $table->text('deals');
+            $table->boolean('confirmed')->default($value = 0);
             
             $table->softDeletes();
 
