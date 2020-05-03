@@ -12,10 +12,19 @@ class Message extends Model
     // protected $dates = [
     //     'created_at'
     // ];
-
-	protected $fillable = [
-        'user_id', 'name', 'email', 'title', 'body', 'date'
+    protected $fillable = [
+        'user_id', 
+        'email_from', 
+        'email_to', 
+        'name', 
+        'subject', 
+        'body', 
+        'area', 
+        'city', 
+        'phone', 
+        'date',
     ];
+
 
     protected $casts = [
         'favorites' => 'boolean',
@@ -29,6 +38,6 @@ class Message extends Model
 
     public function replay()
     {
-        return $this->hasOne('App\ReplayMessage');
+        return $this->hasMany('App\ReplayMessage');
     }
 }

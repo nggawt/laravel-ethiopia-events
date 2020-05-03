@@ -15,32 +15,45 @@ class MessagesTableSeeder extends Seeder
     public function run()
     {
 
+
         $msgs = [
             'user_id' => 1,
+            'email_from' => "nggawt100@gmail.com",
+            'email_to' => "test@test.com",
             'name' => "ngga",
-            'title' => "test",
-            'email' => "nggawt100@gmail.com",
+            'subject' => "test",
             'body' => "testing mail app",
+            'area' => "center",
+            'city' => "tl",
+            'phone' => "0545553311",
             'date' => Carbon::now(),
         ];
         Message::create($msgs);
 
         $msgs = [
-            'user_id' => 1,
+            'user_id' => 2,
+            'email_from' => "buzzi@test.com",
+            'email_to' => "test@test.com",
             'name' => "buzzi",
-            'title' => "test buzz",
-            'email' => "buzzi@test.com",
+            'subject' => "test buzz",
             'body' => "testing mail app buzzi",
+            'area' => "center",
+            'city' => "tl",
+            'phone' => "0545553322",
             'date' => Carbon::now(),
         ];
         Message::create($msgs);
 
         $msgs = [
-            'user_id' => null,
+            'user_id' => 3,
+            'email_from' => "nati@test.com",
+            'email_to' => "test@test.com",
             'name' => "nati",
-            'title' => "test",
-            'email' => "nati@test.com",
+            'subject' => "test",
             'body' => "testing mail app nati",
+            'area' => "east",
+            'city' => "tl",
+            'phone' => "0545554422",
             'date' => Carbon::now(),
         ];
         Message::create($msgs);
