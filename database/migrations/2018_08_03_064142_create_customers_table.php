@@ -25,7 +25,7 @@ class CreateCustomersTable extends Migration
             $table->text('descritions');
             $table->string('loggo');
             $table->string('address');
-            $table->string('tel');
+            $table->string('phone');
             $table->text('deals');
             $table->boolean('confirmed')->default($value = 0);
             

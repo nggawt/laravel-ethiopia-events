@@ -61,7 +61,7 @@ $factory->define(App\Event::class, function (Faker $faker) {
         'location' => $location[rand(0, count($location) - 1)],
         'address' => $address[rand(0, count($address) - 1)],
         'phone' => $phone[rand(0, count($phone) - 1)],
-        'description' => $description[rand(0, count($description) - 1)],
+        'descritions' => $description[rand(0, count($description) - 1)],
     ];
 });
  

@@ -25,14 +25,16 @@ class ValidateContactRequest extends FormRequest
     {
         
         return [
-            'name' => 'required|string|min:3|max:30',
+            'user_id' => 'number',
             'email_from' => 'required|string|email|max:255',
             'email_to' => 'required|string|email|max:255',
-            'phone' => 'digits_between:8,10',
+            'name' => 'required|string|min:3|max:30',
+            'subject' => 'required|string|min:3|max:90',
+            'body' => 'required|string|min:6|max:255',
             'area' => 'string|min:3|max:30',
             'city' => 'string|min:3|max:30',
-            'subject' => 'required|string|min:3|max:90',
-            'message' => 'required|string|min:6',
+            'phone' => 'digits_between:8,10',
+            'date' => 'date',
         ];
     }
 }

@@ -11,7 +11,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
-use Str;
+use Illuminate\Support\Str;
 
 class CustomerRepository implements CustomerRepoInterface
 {
@@ -259,7 +259,7 @@ class CustomerRepository implements CustomerRepoInterface
                 'content' => $customer->content,
                 'descritions' => $customer->descritions,
                 'address' => $customer->address,
-                'tel' => $customer->tel,
+                'phone' => $customer->phone,
                 'deals' => $customer->deals,
                 'created_at' => Carbon::parse($customer->created_at)->format('Y-m-d H:i:s'),
                 // "forbidden" => $customer->user->forbidden

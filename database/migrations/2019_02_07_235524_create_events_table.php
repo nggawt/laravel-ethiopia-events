@@ -25,7 +25,7 @@ class CreateEventsTable extends Migration
             $table->string("location");
             
             $table->text("address");
-            $table->text("description");
+            $table->text("descritions");
             $table->string('phone');
 
             $table->softDeletes();

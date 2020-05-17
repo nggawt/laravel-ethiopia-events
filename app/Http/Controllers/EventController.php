@@ -11,6 +11,7 @@ use App\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
@@ -53,7 +54,7 @@ class EventController extends Controller
     {
 
         $items = collect($request->all())->except('_method')->intersectByKeys($this->itemsRule)->toArray();
-        $validty = \Validator::make($items, $this->itemsRule);
+        $validty = Validator::make($items, $this->itemsRule);
 
         if ($validty->fails()) return response()->json([$request->all(), "message" => "you have an errors!", 'errors' => $validty->errors()->all(), "status" => false], 200);
 
@@ -126,7 +127,7 @@ class EventController extends Controller
     private function isValid(array $inputs = [], array $rules = [])
     {
         $rules = count($rules) ? $rules : $this->itemsRule;
-        $validator = \Validator::make($inputs, $rules);
+        $validator = Validator::make($inputs, $rules);
         $validator->fails() ? $this->setErrorsMessages($validator) : $this->setSuccessMessages($inputs);
         //return true;
         return $validator->fails() ? false : true;

@@ -4,7 +4,7 @@ use Faker\Generator as Faker;
 use Carbon\Carbon;
 use App\User;
 
-$factory->define(App\ScheduleEvent::class, function (Faker $faker) {
+$factory->define(\App\ScheduleEvent::class, function (Faker $faker) {
 	
 	$users = User::all();
 	$user = $users[rand(1, count($users) - 1)];
@@ -61,7 +61,7 @@ $factory->define(App\ScheduleEvent::class, function (Faker $faker) {
         'location' => $location[rand(0, count($location) - 1)],
         'address' => $address[rand(0, count($address) - 1)],
         'phone' => $phone[rand(0, count($phone) - 1)],
-        'description' => $description[rand(0, count($description) - 1)],
+        'descritions' => $description[rand(0, count($description) - 1)],
     ];
 });
  
