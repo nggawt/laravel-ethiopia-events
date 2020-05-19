@@ -24,7 +24,6 @@ class User extends Authenticatable implements JWTSubject
         'banned_until'
     ];
 
-
     /**
      * The attributes that should be hidden for arrays.
      *
