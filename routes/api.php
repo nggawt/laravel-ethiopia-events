@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +69,4 @@ Route::resource('customers','CustomersController')->except(['create', 'edit']);
 
 /* Blog */
 Route::resource('articles','ArticleController')->except(['create', 'edit']);//->middleware('can:posts,App\Post');//->middleware('can:view,App\Post')//;
+Auth::routes();

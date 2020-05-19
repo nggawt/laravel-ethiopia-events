@@ -46,6 +46,7 @@ class ArticleRepository implements ArticleRepositoryInterface
 
         return response()->json(["message" => "your article/post was created succesfully!", "status" => true, 'article' => $article], 200);
     }
+    
     /**
      * Deletes a article.
      *

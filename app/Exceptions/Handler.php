@@ -2,6 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
+use Exception;
+
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -51,5 +54,12 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         return parent::render($request, $exception);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+     {
+        return $request->expectsJson()
+                ? response()->json(['status' => false, 'msg' => "please get login"], 401)
+                : redirect()->guest(route('authentication.index'));
     }
 }

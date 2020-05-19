@@ -41,7 +41,7 @@ class MailResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $link = "http://localhost:4200/password/email/?token=" . $this->token;
+        $link = "http://localhost:4200/password/reset/?token=" . $this->token;
         
         // $link = url( "/password/reset/?token=" . $this->token );
         return (new MailMessage)
