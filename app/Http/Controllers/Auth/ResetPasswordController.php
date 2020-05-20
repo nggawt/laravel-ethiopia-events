@@ -44,40 +44,10 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse($response)
     {
-        return $this->respondWithToken(auth('api')->refresh());
+        return auth()->user()->respondWithToken(auth('api')->refresh());// $this->respondWithToken(auth('api')->refresh());
         //return response()->json(["message" => "your password was reseted", "res" => $response, "auth" => auth()->user()], 200);
 
         //return redirect($this->redirectPath())
                             //->with('status', trans($response));
-    }
-
-    protected function respondWithToken($token)
-    {
-        
-        return [
-            'user' => $this->getUser(),
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60
-        ];
-    }
-
-    private function getUser(){
-
-        $user = auth()->user();
-        $customer = $user->customer;
-        $events = $user->events;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tel' => $user->tel,
-            'about' => $user->about,
-            'area' => $user->area,
-            'city' => $user->city,
-            'customer' => $customer? $customer->only(['company', 'businessType', 'title', 'contact', 'discription']): false,
-            'events' => $events? $events: false
-        ];
     }
 }
