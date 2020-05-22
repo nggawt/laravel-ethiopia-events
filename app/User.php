@@ -98,23 +98,19 @@ class User extends Authenticatable implements JWTSubject
         
         return [
             'status' => true,
-            'user' => $this->getUser(),
+            'type' => 'user',
+            'user' => $this->formatedUser(),
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ];
     }
 
-    private function getUser(){
+    public function formatedUser(){
 
-        
-        // $customer = $this->customer;
-        // $events = $this->events;
-        // $messages = $this->messages;
-
-        
         $user = array(
             'id' => $this->id,
+            'type' => 'user',
             'name' => $this->name,
             'email' => $this->email,
             'tel' => $this->tel,
@@ -123,30 +119,12 @@ class User extends Authenticatable implements JWTSubject
             'city' => $this->city,
         );
 
-        if($this->customer) $user['customer'] = $this->customer->only(['id', 
-                                                                        'user_id', 
-                                                                        'company', 
-                                                                        'businessType', 
-                                                                        'title', '
-                                                                        contact', 
-                                                                        'discription']);
-        if($this->events) $user['events'] = $this->events;
-        if($this->messages) $user['messages'] = $this->messages;
-        return $user;
-        
-        /* 
-        'messages' => $messages? $messages: false,
-        'customer' => $customer? $customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'discription']): false,
-        'events' => $events? $events: false
-        */
-        //return array_map(array($this, 'filterUser'), $user);
-    }
-
-    private function filterUser(Array $user){
-        if($this->customer) $user['customer'] = $this->customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'discription']);
-        if($this->events) $user['events'] = $this->events;
-        if($this->messages) $user['messages'] = $this->messages;
-        // $user['changed'] = Array("changed!");
+        if($this->customer && $this->customer->count()){
+            $user['customer'] = $this->customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'descritions']);
+        } 
+            
+        if($this->events && $this->events->count()) $user['events'] = $this->events;
+        if($this->messages && $this->messages->count()) $user['messages'] = $this->messages;
         return $user;
     }
 }

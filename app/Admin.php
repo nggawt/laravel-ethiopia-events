@@ -60,13 +60,14 @@ class Admin extends Authenticatable implements JWTSubject
     public function respondWithToken($token)
     {
         
-        return [
+        return collect([
             'status' => true,
+            'type' => 'admin',
             'authority' => $this->getAdminWithAuthority(),
             'user' => $this->only(['id', 'name', 'email']),
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth('admin')->factory()->getTTL() * 60
-        ];
+        ]);
     }
 }

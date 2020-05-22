@@ -57,6 +57,17 @@ class UsersTableSeeder extends Seeder
 	        "tel" => "08-6722256 ,077-270789",
             "about" => "סילבר אירועים ",
             "password" => bcrypt("qweqwe")
+        ]);
+        
+        User::create([
+	        
+	        "name" => "ody",
+	        "email" => "dj@ody.com",
+            "city" => "פתח תקווה",
+            "area" => "מרכז",
+	        "tel" => "08-6722256 ,077-270789",
+            "about" => "dj אירועים ",
+            "password" => bcrypt("qweqwe")
 	    ]);
     }
 }

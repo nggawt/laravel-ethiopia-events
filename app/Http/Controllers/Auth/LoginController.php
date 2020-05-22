@@ -75,9 +75,12 @@ class LoginController extends Controller
     {
 
         if($status = auth('api')->check()){
-            return response()->json(['status' => $status, 'user' => $this->getUser()], 200);
+            return response()->json(auth('api')->user()->formatedUser(),200);
         } 
-        return response()->json(['status' => $status], 200);
+        return response()->json([
+            'message' => 'You are not login!',
+            'status' => $status
+        ], 200);
     }
 
     /**
@@ -88,7 +91,7 @@ class LoginController extends Controller
     public function logout()
     {
         $logOut = auth('api')->logout();
-        return response()->json(['message' =>  'Successfully logged out', 'logout' => $logOut], 200);
+        return response()->json(['message' =>  'Successfully logged out', 'status' => true], 200);
     }
 
     /**
@@ -99,26 +102,5 @@ class LoginController extends Controller
     public function refresh()
     {
         return response()->json(auth('api')->user()->respondWithToken(auth('api')->refresh()), 200);
-    }
-
-    private function getUser(){
-
-        $user = auth('api')->user();
-        $customer = $user->customer;
-        $events = $user->events;
-        $messages = $user->messages;
-
-        return [
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'tel' => $user->tel,
-            'about' => $user->about,
-            'area' => $user->area,
-            'city' => $user->city,
-            'messages' => $messages? $messages: false,
-            'customer' => $customer? $customer->only(['id', 'user_id', 'company', 'businessType', 'title', 'contact', 'discription']): false,
-            'events' => $events? $events: false
-        ];
     }
 }

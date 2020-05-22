@@ -122,5 +122,26 @@ class CustomersTableSeeder extends Seeder
             "confirmed" => rand(0, 1),
             "deals" => "בקרוב יעודכן"
         ]);
+
+        $descriptions = '
+        לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף.
+         זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.
+        ';
+
+        Customer::create([
+
+            "user_id" =>  5,
+            "company" => "dj ody",
+            "businessType" => "djs",
+            "contact" => "ody",
+            "title" => "סילבר אירועים ",
+            "loggo" => "./assets/pages/customers/djs/dj-ody/loggo/ody.jpg",
+            "descritions" => $descriptions,
+            "email" => "dj@ody.com",
+            "phone" => "08-6722256 ,077-270789",
+            "address" => "13 אשקלון",
+            "confirmed" => rand(0, 1),
+            "deals" => "בקרוב יעודכן"
+        ]);
     }
 }

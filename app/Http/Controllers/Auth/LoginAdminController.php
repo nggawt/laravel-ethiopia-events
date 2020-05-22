@@ -65,18 +65,16 @@ class LoginAdminController extends Controller
         $admin = auth('admin');
 
         if (! $token = $admin->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized admin user, msg from auth\\LoginadminController!.'], 401);
+            return response()->json([
+                'message' => 'Unauthorized admin user, msg from auth\\LoginadminController!.', 
+                'status' => false], 401);
         }
         //return respone()->json(["admin" => $admin]);
         $admin = $admin->user();
-        $admintrator = [
-                'admin' => $admin->respondWithToken(auth('admin')->refresh()),
-                'authority' => $admin->getAdminWithAuthority()
-            ];
+        $admintrator = $admin->respondWithToken(auth('admin')->refresh());
 
         if($admin  && in_array($admin->email, config("app.adminstrator.email"))){
             $admintrator['roles'] = Role::all();
-            return response()->json($admintrator, 200);
         }
         return response()->json($admintrator, 200);
     }
@@ -100,8 +98,10 @@ class LoginAdminController extends Controller
     public function logout()
     {
         auth()->guard('admin')->logout();
-
-        return response()->json(['message' => 'Successfully logged out, msg from auth\\LoginadminController!.']);
+        return response()->json([
+            'message' => 'Successfully logged out, msg from auth\\LoginadminController!',
+            'status' => true
+            ]);
     }
 
     /**

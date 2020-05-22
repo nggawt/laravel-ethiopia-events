@@ -89,35 +89,46 @@ class AdminController extends Controller
         }else{
              $admin->update($nonAutority);
         }
-        return response()->json(['status' => true, 'admin' => $admin ,'messages' => $this->getMessages(), 'items' => $items], 200);
+        return response()->json([
+            'status' => true, 
+            'admin' => $admin,
+            'messages' => $this->getMessages(), 
+            'items' => $items
+        ], 200);
     }
 
     public function authAdmin(){
 
     	$admin = Auth::guard('admin');
-
     	if(! $status = $admin->check()){
-    		return response()->json(['status' => $status], 200);
-        }
-        $admin = $admin->user();
-        if($admin  && in_array($admin->email, config("app.adminstrator.email"))){
-            
-            $admintrator = ['roles' => Role::all(), 'user' => $admin, 'authority' => $admin->getAdminWithAuthority()];
-            return response()->json($admintrator, 200);
+    		return response()->json([
+                'message' =>  'You are not login!',
+                'status' => $status
+            ], 200);
         }
         
-        return response()->json($admin->respondWithToken(request('token')),200);
+        $admintrator = $admin->user()->respondWithToken(request('token'))->except(['access_token', 'token_type', 'expires_in', 'status']);
+        if($admin  && in_array($admin->user()->email, config("app.adminstrator.email"))){
+            $admintrator['roles'] =  Role::all();
+        }
+        return response()->json($admintrator, 200);
     }
 
     public function logout()
     {
-        $logOut = auth('admin')->logout();
-        return response()->json(['message' =>  'Successfully logged out', 'logout' => $logOut], 200);
+        auth('admin')->logout();
+        return response()->json([
+            'message' =>  'Successfully logged out', 
+            'status' => true
+            ], 200);
     }
 
     public function destroy(Request $request, Admin $admin){
-
-        return response()->json(['message' =>  'Successfully admin deleted!', 'admin' => $admin], 200);
+        // $admin->delete();
+        return response()->json([
+            'message' =>  'Successfully admin deleted!', 
+            'status' => true
+        ], 200);
     }
 
     public function changePassword(Request $request, Admin $admin){

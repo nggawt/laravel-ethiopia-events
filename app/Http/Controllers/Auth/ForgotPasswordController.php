@@ -33,13 +33,13 @@ class ForgotPasswordController extends Controller
 
     protected function sendResetLinkResponse($response)
     {
-        return response()->json(["message" => "your password reset link was sent to your email."], 200);
+        return response()->json(["message" => "your password reset link was sent to your email.", 'status' => true], 200);
         // return back()->with('status', trans($response));
     }
 
     protected function sendResetLinkFailedResponse(Request $request, $response)
     {
-        return response()->json(["message" => "your password reset sent fail"], 200);
+        return response()->json(["message" => "your password reset sent fail", 'status' => false], 200);
         
         // return back()
         //         ->withInput($request->only('email'))
